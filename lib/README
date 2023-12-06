@@ -1,0 +1,129 @@
+%
+		    Files in the ITRANS/lib directory
+            -----------------------------------------------------
+                    http://www.aczoom.com/itrans/
+            -----------------------------------------------------
+
+% $Header:$
+
+itrans.sty		-- LaTeX style file, can be used standalone,
+			   or with latex2html
+
+htmlstub.sty		-- ITRANS/doc/*.itx files use html.sty from 
+			   latex2html, if you don't have latex2html installed,
+			   change the docs to use htmlstub.sty instead
+
+DVIPSRC			-- sample .dvipsrc file
+			-- should reside in user's home directory with
+			-- name .dvipsrc
+			-- On PC's should be name dvips.ini
+			-- See the documentation on DVIPS in the DVIPS package.
+
+SHENV			-- sample lines to add to your .profile/.login etc
+			-- Needed by TeX or by itrans itself
+			-- On the PC, add similar lines to your autoexec.bat
+
+FONTS.SCALE		-- sample lines to add to your fonts.scale file
+			-- this file should be renamed & moved to the
+			-- ITRANS/lib/fonts directory, and users should then
+			-- run "mkfontdir" and then "xset fp+
+			-- ITRANS/lib/fonts" to let X11 know where to load
+			-- these fonts from.
+
+itrans.map		-- the psfonts.map lines that need to be appended to
+			-- the systems psfonts.map
+			-- For the PostScript fonts - devnac, scguj, bvbeng
+
+--------- Devanagari
+
+idevn.tex		-- some useful TeX/LateX macros for writing
+			   devanagari using Devnag or Devnac font.
+
+dvnc.ifm		-- devnagari font metric file, used by itrans
+			-- to map transliterations in devnagari
+			-- (hindi/marathi/sanskrit)
+			-- For Devnac PostScript font
+
+dvng.ifm		-- devnagari font metric file, used by itrans
+			-- to map transliterations in devnagari 
+			-- (hindi/marathi/sanskrit)
+			-- For Devnag Metafont font
+dvngfull.ifm		-- devnagari font metric file, used by itrans
+			-- to map transliterations in devnagari
+			-- For Devnag Metafont font, contains many archaic
+			-- conjunct forms, may be useful for sanskrit/pali
+			-- writers.
+
+xdvng.ifm		-- For the Devnag font used with Jtrans
+			-- Can be used to generate text that can be 
+			-- displayed using WWW HTML browsers.
+
+udvng.ifm		-- For Unicode output
+
+--------- Telugu
+
+tlgutx.ifm		-- telugu font metric file, used by itrans
+			-- For the telugu font from the TeluguTeX
+			-- package - available at the usual FTP sites.
+
+itrnstlg.tex		-- definitions of special telugu chars/accents
+			-- For the telugu font from the TeluguTeX
+			-- package - available at the usual FTP sites.
+
+tikkana.ifm		-- for conversion of sanskrit ITRANS docs to
+			   telugu script using Tikanna fonts
+
+utel.ifm		-- For Unicode output
+
+--------- Kannada
+
+kantex.ifm		-- Kannada font metric file, used by itrans
+			-- For the Kannada font from the KannadaTeX
+			-- package - available at the usual FTP sites.
+
+ukan.ifm		-- For Unicode output
+
+--------- Tamil
+
+wntml.ifm		-- Washington Tamil indian language font metric
+			-- file.
+			-- Metafont font (for TeX).
+
+--------- Gujarati
+
+itxguj.ifm		-- ITRANS IFM file for ItxGuj Gujarati font
+
+uguj.ifm		-- For Unicode output
+
+--------- Bengali
+
+itxbeng.ifm		-- ITRANS IFM file for ItxBeng Bengali font
+
+bnbeng.ifm		-- ITRANS IFM file for BWTI Bengali font
+
+ubeng.ifm		-- For Unicode output
+
+--------- Gurmukhi
+
+pun.ifm			-- ITRANS IFM file for 'Punjabi' Gurmukhi font
+
+ugur.ifm		-- For Unicode output
+
+--------- Romanized Sanskrit (CSUtopia -- modified Adobe Utopia font)
+
+romancsx.ifm		-- ITRANS IFM file for the CSX Roman Sanskrit fonts
+
+uroman.ifm		-- For Unicode output
+
+--------- Oriya and Malayalam (Unicode output only)
+
+uoriya.ifm		-- For Unicode output
+
+umal.ifm		-- For Unicode output
+
+--------- Font Files (TeX Files, and Display fonts for PC/Mac/X11)
+
+Directory:
+	.../ITRANS/lib/fonts 	All the *.mf, *.pfa, *.tfm, etc font files
+	See the README file in that directory.
+

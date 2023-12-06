@@ -1,0 +1,31 @@
+#!/bin/sh
+# Shell program to cat PostScript output files generated
+# from itrans (-P option). Prepends the font description file
+# and the prologue file. Assumes Devnagari Output............
+# Be sure to set BASFONTNAME to your language in the .ips input file:
+# /BASEFONTNAME /ItxBeng def
+# etc...
+
+# set LIBDIR to the itrans lib and FONTSDIR to the fonts directory
+LIBDIR=~/ITRANS/lib
+FONTSDIR=~/ITRANS/lib/fonts
+
+# set DOCAT to empty if you want output on stdout, else 
+# assign to a pipe to the printer
+DOCAT=
+# DOCAT="| lp"
+# DOCAT="| lp -oh"
+
+# for Devnac
+eval cat $LIBDIR/itrans.pro $FONTSDIR/devnac.ps $* $DOCAT
+# eval need to evaluate the | char, if present, in DOCAT
+
+# for ItxGuj (Gujarati)
+# eval cat $LIBDIR/itrans.pro $FONTSDIR/itxguj.pfa $* $DOCAT
+
+# for ItxBeng (Bengali)
+# eval cat $LIBDIR/itrans.pro $FONTSDIR/itxbeng.pfa $* $DOCAT
+
+# for CSUtopia-Regular (Romanized-Sanskrit)
+# eval cat $LIBDIR/itrans.pro $FONTSDIR/putr8i.pfb $* $DOCAT
+

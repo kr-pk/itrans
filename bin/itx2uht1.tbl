@@ -1,0 +1,30 @@
+# This is a transliteration data file for converting from Itrans sanskrit
+# transliteration codes into ITRANS tamil using adhawin-tamil font
+# this is a cleanup file to run after itx2tam.tbl conversion
+   1            file version number
+   "    "      # string delimiters
+   [    ]      # list delimites
+   {    }      # regular expression delimiters
+#
+#starting sequence
+""
+#ending sequence
+""
+#
+   1     # number of input SHIFT sequences, only one set of input characters
+   ""      ""    ""    ""    ""        ""             # Normal characters
+#
+   0     # number of output shift sequences
+#
+# conversion table starts from here
+# inp_set     inp_seq           out_set    out_seq
+# Non-transliteration characters
+     1		"#indian"            		0		"##" 
+     1		"#endindian"            		0		"##" 
+     1		"#sanskrit"            		0		"##" 
+     1		"#endsanskrit"            		0		"##" 
+     1		"#roman"            		0		"##" 
+
+
+
+

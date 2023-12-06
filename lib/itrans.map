@@ -1,0 +1,24 @@
+# This is a dvips format psfonts.map file that
+# should can be added with a updmap-sys --enable Map=itrans.map command,
+# possibly followed by another updmap-sys and mktexlsr
+
+dnh 	DevnacPlain <devnac.ps
+dnho 	DevnacPlain <devnac.ps " .167 SlantFont "
+dnhrc 	DevnacPlain <devnac.ps " .82 ExtendFont "
+dnhre 	DevnacPlain <devnac.ps " 1.2 ExtendFont "
+
+itxguj 	ItxGuj <itxguj.pfa
+itxgujo ItxGuj <itxguj.pfa    " .167 SlantFont "
+itxgujrc ItxGuj <itxguj.pfa    " .82 ExtendFont "
+itxgujre ItxGuj <itxguj.pfa    " 1.2 ExtendFont "
+
+ncprcsxp	NCS_CSX+-Roman <ncpr____.pfb
+ncpicsxp	NCS_CSX+-Italic <ncpi____.pfb
+
+itxbeng	ItxBeng <itxbeng.pfa
+itxbengo ItxBeng <itxbeng.pfa " .167 SlantFont "
+itxbngrc ItxBeng <itxbeng.pfa " .82 ExtendFont "
+itxbngre ItxBeng <itxbeng.pfa " 1.2 ExtendFont "
+
+pun      Punjabi  <pun.pfb
+

@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fonts Available</TITLE>
+<META NAME="description" CONTENT="Fonts Available">
+<META NAME="keywords" CONTENT="dvnc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="dvnc.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="dvnc.html">
+<LINK REL="up" HREF="dvnc.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html29"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html27"
+  HREF="dvnc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html21"
+  HREF="dvnc.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html30"
+  HREF="node2.html">Known Problems</A>
+<B>Up:</B> <A NAME="tex2html28"
+  HREF="dvnc.html">dvnc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html22"
+  HREF="dvnc.html">dvnc.itx (ITRANS doc)</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html31"
+  HREF="node1.html#SECTION00011000000000000000">T<SMALL>E</SMALL>X Interface</A>
+<LI><A NAME="tex2html32"
+  HREF="node1.html#SECTION00012000000000000000">L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>X Interface</A>
+<LI><A NAME="tex2html33"
+  HREF="node1.html#SECTION00013000000000000000">Textual Interface - PostScript</A>
+<LI><A NAME="tex2html34"
+  HREF="node1.html#SECTION00014000000000000000">Sanskrit, Hindi and Marathi</A>
+<LI><A NAME="tex2html35"
+  HREF="node1.html#SECTION00015000000000000000">Text Interface - Unicode (UTF-8) for Sanskrit, Hindi, and Marathi</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00010000000000000000">
+Fonts Available</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00011000000000000000">
+T<SMALL>E</SMALL>X Interface</A>
+</H2>
+
+<P>
+The devanagari font is called <EM>devnac</EM>, and its PostScript description
+resides in the file <EM>devnac.ps</EM>.
+It is a user-defined type III PostScript font.
+Four fonts, variations on the basic devnac font, are bundled with the  itrans
+package.
+Their names (in the T<SMALL>E</SMALL>X interface) are dnh, dnho, dnhrc, and dnhre.
+
+<P>
+<DL>
+<DT><STRONG>dnh</STRONG></DT>
+<DD>This is the basic devanagari font. There are some other fonts
+available, derived by transforming this font.
+</DD>
+<DT><STRONG>dnho</STRONG></DT>
+<DD>This is the slanted version of <EM>dnh</EM>.
+</DD>
+<DT><STRONG>dnhrc</STRONG></DT>
+<DD>Both <EM>dnho</EM> and <EM>dnh</EM> look extremely heavy.
+A scaled down, compressed version
+(along the x-axis) of the basic font is available as <EM>dnhrc</EM>.
+</DD>
+<DT><STRONG>dnhre</STRONG></DT>
+<DD>This is heavier than <EM>dnh</EM>, to be used as a bold version.
+</DD>
+</DL>
+
+<P>
+Since these are PostScript fonts,  you can use them at any font size in
+your document. 
+In fact, the  font size must be specified when loading in the font.
+In this document (and in idoc.itx), the following line was used for
+loading the font:
+
+<P>
+<code>\newfont{\devnf}{dnh at 15pt}</code>.
+
+<P>
+Even though this document has been typeset using a 11 point size, the
+devanagari font is loaded in at 15 point size.
+This is just to emphasize the devanagari characters.
+Normally, I would suggest loading in the font at 15-20% greater size than
+the other text in the document.
+So, if your document is being typeset at 11 point, load in the devanagari
+fonts using a 13 point size.
+Of course, this relation of size is important only if you wish to mix
+english and devanagari in the same document.
+In any case, go wild, experiment with various font sizes.
+Since the characters are described as outlines in bezier curve form,
+smaller point sizes do not look too good on a 300dpi output device, the
+larger the font size, the better the shapes look.
+
+<P>
+
+<H2><A NAME="SECTION00012000000000000000">
+L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>X Interface</A>
+</H2>
+
+<P>
+In ITRANS version 5.2, apart from the addition of a new style file named
+<TT>itrans.sty</TT>, a font definition file for Devnac was also added.
+The file is named <TT>Udvnc.fd</TT>, and it can be used to load this font
+using L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>X2e commands where the font encoding is <TT>U</TT> (unknown)
+and the font family is <TT>dvnc</TT>. Thus, the following can be used
+to load the medium series with normal shape:
+
+<P>
+<code>\usefont{U}{dvnc}{m}{n}</code>
+and then to select a size and baselineskip:
+<code>\fontsize{18pt}{24pt}\selectfont</code>
+
+<P>
+The above will load the <TT>dnh</TT> version of this font.
+
+<P>
+<code>\usefont{U}{dvnc}{b}{sl}</code>
+will load the <TT>dnho</TT> version, and
+
+<P>
+<code>\usefont{U}{dvnc}{c}{n}</code>
+will load the <TT>dnhrc</TT> version, and
+
+<P>
+<code>\usefont{U}{dvnc}{bx}{n}</code>
+will load the <TT>dnhre</TT> version.
+
+<P>
+
+<H2><A NAME="SECTION00013000000000000000">
+Textual Interface - PostScript</A>
+</H2>
+
+<P>
+A direct PostScript interface is supported. HTML and Unicode (UTF-8)
+are not supported for this font.
+
+<P>
+This interface does not offer any wordprocessing capabilities other
+than that of checking when a page is complete, and then
+resetting the current point to the top of the next page.
+Thus, all spaces, lines, etc from the input text appear
+in the output too.
+
+<P>
+For the  PostScript mode, the user may also directly invoke
+PostScript commands to create various versions of the font, as required.
+Refer to PostScript language manuals for specific help regarding the
+PostScript font manipulation commands.
+If you decide to go this route, take a look at the file <EM>itrans.pro</EM>,
+it is the prologue that gets sent to the printer.
+It contains definitions of various commands such as <EM>normalfont</EM>,
+<EM>slantfont</EM>, <EM>compressedfont</EM>, etc, which may be used to change
+the font being used.
+These PostScript functions take a single argument:&nbsp;the font size to use.
+All this and more information can be obtained from the prologue file, <EM>itrans.pro</EM>, and PostScript users should take a look at it.
+For example usage, look through the sample input files provided.
+Files ending in <EM>.ips</EM> are the direct PostScript input files, itrans
+(with the -P option) directly produces PostScript output for these files.
+
+<P>
+The file <EM>devnac.ps</EM> contains the PostScript
+language program for this devanagari font.
+
+<P>
+
+<H2><A NAME="SECTION00014000000000000000">
+Sanskrit, Hindi and Marathi</A>
+</H2>
+
+<P>
+The single IFM file <EM>dvnc.ifm</EM> can be used for
+Sanskrit, Hindi or Marathi output.
+
+<P>
+The marathi form of ra-half is available through the <TT>R</TT>
+character, the second LA is at <TT>L</TT> (or <TT>ld</TT>), etc.
+The table displays the complete mapping from English to Devanagari
+for all the three Indic Scripts.
+
+<P>
+
+<H2><A NAME="SECTION00015000000000000000">
+Text Interface - Unicode (UTF-8) for Sanskrit, Hindi, and Marathi</A>
+</H2>
+
+<P>
+IFM file to use is named <EM>udvng.ifm</EM>.
+
+<P>
+Unicode (UTF-8) output is supported for this the Devanagari script, but no
+Unicode fonts are included with the ITRANS package. There are many
+Unicode fonts available on the  Web, and more are being developed
+so it should be easy to locate a Unicode font when needed. Not all
+Unicode fonts fully support Indian Languages yet.
+
+<P>
+<HR>
+<A NAME="tex2html29"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html27"
+  HREF="dvnc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html21"
+  HREF="dvnc.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html30"
+  HREF="node2.html">Known Problems</A>
+<B>Up:</B> <A NAME="tex2html28"
+  HREF="dvnc.html">dvnc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html22"
+  HREF="dvnc.html">dvnc.itx (ITRANS doc)</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

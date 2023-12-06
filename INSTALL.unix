@@ -1,0 +1,158 @@
+# Installation Instructions for the itrans package, version 5.3
+# Instructions For UNIX Systems (tested on Linux).
+
+# *** Note: installing ITRANS, getting TeX and dvips to work, etc
+# takes a lot of effort. Instead of installing ITRANS yourself,
+# first see if the Online ITRANS at http://www.aczoom.com/itrans/
+# serves your need, in which case you don't need to install all this.
+
+# Old instructions, here for example only. In 2009, it is possible to 
+# to use texlive with itrans, but note that texlive also contains
+# an older version of ITRANS (uses dvng10 instead of the newer dvnb10)
+# so make sure /usr/share/itrans53 directory is loaded before the
+# /usr/local/texlive directories when running latex.
+#
+# Added the following lines to /usr/local/texlive/2009/texmf.cnf
+# Or, do the equivalent in environment variables.
+#
+% ----- itrans/webitrans.pl updates
+% texlive 2008/2009/2010? have older idevn.tex  (5.3 instead of 5.31)
+% which uses older dvng10 font instead of dvnb10. Therefore, have to
+% put itrans53/lib directory before texlive directories for idevn.tex.
+% Only using latex, so only change TEXINPUTS.latex.
+%
+% For making itrans (idevn.tex) and webitrans.pl work, and work the same
+% from command-line added these variables here instead of in webitrans.pl or
+% in the environment.
+%
+TEXINPUTS.latex = .;/usr/share/itrans53/lib//;$TEXMF/tex/{plain,generic,}//
+
+% For all other variables, put itrans53 last so it only uses it if texlive
+% is missing the required files.
+
+% need itrans53 psfonts.map for dnh, itxbeng, etc fonts
+% may need to run these commands after adding this to the texmf.cnf file:
+% mktexlsr; updmap-sys --enable Map=itrans.map ; mktexlsr; updmap-sys
+% may need a    tlmgr generate updmap    too
+TEXFONTMAPS = .;$TEXMF/fonts/map/{$progname,pdftex,dvips,}//;/usr/share/itrans53/lib
+TEXPSHEADERS = .;$TEXMF/{dvips,fonts/{enc,type1,type42,type3}}//;/usr/share/itrans53/lib/fonts
+
+% Need to change MFFONTS - installing texlive with Indic support
+% does add the itrans needed fonts there, but need to extend MFINPUTS
+% to get the missing fonts from texlive - wntml10, tel10, etc
+MFINPUTS = .;$TEXMF/metafont//;{$TEXMF/fonts,$VARTEXFONTS}/source//;/usr/share/itrans53/lib/fonts
+
+---------------    Installing the Pre-Built Binary Archive ------------
+
+1: The pre-built binary for i386 Linux archive is itransNN-i386.tgz
+   (NN is the release number), as super-user, execute these commands:
+
+   cd /
+   tar xvzf itransNN-i386.tgz
+
+   All done...
+   (Tested on Slackware Linux, should work on most other Linux systems.)
+
+---------------    Installing from the Source Archive ------------
+
+* * * * * In short:
+Unpack itransNN.zip and itransfn.zip to a temp folder, choose appropriate
+makefile.xxx from src folder, edit it if needed to specify different
+folders for install, and then run "make" and then "make install".
+
+* * * * * Details:
+
+1: Unpack ITRANS, the main archive is itransNN.zip (NN is the release
+   number):
+
+   unzip itransNN.zip
+
+   It will unpack to a directory named
+
+	itrans-<version-number>
+
+   Unpack any of the other required archives in the same directory you
+   unpacked the main itransNN.zip archive:
+
+   [required]
+   unzip itransfn.zip		[contains the fonts]
+
+   [optional]
+   unzip itransht.zip		[contains the docs in HTML format]
+   unzip itransps.zip		[contains the docs in PostScript format]
+
+2: Make and install all the programs.
+   Change directory to "ITRANS/src", and copy the required makefile.xxx to
+   "makefile", edit it as required, run make first, then install the
+   files.
+   Linux users, start off with the "makefile.gcc", it is more
+   suited to a Linux system.
+
+   Sun users should see makefile.sun, SGI users should use makefile.sgi.
+   Once you have edited the makefile as required, run:
+
+   $ make		# or, make noansi
+   To install, run this, may require to be run as the "root" user:
+   $ make install
+
+3: Set up the environment variables required.
+   See ITRANS/lib/SHENV for examples of all variables that need to be
+   set.
+
+*** If you intend to use itrans for directly producing HTML (Latin1 or
+   Unicode output or for producing PostScript output,  you are all set
+   at this point.
+   Assuming your input file is named ex_lat1.itx, the command to print
+   it would be:
+
+   % cd to the doc directory
+
+   $ itrans -v -i ex_lat1.itx -o ex_lat1.html
+   $ itrans -v -i ex_utf8.itx -o ex_utf8.html
+
+   To produce direct PostScript output:
+
+   $ itrans -v -P -i ex_ps.itx -o ex_ps.ps
+   $ cat ../lib/fonts/devnac.ps ../lib/itrans.pro ex_ps.ps | lp
+   % above assumes lp sends data to a PostScript printer
+   % Edit src/prips if you will be using the direct PostScript output mode
+   % of ITRANS often.
+
+*** To use the system with the TeX  language, you need to setup the files
+   and fonts so that TeX/LaTeX and dvips can locate them.
+   The following steps are necessary.
+
+4:
+   The files mentioned in this section all reside in the lib directory
+   of this itrans package.
+
+   First, set up dvips so it will pick up the additions to the system
+   psfonts.map file.
+   See ITRANS/lib/DVIPSRC for examples of how to do that.
+   Copy DVIPSRC to ~/.dvipsrc, edit as required.
+
+*** You are all set up now for both TeX/LaTeX and PostScript output
+   generation.
+
+5: Print out the document idoc.itx, it is the user's manual
+   for the "itrans" program.
+
+   NOTE: It takes a lot of work in terms of setting up your system
+   correctly for all the ITRANS fonts to work with LaTeX, dvips, and
+   ghostview. If you are unable to convert idoc.itx to idoc.ps, you may
+   just want to extract the
+   	itransps.zip
+   archive, it contains PostScript format document of all the ITRANS user
+   manuals. Or, you can extract HTML format document, to view with
+   Netscape, etc, from the archive:
+   	itransht.zip
+
+   idoc.itx contains transliterated hindi/tamil text, so it has to be
+   converted to a normal TeX file.
+   Run these commands:
+   $ itrans -v -i idoc.itx -o idoc.tex
+   $ latex idoc ; latex idoc
+   $ dvips idoc | lp
+   # above assumes lp sends data to a PostScript printer
+
+   Do the same for the other reference manuals, as needed.

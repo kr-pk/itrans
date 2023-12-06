@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>TEX Interface</TITLE>
+<META NAME="description" CONTENT="TEX Interface">
+<META NAME="keywords" CONTENT="idoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="idoc.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="idoc.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html81"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html79"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html73"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html82"
+  HREF="node4.html">Direct PostScript Output</A>
+<B>Up:</B> <A NAME="tex2html80"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html74"
+  HREF="node2.html">Input Format</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html83"
+  HREF="node3.html#SECTION00031000000000000000">T<SMALL>E</SMALL>X Requirements</A>
+<LI><A NAME="tex2html84"
+  HREF="node3.html#SECTION00032000000000000000">L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>X Style Files</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00030000000000000000">
+T<SMALL>E</SMALL>X Interface</A>
+</H1>
+
+<P>
+<EM>itrans</EM> can accept T<SMALL>E</SMALL>X input and generate T<SMALL>E</SMALL>X output for all
+languages for which either a PostScript font description or a Metafont
+description is  available.
+
+<P>
+For example, the <IMG
+ WIDTH="23" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img3.gif"
+ ALT="aa\,"> character in the table
+in the document <EM>dvnc.itx</EM> was produced by this input text:
+
+<P>
+<code> {</code>&#35;marathi <code> aa </code>&#35;endmarathi <code>}</code>
+
+<P>
+Thus, the character <EM>aa</EM>, when bracketed between &#35;marathi  and 
+&#35;endmarathi  produces <IMG
+ WIDTH="23" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img3.gif"
+ ALT="aa\,">, when the appropriate
+IFM file
+name and font command name have been set correctly (as mentioned in the
+previous section).
+
+<P>
+For further examples, see the sample documents provided.
+All T<SMALL>E</SMALL>X transliterated files have been given the file extension
+<EM>.itx</EM>.
+
+<P>
+Normally, all english text between the words &#35;marathi  and &#35;endmarathi  is mapped into
+marathi characters, except for any word following a backslash character.
+Thus, you can include T<SMALL>E</SMALL>X commands in the transliterated text
+portion, the only restriction is that the command should be made up of
+letters and numerals only.
+
+<P>
+Examples: <code> \indent or \hskip1in or \kern0.4em,</code> <code>etc</code>.
+Note that in the sample documents shown, T<SMALL>E</SMALL>X commands are usually
+surrounded by curly braces--they used as scope delimiters only, are not
+absolutely necessary, but are recommended.
+
+<P>
+
+<H2><A NAME="SECTION00031000000000000000">
+T<SMALL>E</SMALL>X Requirements</A>
+</H2>
+
+<P>
+To use this pre-processor, you must have the following tools:
+
+<OL>
+<LI>T<SMALL>E</SMALL>X tools, including the capability to output dvi files using
+PostScript fonts (if you need to use the devnac devanagari font).
+This implies having <EM>dvips</EM>, release 5.41 or newer, a program written
+by Tomas Rokicki. If you don't have it, see the Frequently-Asked-Questions in
+the newsgroup
+comp.text.tex for details on how to get hold of <EM>dvips</EM>.
+Actually, if you only need to use tamil or Frans Velthuis's Devnag font,
+or telugu, you don't need a dvi-to-ps converter.
+Those fonts are described in Metafont, thus any dvi-to-your-printer
+converter will be able to handle it (once you run Metafont and generate
+the printer specific files).
+
+<P>
+For the  IBM PC, the emTeX package includes the <EM>dvips</EM> executable.
+<EM>dvips</EM> for the PC also resides in the SIMTEL archives.
+
+<P>
+</LI>
+<LI>ANSI C compatible compiler, and optionally, the flex and yacc tools.
+This program is provided with the source code, and a makefile.
+The makefile is specific to my machine, you may have to edit it to
+get it working correctly on your machine.
+If you do not have an ANSI C compatible compiler, you will have to make
+the ``noansi'' object, see the makefile for details; it automatically
+de-ansifies all the C sources.
+Also, if you need to modify the ilex.l or iyacc.y source files for your
+specific needs, you'll need the flex and yacc tools on your system.
+
+<P>
+The ITRANS package also contains an executable for MS-DOS machines, thus
+for MS-DOS machines, you need not go through the compilation step.
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<H2><A NAME="SECTION00032000000000000000">
+L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>X Style Files</A>
+</H2>
+
+<P>
+In ITRANS release 5.2, a new style file was added <EM>itrans.sty</EM>.
+This is the file created by Ross Moore to allow ITRANS documents to be
+processed through latex2html, but this style file is useable for normal
+L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>Xdocuments also.
+
+<P>
+This style file should be loaded with the <code>\usepackage</code> command, and there
+are many options available with this package.
+
+<P>
+<DL>
+<DT><STRONG>preprocess</STRONG></DT>
+<DD>This is applicable only when using latex2html, and it
+has no effect when running normal L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>X. So, it is probably ok to
+always use this option even if you never plan on running latex2html.
+
+<P>
+</DD>
+<DT><STRONG>devanagari</STRONG></DT>
+<DD>This will load the <TT>idevn.tex</TT> file, which has
+some macros that are useful for using Devanagari with T<SMALL>E</SMALL>X. <TT>idevn.tex</TT>
+will actually be loaded even if no option is provided, so the devanagari
+option is not really necessary at this time (ITRANS release 5.2).
+
+<P>
+</DD>
+<DT><STRONG>telugu</STRONG></DT>
+<DD>This will load the <TT>itrnstlg.tex</TT> file, which has
+some macros that are useful for generating some special Telugu characters.
+
+<P>
+</DD>
+<DT><STRONG><EM>other options</EM></STRONG></DT>
+<DD>itrans.sty has many other options, take at look
+at that file to view all of them, but in practice, you may not need to
+use any of those options yet.
+
+<P>
+</DD>
+</DL>
+
+<P>
+Example lines to load itrans.sty:
+
+<P>
+<code>\usepackage[preprocess]{itrans}}</code>   <EM>or</EM>
+
+<P>
+<code>\usepackage[preprocess,telugu]{itrans}}</code>
+
+<P>
+<HR>
+<A NAME="tex2html81"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html79"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html73"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html82"
+  HREF="node4.html">Direct PostScript Output</A>
+<B>Up:</B> <A NAME="tex2html80"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html74"
+  HREF="node2.html">Input Format</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

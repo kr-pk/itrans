@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fonts Available</TITLE>
+<META NAME="description" CONTENT="Fonts Available">
+<META NAME="keywords" CONTENT="gujdoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="gujdoc.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="gujdoc.html">
+<LINK REL="up" HREF="gujdoc.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html30"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html28"
+  HREF="gujdoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html22"
+  HREF="gujdoc.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html31"
+  HREF="node2.html">ITRANS Usage</A>
+<B>Up:</B> <A NAME="tex2html29"
+  HREF="gujdoc.html">gujdoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html23"
+  HREF="gujdoc.html">gujdoc.itx (ITRANS doc)</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html32"
+  HREF="node1.html#SECTION00011000000000000000">T<SMALL>E</SMALL>X Interface</A>
+<LI><A NAME="tex2html33"
+  HREF="node1.html#SECTION00012000000000000000">Direct Textual Interface: HTML Output</A>
+<LI><A NAME="tex2html34"
+  HREF="node1.html#SECTION00013000000000000000">Direct Textual Interface: PostScript Output</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00010000000000000000">
+Fonts Available</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00011000000000000000">
+T<SMALL>E</SMALL>X Interface</A>
+</H2>
+
+<P>
+The gujarati font is called <EM>ItxGuj</EM>, and its PostScript specification
+is in the file <EM>itxguj.pfa</EM> or <EM>itxguj.pfb</EM>.
+It is a user-defined Type I PostScript font.
+Four styles, transformations on the basic ItxGuj font,
+are bundled with the  itrans package.
+Their names (in the T<SMALL>E</SMALL>X interface) are itxguj, itxgujo, itxgujrc, and
+itxgujre.
+
+<P>
+<DL>
+<DT><STRONG>itxguj</STRONG></DT>
+<DD>This is the basic gujarati font. There are some other fonts
+available, derived by transforming this font.
+</DD>
+<DT><STRONG>itxgujo</STRONG></DT>
+<DD>This is the slanted version of <EM>itxguj</EM>.
+</DD>
+<DT><STRONG>itxgujrc</STRONG></DT>
+<DD>A scaled down, compressed version
+(along the x-axis) of the basic font is available as <EM>itxgujrc</EM>.
+</DD>
+<DT><STRONG>itxgujre</STRONG></DT>
+<DD>This is heavier than <EM>itxguj</EM>, to be used as a bold version.
+</DD>
+</DL>
+
+<P>
+Since these are PostScript fonts,  you can use them at any font size in
+your document. 
+In this document the following line was used for
+loading the font:
+
+<P>
+<code>\newfont{\itxgujf}{itxguj at 15pt}</code>.
+
+<P>
+Even though this document has been typeset using a 11 point size, the
+gujarati font is loaded in at 15 point size.
+This is just to emphasize the gujarati characters.
+Normally, I would suggest loading in the font at 15-20% greater size than
+the other text in the document.
+So, if your document is being typeset at 11 point, load in the gujarati
+fonts using a 13 point size.
+Of course, this relation of size is important only if you wish to mix
+english and gujarati in the same document.
+In any case, go wild, experiment with various font sizes.
+Since the characters are described as outlines in bezier curve form,
+smaller point sizes do not look too good on a 300dpi output device, the
+larger font size makes the shapes look better in print.
+
+<P>
+
+<H2><A NAME="SECTION00012000000000000000">
+Direct Textual Interface: HTML Output</A>
+</H2>
+
+<P>
+This mode is provided for generating text that can be displayed
+on any WWW browser such as Netscape (version 3.0 or later).
+See the example file provided (ITRANS/doc/s1html.itx) on examples
+of how to use this mode.
+See the manual idoc.itx for information on the Direct Text Output mode
+of ITRANS.
+
+<P>
+The same IFM file is used for this mode as for the T<SMALL>E</SMALL>X interface.
+
+<P>
+
+<H2><A NAME="SECTION00013000000000000000">
+Direct Textual Interface: PostScript Output</A>
+</H2>
+
+<P>
+This interface does not offer any word-processing capabilities other
+than that of checking when a page is complete, and then
+resetting the current point to the top of the next page.
+Thus, all spaces, lines, etc from the input text appear
+in the output too.
+
+<P>
+The user may also directly invoke
+PostScript commands to create various versions of the font, as required.
+Refer to PostScript language manuals for specific help regarding the
+PostScript font manipulation commands.
+If you decide to go this route, take a look at the file <EM>itrans.pro</EM>,
+it is the prologue that gets sent to the printer.
+It contains definitions of various commands such as <EM>normalfont</EM>,
+<EM>slantfont</EM>, <EM>compressedfont</EM>, etc, which may be used to change
+the font being used.
+These PostScript functions take a single argument:&nbsp;the font size to use.
+All this and more information can be obtained from the prologue file, <EM>itrans.pro</EM>, and PostScript users should take a look at it.
+For example usage, look through the sample input files provided.
+Files ending in <EM>.ips</EM> are the direct PostScript input files, itrans
+(with the -P option) directly produces PostScript output for these files.
+
+<P>
+The file <EM>itxguj.pfb</EM> contains the PostScript
+language program for this gujarati font.
+
+<P>
+<HR>
+<A NAME="tex2html30"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html28"
+  HREF="gujdoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html22"
+  HREF="gujdoc.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html31"
+  HREF="node2.html">ITRANS Usage</A>
+<B>Up:</B> <A NAME="tex2html29"
+  HREF="gujdoc.html">gujdoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html23"
+  HREF="gujdoc.html">gujdoc.itx (ITRANS doc)</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

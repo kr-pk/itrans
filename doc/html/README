@@ -1,0 +1,37 @@
+Description of the files in the "doc/html" directory of the ITRANS package.
+
+Converted using latex2html
+------------------------------------------------------------------------
+
+Directories in the doc/html directory:
+
+idoc/			-- ITRANS general user manual
+
+dvnc/			-- Marathi/Hindi/Sanskrit,
+			-- using the Devnac PostScript font
+
+dvng/			-- Marathi/Hindi/Sanskrit,
+			-- for the Devnag Metafont font
+
+ex_latex/		-- Example LaTeX file, coverted to HTML
+
+gujdoc/			-- Gujarati documentation (ItxGuj Type1 font)
+
+icsx/			-- documentation for the CS/CSX encoding support
+			-- in ITRANS.
+
+itxbeng/		-- manual for the Type 1 Bengali font
+
+kantex/			-- manual for the Kannada font (KannadaTeX font)
+
+pundoc/			-- manual for the Punjabi Gurmukhi font (PostScript)
+
+romancsx/		-- Romanized Sanksrit (CSUtopia Type 1 font) manual
+
+tamil/			-- Tamil documentation
+
+tblall/			-- manual showing tables for all languages
+
+tlgutx/			-- Telugu documentation (for the TeluguTeX font)
+
+----------------------------------------------------------------------

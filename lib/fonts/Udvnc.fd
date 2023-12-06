@@ -1,0 +1,35 @@
+%
+%    Udvnc.fd v1.5
+%
+%    LaTeX2e font description file for Devanagari family in Unknown encoding.
+%	PostScript Devnac Font
+%
+%    Author:   Avinash Chopde <avinash@aczoom.com>
+%
+
+\ProvidesFile{Udvnc.fd}[1998/06/06]
+
+\DeclareFontFamily{U}{dvnc}{}
+
+\DeclareFontShape{U}{dvnc}{b}{n}{
+  <-> dnh
+}{}
+
+\DeclareFontShape{U}{dvnc}{b}{sl}{
+  <-> dnho
+}{}
+
+\DeclareFontShape{U}{dvnc}{c}{n}{
+  <-> dnhrc
+}{}
+
+\DeclareFontShape{U}{dvnc}{bx}{n}{
+  <-> dnhre
+}{}
+
+\DeclareFontShape{U}{dvnc}{m}{n}{<->ssub * dvnc/b/n}{}
+\DeclareFontShape{U}{dvnc}{m}{sl}{<->ssub * dvnc/b/sl}{}
+\DeclareFontShape{U}{dvnc}{m}{it}{<->ssub * dvnc/b/sl}{}
+\DeclareFontShape{U}{dvnc}{b}{it}{<->ssub * dvnc/b/sl}{}
+
+\endinput

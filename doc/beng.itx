@@ -1,0 +1,1724 @@
+% Avinash Chopde <avinash@aczoom.com>
+% --------------------------------------------------------------------
+% User Documentation for the Itrans Package, Bengali
+% Bengali Transliteration Table for ItxBeng PostScript Font and
+% Bengali Transliteration Table for bwti Metafont Font
+% bwti Metafont created by Abhijit Das of IISc Bangalore.
+% bwti support in ITRANS added by Jaijeet Roychowdhury.
+
+\documentclass[11pt]{article}
+
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latex2html
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+
+\usepackage{longtable}
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+
+\newcommand{\SB}{\texttt{\char35bengali}}
+\newcommand{\EB}{\texttt{\char35endbengali}}
+
+\newfont{\itxbengf}{itxbeng at 15pt}
+%\newfont{\itxbengf}{itxbengo at 15pt} % the oblique version 
+%\newfont{\itxbengf}{itxbngrc at 15pt} % the scaled down (x-axis) version
+%\newfont{\itxbengf}{itxbngre at 15pt} % the scaled down (x-axis) version
+
+\newfont{\bnr}{bnr10 at 14pt}
+\newfont{\bnsl}{bnsl10 at 14pt}
+
+\hyphenchar\itxbengf=-1 % disable hyphenation using this font
+\hyphenchar\bnr=-1 % disable hyphenation using this font
+\hyphenchar\bnsl=-1 % disable hyphenation using this font
+
+% for the Bwti font, use the #bengali markers
+#bengaliifm=bnbeng.ifm
+#bengalifont=\bnr
+
+% for the ItxBeng font, use the #indian marker
+#indianifm=itxbeng.ifm
+#indianfont=\itxbengf
+
+\begin{document}
+
+\footnotetext[0]{Last modification: \today}
+
+\centerline{\bf Transliteration Maps for}
+\medskip
+\centerline{\LARGE\bf Bengali fonts ItxBeng and BWTI}
+\bigskip
+\centerline{\bf itrans}
+\smallskip
+\centerline{\bf \copyright 1997--98 Avinash Chopde}
+\bigskip
+\centerline{\bf {\sl bwti} font developed by Abhijit Das (Barda)}
+\smallskip
+\centerline{\bf {\sl bwti} font support added by Jaijeet Roychowdhury}
+
+\section{Fonts Available}
+
+There are currently two Bengali fonts available with ITRANS: {\em bwti} and {\em ItxBeng}.
+The {\em bwti} fonts are written in {\sf METAFONT}, while {\em ItxBeng} is a PostScript font.
+At present, the {\em bwti} fonts have a complete set of Bengali characters including all
+the standard conjunct consonants
+(#bengali JuktaakShar#endbengali s),
+while the
+{\em ItxBeng} fonts are missing some characters. {\em ItxBeng}, however, works with the \TeX, direct PostScript and HTML
+interfaces of ITRANS, while {\em bwti} is limited to only the \TeX\ interface.
+
+\subsection{\TeX\ Interface}
+
+
+\subsubsection{{\em bwti} font}
+
+{\em bwti} is a family of {\sf METAFONT} fonts defined in the files {\em bnr10.mf} and
+{\em bnsl10.mf}. They can be used only with
+the \TeX\ interface.
+
+\begin{description}
+\item [bnr10] This is the basic {\em bwti} Bengali font.
+\item [bnsl10] This is the slanted version of {\em bwti}.
+\end{description}
+
+\noindent
+These can be used at any font size in your document. 
+In this document the following line was used for
+loading the font:
+\noindent\verb+\newfont{\bnr}{bnr10 at 14pt}+.
+
+\subsubsection{{\em ItxBeng} font}
+
+{\em ItxBeng} is a PostScript font whose specification
+is in the file {\em itxbeng.pfa} or {\em itxbeng.pfb}.
+It is a user-defined Type I PostScript font.
+Four styles, transformations on the basic ItxBeng font,
+are bundled with the  itrans package.
+Their names (in the \TeX\ interface) are itxbeng, itxbengo, itxbngrc, and
+itxbngre.
+
+\begin{description}
+\item [itxbeng] This is the basic {\em ItxBeng} Bengali font. There are some other fonts
+available, derived by transforming this font.
+\item [itxbengo] This is the slanted version of {\em itxbeng}.
+\item [itxbngrc] A scaled down, compressed version
+(along the x-axis) of the basic font is available as {\em itxbeng}.
+\item[itxbngre] This is heavier than {\em itxbeng}, to be used as a bold version.
+\end{description}
+
+Since these are PostScript fonts,  you can use them at any font size in
+your document. 
+In this document the following line was used for
+loading the font:
+
+\noindent\verb+\newfont{\itxbengf}{itxbeng at 15pt}+.
+
+\subsection{Direct Textual Interface: HTML Output ({\em ItxBeng} only)}
+
+This mode is provided for generating text that can be displayed
+on any WWW browser such as Netscape (version 3.0 or later).
+See the example file provided (ITRANS/doc/s1html.itx) on examples
+of how to use this mode.
+See the manual idoc.itx for information on the Direct Text Output mode
+of ITRANS.
+
+The same IFM file (for {\em ItxBeng}) is used for this mode as for the \TeX\ interface.
+
+\subsection{Direct Textual Interface: PostScript Output ({\em ItxBeng} only)}
+
+This interface does not offer any word-processing capabilities other
+than that of checking when a page is complete, and then
+resetting the current point to the top of the next page.
+Thus, all spaces, lines, etc from the input text appear
+in the output too.
+
+The user may also directly invoke
+PostScript commands to create various versions of the font, as required.
+Refer to PostScript language manuals for specific help regarding the
+PostScript font manipulation commands.
+If you decide to go this route, take a look at the file {\em itrans.pro},
+it is the prologue that gets sent to the printer.
+It contains definitions of various commands such as {\em normalfont},
+{\em slantfont}, {\em compressedfont}, etc, which may be used to change
+the font being used.
+These PostScript functions take a single argument:~the font size to use.
+All this and more information can be obtained from the prologue file, {\em
+itrans.pro}, and PostScript users should take a look at it.
+For example usage, look through the sample input files provided.
+Files ending in {\em .ips} are the direct PostScript input files, itrans
+(with the -P option) directly produces PostScript output for these files.
+
+The file {\em itxbeng.pfa} contains the PostScript
+language program for this bengali font.
+
+%-------------------------------------------------------------------------
+
+\subsection{Font Developers}
+
+\subsubsection{{\em bwti}}
+
+The bwti fonts have been created by Abhijit Das of IISc Bangalore.
+
+\subsubsection{{\em ItxBeng}}
+
+The ItxBeng has been developed by Shrikrishna Patil, who has been
+developing fonts for over a decade now. He has been extremely generous to
+all of us users of ITRANS, and has offered us two freeware fonts:
+one for Gujarati (ItxGuj), and one for Bengali (ItxBeng).
+I am thankful to him for this
+gift! If any one using this ITRANS package finds the need for
+fonts for Microsoft Windows
+or Apple Macintosh platforms, feel free to contact Patil at his e-mail
+address {\em sapatil@pacbell.net}. His fonts are available at very
+reasonable costs, around US\$50 to US\$100 depending on the font.
+
+\subsection{IFM File Developers}
+
+Each font requires an {\em ITRANS Font Metric (IFM)} file to be
+supplied in the ITRANS document.
+This Bengali user manual for ITRANS makes use of two IFM files, since it
+needs to print text in both the bwti and ItxBeng fonts.
+
+\subsubsection{{\em bwti} font}
+
+The IFM file for {\em bwti} is called {\em bnbeng.ifm}.
+
+I would like to thank Jaijeet Roychowdhury, who created a new IFM file
+for the bwti fonts and thus add support for them in ITRANS. He also
+helped fix some problems with the Bengali IFM files.
+
+\subsubsection{{\em ItxBeng} font}
+
+The IFM file is called {\em itxbeng.ifm}.
+
+I would like to thank Ansuman Lahiri ({\em ansu@thon.csb.ki.se}),
+who helped in creating the IFM file for ItxBeng and in proof-reading the
+test samples I sent him. There may still be problems with the current
+Bengali support, but that is because I do not know bengali at all, so if
+you do find that some conjuncts do not work they should, please send me
+(Avinash Chopde) e-mail, my address is available elsewhere in this
+document.
+
+%-------------------------------------------------------------------------
+\section {Example}
+
+Input text:
+
+\noindent
+{%\tt\SB
+\begin{verbatim}
+ke la_ibe mor kaaJa^r, kahe sandhyaa rabi \\
+shuniYaa jagat.h rahe niruttar chhabi | \\
+maaTir pradiip chhila, se kahila, sbaamii \\
+aamaar JeTuku saadhya kariba taa aami | \\
+--- rabiindranaath Thaakuur
+\end{verbatim}
+%\EB
+}
+
+\vspace{0.3in}
+\begin{minipage}{3in}
+In the {\em ItxBeng} font, the text produces:
+\vspace{0.1in}
+
+{#indian
+\noindent
+ke la_ibe mor kaaJa^r, kahe sandhyaa rabi \\
+shuniYaa jagat.h rahe niruttar chhabi | \\
+maaTir pradiip chhila, se kahila, sbaamii \\
+aamaar JeTuku saadhya kariba taa aami | \\
+--- rabiindranaath Thaakuur
+#endbengali}
+\end{minipage}\
+\begin{minipage}{3in}
+In the {\em bwti} font, the above text produces:
+\vspace{0.1in}
+
+{#bengali
+\noindent
+ke la_ibe mor kaaJa^r, kahe sandhyaa rabi \\
+shuniYaa jagat.h rahe niruttar chhabi | \\
+maaTir pradiip chhila, se kahila, sbaamii \\
+aamaar JeTuku saadhya kariba taa aami | \\
+--- rabiindranaath Thaakuur
+#endbengali}
+\end{minipage}
+
+\bigskip\hrule
+\vfill
+\bigskip
+\section{Author}
+
+\noindent
+ITRANS has been developed by Avinash Chopde. \\
+E-mail:
+\htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com}. \\
+Home page:
+\htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+
+\bigskip\hrule
+%-------------------------------------------------------------------
+\newpage
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Bengali Table}
+\end{htmlonly}
+
+{
+\begin{tabular}{c}
+{
+\begin{tabular}{ccc}
+\vbox{\hbox{
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\ \hline \hline
+
+	 #bengali a #endbengali &
+	#indian a #endbengali &
+{\tt a} \\ \hline
+	 #bengali aa #endbengali &
+	#indian aa #endbengali &
+{\tt aa} or {\tt A} \\ \hline
+	 #bengali i #endbengali &
+	#indian i #endbengali &
+{\tt i} \\ \hline
+	 #bengali ii #endbengali &
+	#indian ii #endbengali &
+{\tt ii} or {\tt I}\\ \hline
+	 #bengali u #endbengali &
+	#indian u #endbengali &
+{\tt u} \\ \hline
+	 #bengali uu #endbengali &
+	#indian uu #endbengali&
+{\tt uu} or {\tt U}\\ \hline
+	 #bengali R^i #endbengali &
+	#indian R^i #endbengali &
+{\tt RRi} or {\tt R\char`^i}  \\ \hline
+	 #bengali e #endbengali &
+	#indian e #endbengali &
+{\tt e} \\ \hline
+	 #bengali ai #endbengali &
+	#indian ai #endbengali &
+{\tt ai} \\ \hline
+	 #bengali o #endbengali &
+	#indian o #endbengali &
+{\tt o}\\ \hline
+	 #bengali au #endbengali &
+	#indian au #endbengali&
+{\tt au}\\ \hline
+\end{tabular}
+\end{makeimage}
+}\vfill}
+&
+\vbox{\hbox{
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\ \hline \hline
+
+	 #bengali 0 #endbengali &
+	#indian 0 #endbengali &
+{\tt 0} \\ \hline
+	 #bengali 1 #endbengali &
+	#indian 1 #endbengali &
+{\tt 1} \\ \hline
+	 #bengali 2 #endbengali &
+	#indian 2 #endbengali &
+{\tt 2} \\ \hline
+	 #bengali 3 #endbengali &
+	#indian 3 #endbengali &
+{\tt 3} \\ \hline
+	 #bengali 4 #endbengali &
+	#indian 4 #endbengali &
+{\tt 4} \\ \hline
+	 #bengali 5 #endbengali &
+	#indian 5 #endbengali&
+{\tt 5} \\ \hline
+	 #bengali 6 #endbengali &
+	#indian 6 #endbengali &
+{\tt 6} \\ \hline
+	 #bengali 7 #endbengali &
+	#indian 7 #endbengali &
+{\tt 7} \\ \hline
+	 #bengali 8 #endbengali &
+	#indian 8 #endbengali &
+{\tt 8} \\ \hline
+	 #bengali 9 #endbengali &
+	#indian 9 #endbengali &
+{\tt 9}\\ \hline
+\end{tabular}
+\end{makeimage}
+}\vfill}
+&
+\vbox{\hbox{
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\ \hline \hline
+
+	 #bengali ga.n #endbengali &
+	#indian ga.n #endbengali &
+{\em ga}{\tt .n} \\ \hline
+	 #bengali gaa.N #endbengali &
+	#indian gaa.N #endbengali &
+{\em gaa}{\tt .N} \\ \hline
+	 #bengali aa^r #endbengali &
+	#indian aa^r #endbengali &
+{\em aa}{\tt \char`^r} \\ \hline
+	 #bengali m.h #endbengali &
+	#indian m.h #endbengali &
+{\em m}{\tt .h} \\ \hline
+	 #bengali t.h #endbengali &
+	#indian t.h #endbengali &
+{\tt t.h} \\ \hline
+	 #bengali duH #endbengali &
+	#indian duH #endbengali &
+{\em du}{\tt H} \\ \hline
+	 #bengali GYa #endbengali &
+	#indian GYa #endbengali&
+{\tt GY}{\em a} \\ \hline
+\end{tabular}
+\end{makeimage}
+}\vfill}
+\\
+Vowels & Numerals & Accents/Specials
+\end{tabular}
+}
+\\
+\vbox{\vskip0.2in\hbox{
+\begin{tabular}{c}
+\framebox{\mbox{
+\begin{tabular}{ccc}
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\ \hline \hline
+
+	 #bengali ka #endbengali &
+	#indian ka #endbengali &
+{\tt k}{\em a} \\ \hline
+	 #bengali kha #endbengali &
+	#indian kha #endbengali &
+{\tt kh}{\em a} \\ \hline
+	 #bengali ga #endbengali &
+	#indian ga #endbengali &
+{\tt g}{\em a} \\ \hline
+	 #bengali gha #endbengali &
+	#indian gha #endbengali &
+{\tt gh}{\em a} \\ \hline
+	 #bengali ~N #endbengali &
+	#indian ~N #endbengali &
+{\tt \char`~N}{\em a} or {\tt N\char`^}a \\ \hline 
+\end{tabular}
+\end{makeimage}
+&
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\ \hline \hline
+
+	 #bengali cha #endbengali &
+	#indian cha #endbengali &
+{\tt ch}{\em a} \\ \hline
+	 #bengali chha #endbengali &
+	#indian chha #endbengali &
+{\tt chh}{\em a} \\ \hline
+	 #bengali ja #endbengali &
+	#indian ja #endbengali &
+{\tt j}{\em a} \\ \hline
+	 #bengali jha #endbengali &
+	#indian jha #endbengali &
+{\tt jh}{\em a} \\ \hline
+	 #bengali ~n #endbengali &
+	#indian ~n #endbengali &
+{\tt \char`~n}{\em a} or {\tt n\char`^}a \\ \hline
+\end{tabular}
+\end{makeimage}
+&
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\ \hline \hline
+
+	 #bengali Ta #endbengali &
+	#indian Ta #endbengali &
+{\tt T}{\em a} \\ \hline
+	 #bengali Tha #endbengali &
+	#indian Tha #endbengali &
+{\tt Th}{\em a} \\ \hline
+	 #bengali Da #endbengali &
+	#indian Da #endbengali &
+{\tt D}{\em a} \\ \hline
+	 #bengali Dha #endbengali &
+	#indian Dha #endbengali &
+{\tt Dh}{\em a} \\ \hline
+	 #bengali Na #endbengali &
+	#indian Na #endbengali &
+{\tt N}{\em a} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\hbox{\lower.7in\hbox{
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ #bengali ta #endbengali}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in#indian ta #endbengali} &
+\setbox0=\hbox{{\tt \char`~N}{\em a} or {\tt N\char`^}a}\hbox to\wd0{\kern0.3in {\tt t}{\em a}} \\ \hline
+	\hbox{ #bengali tha #endbengali} &
+	#indian tha #endbengali &
+{\tt th}{\em a} \\ \hline
+	 #bengali da #endbengali &
+	#indian da #endbengali &
+{\tt d}{\em a} \\ \hline
+	 #bengali dha #endbengali &
+	#indian dha #endbengali &
+{\tt dh}{\em a} \\ \hline
+	 #bengali na #endbengali &
+	#indian na #endbengali &
+{\tt n}{\em a} \\ \hline
+\end{tabular}
+\end{makeimage}
+}}
+&
+\hbox{\lower.7in\hbox{
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ #bengali pa #endbengali}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in#indian pa #endbengali} &
+\setbox0=\hbox{{\tt \char`~n}{\em a} or {\tt n\char`^}a}\hbox to\wd0{\kern0.3in {\tt p}{\em a}} \\ \hline
+	\hbox{ #bengali pha #endbengali} &
+	#indian pha #endbengali &
+{\tt ph}{\em a} \\ \hline
+	 #bengali ba #endbengali &
+	#indian ba #endbengali &
+{\tt b}{\em a} \\ \hline
+	 #bengali bha #endbengali &
+	#indian bha #endbengali &
+{\tt bh}{\em a} \\ \hline
+	 #bengali ma #endbengali &
+	#indian ma #endbengali &
+{\tt m}{\em a} \\ \hline
+\end{tabular}
+\end{makeimage}
+}}
+& 
+\hbox{\lower.7in\hbox{
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ #bengali Ja #endbengali}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in#indian Ja #endbengali} &
+\setbox0=\hbox{\small ITRANS}\hbox to\wd0{\kern0.0in{\tt J}{\em a} or
+{\tt y}{\em a}} \\ \hline
+	\hbox{ #bengali ra #endbengali} &
+	#indian ra #endbengali &
+{\tt r}{\em a} \\ \hline
+	 #bengali la #endbengali &
+	#indian la #endbengali &
+{\tt l}{\em a} \\ \hline
+	 #bengali ba #endbengali &
+	#indian ba #endbengali &
+{\tt b}{\em a} \\ \hline
+	 #bengali sha #endbengali &
+	#indian sha #endbengali &
+{\tt sh}{\em a} \\ \hline
+\end{tabular}
+\end{makeimage}
+}} \\
+\hbox{\lower.7in\hbox{
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ #bengali Sha #endbengali}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in#indian Sha #endbengali} &
+\setbox0=\hbox{{\tt \char`~N}{\em a} or {\tt N\char`^}a}\hbox to\wd0{\kern0.3in {\tt Sh}{\em a}} \\ \hline
+	\hbox{ #bengali sa #endbengali} &
+	#indian sa #endbengali &
+{\tt s}{\em a} \\ \hline
+	 #bengali ha #endbengali &
+	#indian ha #endbengali &
+{\tt h}{\em a} \\ \hline
+	&
+	&
+	\\ \hline
+	&
+	&
+	\\ \hline
+\end{tabular}
+\end{makeimage}}}
+&
+\hbox{\lower.7in\hbox{
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ #bengali kSha #endbengali}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in#indian kSha #endbengali} &
+\setbox0=\hbox{{\tt \char`~n}{\em a} or {\tt n\char`^}a}\hbox to\wd0{\kern0.0in {\tt kSh}{\em a} or {\tt x}{\em a}} \\ \hline
+	\hbox{ #bengali Ya #endbengali} &
+	#indian Ya #endbengali &
+{\tt Y}{\em a} \\ \hline
+	 #bengali .Da #endbengali &
+	#indian .Da #endbengali &
+{\tt .D}{\em a} \\ \hline
+	 #bengali .Dha #endbengali &
+	#indian .Dha #endbengali &
+{\tt .Dh}{\em a} \\ \hline
+	&
+	&
+	\\ \hline
+\end{tabular}
+\end{makeimage}}} 
+\end{tabular}}}\\
+\hbox{\lower0.1in\hbox{Consonants}}\\
+\hbox{\lower0.2in\hbox{\bf ITRANS: Bengali to English Transliteration Table}}
+\end{tabular}
+}}
+\end{tabular}
+}
+
+%-------------------------------------------------------------------
+\newpage
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Conjunct Consonants (warning: big images; table in multiple parts)}
+\end{htmlonly}
+
+\begin{makeimage}
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect\html{, Part 1}} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+
+\multicolumn{7}{r}{continued on the next page...} \\ \endfoot
+
+\hline \endlastfoot
+
+\hline
+ #bengali ka + ka #endbengali &
+	{\tt kk} &
+	 #bengali kk #endbengali &
+	#indian kk #endbengali &
+	{\tt dhikkaar}  &
+	 #bengali dhikkaar #endbengali &
+	#indian dhikkaar #endbengali\\ \hline
+ #bengali ka + Ta #endbengali &
+	{\tt kT} &
+	 #bengali kT #endbengali &
+	#indian kT #endbengali &
+	{\tt akTopaas} &
+	 #bengali akTopaas #endbengali &
+	#indian akTopaas #endbengali\\ \hline
+ #bengali ka + ta #endbengali &
+	{\tt kt} &
+	 #bengali kt #endbengali &
+	#indian kt #endbengali &
+	{\tt Daaktaar} &
+	 #bengali Daaktaar #endbengali &
+	#indian Daaktaar #endbengali\\ \hline
+ #bengali ka + ba #endbengali &
+	{\tt kb} &
+	 #bengali kb #endbengali &
+	#indian kb #endbengali &
+	{\tt pakba} &
+	 #bengali pakba #endbengali &
+	#indian pakba #endbengali\\ \hline
+ #bengali ka + ma #endbengali &
+	{\tt km} &
+	 #bengali km #endbengali &
+	#indian km #endbengali &
+	{\tt rukmiNI} &
+	 #bengali rukmiNI #endbengali &
+	#indian rukmiNI #endbengali\\ \hline
+ #bengali ka + ra #endbengali &
+	{\tt kr} &
+	 #bengali kr #endbengali &
+	#indian kr #endbengali &
+	{\tt bakra} &
+	 #bengali bakra #endbengali &
+	#indian bakra #endbengali\\ \hline
+ #bengali ka + la #endbengali &
+	{\tt kl} &
+	 #bengali kl #endbengali &
+	#indian kl #endbengali &
+	{\tt klIba} &
+	 #bengali klIba #endbengali &
+	#indian klIba #endbengali\\ \hline
+ #bengali ka + Sh #endbengali &
+	{\tt kSh} &
+	 #bengali kSh #endbengali &
+	#indian kSh #endbengali &
+	{\tt rakShaa} &
+	 #bengali rakShaa #endbengali &
+	#indian rakShaa #endbengali\\ \hline
+ #bengali ka + Sh + Na #endbengali &
+	{\tt k\_ShN}\footnotemark  & 
+	 #bengali k_ShNa #endbengali &
+	#indian k_ShNa #endbengali &
+	{\tt tIk\_ShNa } &
+	 #bengali tIk_ShNa #endbengali &
+	#indian tIk_ShNa #endbengali\\ \hline
+ #bengali ka + Sh + ma #endbengali &
+	{\tt k\_Shm}& 
+	 #bengali k_Shma #endbengali &
+	#indian k_Shma #endbengali &
+	{\tt lak\_ShmI} &
+	 #bengali lak_ShmI #endbengali &
+	#indian lak_ShmI #endbengali\\ \hline
+ #bengali ka + sa #endbengali &
+	{\tt ks} & 
+	 #bengali ks #endbengali &
+	#indian ks #endbengali &
+	{\tt riksaa} &
+	 #bengali riksaa #endbengali &
+	#indian riksaa #endbengali\\ \hline
+ #bengali ga + dh #endbengali &
+	{\tt gdh} & 
+	 #bengali gdh #endbengali &
+	#indian gdh #endbengali &
+	{\tt mugdha} &
+	 #bengali mugdha #endbengali &
+	#indian mugdha #endbengali\\ \hline
+ #bengali ga + na #endbengali &
+	{\tt gn} & 
+	 #bengali gn #endbengali &
+	#indian gn #endbengali &
+	{\tt agni} &
+	 #bengali agni #endbengali &
+	#indian agni #endbengali\\ \hline
+ #bengali ga + ba #endbengali &
+	{\tt gb} & 
+	 #bengali gb #endbengali &
+	#indian gb #endbengali &
+	{\tt digbijaY} &
+	 #bengali digbijaY #endbengali &
+	#indian digbijaY #endbengali\\ \hline
+ #bengali ga + ma #endbengali &
+	{\tt gm} & 
+	 #bengali gm #endbengali &
+	#indian gm #endbengali &
+	{\tt Jugma} &
+	 #bengali Jugma #endbengali &
+	#indian Jugma #endbengali\\ \hline
+ #bengali ga + la #endbengali &
+	{\tt lm} & 
+	 #bengali gl #endbengali &
+	#indian gl #endbengali &
+	{\tt glaani} &
+	 #bengali glaani #endbengali &
+	#indian glaani #endbengali\\ \hline
+ #bengali gh + na #endbengali &
+	{\tt ghn} & 
+	 #bengali ghn #endbengali &
+	#indian ghn #endbengali &
+	{\tt bighna} &
+	 #bengali bighna #endbengali &
+	#indian bighna #endbengali\\ \hline
+ #bengali ~N + ka #endbengali &
+	{\tt \char126 N + ka} & 
+	 #bengali ~Nk #endbengali &
+	#indian ~Nk #endbengali &
+	{\tt sha\char126 Nkita} &
+	 #bengali sha~Nkita #endbengali &
+	#indian sha~Nkita #endbengali\\ \hline
+ #bengali ~N + ka + Sh #endbengali &
+	{\tt \char126 Nk\_Sh} &
+	 #bengali ~Nk_Sha #endbengali &
+	#indian ~Nk_Sha #endbengali &
+	{\tt aakaa\char126 Nk\_Shaa } &
+	 #bengali aakaa~Nk_Shaa #endbengali &
+	#indian aakaa~Nk_Shaa #endbengali \\ \hline
+ #bengali ~N + kh #endbengali &
+	{\tt \char126 N + kh } & 
+	 #bengali ~Nkh #endbengali &
+	#indian ~Nkh #endbengali &
+	{\tt sha\char126 Nkha} &
+	 #bengali sha~Nkha #endbengali &
+	#indian sha~Nkha #endbengali\\ \hline
+ #bengali ~N + ga #endbengali &
+	{\tt \char126 N + g } & 
+	 #bengali ~Nga #endbengali &
+	#indian ~Nga #endbengali &
+	{\tt byaa\char126 Ng} &
+	 #bengali byaa~Ng #endbengali &
+	#indian byaa~Ng #endbengali\\ \hline
+ #bengali ~N + gh #endbengali &
+	{\tt \char126 N + gh } & 
+	 #bengali ~Ngh #endbengali &
+	#indian ~Ngh #endbengali &
+	{\tt sa\char126 Ngha} &
+	 #bengali sa~Ngha #endbengali &
+	#indian sa~Ngha #endbengali\\ \hline
+ #bengali ~N + ma #endbengali &
+	{\tt \char126 N + m } & 
+	 #bengali ~Nm #endbengali &
+	#indian ~Nm #endbengali &
+	{\tt baa\char126 NmaY} &
+	 #bengali baa~NmaY #endbengali &
+	#indian baa~NmaY #endbengali\\ \hline
+ #bengali ch + ch #endbengali &
+	{\tt chch } & 
+	 #bengali chch #endbengali &
+	#indian chch #endbengali &
+	{\tt saachchaa} &
+	 #bengali saachchaa #endbengali &
+	#indian saachchaa #endbengali\\ \hline
+ #bengali ch + chh #endbengali &
+	{\tt chchh } & 
+	 #bengali chchh #endbengali &
+	#indian chchh #endbengali &
+	{\tt baachchhaa} &
+	 #bengali baachchhaa #endbengali &
+	#indian baachchhaa #endbengali\\ \hline
+ #bengali ch + chh + ba #endbengali &
+	{\tt chchhb } & 
+	 #bengali chchhb #endbengali &
+	#indian chchhb #endbengali &
+	{\tt uchchhbaas} &
+	 #bengali uchchhbaas #endbengali &
+	#indian uchchhbaas #endbengali\\ \hline
+ #bengali ch + ~n #endbengali &
+	{\tt ch\char126 n } & 
+	 #bengali chJN #endbengali &
+	#indian chJN #endbengali &
+	{\tt Jaach\char126 naa } &
+	 #bengali JaachJNaa  #endbengali &
+	#indian JaachJNaa  #endbengali\\ \hline
+ #bengali j + j #endbengali &
+	{\tt jj } & 
+	 #bengali jj #endbengali &
+	#indian jj #endbengali &
+	{\tt lajjaa } &
+	 #bengali lajjaa  #endbengali &
+	#indian lajjaa  #endbengali\\ \hline
+ #bengali j + j + b #endbengali &
+	{\tt jjb } & 
+	 #bengali jjb #endbengali &
+	#indian jjb #endbengali &
+	{\tt ujjbal } &
+	 #bengali ujjbal  #endbengali &
+	#indian ujjbal  #endbengali\\ \hline
+ #bengali j + jh  #endbengali &
+	{\tt jjh } & 
+	 #bengali jjh #endbengali &
+	#indian jjh #endbengali &
+	{\tt kujjhaTikaa } &
+	 #bengali kujjhaTikaa  #endbengali &
+	#indian kujjhaTikaa  #endbengali\\ \hline
+ #bengali j + JN  #endbengali &
+	{\tt GY}& 
+	 #bengali GY #endbengali &
+	#indian GY #endbengali &
+	{\tt biGYaan } &
+	 #bengali biGYaan  #endbengali &
+	#indian biGYaan  #endbengali\\ \hline
+ #bengali j + b  #endbengali &
+	{\tt jb}& 
+	 #bengali jb #endbengali &
+	#indian jb #endbengali &
+	{\tt jbaalaa } &
+	 #bengali jbaalaa  #endbengali &
+	#indian jbaalaa  #endbengali\\ \hline
+% -----------------
+\begin{htmlonly}
+\end{longtable}
+\end{makeimage}
+
+More examples of Conjunct Consonants are available by clicking the
+following images:
+
+Conjunct Consonants, Part 2:
+\begin{makeimage}
+\htmlimage{external}
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect\html{, Part 2}} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+
+\multicolumn{7}{r}{continued on the next page...} \\ \endfoot
+
+\hline \endlastfoot
+\hline
+\end{htmlonly}
+% -----------------
+ #bengali JN + ch  #endbengali &
+	{\tt \char126 nch }& 
+	 #bengali ~nch  #endbengali &
+	#indian ~nch  #endbengali &
+	{\tt ma\char126 ncha } &
+	 #bengali ma~ncha  #endbengali &
+	#indian ma~ncha  #endbengali\\ \hline
+ #bengali JN + chh  #endbengali &
+	{\tt \char126 nchh }& 
+	 #bengali ~nchh  #endbengali &
+	#indian ~nchh  #endbengali &
+	{\tt laa\char126 nchhnaa } &
+	 #bengali laa~nchhnaa  #endbengali &
+	#indian laa~nchhnaa  #endbengali\\ \hline
+ #bengali JN + ja  #endbengali &
+	{\tt \char126 nj }& 
+	 #bengali ~nj  #endbengali &
+	#indian ~nj  #endbengali &
+	{\tt ga\char126 nja } &
+	 #bengali ga~nja  #endbengali &
+	#indian ga~nja  #endbengali\\ \hline
+ #bengali JN + jh  #endbengali &
+	{\tt \char126 njh }& 
+	 #bengali ~njh  #endbengali &
+	#indian ~njh  #endbengali &
+	{\tt jha\char126 njhaa } &
+	 #bengali jha~njhaa  #endbengali &
+	#indian jha~njhaa  #endbengali\\ \hline
+ #bengali T + T  #endbengali &
+	{\tt TT }& 
+	 #bengali TT  #endbengali &
+	#indian TT  #endbengali &
+	{\tt aTTaalikaa } &
+	 #bengali aTTaalikaa #endbengali &
+	#indian aTTaalikaa #endbengali\\ \hline
+ #bengali T + b  #endbengali &
+	{\tt Tb }& 
+	 #bengali Tb  #endbengali &
+	#indian Tb  #endbengali &
+	{\tt khaTbaa } &
+	 #bengali khaTbaa #endbengali &
+	#indian khaTbaa #endbengali\\ \hline
+ #bengali D + D  #endbengali &
+	{\tt DD }& 
+	 #bengali DD  #endbengali &
+	#indian DD  #endbengali &
+	{\tt uDDIn } &
+	 #bengali uDDIn #endbengali &
+	#indian uDDIn #endbengali\\ \hline
+ #bengali N + T  #endbengali &
+	{\tt NT }& 
+	 #bengali NT  #endbengali &
+	#indian NT  #endbengali &
+	{\tt kaNTakita } &
+	 #bengali kaNTakita #endbengali &
+	#indian kaNTakita #endbengali\\ \hline
+ #bengali N + Th  #endbengali &
+	{\tt NTh }& 
+	 #bengali NTh  #endbengali &
+	#indian NTh  #endbengali &
+	{\tt laNThan } &
+	 #bengali laNThan #endbengali &
+	#indian laNThan #endbengali\\ \hline
+ #bengali N + D  #endbengali &
+	{\tt ND }& 
+	 #bengali ND  #endbengali &
+	#indian ND  #endbengali &
+	{\tt gaNDaar } &
+	 #bengali gaNDaar #endbengali &
+	#indian gaNDaar #endbengali\\ \hline
+ #bengali N + N  #endbengali &
+	{\tt NN }& 
+	 #bengali NN  #endbengali &
+	#indian NN  #endbengali &
+	{\tt biShaNNa } &
+	 #bengali biShaNNa #endbengali &
+	#indian biShaNNa #endbengali\\ \hline
+ #bengali N + m  #endbengali &
+	{\tt Nm }& 
+	 #bengali Nm  #endbengali &
+	#indian Nm  #endbengali &
+	{\tt hiraNmaY } &
+	 #bengali hiraNmaY #endbengali &
+	#indian hiraNmaY #endbengali\\ \hline
+ #bengali t + t  #endbengali &
+	{\tt tt }& 
+	 #bengali tt  #endbengali &
+	#indian tt  #endbengali &
+	{\tt uttaal } &
+	 #bengali uttaal #endbengali &
+	#indian uttaal #endbengali\\ \hline
+ #bengali ta + ta + ba #endbengali &
+	{\tt ttb}  & 
+	 #bengali ttba #endbengali &
+	#indian ttba #endbengali &
+	{\tt tattba } &
+	 #bengali tattba #endbengali &
+	#indian tattba #endbengali \\ \hline
+ #bengali ta + tha #endbengali &
+	{\tt tth}  & 
+	 #bengali tth #endbengali &
+	#indian tth #endbengali &
+	{\tt ashbattha } &
+	 #bengali ashbattha #endbengali &
+	#indian ashbattha #endbengali \\ \hline
+ #bengali ta + na #endbengali &
+	{\tt tn}  & 
+	 #bengali tn #endbengali &
+	#indian tn #endbengali &
+	{\tt ratna } &
+	 #bengali ratna #endbengali &
+	#indian ratna #endbengali \\ \hline
+ #bengali ta + ba #endbengali &
+	{\tt tb}  & 
+	 #bengali tb #endbengali &
+	#indian tb #endbengali &
+	{\tt tbaraa } &
+	 #bengali tbaraa #endbengali &
+	#indian tbaraa #endbengali \\ \hline
+ #bengali ta + ma #endbengali &
+	{\tt tm}  & 
+	 #bengali tm #endbengali &
+	#indian tm #endbengali &
+	{\tt aatmaa } &
+	 #bengali aatmaa #endbengali &
+	#indian aatmaa #endbengali \\ \hline
+ #bengali ta + ra #endbengali &
+	{\tt tr}  & 
+	 #bengali tr #endbengali &
+	#indian tr #endbengali &
+	{\tt sab.rtra } &
+	 #bengali sab.rtra #endbengali &
+	#indian sab.rtra #endbengali \\ \hline
+ #bengali da + ga #endbengali &
+	{\tt dg}  & 
+	 #bengali dg #endbengali &
+	#indian dg #endbengali &
+	{\tt udgaataa } &
+	 #bengali udgaataa #endbengali &
+	#indian udgaataa #endbengali \\ \hline
+ #bengali da + gha #endbengali &
+	{\tt dgh}  & 
+	 #bengali dgh #endbengali &
+	#indian dgh #endbengali &
+	{\tt udghaaTan } &
+	 #bengali udghaaTan #endbengali &
+	#indian udghaaTan #endbengali \\ \hline
+ #bengali da + da #endbengali &
+	{\tt dd}  & 
+	 #bengali dd #endbengali &
+	#indian dd #endbengali &
+	{\tt baraadda } &
+	 #bengali baraadda #endbengali &
+	#indian baraadda #endbengali \\ \hline
+ #bengali da + dha #endbengali &
+	{\tt ddh}  & 
+	 #bengali ddh #endbengali &
+	#indian ddh #endbengali &
+	{\tt uddhaar } &
+	 #bengali uddhaar #endbengali &
+	#indian uddhaar #endbengali \\ \hline
+ #bengali da + ba #endbengali &
+	{\tt db}  & 
+	 #bengali db #endbengali &
+	#indian db #endbengali &
+	{\tt dbIp } &
+	 #bengali dbIp #endbengali &
+	#indian dbIp #endbengali \\ \hline
+ #bengali da + bha #endbengali &
+	{\tt dbh}  & 
+	 #bengali dbh #endbengali &
+	#indian dbh #endbengali &
+	{\tt sadbhaab } &
+	 #bengali sadbhaab #endbengali &
+	#indian sadbhaab #endbengali \\ \hline
+ #bengali da + bha + ra #endbengali &
+	{\tt dbhr}  & 
+	 #bengali dbhr #endbengali &
+	#indian dbhr #endbengali &
+	{\tt udbhraanta } &
+	 #bengali udbhraanta #endbengali &
+	#indian udbhraanta #endbengali \\ \hline
+ #bengali da + ma #endbengali &
+	{\tt dm}  & 
+	 #bengali dm #endbengali &
+	#indian dm #endbengali &
+	{\tt padma } &
+	 #bengali padma #endbengali &
+	#indian padma #endbengali \\ \hline
+ #bengali dha + na #endbengali &
+	{\tt dhn}  & 
+	 #bengali dhn #endbengali &
+	#indian dhn #endbengali &
+	{\tt gRRidhna } &
+	 #bengali gRRidhna #endbengali &
+	#indian gRRidhna #endbengali \\ \hline
+ #bengali dha + ba #endbengali &
+	{\tt dhb}  & 
+	 #bengali dhb #endbengali &
+	#indian dhb #endbengali &
+	{\tt dhbajaa } &
+	 #bengali dhbajaa #endbengali &
+	#indian dhbajaa #endbengali \\ \hline
+ #bengali na + Ta #endbengali &
+	{\tt nT}  & 
+	 #bengali nT #endbengali &
+	#indian nT #endbengali &
+	{\tt aanTaak.rTikaa } &
+	 #bengali aanTaak.rTikaa #endbengali &
+	#indian aanTaak.rTikaa #endbengali \\ \hline
+ #bengali na + Da #endbengali &
+	{\tt nD}  & 
+	 #bengali nD #endbengali &
+	#indian nD #endbengali &
+	{\tt byaanD } &
+	 #bengali byaanD #endbengali &
+	#indian byaanD #endbengali \\ \hline
+ #bengali na + ta #endbengali &
+	{\tt nt}  & 
+	 #bengali nt #endbengali &
+	#indian nt #endbengali &
+	{\tt antim } &
+	 #bengali antim #endbengali &
+	#indian antim #endbengali \\ \hline
+% -----------------
+\begin{htmlonly}
+\end{longtable}
+\end{makeimage}
+
+Conjunct Consonants, Part 3:
+\begin{makeimage}
+\htmlimage{external}
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect\html{, Part 3}} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+
+\multicolumn{7}{r}{continued on the next page...} \\ \endfoot
+
+\hline \endlastfoot
+\hline
+\end{htmlonly}
+% -----------------
+ #bengali na + ta + u #endbengali &
+	{\tt ntu}  & 
+	 #bengali ntu #endbengali &
+	#indian ntu #endbengali &
+	{\tt jantu } &
+	 #bengali jantu #endbengali &
+	#indian jantu #endbengali \\ \hline
+ #bengali na + ta + ba #endbengali &
+	{\tt ntb}  & 
+	 #bengali ntb #endbengali &
+	#indian ntb #endbengali &
+	{\tt saantbanaa } &
+	 #bengali saantbanaa #endbengali &
+	#indian saantbanaa #endbengali \\ \hline
+ #bengali na + ta + ra #endbengali &
+	{\tt ntr}  & 
+	 #bengali ntr #endbengali &
+	#indian ntr #endbengali &
+	{\tt Jantra } &
+	 #bengali Jantra #endbengali &
+	#indian Jantra #endbengali \\ \hline
+ #bengali na + tha #endbengali &
+	{\tt nth}  & 
+	 #bengali nth #endbengali &
+	#indian nth #endbengali &
+	{\tt manthar } &
+	 #bengali manthar #endbengali &
+	#indian manthar #endbengali \\ \hline
+ #bengali na + da #endbengali &
+	{\tt nd}  & 
+	 #bengali nd #endbengali &
+	#indian nd #endbengali &
+	{\tt bandI } &
+	 #bengali bandI #endbengali &
+	#indian bandI #endbengali \\ \hline
+ #bengali na + dha #endbengali &
+	{\tt ndh}  & 
+	 #bengali ndh #endbengali &
+	#indian ndh #endbengali &
+	{\tt gandha } &
+	 #bengali gandha #endbengali &
+	#indian gandha #endbengali \\ \hline
+ #bengali na + na #endbengali &
+	{\tt nn}  & 
+	 #bengali nn #endbengali &
+	#indian nn #endbengali &
+	{\tt anna } &
+	 #bengali anna #endbengali &
+	#indian anna #endbengali \\ \hline
+ #bengali na + ba #endbengali &
+	{\tt nb}  & 
+	 #bengali nb #endbengali &
+	#indian nb #endbengali &
+	{\tt samanbaY } &
+	 #bengali samanbaY #endbengali &
+	#indian samanbaY #endbengali \\ \hline
+ #bengali na + ma #endbengali &
+	{\tt nm}  & 
+	 #bengali nm #endbengali &
+	#indian nm #endbengali &
+	{\tt janma } &
+	 #bengali janma #endbengali &
+	#indian janma #endbengali \\ \hline
+ #bengali na + sa #endbengali &
+	{\tt ns}  & 
+	 #bengali ns #endbengali &
+	#indian ns #endbengali &
+	{\tt sens } &
+	 #bengali sens #endbengali &
+	#indian sens #endbengali \\ \hline
+ #bengali pa + Ta #endbengali &
+	{\tt pT}  & 
+	 #bengali pT #endbengali &
+	#indian pT #endbengali &
+	{\tt kipTe } &
+	 #bengali kipTe #endbengali &
+	#indian kipTe #endbengali \\ \hline
+ #bengali pa + ta #endbengali &
+	{\tt pt}  & 
+	 #bengali pt #endbengali &
+	#indian pt #endbengali &
+	{\tt saptaaha } &
+	 #bengali saptaaha #endbengali &
+	#indian saptaaha #endbengali \\ \hline
+ #bengali pa + na #endbengali &
+	{\tt pn}  & 
+	 #bengali pn #endbengali &
+	#indian pn #endbengali &
+	{\tt sbapna } &
+	 #bengali sbapna #endbengali &
+	#indian sbapna #endbengali \\ \hline
+ #bengali pa + pa #endbengali &
+	{\tt pp}  & 
+	 #bengali pp #endbengali &
+	#indian pp #endbengali &
+	{\tt dhaappaa } &
+	 #bengali dhaappaa #endbengali &
+	#indian dhaappaa #endbengali \\ \hline
+ #bengali pa + la #endbengali &
+	{\tt pl}  & 
+	 #bengali pl #endbengali &
+	#indian pl #endbengali &
+	{\tt plaaban } &
+	 #bengali plaaban #endbengali &
+	#indian plaaban #endbengali \\ \hline
+ #bengali pa + sa #endbengali &
+	{\tt ps}  & 
+	 #bengali ps #endbengali &
+	#indian ps #endbengali &
+	{\tt abhIpsaa } &
+	 #bengali abhIpsaa #endbengali &
+	#indian abhIpsaa #endbengali \\ \hline
+ #bengali pha + la #endbengali &
+	{\tt phl}  & 
+	 #bengali phl #endbengali &
+	#indian phl #endbengali &
+	{\tt phlipaar } &
+	 #bengali phlipaar #endbengali &
+	#indian phlipaar #endbengali \\ \hline
+ #bengali ba + ja #endbengali &
+	{\tt bj}  & 
+	 #bengali bj #endbengali &
+	#indian bj #endbengali &
+	{\tt kubja } &
+	 #bengali kubja #endbengali &
+	#indian kubja #endbengali \\ \hline
+ #bengali ba + da #endbengali &
+	{\tt bd}  & 
+	 #bengali bd #endbengali &
+	#indian bd #endbengali &
+	{\tt shabda } &
+	 #bengali shabda #endbengali &
+	#indian shabda #endbengali \\ \hline
+ #bengali ba + dha #endbengali &
+	{\tt bdh}  & 
+	 #bengali bdh #endbengali &
+	#indian bdh #endbengali &
+	{\tt aarabdha } &
+	 #bengali aarabdha #endbengali &
+	#indian aarabdha #endbengali \\ \hline
+ #bengali ba + ba #endbengali &
+	{\tt bb}  & 
+	 #bengali bb #endbengali &
+	#indian bb #endbengali &
+	{\tt maatabbar } &
+	 #bengali maatabbar #endbengali &
+	#indian maatabbar #endbengali \\ \hline
+ #bengali ba + la #endbengali &
+	{\tt bl}  & 
+	 #bengali bl #endbengali &
+	#indian bl #endbengali &
+	{\tt blaTi.n } &
+	 #bengali blaTi.n #endbengali &
+	#indian blaTi.n #endbengali \\ \hline
+ #bengali bha + ra #endbengali &
+	{\tt bhr}  & 
+	 #bengali bhr #endbengali &
+	#indian bhr #endbengali &
+	{\tt bhram } &
+	 #bengali bhram #endbengali &
+	#indian bhram #endbengali \\ \hline
+ #bengali bha + la #endbengali &
+	{\tt bhl}  & 
+	 #bengali bhl #endbengali &
+	#indian bhl #endbengali &
+	{\tt bhlaadimir } &
+	 #bengali bhlaadimir #endbengali &
+	#indian bhlaadimir #endbengali \\ \hline
+ #bengali ma + na #endbengali &
+	{\tt mn}  & 
+	 #bengali mn #endbengali &
+	#indian mn #endbengali &
+	{\tt nimna } &
+	 #bengali nimna #endbengali &
+	#indian nimna #endbengali \\ \hline
+ #bengali ma + pa #endbengali &
+	{\tt mp}  & 
+	 #bengali mp #endbengali &
+	#indian mp #endbengali &
+	{\tt kampa } &
+	 #bengali kampa #endbengali &
+	#indian kampa #endbengali \\ \hline
+ #bengali ma + pha #endbengali &
+	{\tt mph}  & 
+	 #bengali mph #endbengali &
+	#indian mph #endbengali &
+	{\tt lampha } &
+	 #bengali lampha #endbengali &
+	#indian lampha #endbengali \\ \hline
+ #bengali ma + ba #endbengali &
+	{\tt mb}  & 
+	 #bengali mb #endbengali &
+	#indian mb #endbengali &
+	{\tt ambal } &
+	 #bengali ambal #endbengali &
+	#indian ambal #endbengali \\ \hline
+ #bengali ma + bha #endbengali &
+	{\tt mbh}  & 
+	 #bengali mbh #endbengali &
+	#indian mbh #endbengali &
+	{\tt dambha } &
+	 #bengali dambha #endbengali &
+	#indian dambha #endbengali \\ \hline
+ #bengali ma + bha + ra #endbengali &
+	{\tt mbhr}  & 
+	 #bengali mbhr #endbengali &
+	#indian mbhr #endbengali &
+	{\tt sambhram } &
+	 #bengali sambhram #endbengali &
+	#indian sambhram #endbengali \\ \hline
+ #bengali ma + ma #endbengali &
+	{\tt mm}  & 
+	 #bengali mm #endbengali &
+	#indian mm #endbengali &
+	{\tt aahaammak } &
+	 #bengali aahaammak #endbengali &
+	#indian aahaammak #endbengali \\ \hline
+ #bengali ma + la #endbengali &
+	{\tt ml}  & 
+	 #bengali ml #endbengali &
+	#indian ml #endbengali &
+	{\tt mlaan } &
+	 #bengali mlaan #endbengali &
+	#indian mlaan #endbengali \\ \hline
+ #bengali la + ka #endbengali &
+	{\tt lk}  & 
+	 #bengali lk #endbengali &
+	#indian lk #endbengali &
+	{\tt balkal } &
+	 #bengali balkal #endbengali &
+	#indian balkal #endbengali \\ \hline
+% -----------------
+\begin{htmlonly}
+\end{longtable}
+\end{makeimage}
+
+Conjunct Consonants, Part 4:
+\begin{makeimage}
+\htmlimage{external}
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect\html{, Part 4}} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+
+\multicolumn{7}{r}{continued on the next page...} \\ \endfoot
+
+\hline \endlastfoot
+\hline
+\end{htmlonly}
+% -----------------
+ #bengali la + ga #endbengali &
+	{\tt lg}  & 
+	 #bengali lg #endbengali &
+	#indian lg #endbengali &
+	{\tt balgaa } &
+	 #bengali balgaa #endbengali &
+	#indian balgaa #endbengali \\ \hline
+ #bengali la + ga + u #endbengali &
+	{\tt lgu}  & 
+	 #bengali lgu #endbengali &
+	#indian lgu #endbengali &
+	{\tt phaalgun } &
+	 #bengali phaalgun #endbengali &
+	#indian phaalgun #endbengali \\ \hline
+ #bengali la + Ta #endbengali &
+	{\tt lT}  & 
+	 #bengali lT #endbengali &
+	#indian lT #endbengali &
+	{\tt palTan } &
+	 #bengali palTan #endbengali &
+	#indian palTan #endbengali \\ \hline
+ #bengali la + Da #endbengali &
+	{\tt lD}  & 
+	 #bengali lD #endbengali &
+	#indian lD #endbengali &
+	{\tt holDaar } &
+	 #bengali holDaar #endbengali &
+	#indian holDaar #endbengali \\ \hline
+ #bengali la + pa #endbengali &
+	{\tt lp}  & 
+	 #bengali lp #endbengali &
+	#indian lp #endbengali &
+	{\tt kalpanaa } &
+	 #bengali kalpanaa #endbengali &
+	#indian kalpanaa #endbengali \\ \hline
+ #bengali la + ba #endbengali &
+	{\tt lb}  & 
+	 #bengali lb #endbengali &
+	#indian lb #endbengali &
+	{\tt bilba } &
+	 #bengali bilba #endbengali &
+	#indian bilba #endbengali \\ \hline
+ #bengali la + ma #endbengali &
+	{\tt lm}  & 
+	 #bengali lm #endbengali &
+	#indian lm #endbengali &
+	{\tt gulma } &
+	 #bengali gulma #endbengali &
+	#indian gulma #endbengali \\ \hline
+ #bengali la + la #endbengali &
+	{\tt ll}  & 
+	 #bengali ll #endbengali &
+	#indian ll #endbengali &
+	{\tt praphulla } &
+	 #bengali praphulla #endbengali &
+	#indian praphulla #endbengali \\ \hline
+ #bengali sh + cha #endbengali &
+	{\tt shch}  & 
+	 #bengali shch #endbengali &
+	#indian shch #endbengali &
+	{\tt punashcha } &
+	 #bengali punashcha #endbengali &
+	#indian punashcha #endbengali \\ \hline
+ #bengali sh + chha #endbengali &
+	{\tt shchh}  & 
+	 #bengali shchh #endbengali &
+	#indian shchh #endbengali &
+	{\tt shirashchhed } &
+	 #bengali shirashchhed #endbengali &
+	#indian shirashchhed #endbengali \\ \hline
+ #bengali sh + na #endbengali &
+	{\tt shn}  & 
+	 #bengali shn #endbengali &
+	#indian shn #endbengali &
+	{\tt prashna } &
+	 #bengali prashna #endbengali &
+	#indian prashna #endbengali \\ \hline
+ #bengali sh + ma #endbengali &
+	{\tt shm}  & 
+	 #bengali shm #endbengali &
+	#indian shm #endbengali &
+	{\tt rashmi } &
+	 #bengali rashmi #endbengali &
+	#indian rashmi #endbengali \\ \hline
+ #bengali sh + la #endbengali &
+	{\tt shl}  & 
+	 #bengali shl #endbengali &
+	#indian shl #endbengali &
+	{\tt shlaaghaa } &
+	 #bengali shlaaghaa #endbengali &
+	#indian shlaaghaa #endbengali \\ \hline
+ #bengali sh + ba #endbengali &
+	{\tt shb}  & 
+	 #bengali shb #endbengali &
+	#indian shb #endbengali &
+	{\tt shbaapad } &
+	 #bengali shbaapad #endbengali &
+	#indian shbaapad #endbengali \\ \hline
+ #bengali Sh + ka #endbengali &
+	{\tt Shk}  & 
+	 #bengali Shk #endbengali &
+	#indian Shk #endbengali &
+	{\tt pariShkaar } &
+	 #bengali pariShkaar #endbengali &
+	#indian pariShkaar #endbengali \\ \hline
+ #bengali Sh + ka + ra #endbengali &
+	{\tt Shkr}  & 
+	 #bengali Shkr #endbengali &
+	#indian Shkr #endbengali &
+	{\tt niShkramaN } &
+	 #bengali niShkramaN #endbengali &
+	#indian niShkramaN #endbengali \\ \hline
+ #bengali Sh + Ta #endbengali &
+	{\tt ShT}  & 
+	 #bengali ShT #endbengali &
+	#indian ShT #endbengali &
+	{\tt kaShTa } &
+	 #bengali kaShTa #endbengali &
+	#indian kaShTa #endbengali \\ \hline
+ #bengali Sh + Tha #endbengali &
+	{\tt ShTh}  & 
+	 #bengali ShTh #endbengali &
+	#indian ShTh #endbengali &
+	{\tt niShThur } &
+	 #bengali niShThur #endbengali &
+	#indian niShThur #endbengali \\ \hline
+ #bengali Sh + Na #endbengali &
+	{\tt ShN}  & 
+	 #bengali ShN #endbengali &
+	#indian ShN #endbengali &
+	{\tt uShNa } &
+	 #bengali uShNa #endbengali &
+	#indian uShNa #endbengali \\ \hline
+ #bengali Sh + pa #endbengali &
+	{\tt Shp}  & 
+	 #bengali Shp #endbengali &
+	#indian Shp #endbengali &
+	{\tt baaShpa } &
+	 #bengali baaShpa #endbengali &
+	#indian baaShpa #endbengali \\ \hline
+ #bengali Sh + pha #endbengali &
+	{\tt Shph}  & 
+	 #bengali Shph #endbengali &
+	#indian Shph #endbengali &
+	{\tt niShphal } &
+	 #bengali niShphal #endbengali &
+	#indian niShphal #endbengali \\ \hline
+ #bengali Sh + ma #endbengali &
+	{\tt Shm}  & 
+	 #bengali Shm #endbengali &
+	#indian Shm #endbengali &
+	{\tt bhiiShma } &
+	 #bengali bhiiShma #endbengali &
+	#indian bhiiShma #endbengali \\ \hline
+ #bengali s + ka #endbengali &
+	{\tt sk}  & 
+	 #bengali sk #endbengali &
+	#indian sk #endbengali &
+	{\tt puraskRRita } &
+	 #bengali puraskRRita #endbengali &
+	#indian puraskRRita #endbengali \\ \hline
+ #bengali s + ka + ra #endbengali &
+	{\tt skr}  & 
+	 #bengali skr #endbengali &
+	#indian skr #endbengali &
+	{\tt skriin } &
+	 #bengali skriin #endbengali &
+	#indian skriin #endbengali \\ \hline
+ #bengali s + ka + la #endbengali &
+	{\tt skl}  & 
+	 #bengali skl #endbengali &
+	#indian skl #endbengali &
+	{\tt skleraa } &
+	 #bengali skleraa #endbengali &
+	#indian skleraa #endbengali \\ \hline
+ #bengali sa + kha #endbengali &
+	{\tt skh}  & 
+	 #bengali skh #endbengali &
+	#indian skh #endbengali &
+	{\tt skhalan } &
+	 #bengali skhalan #endbengali &
+	#indian skhalan #endbengali \\ \hline
+ #bengali sa + Ta #endbengali &
+	{\tt sT}  & 
+	 #bengali sT #endbengali &
+	#indian sT #endbengali &
+	{\tt sTapaar } &
+	 #bengali sTapaar #endbengali &
+	#indian sTapaar #endbengali \\ \hline
+ #bengali sa + ta #endbengali &
+	{\tt st}  & 
+	 #bengali st #endbengali &
+	#indian st #endbengali &
+	{\tt asta } &
+	 #bengali asta #endbengali &
+	#indian asta #endbengali \\ \hline
+ #bengali sa + ta + u  #endbengali &
+	{\tt stu}  & 
+	 #bengali stu #endbengali &
+	#indian stu #endbengali &
+	{\tt bastu } &
+	 #bengali bastu #endbengali &
+	#indian bastu #endbengali \\ \hline
+ #bengali sa + ta + ra  #endbengali &
+	{\tt str}  & 
+	 #bengali str #endbengali &
+	#indian str #endbengali &
+	{\tt strain } &
+	 #bengali strain #endbengali &
+	#indian strain #endbengali \\ \hline
+ #bengali sa + tha #endbengali &
+	{\tt sth}  & 
+	 #bengali sth #endbengali &
+	#indian sth #endbengali &
+	{\tt upasthita } &
+	 #bengali upasthita #endbengali &
+	#indian upasthita #endbengali \\ \hline
+ #bengali sa + na #endbengali &
+	{\tt sn}  & 
+	 #bengali sn #endbengali &
+	#indian sn #endbengali &
+	{\tt snaan } &
+	 #bengali snaan #endbengali &
+	#indian snaan #endbengali \\ \hline
+% -----------------
+\begin{htmlonly}
+\end{longtable}
+\end{makeimage}
+
+Conjunct Consonants, Part 5:
+\begin{makeimage}
+\htmlimage{external}
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect\html{, Part 5}} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\ \hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+
+\multicolumn{7}{r}{continued on the next page...} \\ \endfoot
+
+\hline \endlastfoot
+\hline
+\end{htmlonly}
+% -----------------
+ #bengali sa + pa #endbengali &
+	{\tt sp}  & 
+	 #bengali sp #endbengali &
+	#indian sp #endbengali &
+	{\tt paraspar } &
+	 #bengali paraspar #endbengali &
+	#indian paraspar #endbengali \\ \hline
+ #bengali sa + pa + la #endbengali &
+	{\tt spl}  & 
+	 #bengali spl #endbengali &
+	#indian spl #endbengali &
+	{\tt spliT } &
+	 #bengali spliT #endbengali &
+	#indian spliT #endbengali \\ \hline
+ #bengali sa + pha #endbengali &
+	{\tt sph}  & 
+	 #bengali sph #endbengali &
+	#indian sph #endbengali &
+	{\tt aasphaalan } &
+	 #bengali aasphaalan #endbengali &
+	#indian aasphaalan #endbengali \\ \hline
+ #bengali sa + ba #endbengali &
+	{\tt sb}  & 
+	 #bengali sb #endbengali &
+	#indian sb #endbengali &
+	{\tt sbadesh } &
+	 #bengali sbadesh #endbengali &
+	#indian sbadesh #endbengali \\ \hline
+ #bengali sa + ma #endbengali &
+	{\tt sm}  & 
+	 #bengali sm #endbengali &
+	#indian sm #endbengali &
+	{\tt smaraN } &
+	 #bengali smaraN #endbengali &
+	#indian smaraN #endbengali \\ \hline
+ #bengali sa + la #endbengali &
+	{\tt sl}  & 
+	 #bengali sl #endbengali &
+	#indian sl #endbengali &
+	{\tt slip } &
+	 #bengali slip #endbengali &
+	#indian slip #endbengali \\ \hline
+ #bengali ha + Na #endbengali &
+	{\tt hN}  & 
+	 #bengali hN #endbengali &
+	#indian hN #endbengali &
+	{\tt paraahNa } &
+	 #bengali paraahNa #endbengali &
+	#indian paraahNa #endbengali \\ \hline
+ #bengali ha + na #endbengali &
+	{\tt hn}  & 
+	 #bengali hn #endbengali &
+	#indian hn #endbengali &
+	{\tt chihnita } &
+	 #bengali chihnita #endbengali &
+	#indian chihnita #endbengali \\ \hline
+ #bengali ha + ma #endbengali &
+	{\tt hm}  & 
+	 #bengali hm #endbengali &
+	#indian hm #endbengali &
+	{\tt brahmaa } &
+	 #bengali brahmaa #endbengali &
+	#indian brahmaa #endbengali \\ \hline
+ #bengali ha + ba #endbengali &
+	{\tt hb}  & 
+	 #bengali hb #endbengali &
+	#indian hb #endbengali &
+	{\tt aahbaan } &
+	 #bengali aahbaan #endbengali &
+	#indian aahbaan #endbengali \\ \hline
+ #bengali ha + la #endbengali &
+	{\tt hl}  & 
+	 #bengali hl #endbengali &
+	#indian hl #endbengali &
+	{\tt aahlaad } &
+	 #bengali aahlaad #endbengali &
+	#indian aahlaad #endbengali \\ \hline
+ #bengali ha + RRi #endbengali &
+	{\tt hRRi}  & 
+	 #bengali hRRi #endbengali &
+	#indian hRRi #endbengali &
+	{\tt hRRidaY } &
+	 #bengali hRRidaY #endbengali &
+	#indian hRRidaY #endbengali \\ \hline
+ #bengali Ra + ga #endbengali &
+	{\tt Rg}  & 
+	 #bengali Rg #endbengali &
+	#indian Rg #endbengali &
+	{\tt khaRga } &
+	 #bengali khaRga #endbengali &
+	#indian khaRga #endbengali \\ \hline
+ #bengali Sh + Na #endbengali &
+	{\tt ShN} &
+	 #bengali ShNa #endbengali &
+	#indian ShNa #endbengali &
+	{\tt kRRiShNa} &
+	 #bengali kRRiShNa #endbengali &
+	#indian kRRiShNa #endbengali\\ \hline
+ #bengali ga + u #endbengali &
+	{\tt gu} & 
+	 #bengali gu #endbengali &
+	#indian gu #endbengali &
+	{\tt phaaguner } &
+	 #bengali phaaguner #endbengali &
+	#indian phaaguner #endbengali \\ \hline
+\end{longtable}
+\end{makeimage}
+
+\end{document}

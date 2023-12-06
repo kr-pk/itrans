@@ -1,0 +1,1100 @@
+#output=TeX
+
+\batchmode
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+\usepackage{multicol}
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage
+
+\addtolength{\textheight}{9pt}%ConsonantForms table has 8pt overfull vbox...
+ 
+
+\parindent=0pt
+
+
+\newfont{\pun}{pun at 14pt}
+
+\setlength{\columnseprule}{0pt} 
+
+
+#usecsx
+
+#indianifm=pun.ifm
+
+#indianfont=\pun
+% no shortmarkers: June '98: changed all ## to #indian, to allow the use of
+
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2886}%
+\textrm{\={\i\/}}\kern.15em%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2896}%
+#indian hatth\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2897}%
+#indian a.cdak\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2899}%
+\textrm{\d{t\/}}%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2901}%
+#indian lammii\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2903}%
+\textrm{\d{T\/}}%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage79}%
+\begin{multicols}{4}
+{\tt k} $+$\  {\tt ka} $=$\  #indian kka#endindian \\
+{\tt k} $+$\  {\tt kha} $=$\  #indian kkha#endindian \\
+{\tt g} $+$\  {\tt ga} $=$\  #indian gga#endindian \\
+{\tt g} $+$\  {\tt gha} $=$\  #indian ggha#endindian \\
+{\tt c} $+$\  {\tt ca} $=$\  #indian cca#endindian \\
+{\tt c} $+$\  {\tt cha} $=$\  #indian ccha#endindian \\
+{\tt j} $+$\  {\tt ja} $=$\  #indian jja#endindian \\
+{\tt j} $+$\  {\tt jha} $=$\  #indian jjha#endindian \\
+{\tt T} $+$\  {\tt Ta} $=$\  #indian TTa#endindian \\
+{\tt T} $+$\  {\tt Tha} $=$\  #indian TTha#endindian \\
+{\tt D} $+$\  {\tt Da} $=$\  #indian DDa#endindian \\
+{\tt D} $+$\  {\tt Dha} $=$\  #indian DDha#endindian \\
+{\tt t} $+$\  {\tt ta} $=$\  #indian tta#endindian \\
+{\tt t} $+$\  {\tt tha} $=$\  #indian ttha#endindian \\
+{\tt d} $+$\  {\tt da} $=$\  #indian dda#endindian \\
+{\tt d} $+$\  {\tt dha} $=$\  #indian ddha#endindian \\
+{\tt n} $+$\  {\tt na} $=$\  #indian nna#endindian \\
+{\tt p} $+$\  {\tt pa} $=$\  #indian ppa#endindian \\
+{\tt p} $+$\  {\tt pha} $=$\  #indian ppha#endindian \\
+{\tt b} $+$\  {\tt ba} $=$\  #indian bba#endindian \\
+{\tt b} $+$\  {\tt bha} $=$\  #indian bbha#endindian \\
+{\tt m} $+$\  {\tt ma} $=$\  #indian mma#endindian \\
+{\tt y} $+$\  {\tt ya} $=$\  #indian yya#endindian \\
+{\tt r} $+$\  {\tt ra} $=$\  #indian rra#endindian \\
+{\tt l} $+$\  {\tt la} $=$\  #indian lla#endindian \\
+{\tt v} $+$\  {\tt va} $=$\  #indian vva#endindian \\
+{\tt s} $+$\  {\tt sa} $=$\  #indian ssa#endindian
+\end{multicols}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2908}%
+\textrm{\d{m\/}}\kern.05em%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2909}%
+\textrm{\={a\/}}%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2912}%
+\textrm{\={u\/}}%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2913}%
+#indian mu.nDaa\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2916}%
+#indian shaa.Nt\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2919}%
+\textrm{\.{n\/}}\kern.05em%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2920}%
+#indian aN^ga\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2921}%
+#indian a.nga\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage230}%
+\begin{multicols}{5}
+{\tt k} + {\tt ra} $=$\  #indian kra#endindian \\
+{\tt g} + {\tt ra} $=$\  #indian gra#endindian \\
+{\tt t} + {\tt ra} $=$\  #indian tra#endindian \\
+{\tt d} + {\tt ra} $=$\  #indian dra#endindian \\
+{\tt p} + {\tt ra} $=$\  #indian pra#endindian \\
+{\tt b} + {\tt ra} $=$\  #indian bra#endindian \\
+{\tt d} + {\tt va} $=$\  #indian dva#endindian \\
+{\tt s} + {\tt va} $=$\  #indian sva#endindian \\
+{\tt d} + {\tt ya} $=$\  #indian dya#endindian \\
+{\tt n} + {\tt ha} $=$\  #indian nha#endindian
+\end{multicols}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+\renewcommand{\arraystretch}{1.45}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage279}%
+\begin{tabular}{|ll|ll|ll|ll|ll|}
+\hline
+\multicolumn{10}{|c|}{\it Old Pa\~nj\=ab{\=\i} Voiced Aspirates\/} \\
+\hline
+{\tt nha} & #indian nha#endindian & {\tt rha} & #indian rha#endindian & {\tt lha} & #indian lha#endindian & {\tt vha} & #indian vha#endindian & {\tt .Dha} & #indian .Dha#endindian \\
+\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2925}%
+{\pun `\char117}%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2926}%
+{\pun `\char97}%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2927}%
+{\pun `\char101}%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2934}%
+#indian au\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2935}%
+#indian augaNu\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2936}%
+#indian a_ugaNu\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage336}%
+\begin{multicols}{2}
+#indian  bhaiNaa.N mai.N katadii katadii huTTii . \\
+pa.Dii pacchii pichavaa.De rahi ga_ii .. \\
+hatth vic rahi ga_ii juTTii . \\
+agge carakhaa picche piiha.Daa .. \\
+hatth meriu.N ta.nd TuTTii .. #endindian
+\medskip
+\par
+{\it bhai\d{n}\=a\d{m} mai\d{m} katad{\=\i} katad{\=\i} hu\d{t}\d{t}{\=\i}; \\
+pa\d{r}{\=\i} pacch{\=\i} pichaw\=a\d{r}e rahi ga{\=\i}. \\
+hatth vic rahi ga{\=\i} ju\d{t}\d{t}{\=\i}; \\
+agge carakh\=a picche p{\=\i}ha\d{r}\=a. \\
+hatth meriu\d{m} ta\d{m}d \d{t}u\d{t}\d{t}{\=\i}.}
+\end{multicols}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2940}%
+#indian 1 AUM \quad satiguru prasaadi #endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2941}%
+#indian suuhii mahalaa 5 #endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage376}%
+\begin{quote}\begin{quote}
+{\obeylines
+#indian
+jis ke sir uupari tuu.n suaamii\,  so dukhu kaisaa paavai ||
+boli n jaanai maaiiaa madi maataa\,  maraNaa ciiti na aavai || 1||
+mere raamaraaii\,  tuu.n santaa kaa sant tere ||
+tere sevak kau bhau kichu naahii\,  jamu nahii aavai nere || 1|| rahaa_u ||
+jo terai raN^gi raate suaamii\,  tin kaa janam maraN dukhu naasaa ||
+terii bakhas na meTai koI\,  satigur kaa dilaasaa || 2||
+naamu dhiaaiini\,  sukh phala paaiini\,  aaTh pahar aaraadhahi ||
+terii saraNi tere bharavaasai\,  pa~nc dushaT lai saadhahi || 3||
+giaanu dhiaanu kichu karamu na jaaNaa\,  saar na jaaNaa terii ||
+sabh te vaDaa satiguru naanak\,  jini kala raakhii merii || 4|| 10|| 57||
+#endindian
+}
+\end{quote}\end{quote}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2943}%
+\textrm{\d{l\/}}\kern.15em%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline2944}%
+#indian la\/#endindian
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2945}%
+{\pun `\char64}%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2946}%
+\textrm{\d{n\/}}\kern.05em%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline2947}%
+\textrm{\d{d\/}}%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1832}%
+$<$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1834}%
+$>$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+
+\renewcommand{\doublerulesep}{.5cm}
+
+\renewcommand{\arraystretch}{1.40}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage408}%
+\begin{tabular}{|ll|ll|ll|}
+\hline
+\multicolumn{6}{|c|}{\it Vowel Bearers\/} \\
+\hline
+{\it back\/} & {\pun `\char117} & {\it low\/} & {\pun `\char97} & {\it front\/} & {\pun `\char101} \\
+\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage423}%
+\begin{tabular}{|ll|ll|}
+\hline
+\multicolumn{4}{|c|}{\it Fricatives\/} \\
+\hline                                                            
+{\tt sa} & #indian sa#endindian & {\tt ha} & #indian ha#endindian \\
+\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage438}%
+\begin{tabular}{|lll|lll|lll|lll|}
+\hline
+\multicolumn{12}{|c|}{\it Vowels\/} \\
+\hline
+{\tt a}  & #indian a#endindian &  ---             & {\tt aa}  & #indian aa#endindian & {\pun `\char65} & {\tt i}  & #indian i#endindian      & {\pun `\char105}    & {\tt ii} & #indian ii#endindian & {\pun `\char73} \\
+{\tt u}  & #indian u#endindian & {\pun `\char85}  & {\tt uu}  & #indian uu#endindian & {\pun `\char60} & {\tt e}  & #indian e#endindian      & {\pun `\char69}     & {\tt ai} & #indian ai#endindian & {\pun `\char62} \\
+{\tt o}  & #indian o#endindian & {\pun `\char126} & {\tt au}  & #indian au#endindian & {\pun `\char79} & {\tt aM} & [\ #indian aM#endindian\ ] & [\ {\pun `\char42}\ ] & {\tt aH} & [ #indian aH#endindian ] & [ {\pun `\char92} ] \\
+\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage494}%
+\begin{tabular}{|ll|ll|ll|ll|ll|}
+\hline
+\multicolumn{10}{|c|}{\it Occlusives\/} \\
+\hline                                                            
+{\tt ka} & #indian ka#endindian  & {\tt kha} & #indian kha#endindian  & {\tt ga} & #indian ga#endindian  & {\tt gha} & #indian gha#endindian & {\tt N\char`^a} & #indian N^a#endindian \\
+{\tt ca} & #indian ca#endindian  & {\tt cha} & #indian cha#endindian  & {\tt ja} & #indian ja#endindian  & {\tt jha} & #indian jha#endindian & {\tt\char`~na} & #indian ~na#endindian \\
+{\tt Ta} & #indian Ta#endindian  & {\tt Tha} & #indian Tha#endindian  & {\tt Da} & #indian Da#endindian  & {\tt Dha} & #indian Dha#endindian & {\tt Na}        & #indian Na#endindian  \\
+{\tt ta} & #indian ta#endindian  & {\tt tha} & #indian tha#endindian  & {\tt da} & #indian da#endindian  & {\tt dha} & #indian dha#endindian & {\tt na}        & #indian na#endindian  \\
+{\tt pa} & #indian pa#endindian  & {\tt pha} & #indian pha#endindian  & {\tt ba} & #indian ba#endindian  & {\tt bha} & #indian bha#endindian & {\tt ma}        & #indian ma#endindian  \\
+\multicolumn{10}{|c|}{\it Note: {\tt\char35 usecsx} is assumed to be on.\/} \\
+\hline\hline
+\multicolumn{10}{|c|}{\it Sonorants\/} \\
+\hline                                                            
+{\tt ya} & #indian ya#endindian & {\tt ra} & #indian ra#endindian & {\tt la} & #indian la#endindian & {\tt va} & #indian va#endindian & {\tt .Da} & #indian .Da#endindian \\
+\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage599}%
+\begin{tabular}{|ll|ll|ll|ll|ll|ll|}
+\hline
+\multicolumn{12}{|c|}{\it Supplementary Consonants\/} \\
+\hline                                                            
+{\tt sha} & #indian sha#endindian & {\tt za} & #indian za#endindian & {\tt fa} & #indian fa#endindian & {\tt Ka} & #indian Ka#endindian & {\tt Ga} & #indian Ga#endindian & {\tt La} & --- \\
+\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage624}%
+\begin{tabular}{|ll|ll|ll|ll|ll|}
+\hline
+\multicolumn{10}{|c|}{\it Numerals\/} \\
+\hline                                                            
+{\tt0} & #indian 0#endindian & {\tt 1} & #indian 1#endindian & {\tt 2} & #indian 2#endindian & {\tt 3} & #indian 3#endindian & {\tt 4} & #indian 4#endindian \\
+{\tt 5} & #indian 5#endindian & {\tt 6} & #indian 6#endindian & {\tt 7} & #indian 7#endindian & {\tt 8} & #indian 8#endindian & {\tt 9} & #indian 9#endindian \\
+\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage663}%
+\begin{tabular}{|ll|ll|ll|}
+\hline
+\multicolumn{6}{|c|}{\it Specials\/} \\
+\hline
+  {\tt AUM} & #indian AUM#endindian 
+& {\tt .c}  & {\pun `\char38} 
+& {\it KND} & {\pun `\char64} \\
+  {\tt .n} & {\pun `\char42} 
+& {\tt .N} & {\pun `\char58} && \\
+\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+
+\renewcommand{\arraystretch}{1.25}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage693}%
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+ / &
+ {\tt a} &
+ {\tt aa} &
+ {\tt i} &
+ {\tt ii} &
+ {\tt u} &
+ {\tt uu} &
+ {\tt e} &
+ {\tt ai} &
+ {\tt o} &
+ {\tt au} \\\hline \hline
+\par
+{\tt k} &
+#indian  ka #endindian &
+#indian  kaa #endindian &
+#indian  ki #endindian &
+#indian  kii #endindian &
+#indian  ku #endindian &
+#indian  kuu #endindian &
+#indian  ke #endindian &
+#indian  kai #endindian &
+#indian  ko #endindian &
+#indian  kau #endindian 
+\\\hline
+ {\tt kh} &
+#indian  kha #endindian &
+#indian  khaa #endindian &
+#indian  khi #endindian &
+#indian  khii #endindian &
+#indian  khu #endindian &
+#indian  khuu #endindian &
+#indian  khe #endindian &
+#indian  khai #endindian &
+#indian  kho #endindian &
+#indian  khau #endindian \\\hline
+ {\tt g} &
+#indian  ga #endindian &
+#indian  gaa #endindian &
+#indian  gi #endindian &
+#indian  gii #endindian &
+#indian  gu #endindian &
+#indian  guu #endindian &
+#indian  ge #endindian &
+#indian  gai #endindian &
+#indian  go #endindian &
+#indian  gau #endindian \\\hline
+ {\tt gh} &
+#indian  gha #endindian &
+#indian  ghaa #endindian &
+#indian  ghi #endindian &
+#indian  ghii #endindian &
+#indian  ghu #endindian &
+#indian  ghuu #endindian &
+#indian  ghe #endindian &
+#indian  ghai #endindian &
+#indian  gho #endindian &
+#indian  ghau #endindian \\\hline
+ {\tt N\char`^} &
+#indian  ~Na #endindian &
+#indian  ~Naa #endindian &
+#indian  ~Ni #endindian &
+#indian  ~Nii #endindian &
+#indian  ~Nu #endindian &
+#indian  ~Nuu #endindian &
+#indian  ~Ne #endindian &
+#indian  ~Nai #endindian &
+#indian  ~No #endindian &
+#indian  ~Nau #endindian \\\hline
+ {\tt c} &
+#indian  ca #endindian &
+#indian  caa #endindian &
+#indian  ci #endindian &
+#indian  cii #endindian &
+#indian  cu #endindian &
+#indian  cuu #endindian &
+#indian  ce #endindian &
+#indian  cai #endindian &
+#indian  co #endindian &
+#indian  cau #endindian \\\hline
+ {\tt ch} &
+#indian  cha #endindian &
+#indian  chaa #endindian &
+#indian  chi #endindian &
+#indian  chii #endindian &
+#indian  chu #endindian &
+#indian  chuu #endindian &
+#indian  che #endindian &
+#indian  chai #endindian &
+#indian  cho #endindian &
+#indian  chau #endindian \\\hline
+ {\tt j} &
+#indian  ja #endindian &
+#indian  jaa #endindian &
+#indian  ji #endindian &
+#indian  jii #endindian &
+#indian  ju #endindian &
+#indian  juu #endindian &
+#indian  je #endindian &
+#indian  jai #endindian &
+#indian  jo #endindian &
+#indian  jau #endindian \\\hline
+ {\tt jh} &
+#indian  jha #endindian &
+#indian  jhaa #endindian &
+#indian  jhi #endindian &
+#indian  jhii #endindian &
+#indian  jhu #endindian &
+#indian  jhuu #endindian &
+#indian  jhe #endindian &
+#indian  jhai #endindian &
+#indian  jho #endindian &
+#indian  jhau #endindian \\\hline
+ {\tt\char`~n} &
+#indian  ~na #endindian &
+#indian  ~naa #endindian &
+#indian  ~ni #endindian &
+#indian  ~nii #endindian &
+#indian  ~nu #endindian &
+#indian  ~nuu #endindian &
+#indian  ~ne #endindian &
+#indian  ~nai #endindian &
+#indian  ~no #endindian &
+#indian  ~nau #endindian \\\hline
+ {\tt T} &
+#indian  Ta #endindian &
+#indian  Taa #endindian &
+#indian  Ti #endindian &
+#indian  Tii #endindian &
+#indian  Tu #endindian &
+#indian  Tuu #endindian &
+#indian  Te #endindian &
+#indian  Tai #endindian &
+#indian  To #endindian &
+#indian  Tau #endindian \\\hline
+ {\tt Th} &
+#indian  Tha #endindian &
+#indian  Thaa #endindian &
+#indian  Thi #endindian &
+#indian  Thii #endindian &
+#indian  Thu #endindian &
+#indian  Thuu #endindian &
+#indian  The #endindian &
+#indian  Thai #endindian &
+#indian  Tho #endindian &
+#indian  Thau #endindian \\\hline
+ {\tt D} &
+#indian  Da #endindian &
+#indian  Daa #endindian &
+#indian  Di #endindian &
+#indian  Dii #endindian &
+#indian  Du #endindian &
+#indian  Duu #endindian &
+#indian  De #endindian &
+#indian  Dai #endindian &
+#indian  Do #endindian &
+#indian  Dau #endindian \\\hline
+ {\tt Dh} &
+#indian  Dha #endindian &
+#indian  Dhaa #endindian &
+#indian Dhi #endindian &
+#indian Dhii #endindian &
+#indian Dhu #endindian &
+#indian Dhuu #endindian &
+#indian Dhe #endindian &
+#indian Dhai #endindian &
+#indian Dho #endindian &
+#indian Dhau #endindian \\\hline
+ {\tt N} &
+#indian Na #endindian &
+#indian Naa #endindian &
+#indian Ni #endindian &
+#indian Nii #endindian &
+#indian Nu #endindian &
+#indian Nuu #endindian &
+#indian Ne #endindian &
+#indian Nai #endindian &
+#indian No #endindian &
+#indian Nau #endindian \\\hline
+ {\tt t} &
+#indian ta #endindian &
+#indian taa #endindian &
+#indian ti #endindian &
+#indian tii #endindian &
+#indian tu #endindian &
+#indian tuu #endindian &
+#indian te #endindian &
+#indian tai #endindian &
+#indian to #endindian &
+#indian tau #endindian \\\hline
+ {\tt th} &
+#indian tha #endindian &
+#indian thaa #endindian &
+#indian thi #endindian &
+#indian thii #endindian &
+#indian thu #endindian &
+#indian thuu #endindian &
+#indian the #endindian &
+#indian thai #endindian &
+#indian tho #endindian &
+#indian thau #endindian \\\hline
+ {\tt d} &
+#indian da #endindian &
+#indian daa #endindian &
+#indian di #endindian &
+#indian dii #endindian &
+#indian du #endindian &
+#indian duu #endindian &
+#indian de #endindian &
+#indian dai #endindian &
+#indian do #endindian &
+#indian dau #endindian \\\hline
+ {\tt dh} &
+#indian dha #endindian &
+#indian dhaa #endindian &
+#indian dhi #endindian &
+#indian dhii #endindian &
+#indian dhu #endindian &
+#indian dhuu #endindian &
+#indian dhe #endindian &
+#indian dhai #endindian &
+#indian dho #endindian &
+#indian dhau #endindian \\\hline
+ {\tt n} &
+#indian na #endindian &
+#indian naa #endindian &
+#indian ni #endindian &
+#indian nii #endindian &
+#indian nu #endindian &
+#indian nuu #endindian &
+#indian ne #endindian &
+#indian nai #endindian &
+#indian no #endindian &
+#indian nau #endindian \\\hline
+ {\tt p} &
+#indian pa #endindian &
+#indian paa #endindian &
+#indian pi #endindian &
+#indian pii #endindian &
+#indian pu #endindian &
+#indian puu #endindian &
+#indian pe #endindian &
+#indian pai #endindian &
+#indian po #endindian &
+#indian pau #endindian \\\hline
+ {\tt ph} &
+#indian pha #endindian &
+#indian phaa #endindian &
+#indian phi #endindian &
+#indian phii #endindian &
+#indian phu #endindian &
+#indian phuu #endindian &
+#indian phe #endindian &
+#indian phai #endindian &
+#indian pho #endindian &
+#indian phau #endindian \\\hline
+ {\tt b} &
+#indian ba #endindian &
+#indian baa #endindian &
+#indian bi #endindian &
+#indian bii #endindian &
+#indian bu #endindian &
+#indian buu #endindian &
+#indian be #endindian &
+#indian bai #endindian &
+#indian bo #endindian &
+#indian bau #endindian \\\hline
+ {\tt bh} &
+#indian bha #endindian &
+#indian bhaa #endindian &
+#indian bhi #endindian &
+#indian bhii #endindian &
+#indian bhu #endindian &
+#indian bhuu #endindian &
+#indian bhe #endindian &
+#indian bhai #endindian &
+#indian bho #endindian &
+#indian bhau #endindian \\\hline
+ {\tt m} &
+#indian ma #endindian &
+#indian maa #endindian &
+#indian mi #endindian &
+#indian mii #endindian &
+#indian mu #endindian &
+#indian muu #endindian &
+#indian me #endindian &
+#indian mai #endindian &
+#indian mo #endindian &
+#indian mau #endindian \\\hline
+ {\tt y} &
+#indian ya #endindian &
+#indian yaa #endindian &
+#indian yi #endindian &
+#indian yii #endindian &
+#indian yu #endindian &
+#indian yuu #endindian &
+#indian ye #endindian &
+#indian yai #endindian &
+#indian yo #endindian &
+#indian yau #endindian \\\hline
+ {\tt r} &
+#indian ra #endindian &
+#indian raa #endindian &
+#indian ri #endindian &
+#indian rii #endindian &
+#indian ru #endindian &
+#indian ruu #endindian &
+#indian re #endindian &
+#indian rai #endindian &
+#indian ro #endindian &
+#indian rau #endindian \\\hline
+ {\tt l} &
+#indian la #endindian &
+#indian laa #endindian &
+#indian li #endindian &
+#indian lii #endindian &
+#indian lu #endindian &
+#indian luu #endindian &
+#indian le #endindian &
+#indian lai #endindian &
+#indian lo #endindian &
+#indian lau #endindian \\\hline
+ {\tt v} &
+#indian va #endindian &
+#indian vaa #endindian &
+#indian vi #endindian &
+#indian vii #endindian &
+#indian vu #endindian &
+#indian vuu #endindian &
+#indian ve #endindian &
+#indian vai #endindian &
+#indian vo #endindian &
+#indian vau #endindian \\\hline
+ {\tt .D} &
+#indian .Da #endindian &
+#indian .Daa #endindian &
+#indian .Di #endindian &
+#indian .Dii #endindian &
+#indian .Du #endindian &
+#indian .Duu #endindian &
+#indian .De #endindian &
+#indian .Dai #endindian &
+#indian .Do #endindian &
+#indian .Dau #endindian \\\hline
+ {\tt sh} &
+#indian sha #endindian &
+#indian shaa #endindian &
+#indian shi #endindian &
+#indian shii #endindian &
+#indian shu #endindian &
+#indian shuu #endindian &
+#indian she #endindian &
+#indian shai #endindian &
+#indian sho #endindian &
+#indian shau #endindian \\\hline
+ {\tt z} &
+#indian za #endindian &
+#indian zaa #endindian &
+#indian zi #endindian &
+#indian zii #endindian &
+#indian zu #endindian &
+#indian zuu #endindian &
+#indian ze #endindian &
+#indian zai #endindian &
+#indian zo #endindian &
+#indian zau #endindian \\\hline
+ {\tt f} &
+#indian fa #endindian &
+#indian faa #endindian &
+#indian fi #endindian &
+#indian fii #endindian &
+#indian fu #endindian &
+#indian fuu #endindian &
+#indian fe #endindian &
+#indian fai #endindian &
+#indian fo #endindian &
+#indian fau #endindian \\\hline
+ {\tt K} &
+#indian Ka #endindian &
+#indian Kaa #endindian &
+#indian Ki #endindian &
+#indian Kii #endindian &
+#indian Ku #endindian &
+#indian Kuu #endindian &
+#indian Ke #endindian &
+#indian Kai #endindian &
+#indian Ko #endindian &
+#indian Kau #endindian \\\hline
+ {\tt G} &
+#indian Ga #endindian &
+#indian Gaa #endindian &
+#indian Gi #endindian &
+#indian Gii #endindian &
+#indian Gu #endindian &
+#indian Guu #endindian &
+#indian Ge #endindian &
+#indian Gai #endindian &
+#indian Go #endindian &
+#indian Gau #endindian \\\hline
+ {\tt s} &
+#indian sa #endindian &
+#indian saa #endindian &
+#indian si #endindian &
+#indian sii #endindian &
+#indian su #endindian &
+#indian suu #endindian &
+#indian se #endindian &
+#indian sai #endindian &
+#indian so #endindian &
+#indian sau #endindian \\\hline
+ {\tt h} &
+#indian ha #endindian &
+#indian haa #endindian &
+#indian hi #endindian &
+#indian hii #endindian &
+#indian hu #endindian &
+#indian huu #endindian &
+#indian he #endindian &
+#indian hai #endindian &
+#indian ho #endindian &
+#indian hau #endindian \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1489}%
+\begin{multicols}{3}
+#indian  mantri#endindian       \quad {\tt mantrii} \\
+#indian svaadu#endindian       \quad {\tt svaadu} \\
+#indian amritu#endindian       \quad {\tt amritu} \\
+#indian indru#endindian        \quad {\tt indru} \\
+#indian hindusataanu#endindian \quad {\tt hindusataanu} \\
+#indian jaN^galu#endindian     \quad {\tt jaN\char`^galu} \\
+#indian ja.ngalu#endindian     \quad {\tt ja.ngalu} \\
+#indian brahamaNu#endindian    \quad {\tt brahamaNu} \\
+#indian pa~nja kakke#endindian \quad {\tt pa\char`~nja kakke} \\
+#indian pa.nja kakke#endindian \quad {\tt pa.nja kakke} \\
+#indian dhuu.Di#endindian      \quad {\tt dhuu.Di} \\
+#indian bhaa_ii#endindian      \quad {\tt bhaa\char`_ii} \\
+#indian aN^ga#endindian        \quad {\tt aN\char`^ga} \\
+#indian a.nga#endindian        \quad {\tt a.nga} \\
+#indian santa#endindian        \quad {\tt santa} \\
+#indian sa.nta#endindian       \quad {\tt sa.nta} \\
+#indian shaanti#endindian      \quad {\tt shaanti} \\
+#indian shaa.Nti#endindian     \quad {\tt shaa.Nti} \\
+#indian ambaa#endindian        \quad {\tt ambaa} \\
+#indian a.nbaa#endindian       \quad {\tt a.nbaa} \\
+#indian pampakinu#endindian    \quad {\tt pampakinu\/} \\
+#indian paa~nca#endindian      \quad {\tt paa\char`~nca\/} \\
+#indian paa.Nca#endindian      \quad {\tt paa.Nca\/} \\
+#indian daNDaa#endindian       \quad {\tt daNDaa} \\
+#indian da.nDaa#endindian      \quad {\tt da.nDaa} \\
+#indian satiguru#endindian     \quad {\tt satiguru} \\
+#indian sakhii#endindian       \quad {\tt sakhii} \\
+#indian siddha#endindian       \quad {\tt siddha} \\
+#indian hukamu#endindian       \quad {\tt hukamu} \\
+%------------------------
+\end{multicols}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1581}%
+\begin{multicols}{3}
+%------------------------
+#indian kabiiru#endindian      \quad {\tt kabiiru} \\
+#indian naanaku#endindian      \quad {\tt naanaku} \\
+#indian kuraaNu#endindian      \quad {\tt kuraaNu} \\
+#indian guramukhii#endindian   \quad {\tt guramukhii} \\
+#indian ahaliaa#endindian      \quad {\tt ahaliaa} \\
+#indian augaNu#endindian       \quad {\tt augaNu} \\
+#indian a_ugaNu#endindian      \quad {\tt a\char`_ugaNu} \\
+#indian aa_io#endindian        \quad {\tt aa\char`_io} \\
+#indian giaanii#endindian      \quad {\tt giaanii} \\
+#indian maaiaa#endindian       \quad {\tt maaiaa} \\
+#indian maa_iaa#endindian      \quad {\tt maa\char`_iaa} \\
+#indian khullhaa#endindian     \quad {\tt khullhaa} \\
+#indian kripaa#endindian       \quad {\tt kripaa} \\
+#indian khyattrii#endindian    \quad {\tt khyattrii} \\
+#indian jagannaathu#endindian  \quad {\tt jagannaathu} \\
+#indian granthu#endindian      \quad {\tt granthu} \\
+#indian gra.nthu#endindian     \quad {\tt gra.nthu} \\
+#indian pa~njaabii#endindian   \quad {\tt pa\char`~njaabii} \\
+#indian pa.njaabii#endindian   \quad {\tt pa.njaabii} \\
+#indian haumai#endindian       \quad {\tt haumai} \\
+#indian ha_umai#endindian      \quad {\tt ha\char`_umai} \\
+#indian paNDitu#endindian      \quad {\tt paNDitu} \\
+#indian pa.nDitu#endindian     \quad {\tt pa.nDitu} \\
+#indian nhaanaa#endindian      \quad {\tt nhaanaa} \\
+#indian praaNu#endindian       \quad {\tt praaNu} \\
+#indian cammu#endindian        \quad {\tt cammu} \\
+#indian cannaNu#endindian      \quad {\tt cannaNu} \\
+#indian saccaa#endindian       \quad {\tt saccaa}
+\end{multicols}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+
+\end{document}

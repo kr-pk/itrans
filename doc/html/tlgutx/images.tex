@@ -1,0 +1,891 @@
+
+
+\batchmode
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+\usepackage{comment}
+
+
+\usepackage[preprocess,telugu]{itrans} 
+	% this also loads idevn.tex and itrnstlg.tex
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}%
+\providecommand{\ST}{\char35telugu}%
+\providecommand{\ET}{\char35endtelugu} 
+\newfont{\cmt}{cmtt12}
+\newfont{\cmts}{cmtt9}
+
+
+\newfont{\tlgsmall}{tel12}
+\newfont{\tlgnx}{tel12nx}
+\newfont{\tlgs}{tel12s}
+\newfont{\tlg}{tel18}
+
+
+
+\hyphenchar\tlgnx-1  % disable hyphenation using this font
+
+\hyphenchar\tlgs-1  % disable hyphenation using this font
+
+\hyphenchar\tlg-1  % disable hyphenation using this font
+
+
+%
+% ---------------------------------------------------------
+% ITRANS 5.30 (29 July 2006) (TeX Interface)
+% Copyright 1991--2001 Avinash Chopde, All Rights Reserved.
+% ---------------------------------------------------------
+%
+\newbox\zErOdEpTh
+\def\kRn#1{{\kern#1em}}
+\def\sBs#1#2{{\setbox\zErOdEpTh=\hbox{\raise#1em\hbox{#2}}%
+\ht\zErOdEpTh=0pt\dp\zErOdEpTh=0pt\box\zErOdEpTh}}
+
+
+
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline553}%
+$<$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline555}%
+$>$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage71}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{{\tlg %
+{\char23}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt a} \\\hline
+{{\tlg %
+{\char24}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt aa {\it or} A} \\\hline
+{{\tlg %
+{\char25}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt i} \\\hline
+{{\tlg %
+{\char26}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt ii {\it or} I} \\\hline
+{{\tlg %
+{\char27}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt u} \\\hline
+{{\tlg %
+{\char28}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt uu {\it or} U} \\\hline
+{{\tlg %
+{\char29}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt RRi {\it or} R\char`^i} \\\hline
+{{\tlg %
+{\char30}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt RRI {\it or} R\char`^I} \\\hline
+{{\tlg %
+{\char31}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt LLi {\it or} L\char`^i} \\\hline
+{{\tlg %
+{\char32}\kRn{0.100} }% End of Indic Script text.
+}	& {\tt LLI {\it or} L\char`^I} \\\hline
+{{\tlg %
+A\kRn{0.100} }% End of Indic Script text.
+}	& {\tt e} \\\hline
+{{\tlg %
+B\kRn{0.100} }% End of Indic Script text.
+}	& {\tt E} \\\hline
+{{\tlg %
+C\kRn{0.100} }% End of Indic Script text.
+}	& {\tt ai} \\\hline
+{{\tlg %
+D\kRn{0.100} }% End of Indic Script text.
+}	& {\tt o} \\\hline
+{{\tlg %
+E\kRn{0.100} }% End of Indic Script text.
+}	& {\tt O} \\\hline
+{{\tlg %
+F\kRn{0.100} }% End of Indic Script text.
+}	& {\tt au} \\\hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{{\tlg {\char13} }% End of Indic Script text.
+}	& {\tt0} \\\hline
+{{\tlg {\char14} }% End of Indic Script text.
+}	& {\tt 1} \\\hline
+{{\tlg {\char15} }% End of Indic Script text.
+}	& {\tt 2} \\\hline
+{{\tlg {\char16} }% End of Indic Script text.
+}	& {\tt 3} \\\hline
+{{\tlg {\char17} }% End of Indic Script text.
+}	& {\tt 4} \\\hline
+{{\tlg {\char18} }% End of Indic Script text.
+}	& {\tt 5} \\\hline
+{{\tlg {\char19} }% End of Indic Script text.
+}	& {\tt 6} \\\hline
+{{\tlg {\char20} }% End of Indic Script text.
+}	& {\tt 7} \\\hline
+{{\tlg {\char21} }% End of Indic Script text.
+}	& {\tt 8} \\\hline
+{{\tlg {\char22} }% End of Indic Script text.
+}	& {\tt 9} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage166}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{{\tlg %
+G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt k{\it a}} \\\hline
+{{\tlg %
+H\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt kh{\it a}} \\\hline
+{{\tlg %
+I\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt g{\it a}} \\\hline
+{{\tlg %
+J\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt gh{\it a}} \\\hline
+{{\tlg %
+K\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt\char`~N{\it a or} N\char`^{\it a}} \\\hline
+{{\tlg %
+L\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt ch{\it a}} \\\hline
+{{\tlg %
+M\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt Ch{\it a or} chh{\it a}} \\\hline
+{{\tlg %
+N\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt j{\it a}} \\\hline
+{{\tlg %
+O\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt jh{\it a}} \\\hline
+{{\tlg %
+P\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt\char`~n{\it a or} JN{\it a}} \\\hline
+{{\tlg %
+Q\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt T{\it a}} \\\hline
+{{\tlg %
+R\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt Th{\it a}} \\\hline
+{{\tlg %
+S\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt D{\it a}} \\\hline
+{{\tlg %
+T\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt Dh{\it a}} \\\hline
+{{\tlg %
+U\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt N{\it a}} \\\hline
+{{\tlg %
+V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt t{\it a}} \\\hline
+{{\tlg %
+W\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt th{\it a}} \\\hline
+{{\tlg %
+X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt d{\it a}} \\\hline
+{{\tlg %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt dh{\it a}} \\\hline
+{{\tlg %
+Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt n{\it a}} \\\hline
+{{\tlg %
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt p{\it a}} \\\hline
+{{\tlg %
+b\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt ph{\it a}} \\\hline
+{{\tlg %
+c\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt b{\it a}} \\\hline
+{{\tlg %
+d\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt bh{\it a}} \\\hline
+{{\tlg %
+e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt m{\it a}} \\\hline
+{{\tlg %
+f\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt y{\it a}} \\\hline
+{{\tlg %
+g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt r{\it a}} \\\hline
+{{\tlg %
+h\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt R{\it a}} \\\hline
+{{\tlg %
+i\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt l{\it a}} \\\hline
+{{\tlg %
+j\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt L{\it a}} \\\hline
+{{\tlg %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt v{\it a or} w{\it a}} \\\hline
+{{\tlg %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt sh{\it a}} \\\hline
+{{\tlg %
+m\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt Sh{\it a or} shh{\it a}} \\\hline
+{{\tlg %
+n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt s{\it a}} \\\hline
+{{\tlg %
+o\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}  }% End of Indic Script text.
+}	& {\tt h{\it a}} \\\hline
+{{\tlg %
+G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.405}{\char181}\kRn{0.042}  }% End of Indic Script text.
+}	& {\tt x{\it a or} kSh{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage288}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{{\tlg %
+I\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} }% End of Indic Script text.
+} & {\tt {\it ga}.n} \\\hline
+{{\tlg %
+{\char24}\kRn{0.100}\kRn{-0.050}{\char8}\kRn{0.100} }% End of Indic Script text.
+} & {\tt {\it aa}\char`^r} \\\hline
+{{\tlg %
+e\kRn{-0.554}{\char148}\kRn{0.173}\kRn{0.100} }% End of Indic Script text.
+} & {\tt {\it m}\{\}} \\\hline
+{{\tlg %
+X\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.060}{\char10}\kRn{0.200} }% End of Indic Script text.
+} & {\tt {\it du}H} \\\hline
+{{\tlg %
+\kRn{-0.100}{\char12}\kRn{0.100} }% End of Indic Script text.
+} & {\tt .a} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage323}%
+\begin{tabular}{|c|c|}
+\hline
+{{\tlg \TGadh }% End of Indic Script text.
+}	& {\tt\char92 TGadh} \\\hline
+{{\tlg \TGnp }% End of Indic Script text.
+}	& {\tt\char92 TGnp} \\\hline
+{{\tlg \TGvp }% End of Indic Script text.
+}	& {\tt\char92 TGvp} \\\hline
+{{\tlg \TGbar }% End of Indic Script text.
+}	& {\tt\char92 TGbar} \\\hline
+{{\tlg \TGbarr }% End of Indic Script text.
+}	& {\tt\char92 TGbarr} \\\hline
+{{\tlg \TGpu }% End of Indic Script text.
+}	& {\tt\char92 TGpu} \\\hline
+{{\tlg \TGpuu }% End of Indic Script text.
+}	& {\tt\char92 TGpuu} \\\hline
+{{\tlg \TGphu }% End of Indic Script text.
+}	& {\tt\char92 TGphu} \\\hline
+{{\tlg \TGphuu }% End of Indic Script text.
+}	& {\tt\char92 TGphuu} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1376}%
+{\tlg %
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}L\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.505}{\char175}\kRn{0.124} %
+G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}i{\char135}\kRn{0.100}}% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+
+
+%
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1377}%
+{\tlgnx ``%
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}i\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+{\char141}\kRn{-0.300}e{\char135}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}{\char187}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char190}\kRn{0.100} %
+{\char234}\kRn{0.100}{\char207}\kRn{0.100}L\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100} %
+V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}i\kRn{0.100}a\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}\kRn{-0.652}{\char159}\kRn{0.232}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}k\kRn{-0.200}{\char130}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+V\kRn{-0.379}{\char129}\kRn{0.100}{\char142}\kRn{-0.300}e\kRn{0.065}\kRn{0.100} %
+L\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}S\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}{\char209}\kRn{-0.240}{\char145}\kRn{0.100}V\kRn{-0.379}{\char129}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}''.
+}% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1378}%
+\vbox{{\tlgnx 
+%
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char200}\kRn{0.100}  %
+{\char23}\kRn{0.100}Z\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.405}{\char164}\kRn{0.024}{\char184}\kRn{0.100}{\char200}\kRn{0.100} %
+k\kRn{-0.200}{\char130}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+{\char207}\kRn{0.100}{\char227}\kRn{0.020}{\char135}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.505}{\char164}\kRn{0.124}\kRn{-0.050}{\char9}\kRn{0.100} %
+{\char209}\kRn{-0.240}{\char144}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}X\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}l\kRn{-0.379}{\char129}\kRn{0.100}{\char207}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+{\char209}\kRn{-0.240}{\char145}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}i\kRn{0.100}n\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} 
+%
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char190}\kRn{0.100}\kRn{-0.200}{\char154}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char205}\kRn{0.100}. %
+{\char23}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char200}\kRn{0.100} %
+V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char166}\kRn{0.202}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100} %
+k\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}f\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100} %
+c\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+Z\kRn{-0.379}{\char129}\kRn{0.100}U\kRn{-0.300}{\char130}\kRn{0.100}i\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}, %
+V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+{\char227}\kRn{0.020}{\char135}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.751}{\char175}\kRn{0.370}S\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}f\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} 
+%
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char207}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char166}\kRn{0.202} %
+X\kRn{-0.379}{\char129}\kRn{0.100}{\char190}\kRn{0.100} %
+X\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}l\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+{\char209}\kRn{-0.240}{\char144}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}{\char200}\kRn{0.100}. %
+G\kRn{-0.241}{\char144}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}G\kRn{-0.379}{\char129}\kRn{0.100}i\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+{\char23}\kRn{0.100}f\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}k\kRn{-0.200}{\char130}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} 
+%
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char200}\kRn{0.100} %
+n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}\kRn{-0.200}{\char179}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.614}{\char175}\kRn{0.233}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+{\char202}\kRn{0.100}{\char221}\kRn{0.100}{\char187}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}L\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char154}\kRn{0.100}{\char200}\kRn{0.100}. %
+{\char23}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char200}\kRn{0.100} %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char207}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}{\char209}\kRn{-0.240}{\char145}\kRn{0.100}f\kRn{0.100} %
+V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} 
+%
+c\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+Z\kRn{-0.379}{\char129}\kRn{0.100}U\kRn{-0.300}{\char130}\kRn{0.100}i\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+{\char202}\kRn{0.100}{\char221}\kRn{0.100}{\char187}\kRn{0.100} %
+f\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\kRn{-0.200}{\char173}\kRn{0.100}{\char207}\kRn{0.100} %
+{\char23}\kRn{0.100}S\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}{\char200}\kRn{0.100}. %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char200}\kRn{0.100} %
+{\char227}\kRn{0.100}L\kRn{-0.379}{\char129}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100} ``%
+{\char23}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}! 
+%
+B\kRn{0.100}{\char227}\kRn{0.020}{\char135}\kRn{0.100} %
+L\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}, %
+{\char207}\kRn{-0.150}{\char133}\kRn{0.100} %
+c\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+Z\kRn{-0.379}{\char129}\kRn{0.100}U\kRn{-0.300}{\char130}\kRn{0.100}i\kRn{0.100}{\char207}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}{\char207}\kRn{-0.150}{\char133}\kRn{0.100} %
+e\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}{\char223}\kRn{-0.150}{\char146}\kRn{0.100} %
+A\kRn{0.100}i{\char135}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}i{\char135}\kRn{0.100} %
+{\char202}\kRn{0.100}{\char207}\kRn{0.100}k\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}l\kRn{-0.379}{\char129}\kRn{0.100}f\kRn{0.100}'' %
+{\char23}\kRn{0.100}{\char207}\kRn{0.100} 
+%
+L\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}{\char200}\kRn{0.100}. %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char207}\kRn{0.100} %
+{\char141}\kRn{-0.300}e\kRn{-0.250}{\char129}\kRn{0.100}{\char233}\kRn{-0.350}{\char129}\kRn{0.100}{\char207}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100} %
+{\char23}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.405}{\char167}\kRn{0.042}\kRn{-0.050}{\char9}\kRn{0.100}L\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.100}{\char135}\kRn{0.100}G\kRn{-0.241}{\char144}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char200}\kRn{0.100} ``%
+{\char209}\kRn{-0.240}{\char145}\kRn{0.100}{\char207}\kRn{-0.150}{\char133}\kRn{0.100}i\kRn{-0.300}{\char142}\kRn{0.298}\kRn{0.100} 
+%
+N\kRn{0.100}{\char221}\kRn{0.100}{\char187}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}X\kRn{-0.379}{\char129}\kRn{0.100}{\char207}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+{\char190}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char202}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char190}\kRn{0.100} %
+B\kRn{0.100}{\char227}\kRn{0.020}{\char135}\kRn{0.100} %
+b\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}i\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}{\char135}\kRn{0.100}'' %
+{\char23}\kRn{0.100}{\char207}\kRn{0.100} %
+n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}{\char221}\kRn{0.100}\kRn{-0.391}{\char166}\kRn{0.028} %
+L\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}, %
+{\char25}\kRn{0.100}{\char205}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char223}\kRn{-0.150}{\char146}\kRn{0.100}i\kRn{-0.120}{\char130}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}Z\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100} 
+%
+{\char227}\kRn{0.020}{\char135}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.751}{\char175}\kRn{0.370}{\char207}\kRn{0.100}{\char203}\kRn{-0.150}{\char146}\kRn{0.100} %
+n\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}o\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}c\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.100}{\char136}\kRn{0.100}\kRn{-0.981}{\char164}\kRn{0.600} %
+{\char27}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}{\char200}\kRn{0.100}. %
+G\kRn{-0.241}{\char144}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}{\char225}\kRn{0.100}\kRn{-0.200}{\char178}\kRn{0.100}{\char209}\kRn{-0.240}{\char145}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}, %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char200}\kRn{0.100}
+%
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char207}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char166}\kRn{0.202} %
+G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}c{\char135}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.651}{\char177}\kRn{0.270} %
+L\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}c{\char135}\kRn{0.100}V\kRn{-0.278}{\char128}{\char136}\kRn{0.100} %
+{\char27}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100} %
+n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char223}\kRn{-0.150}{\char146}\kRn{0.100} %
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.485}{\char175}\kRn{0.104}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char149}\kRn{0.100}{\char227}\kRn{-0.170}{\char133}\kRn{0.100}{\char206}\kRn{0.100} %
+{\char223}\kRn{-0.150}{\char146}\kRn{0.100} %
+g\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char225}\kRn{-0.140}{\char130}\kRn{0.100}\kRn{-0.200}{\char178}\kRn{0.100}
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1379}%
+\vbox{{\tlgnx 
+%
+{\char23}\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\kRn{-0.200}{\char173}\kRn{0.100}G\kRn{-0.379}{\char129}\kRn{0.100}{\char207}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}L\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char154}\kRn{0.100}f\kRn{0.100}. %
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char225}\kRn{0.100}\kRn{-0.200}{\char178}\kRn{0.100} %
+{\char23}\kRn{0.100}{\char142}\kRn{-0.300}e\kRn{0.065}\kRn{0.100}\kRn{-0.200}{\char173}\kRn{0.100}k\kRn{-0.200}{\char130}\kRn{0.100}{\char207}\kRn{0.100} %
+G\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char227}\kRn{0.100}{\char207}\kRn{0.100} %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char207}\kRn{0.100} %
+a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}i\kRn{0.100}\kRn{-0.551}{\char177}\kRn{0.170}k\kRn{-0.200}{\char130}\kRn{0.100}{\char200}\kRn{0.100} 
+%
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}j\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char178}\kRn{0.100}G\kRn{-0.241}{\char145}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+{\char209}\kRn{-0.240}{\char145}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}Q\kRn{-0.170}{\char130}\kRn{0.100}\kRn{-0.923}{\char159}\kRn{0.503}{\char200}\kRn{0.100}. ``%
+Z\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+G\kRn{-0.241}{\char144}\kRn{0.100}{\char207}\kRn{0.100} %
+{\char25}\kRn{0.100}{\char233}\kRn{-0.350}{\char129}\kRn{0.100}\kRn{-0.723}{\char164}\kRn{0.342}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+g\kRn{-0.379}{\char129}\kRn{0.100} %
+Z\kRn{-0.379}{\char129}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}!'' %
+{\char23}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{0.010}{\char136}\kRn{0.100} %
+a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}i\kRn{0.100}\kRn{-0.551}{\char177}\kRn{0.170}k\kRn{-0.200}{\char130}\kRn{0.100}{\char207}\kRn{0.100}{\char207}\kRn{0.100} 
+%
+A\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.751}{\char164}\kRn{0.370}G\kRn{-0.241}{\char144}\kRn{0.100}{\char207}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}{\char202}\kRn{0.100}{\char200}\kRn{0.100} %
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.485}{\char175}\kRn{0.104}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char149}\kRn{0.100}{\char227}\kRn{-0.170}{\char133}\kRn{0.100}{\char206}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+c\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}i{\char135}\kRn{0.100}X\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}g\kRn{-0.379}{\char129}\kRn{0.100}{\char200}\kRn{0.100}. %
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char225}\kRn{0.100}\kRn{-0.200}{\char178}\kRn{0.100} %
+G\kRn{-0.241}{\char144}\kRn{0.100}{\char207}\kRn{0.100}, %
+a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}i\kRn{0.100}\kRn{-0.551}{\char177}\kRn{0.170}k\kRn{-0.200}{\char130}\kRn{0.100}{\char207}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} 
+%
+{\char25}\kRn{0.100}{\char190}\kRn{0.100}\kRn{-0.200}{\char154}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char200}\kRn{0.100} %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char207}\kRn{0.100} %
+f\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+{\char202}\kRn{0.100}{\char221}\kRn{0.100}{\char187}\kRn{0.100} %
+g\kRn{-0.379}{\char129}\kRn{0.100}{\char184}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}S\kRn{-0.379}{\char129}\kRn{0.100} %
+V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+f\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+{\char209}\kRn{-0.240}{\char145}\kRn{0.100}f\kRn{0.100}
+%
+a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}i\kRn{0.100}\kRn{-0.551}{\char177}\kRn{0.170}k\kRn{-0.200}{\char130}\kRn{0.100}{\char207}\kRn{0.100}{\char207}\kRn{0.100} %
+{\char223}\kRn{-0.150}{\char146}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}i\kRn{0.100} %
+X\kRn{-0.379}{\char129}\kRn{0.100}{\char190}\kRn{0.100} %
+{\char27}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}L\kRn{-0.379}{\char129}\kRn{0.100}{\char200}\kRn{0.100}.
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1380}%
+\vbox{{\tlgnx 
+%
+A\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}n\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}G\kRn{-0.278}{\char132}\kRn{0.068}\kRn{0.100} %
+a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}i\kRn{0.100}\kRn{-0.551}{\char177}\kRn{0.170}k\kRn{-0.200}{\char130}\kRn{0.100}{\char200}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}{\char207}\kRn{-0.150}{\char133}\kRn{0.100}, %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char200}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}{\char207}\kRn{-0.150}{\char133}\kRn{0.100} %
+{\char202}\kRn{0.100}{\char221}\kRn{0.100}{\char187}\kRn{0.100} %
+g\kRn{-0.379}{\char129}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char209}\kRn{-0.240}{\char145}\kRn{0.100}{\char142}\kRn{-0.300}f\kRn{0.065}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}{\char221}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} 
+%
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char200}\kRn{0.100} %
+{\char24}\kRn{0.100}X\kRn{-0.278}{\char128}{\char135}\kRn{0.100}g\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.614}{\char166}\kRn{0.251}I\kRn{-0.379}{\char129}\kRn{0.100} %
+k\kRn{-0.200}{\char130}\kRn{0.100}{\char221}\kRn{0.100}{\char207}\kRn{0.100} %
+k\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char184}\kRn{0.100}L\kRn{-0.278}{\char128}{\char136}\kRn{0.100} %
+{\char227}\kRn{0.020}{\char135}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.751}{\char175}\kRn{0.370}{\char207}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+L\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}g\kRn{-0.379}{\char129}\kRn{0.100}{\char200}\kRn{0.100}. %
+{\char23}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char207}\kRn{0.100}{\char207}\kRn{0.100} 
+%
+L\kRn{-0.278}{\char128}{\char136}\kRn{0.100}S\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}Z\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char200}\kRn{0.100} %
+X\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.060}{\char10}\kRn{0.200}H\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.100}{\char136}\kRn{0.100}\kRn{-0.981}{\char164}\kRn{0.600} ``%
+{\char23}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100} %
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char225}\kRn{0.100}\kRn{-0.200}{\char178}\kRn{0.100}G\kRn{-0.241}{\char144}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.379}{\char129}\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}{\char207}\kRn{0.100} %
+{\char227}\kRn{-0.160}{\char133}\kRn{0.040}{\char135}\kRn{0.100} %
+a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}i\kRn{0.100}\kRn{-0.551}{\char177}\kRn{0.170}k\kRn{-0.200}{\char130}\kRn{0.100}{\char207}\kRn{0.100}{\char207}\kRn{0.100} 
+%
+L\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char190}\kRn{0.100} %
+{\char205}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char208}\kRn{-0.150}{\char146}\kRn{0.100} %
+i\kRn{-0.300}{\char142}\kRn{0.298}\kRn{0.100}X\kRn{-0.241}{\char145}\kRn{0.100}, %
+D\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char200}\kRn{0.100} %
+S\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}I\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char190}\kRn{0.100}\kRn{-0.200}{\char154}\kRn{0.100} %
+{\char227}\kRn{-0.160}{\char133}\kRn{0.040}{\char135}\kRn{0.100} %
+k\kRn{-0.200}{\char130}\kRn{0.100}U\kRn{-0.300}{\char131}\kRn{0.083}\kRn{0.100}\kRn{-0.615}{\char163}\kRn{0.210} %
+A\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.751}{\char164}\kRn{0.370}{\char184}\kRn{0.100} %
+{\char209}\kRn{-0.240}{\char145}\kRn{0.100}f\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char205}\kRn{0.100}, %
+{\char26}\kRn{0.100} 
+%
+{\char227}\kRn{0.100}{\char231}\kRn{-0.350}{\char129}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}k\kRn{-0.200}{\char130}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.405}{\char164}\kRn{0.024} %
+{\char207}\kRn{-0.150}{\char133}\kRn{0.100}{\char184}\kRn{0.100} %
+L\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}i\kRn{-0.300}{\char142}\kRn{0.298}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+Z\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char190}\kRn{0.100}\kRn{-0.200}{\char154}\kRn{0.100} %
+X\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.060}{\char10}\kRn{0.200}{\char185}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.100}{\char135}\kRn{0.100}\kRn{-0.731}{\char164}\kRn{0.350}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}'' %
+{\char23}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}{\char200}\kRn{0.100}. %
+{\char24}\kRn{0.100}{\char205}\kRn{0.100}
+%
+{\char227}\kRn{0.100}{\char207}\kRn{0.100} %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char200}\kRn{0.100} ``%
+{\char207}\kRn{-0.150}{\char133}\kRn{0.100}L\kRn{-0.278}{\char128}{\char135}\kRn{0.100}S\kRn{-0.379}{\char129}\kRn{0.100}, %
+a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}i\kRn{0.100}\kRn{-0.551}{\char177}\kRn{0.170}k\kRn{-0.200}{\char130}\kRn{0.100}{\char207}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{-0.230}{\char131}\kRn{0.030}\kRn{0.100}a\kRn{-0.442}{\char141}\kRn{-0.360}{\char143}\kRn{-0.021}\kRn{0.157}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100} %
+c\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}
+%
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.100}{\char135}\kRn{0.100}\kRn{-0.731}{\char164}\kRn{0.350}k\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}i\kRn{0.100}G\kRn{-0.379}{\char129}\kRn{0.100}l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}S\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+{\char23}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+L\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}{\char233}\kRn{-0.350}{\char129}\kRn{0.100}\kRn{-0.723}{\char164}\kRn{0.342}k\kRn{-0.200}{\char130}\kRn{0.100}'' %
+{\char23}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{0.010}{\char136}\kRn{0.100} %
+X\kRn{-0.278}{\char128}{\char136}\kRn{0.100}m\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.100}{\char136}\kRn{0.100}\kRn{-0.981}{\char164}\kRn{0.600}
+%
+Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}{\char206}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char202}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+b\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}g\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100}X\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+L\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}{\char233}\kRn{-0.350}{\char129}\kRn{0.100}{\char200}\kRn{0.100}.
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1381}%
+\vbox{{\tlgnx 
+%
+Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}{\char206}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char202}\kRn{0.100} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char207}\kRn{0.100} %
+{\char203}\kRn{0.100} ``%
+B\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100} %
+a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}m\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}\kRn{-0.561}{\char159}\kRn{0.141}I\kRn{-0.379}{\char129}\kRn{0.100} %
+{\char27}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}S\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100} %
+a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}i\kRn{-0.120}{\char130}\kRn{0.100}\kRn{-0.892}{\char177}\kRn{0.511}S\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}{\char207}\kRn{0.100} %
+S\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}I\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}{\char184}\kRn{0.100} 
+%
+{\char209}\kRn{-0.240}{\char145}\kRn{0.100}f\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}Q\kRn{0.100}. %
+B\kRn{0.100}{\char227}\kRn{0.020}{\char135}\kRn{0.100}Q\kRn{-0.230}{\char132}\kRn{0.030}\kRn{0.100} %
+{\char227}\kRn{0.100}{\char200}\kRn{-0.140}{\char130}\kRn{0.100}\kRn{-1.095}{\char161}\kRn{0.774}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}?'' %
+{\char23}\kRn{0.100}{\char207}\kRn{0.100} %
+a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.485}{\char175}\kRn{0.104}{\char229}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}L\kRn{-0.379}{\char129}\kRn{0.100}{\char200}\kRn{0.100}. %
+X\kRn{-0.379}{\char129}\kRn{0.100}{\char207}\kRn{0.100}a\kRn{-0.442}{\char141}\kRn{-0.360}{\char143}\kRn{-0.021}\kRn{0.157} %
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char200}\kRn{0.100} 
+%
+N\kRn{0.100}{\char221}\kRn{0.100}{\char187}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}V\kRn{-0.379}{\char129}\kRn{0.100} %
+{\char227}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char221}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char190}\kRn{0.100} ``%
+{\char23}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100} %
+{\char26}\kRn{0.100} %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char207}\kRn{0.100} %
+f\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{0.100} %
+Z\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+X\kRn{-0.379}{\char129}\kRn{0.100}{\char190}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+k\kRn{-0.442}{\char141}\kRn{0.110}\kRn{0.100}f\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100} 
+%
+c\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}I\kRn{-0.379}{\char129}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+Z\kRn{-0.379}{\char129}\kRn{0.100}U\kRn{-0.300}{\char130}\kRn{0.100}i{\char135}\kRn{0.100} %
+A\kRn{0.100}i{\char135}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}i{\char135}\kRn{0.100} %
+{\char202}\kRn{0.100}{\char207}\kRn{0.100}k\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}n\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}{\char200}\kRn{0.100}, %
+E\kRn{0.100} %
+{\char190}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100} %
+{\char217}\kRn{0.100}S\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.505}{\char161}\kRn{0.184}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100} %
+S\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}I\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}{\char184}\kRn{0.100} 
+%
+{\char209}\kRn{-0.240}{\char145}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}S\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char223}\kRn{-0.150}{\char146}\kRn{0.100} %
+{\char24}\kRn{0.100}l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char154}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100}{\char142}\kRn{-0.300}e\kRn{0.065}\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}{\char135}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char205}\kRn{0.100}?'' %
+{\char23}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100}{\char200}\kRn{0.100}.
+%
+N\kRn{0.100}{\char221}\kRn{0.100}{\char187}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}V\kRn{-0.379}{\char129}\kRn{0.100} %
+I\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.405}{\char175}\kRn{0.024}\kRn{-0.060}{\char10}\kRn{0.200}{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char190}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}{\char206}\kRn{0.100}G\kRn{-0.379}{\char129}\kRn{0.100}{\char221}\kRn{0.100}, 
+%
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char207}\kRn{0.100} %
+f\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}Q\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100} %
+a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}i\kRn{0.100}\kRn{-0.551}{\char177}\kRn{0.170}k\kRn{-0.200}{\char130}\kRn{0.100}{\char207}\kRn{0.100}{\char207}\kRn{0.100} %
+g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char190}\kRn{0.100} %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char207}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+{\char23}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}N\kRn{-0.300}{\char141}\kRn{0.285}\kRn{0.100}a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}, 
+%
+{\char227}\kRn{0.020}{\char135}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.751}{\char175}\kRn{0.370}{\char207}\kRn{0.100}{\char233}\kRn{-0.240}{\char144}\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}{\char135}\kRn{0.100}\kRn{-0.200}{\char173}\kRn{0.100} %
+{\char23}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.060}{\char10}\kRn{0.200}{\char23}\kRn{0.100}{\char221}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char190}\kRn{0.100} %
+Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\kRn{-0.200}{\char173}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+X\kRn{-0.241}{\char145}\kRn{0.100}\kRn{-0.837}{\char175}\kRn{0.456}o\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}{\char141}\kRn{-0.300}e{\char135}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char221}\kRn{0.100}\kRn{-0.200}{\char154}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}{\char135}\kRn{0.100}a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\kRn{-0.675}{\char164}\kRn{0.294}{\char207}\kRn{0.100} %
+{\char24}\kRn{0.100}n\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}\kRn{-0.481}{\char164}\kRn{0.100} 
+%
+{\char233}\kRn{-0.350}{\char129}\kRn{0.100}\kRn{-0.200}{\char179}\kRn{0.100}{\char206}\kRn{-0.167}{\char134}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+L\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.100}{\char135}\kRn{0.100}G\kRn{-0.241}{\char144}\kRn{0.100}{\char207}\kRn{0.100}, %
+{\char23}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char223}\kRn{-0.150}{\char146}\kRn{0.100}Z\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}{\char190}\kRn{0.100}
+%
+{\char25}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.565}{\char175}\kRn{0.184}{\char209}\kRn{-0.350}{\char129}\kRn{0.100}{\char222}\kRn{0.100}V\kRn{-0.278}{\char128}{\char135}\kRn{0.100}{\char207}\kRn{0.100}G\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+g\kRn{-0.379}{\char129}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}i\kRn{0.100}n\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+k\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}f\kRn{0.100} %
+Z\kRn{-0.379}{\char129}\kRn{0.100}U\kRn{-0.300}{\char130}\kRn{0.100}i{\char135}\kRn{0.100} 
+%
+{\char25}\kRn{0.100}a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}L\kRn{-0.379}{\char129}\kRn{0.100}{\char200}\kRn{0.100}.
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+
+
+%
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1383}%
+\vbox{{\tlgs 
+%
+o\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}{\char221}\kRn{0.100}\kRn{-0.060}{\char10}\kRn{0.200} %
+E\kRn{0.100}e\kRn{-0.554}{\char148}\kRn{0.173}\kRn{0.100}\TGbarr\ \TGBan %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} \TGBud %
+{\char194}\kRn{-0.050}{\char133}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} \TGBan %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\TGBan %
+X\kRn{-0.241}{\char145}\kRn{0.100}
+%
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\TGBud %
+g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.405}{\char167}\kRn{0.042}e\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\TGBan %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char180}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}
+%
+{\char142}\kRn{-0.300}o\kRn{0.065}\kRn{0.100}\TGud\TGBan %
+e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.694}{\char164}\kRn{0.313}\TGBan %
+P\kRn{0.100}\kRn{-0.200}{\char155}\kRn{0.100}\kRn{-1.031}{\char183}\kRn{0.597}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\TGBud %
+e\kRn{-0.600}{\char128}\kRn{0.311}{\char135}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\TGBan %
+n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.694}{\char164}\kRn{0.313}\TGnp\TGbar\ 
+\TGBan %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\TGBud %
+{\char227}\kRn{0.020}{\char135}\kRn{0.100}\TGCan %
+Z\kRn{-0.379}{\char129}\kRn{0.100}\kRn{-0.694}{\char167}\kRn{0.331}\kRn{-0.694}\sBs{-0.300}{{\char175}}\kRn{0.313}{\char187}\kRn{-0.167}{\char134}\kRn{0.100}\kRn{-0.200}{\char168}\kRn{0.100} \TGBud %
+Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\TGBan %
+{\char227}\kRn{0.100}V\kRn{-0.379}{\char129}\kRn{0.100}
+\TGBud %
+c\kRn{-0.140}{\char137}\kRn{0.100}\hbox{\TGBan %
+o\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}}%
+Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char169}\kRn{0.100}{\char202}\kRn{0.100}\TGBan %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char180}\kRn{0.100}
+%
+V\kRn{-0.379}{\char129}\kRn{0.100}\TGBud %
+f\kRn{-0.600}{\char128}\kRn{0.311}{\char135}\kRn{0.100}{\char231}\kRn{-0.350}{\char129}\kRn{0.100} \TGBan %
+o\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}{\char227}\kRn{0.100}\TGBan %
+m\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+a\kRn{-0.278}{\char128}\kRn{-0.320}{\char210}\kRn{0.100}\TGBud %
+Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}\kRn{-0.651}{\char166}\kRn{0.288}\kRn{-0.060}{\char10}\kRn{0.200}\TGbarr\ 
+%
+{\char29}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char182}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}o\kRn{-0.617}{\char131}\kRn{0.400}\kRn{0.100}V\kRn{-0.379}{\char129}\kRn{0.100}\TGbarr\ 
+{{\char21}-{\char21}-{\char15}{\char13}} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}I\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\TGvp\TGbarr\ 
+%
+{\char23}\kRn{0.100}n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100} %
+e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.485}{\char164}\kRn{0.104}\kRn{-0.485}\sBs{-0.300}{{\char175}}\kRn{0.104}n\kRn{-0.378}{\char128}\kRn{0.111}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100} %
+{\char207}\kRn{0.100}g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}G\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.405}{\char164}\kRn{0.024}e\kRn{-0.554}{\char148}\kRn{0.173}\kRn{0.100}. ---
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1384}%
+\vbox{{\tlgs 
+%
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+{\char194}\kRn{-0.050}{\char133}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}X\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}X\kRn{-0.241}{\char145}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.405}{\char167}\kRn{0.042}e\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+{\char25}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100}a\kRn{-0.278}{\char131}\kRn{0.068}\kRn{0.100} %
+{\char207}\kRn{0.100}I\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char141}\kRn{-0.300}e\kRn{-0.250}{\char129}\kRn{0.100} %
+d\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char202}\kRn{0.100}\TGbar\ 
+%
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char227}\kRn{0.020}{\char135}\kRn{0.100}{\char202}\kRn{0.100} %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+{\char205}\kRn{-0.167}{\char134}\kRn{0.100}J\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\TGvp %
+e\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.311}{\char135}\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\TGvp %
+g\kRn{-0.278}{\char128}{\char135}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+B\kRn{0.100}Z\kRn{-0.379}{\char129}\kRn{0.100} %
+k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Y\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\TGvp %
+f\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}{\char207}\kRn{0.100}\kRn{-0.471}{\char164}\kRn{0.090}
+%
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char141}\kRn{-0.300}e{\char135}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char141}\kRn{-0.300}e{\char135}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100} %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.379}{\char129}\kRn{0.100}Q\kRn{-0.170}{\char130}\kRn{0.100}\kRn{-0.200}{\char173}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+d\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char202}\kRn{0.100} %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}e\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}Z\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.485}{\char164}\kRn{0.104}\kRn{-0.050}{\char9}\kRn{0.100} %
+d\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char202}\kRn{0.100} %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char141}\kRn{-0.300}e\kRn{-0.555}{\char143}\kRn{0.174}\kRn{0.100}l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char179}\kRn{0.100}g\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.200}{\char174}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100}
+%
+d\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}k\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char202}\kRn{0.100} %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}{\char227}\kRn{0.020}{\char135}\kRn{0.100}{\char202}\kRn{0.100} %
+l\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}V\kRn{-0.278}{\char128}\kRn{0.011}\kRn{0.100}\kRn{-0.050}{\char9}\kRn{0.100} %
+X\kRn{-0.442}{\char142}\kRn{0.123}\kRn{0.100}J\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}\TGvp %
+e\kRn{-0.600}{\char128}\kRn{0.100}{\char129}\kRn{0.100}f\kRn{-0.600}{\char128}\kRn{0.311}{\char135}\kRn{0.100}\kRn{-0.060}{\char10}\kRn{0.200}\TGbar\ %
+o\kRn{-0.600}{\char128}\kRn{0.311}\kRn{0.100}{\char221}\kRn{0.100}\kRn{-0.060}{\char10}\kRn{0.200} %
+E\kRn{0.100}e\kRn{-0.554}{\char148}\kRn{0.173}\kRn{0.100}\TGbarr
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+
+\end{document}

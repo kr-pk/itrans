@@ -1,0 +1,29 @@
+# NOT USED as of ITRANS 5.31 and texlive
+# use updmap-sys, etc to make system config contain the PSHEADERS
+# and psfonts.map
+#
+# to use this:
+# export DVIPSRC=/usr/share/itrans53/lib/DVIPSRC
+# assuming a normal install was done.
+# This file is not necessary if the INSTALL.unix instructions were followed
+# and the TEXPSHEADERS and TEXPSFONTMAPS are updated.
+#
+# make default resolution 300, makes .ps files smaller!
+# D 300
+# instead of D, use mode, which causes less confusion. pick a 300dpi mode
+#M jetiiisi
+# R: use these font sizes if any font size missing - don't, use default list.
+# R 300 329 432
+#f: run as a filter
+#f
+#o [filename] put output in given file (no-name -> <fname>.ps, !lpr does !lpr)
+o
+# H: search for PS header files..(font files, etc) or use TEXPSHEADERS
+# I think the : here makes dvips look into standard places first
+# H :/usr/share/itrans53/lib:/usr/share/itrans53/lib/fonts
+# H /usr/share/itrans53/lib/fonts:
+#
+# add the following psfonts.map file ...
+p +/usr/share/itrans53/lib/itrans.map
+# suppress partial loading of fonts (breaks itxbeng and itxguj, atleast in 2001)
+j0

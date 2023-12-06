@@ -1,0 +1,674 @@
+\documentclass[11pt]{article}
+% User Documentation for the Itrans Package
+% The Tamil Language Transliteration Table
+
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latex2html
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+\newcommand{\ST}{\char35 tamil}
+\newcommand{\ET}{\char35 endtamil}
+\newfont{\cmt}{cmtt12}
+\newfont{\cmts}{cmtt9}
+
+\newfont{\tmlb}{wntml12}
+\newfont{\tmls}{wntml10}
+\hyphenchar\tmlb=-1 % disable hyphenation using this font
+\hyphenchar\tmls=-1 % disable hyphenation using this font
+
+#tamilifm=wntml.ifm
+#tamilfont=\tmlb
+
+\begin{document}
+
+\footnotetext[0]{Last modification: \today}
+
+\centerline{\LARGE\bf Transliteration Map}
+\medskip
+\centerline{\LARGE\bf Tamil Font (wntml)}
+\bigskip
+\centerline{\LARGE\bf itrans}
+\smallskip
+\centerline{\bf \copyright 1991--1998 Avinash Chopde}
+
+\section{Fonts Available --- \TeX\ Interface}
+
+The single font {\em wntml}, is available in three sizes: 10, 12 and
+17~points.
+The names are {\em wntml10}, {\em wntml12}, and {\em wntml17}
+respectively.
+
+In this document (and in idoc.itx), the following lines were used for
+loading the font:
+
+\noindent\verb+\newfont{\tmlb}{wntml12}+.
+
+\noindent\verb+\newfont{\tmls}{wntml10}+.
+
+The command {\tt \char92tmlb} refers to the font of size 12, and the
+command {\tt \char92tmls} refers to the font of size 10 points.
+
+This package also includes the MF and PK files for the font.
+Since the MF files are also present, you can use them to generate any
+other PK and TFM files you need, to get fonts that are transformed
+versions (scaled, slanted, etc) of the basic Washington Tamil font.
+
+\subsection{Points to Note}
+
+\begin{itemize}
+
+\item The font used, wntml, is a Metafont description, hence, this font
+cannot be used to directly generate PostScript output from itrans.
+The only way to use this font with {\em itrans} is to produce documents
+in \TeX.
+
+\item The font used, wntml, does not have any numerals or any punctuation
+characters.
+Therefore, if you need to use numbers or punctuation marks between the
+\ST\ and \ET\ markers, remember to change the font before any number or
+any punctuation mark.
+
+For numbers, it is usually sufficient to use the \$ enclosing scope to
+make them print correctly, since a \$ enters mathmode and uses the math
+fonts.
+For punctuation marks, the user needs to explicitly change fonts:
+example:
+
+\noindent{\tt \ST ......\{\char92rm ;\}.......\ET}.
+
+The example in the previous section uses these methods.
+
+\end{itemize}
+
+\subsection{Archaic Character Forms}
+
+As shown in table 2, the consonant-vowel forms follow certain modern
+tamil conventions. (I use the terms modern and archaic loosely, and they
+only reflect current tamil standards in India, other countries may not
+follow these.)
+It is possible to get the older alternate character forms that print out thus:
+
+{\tt NA:} {\tmlb%
+{\char49} }% End of Indian Language
+
+{\tt Nai:} {\tmlb%
+{\char54} }% End of Indian Language
+
+{\tt No:} {\tmlb%
+{\char22\char49} }% End of Indian Language
+
+{\tt NO:} {\tmlb%
+{\char23\char49} }% End of Indian Language
+
+{\tt nA:} {\tmlb%
+{\char145} }% End of Indian Language
+
+{\tt nai:} {\tmlb%
+{\char150} }% End of Indian Language
+
+{\tt no:} {\tmlb%
+{\char22\char145} }% End of Indian Language
+
+{\tt nO:} {\tmlb%
+{\char23\char145} }% End of Indian Language
+
+{\tt Lai:} {\tmlb%
+{\char134} }% End of Indian Language
+
+{\tt RA:} {\tmlb%
+{\char137} }% End of Indian Language
+
+{\tt Ro:} {\tmlb%
+{\char22\char137} }% End of Indian Language
+
+{\tt RO:} {\tmlb%
+{\char23\char137} }% End of Indian Language
+
+\bigskip
+To enable these forms, you need to edit the wntml.ifm file: better
+make a copy, and name it wntmla.ifm, and edit the new file.
+
+Search the wntmla.ifm file for the word {\em ARCHAIC}, and delete
+that word.
+You should see twelve such instances, corresponding to the characters
+above.
+
+Once that is done, specify the new IFM file with the {\tt \char35tamilifm}
+keyword, and all the above twelve consonant forms will print out as above.
+(See the user manual idoc.itx for exact details regarding the {\tt
+\char35tamilifm} keyword.)
+
+\section{Example}
+
+\noindent $\bullet$ English Input:
+\bigskip
+
+\noindent {\tt \char123 {\ST}}
+\begin{verbatim}
+namadhu chUriya maNTalaththai viTTup paya^nIr{\rm ,} vAyEjar
+viNkala~NkaL veLiyERi viNmI^n kaLai nOkki viraindhu
+koNTirukki^nRa^na{\rm .}
+idhaRkE padhdhuppadhi^nARu ANTukaLAki viTTa^na{\rm .}
+viNmI^nkaLukkuch churukkAka payaNam chella i^nRaiya
+vEdhiyal EvUrdhikaL kaikoTukkA{\rm .} ivaRRi^nAl maNikku
+$ 40 $ Ayiram kilO mITTar vEkadhdhaiyE eTTa muTiyum{\rm .}
+\end{verbatim}
+\noindent {\tt \ET\char125}
+
+\bigskip\bigskip
+
+\noindent $\bullet$ Tamil Output:
+\bigskip
+
+#tamil
+\noindent namadhu chUriya maNTalaththai viTTup paya^nIr{\rm ,} 
+vAyEjar
+viNkala~NkaL veLiyERi
+viNmI^nkaLai nOkki viraindhu koNTirukki^nRa^na{\rm .}
+idhaRkE padhdhuppadhi^nARu ANTukaLAki viTTa^na{\rm .} \\
+viNmI^nkaLukkuch churukkAka payaNam chella i^nRaiya vEdhiyal 
+EvUrdhikaL
+kaikoTukkA{\rm .}
+ivaRRi^nAl maNikku $ 40 $ Ayiram kilO mITTar vEkadhdhaiyE eTTa
+muTiyum{\rm .}
+#endtamil
+
+\section{Acknowledgements}
+
+The support for tamil in the initial version of {\em itrans} package has
+been possible
+only because of the help I received from {\tt Sriram Tyagarajan}.
+I would like to thank him for his help in making me relate the {\em
+itrans} package to the tamil alphabet, and his patience in proof-reading
+all the printouts I sent him.
+
+The current version of ITRANS makes use of Tamil enhancements from many
+other people, particularly
+Siddharthan Ramachandramurthi who added glyphs to the tamil font, and to
+Shree for many modifications to the IFM file.
+
+\subsection{Font Developer}
+
+  The Washington Tamil font (wntml) was created by the
+  Humanities and Arts Computing Center of the University of Washington,
+  USA.
+  I would like to thank them for making this font available as freeware.
+
+{\obeylines\cmts
+\noindent Thomas Ridgeway, Director,
+\noindent Humanities and Arts Computing Center/NorthWest Computing Support Center
+\noindent Internet: ridgeway@blackbox.hacc.washington.edu
+}
+
+The current version of {\tt tamil.mf} Wntml font that is distributed
+with ITRANS has been developed by
+Siddharthan Ramachandramurthi, it includes updates to a few of the
+original glyphs, and it also adds a few more characters to the font.
+
+\bigskip
+\hrule
+\vfill
+
+\bigskip
+\section{Author}
+
+\noindent
+ITRANS has been developed by Avinash Chopde. \\
+E-mail:
+\htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com}. \\
+Home page:
+\htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+
+\bigskip
+\hrule
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Tamil Table}
+\end{htmlonly}
+
+\begin{table}[hp]
+\begin{center}
+\begin{tabular}{c@{\hspace{1in}}c@{\hspace{1in}}c}
+% --- first col is vowels inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#tamil a #endtamil}	& {\tt a} \\ \hline
+{#tamil aa #endtamil}	& {\tt aa {\it or} A} \\ \hline
+{#tamil i #endtamil}	& {\tt i} \\ \hline
+{#tamil ii #endtamil}	& {\tt ii {\it or} I} \\ \hline
+{#tamil u #endtamil}	& {\tt u} \\ \hline
+{#tamil uu #endtamil}	& {\tt uu {\it or} U} \\ \hline
+{#tamil e #endtamil}	& {\tt e} \\ \hline
+{#tamil E #endtamil}	& {\tt E} \\ \hline
+{#tamil ai #endtamil}	& {\tt ai} \\ \hline
+{#tamil o #endtamil}	& {\tt o} \\ \hline
+{#tamil O #endtamil}	& {\tt O} \\ \hline
+{#tamil au #endtamil}	& {\tt au} \\ \hline
+\multicolumn{2}{c}{ }\\
+\multicolumn{2}{c}{ }\\
+\hline
+{#tamil q #endtamil}	& {\tt q} \\ \hline
+{#tamil SRI #endtamil}	& {\tt SRI} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end first col 
+&
+% --- second col is consonants 
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#tamil ka  #endtamil}	& {\tt k{\it a} {\it or} g{\it a}} \\ \hline
+{#tamil ~Na  #endtamil}	& {\tt \char`~N{\it a or} N\char`^{\it a}} \\ \hline
+{#tamil cha  #endtamil}	& {\tt ch{\it a}} \\ \hline
+{#tamil ~na  #endtamil}	& {\tt {\char`~}n{\it a}} \\ \hline
+{#tamil Ta  #endtamil}	& {\tt T{\it a} {\it or} Th{\it a}} \\ \hline
+{#tamil Na  #endtamil}	& {\tt N{\it a}} \\ \hline
+{#tamil ta  #endtamil}	& {\tt t{\it a} {\it or} th{\it a}} \\ \hline
+{#tamil na  #endtamil}	& {\tt n{\it a}} \\ \hline
+{#tamil ^na  #endtamil}	& {\tt \char`^n{\it a}} \\ \hline
+{#tamil pa  #endtamil}	& {\tt p{\it a} {\it or} b{\it a}} \\ \hline
+{#tamil ma  #endtamil}	& {\tt m{\it a}} \\ \hline
+{#tamil ya  #endtamil}	& {\tt y{\it a}} \\ \hline
+{#tamil ra  #endtamil}	& {\tt r{\it a}} \\ \hline
+{#tamil la  #endtamil}	& {\tt l{\it a}} \\ \hline
+{#tamil va  #endtamil}	& {\tt v{\it a or} w{\it a}} \\ \hline
+{#tamil za  #endtamil}	& {\tt J{\it a or} z{\it a}} \\ \hline
+{#tamil La  #endtamil}	& {\tt L{\it a}} \\ \hline
+{#tamil Ra  #endtamil}	& {\tt R{\it a}} \\ \hline
+{#tamil sha  #endtamil}	& {\tt sh{\it a}} \\ \hline
+{#tamil Sha  #endtamil}& {\tt Sh{\it a}} \\ \hline
+{#tamil sa  #endtamil}	& {\tt s{\it a}} \\ \hline
+{#tamil ja  #endtamil}	& {\tt j{\it a}} \\ \hline
+{#tamil ha  #endtamil}	& {\tt h{\it a}} \\ \hline
+{#tamil xa  #endtamil}	& {\tt x{\it a} {\it or} ksh{\it a}} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\end{tabular} % end the larger tabular encompassing all two tables
+\hfill
+\\
+\end{center}
+\caption {\bf ITRANS: Tamil to English Transliteration Table.}
+\label{ienc}
+\end{table}
+
+#tamilfont=\tmls
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{All the Consonant-Vowel Forms}
+\end{htmlonly}
+
+\begin{table}[hp]
+\vspace*{-0.00in}
+\hspace*{-0.5in}\mbox{\vbox{ % this hspace and vspace doesn't work...
+\begin{makeimage}
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|} % 14 columns
+\hline
+\tt \char92 &
+\tt &
+\tt a &
+\tt A &
+\tt i &
+\tt I &
+\tt u &
+\tt U &
+\tt e &
+\tt E &
+\tt ai &
+\tt o &
+\tt O &
+\tt au \\ \hline\hline
+\tt k			&
+#tamil k #endtamil	&
+#tamil ka #endtamil	&
+#tamil kA #endtamil	&
+#tamil ki #endtamil	&
+#tamil kI #endtamil	&
+#tamil ku #endtamil	&
+#tamil kU #endtamil	&
+#tamil ke #endtamil	&
+#tamil kE #endtamil	&
+#tamil kai #endtamil	&
+#tamil ko #endtamil	&
+#tamil kO #endtamil	&
+#tamil kau #endtamil	\\ \hline
+\tt {\char`~}N &
+#tamil ~N #endtamil &
+#tamil ~Na #endtamil &
+#tamil ~NA #endtamil &
+#tamil ~Ni #endtamil &
+#tamil ~NI #endtamil &
+#tamil ~Nu #endtamil &
+#tamil ~NU #endtamil &
+#tamil ~Ne #endtamil &
+#tamil ~NE #endtamil &
+#tamil ~Nai #endtamil &
+#tamil ~No #endtamil &
+#tamil ~NO #endtamil &
+#tamil ~Nau #endtamil \\ \hline
+\tt ch &
+#tamil ch #endtamil &
+#tamil cha #endtamil &
+#tamil chA #endtamil &
+#tamil chi #endtamil &
+#tamil chI #endtamil &
+#tamil chu #endtamil &
+#tamil chU #endtamil &
+#tamil che #endtamil &
+#tamil chE #endtamil &
+#tamil chai #endtamil &
+#tamil cho #endtamil &
+#tamil chO #endtamil &
+#tamil chau #endtamil \\ \hline
+\tt {\char`~}n &
+#tamil ~n #endtamil &
+#tamil ~na #endtamil &
+#tamil ~nA #endtamil &
+#tamil ~ni #endtamil &
+#tamil ~nI #endtamil &
+#tamil ~nu #endtamil &
+#tamil ~nU #endtamil &
+#tamil ~ne #endtamil &
+#tamil ~nE #endtamil &
+#tamil ~nai #endtamil &
+#tamil ~no #endtamil &
+#tamil ~nO #endtamil &
+#tamil ~nau #endtamil \\ \hline
+\tt T &
+#tamil T #endtamil &
+#tamil Ta #endtamil &
+#tamil TA #endtamil &
+#tamil Ti #endtamil &
+#tamil TI #endtamil &
+#tamil Tu #endtamil &
+#tamil TU #endtamil &
+#tamil Te #endtamil &
+#tamil TE #endtamil &
+#tamil Tai #endtamil &
+#tamil To #endtamil &
+#tamil TO #endtamil &
+#tamil Tau #endtamil \\	\hline
+\tt N &
+#tamil N #endtamil &
+#tamil Na #endtamil &
+#tamil NA #endtamil &
+#tamil Ni #endtamil &
+#tamil NI #endtamil &
+#tamil Nu #endtamil &
+#tamil NU #endtamil &
+#tamil Ne #endtamil &
+#tamil NE #endtamil &
+#tamil Nai #endtamil &
+#tamil No #endtamil &
+#tamil NO #endtamil &
+#tamil Nau #endtamil \\	\hline
+\tt t &
+#tamil t #endtamil &
+#tamil ta #endtamil &
+#tamil tA #endtamil &
+#tamil ti #endtamil &
+#tamil tI #endtamil &
+#tamil tu #endtamil &
+#tamil tU #endtamil &
+#tamil te #endtamil &
+#tamil tE #endtamil &
+#tamil tai #endtamil &
+#tamil to #endtamil &
+#tamil tO #endtamil &
+#tamil tau #endtamil \\ \hline
+\tt n &
+#tamil n #endtamil &
+#tamil na #endtamil &
+#tamil nA #endtamil &
+#tamil ni #endtamil &
+#tamil nI #endtamil &
+#tamil nu #endtamil &
+#tamil nU #endtamil &
+#tamil ne #endtamil &
+#tamil nE #endtamil &
+#tamil nai #endtamil &
+#tamil no #endtamil &
+#tamil nO #endtamil &
+#tamil nau #endtamil \\	\hline
+\tt \char`^n &
+#tamil ^n #endtamil &
+#tamil ^na #endtamil &
+#tamil ^nA #endtamil &
+#tamil ^ni #endtamil &
+#tamil ^nI #endtamil &
+#tamil ^nu #endtamil &
+#tamil ^nU #endtamil &
+#tamil ^ne #endtamil &
+#tamil ^nE #endtamil &
+#tamil ^nai #endtamil &
+#tamil ^no #endtamil &
+#tamil ^nO #endtamil &
+#tamil ^nau #endtamil \\ \hline
+\tt p &
+#tamil p #endtamil &
+#tamil pa #endtamil &
+#tamil pA #endtamil &
+#tamil pi #endtamil &
+#tamil pI #endtamil &
+#tamil pu #endtamil &
+#tamil pU #endtamil &
+#tamil pe #endtamil &
+#tamil pE #endtamil &
+#tamil pai #endtamil &
+#tamil po #endtamil &
+#tamil pO #endtamil &
+#tamil pau #endtamil \\	\hline
+\tt m &
+#tamil m #endtamil &
+#tamil ma #endtamil &
+#tamil mA #endtamil &
+#tamil mi #endtamil &
+#tamil mI #endtamil &
+#tamil mu #endtamil &
+#tamil mU #endtamil &
+#tamil me #endtamil &
+#tamil mE #endtamil &
+#tamil mai #endtamil &
+#tamil mo #endtamil &
+#tamil mO #endtamil &
+#tamil mau #endtamil \\	\hline
+\tt y &
+#tamil y #endtamil &
+#tamil ya #endtamil &
+#tamil yA #endtamil &
+#tamil yi #endtamil &
+#tamil yI #endtamil &
+#tamil yu #endtamil &
+#tamil yU #endtamil &
+#tamil ye #endtamil &
+#tamil yE #endtamil &
+#tamil yai #endtamil &
+#tamil yo #endtamil &
+#tamil yO #endtamil &
+#tamil yau #endtamil \\	\hline
+\tt r &
+#tamil r #endtamil &
+#tamil ra #endtamil &
+#tamil rA #endtamil &
+#tamil ri #endtamil &
+#tamil rI #endtamil &
+#tamil ru #endtamil &
+#tamil rU #endtamil &
+#tamil re #endtamil &
+#tamil rE #endtamil &
+#tamil rai #endtamil &
+#tamil ro #endtamil &
+#tamil rO #endtamil &
+#tamil rau #endtamil \\	\hline
+\tt l &
+#tamil l #endtamil &
+#tamil la #endtamil &
+#tamil lA #endtamil &
+#tamil li #endtamil &
+#tamil lI #endtamil &
+#tamil lu #endtamil &
+#tamil lU #endtamil &
+#tamil le #endtamil &
+#tamil lE #endtamil &
+#tamil lai #endtamil &
+#tamil lo #endtamil &
+#tamil lO #endtamil &
+#tamil lau #endtamil \\	\hline
+\tt v &
+#tamil v #endtamil &
+#tamil va #endtamil &
+#tamil vA #endtamil &
+#tamil vi #endtamil &
+#tamil vI #endtamil &
+#tamil vu #endtamil &
+#tamil vU #endtamil &
+#tamil ve #endtamil &
+#tamil vE #endtamil &
+#tamil vai #endtamil &
+#tamil vo #endtamil &
+#tamil vO #endtamil &
+#tamil vau #endtamil \\	\hline
+\tt z &
+#tamil z #endtamil &
+#tamil za #endtamil &
+#tamil zA #endtamil &
+#tamil zi #endtamil &
+#tamil zI #endtamil &
+#tamil zu #endtamil &
+#tamil zU #endtamil &
+#tamil ze #endtamil &
+#tamil zE #endtamil &
+#tamil zai #endtamil &
+#tamil zo #endtamil &
+#tamil zO #endtamil &
+#tamil zau #endtamil \\	\hline
+\tt L &
+#tamil L #endtamil &
+#tamil La #endtamil &
+#tamil LA #endtamil &
+#tamil Li #endtamil &
+#tamil LI #endtamil &
+#tamil Lu #endtamil &
+#tamil LU #endtamil &
+#tamil Le #endtamil &
+#tamil LE #endtamil &
+#tamil Lai #endtamil &
+#tamil Lo #endtamil &
+#tamil LO #endtamil &
+#tamil Lau #endtamil \\	\hline
+\tt R &
+#tamil R #endtamil &
+#tamil Ra #endtamil &
+#tamil RA #endtamil &
+#tamil Ri #endtamil &
+#tamil RI #endtamil &
+#tamil Ru #endtamil &
+#tamil RU #endtamil &
+#tamil Re #endtamil &
+#tamil RE #endtamil &
+#tamil Rai #endtamil &
+#tamil Ro #endtamil &
+#tamil RO #endtamil &
+#tamil Rau #endtamil \\	\hline
+\tt sh &
+#tamil sh #endtamil &
+#tamil sha #endtamil &
+#tamil shA #endtamil &
+#tamil shi #endtamil &
+#tamil shI #endtamil &
+#tamil shu #endtamil &
+#tamil shU #endtamil &
+#tamil she #endtamil &
+#tamil shE #endtamil &
+#tamil shai #endtamil &
+#tamil sho #endtamil &
+#tamil shO #endtamil &
+#tamil shau #endtamil \\ \hline
+\tt Sh &
+#tamil Sh #endtamil &
+#tamil Sha #endtamil &
+#tamil ShA #endtamil &
+#tamil Shi #endtamil &
+#tamil ShI #endtamil &
+#tamil Shu #endtamil &
+#tamil ShU #endtamil &
+#tamil She #endtamil &
+#tamil ShE #endtamil &
+#tamil Shai #endtamil &
+#tamil Sho #endtamil &
+#tamil ShO #endtamil &
+#tamil Shau #endtamil \\ \hline
+\tt s &
+#tamil s #endtamil &
+#tamil sa #endtamil &
+#tamil sA #endtamil &
+#tamil si #endtamil &
+#tamil sI #endtamil &
+#tamil su #endtamil &
+#tamil sU #endtamil &
+#tamil se #endtamil &
+#tamil sE #endtamil &
+#tamil sai #endtamil &
+#tamil so #endtamil &
+#tamil sO #endtamil &
+#tamil sau #endtamil \\	\hline
+\tt j &
+#tamil j #endtamil &
+#tamil ja #endtamil &
+#tamil jA #endtamil &
+#tamil ji #endtamil &
+#tamil jI #endtamil &
+#tamil ju #endtamil &
+#tamil jU #endtamil &
+#tamil je #endtamil &
+#tamil jE #endtamil &
+#tamil jai #endtamil &
+#tamil jo #endtamil &
+#tamil jO #endtamil &
+#tamil jau #endtamil \\	\hline
+\tt h &
+#tamil h #endtamil &
+#tamil ha #endtamil &
+#tamil hA #endtamil &
+#tamil hi #endtamil &
+#tamil hI #endtamil &
+#tamil hu #endtamil &
+#tamil hU #endtamil &
+#tamil he #endtamil &
+#tamil hE #endtamil &
+#tamil hai #endtamil &
+#tamil ho #endtamil &
+#tamil hO #endtamil &
+#tamil hau #endtamil \\	\hline
+\tt x &
+#tamil x #endtamil &
+#tamil xa #endtamil &
+#tamil xA #endtamil &
+#tamil xi #endtamil &
+#tamil xI #endtamil &
+#tamil xu #endtamil &
+#tamil xU #endtamil &
+#tamil xe #endtamil &
+#tamil xE #endtamil &
+#tamil xai #endtamil &
+#tamil xo #endtamil &
+#tamil xO #endtamil &
+#tamil xau #endtamil \\	\hline
+\end{tabular}
+\end{makeimage}
+\vspace{0.10in}
+}} % end hbox and vbox
+\caption {\bf Tamil Consonants with their Vowel Forms.}
+\end{table}
+
+\end{document}

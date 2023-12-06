@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Example LaTeX Input File for using ITRANS (Version 5.x)
+% For use with the TeX output mode of ITRANS.
+% Note: This file makes use of multiple Indic Script fonts, so it may all
+% seem a lot more complicated. In most cases, you may be using a single
+% font in any one document.
+% This file shows a Devanagari example, but other language scripts
+% are similar.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[preprocess]{itrans}	% useful macros for the ITRANS package
+			% itrans.sty is in the lib/ directory,
+			% taken from Ross Moore's extensions
+			% to latex2html
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% #output=TeX		% use this for producing TeX output (is default)
+% #output=HTML_7	% use this for producing HTML output (ASCII)
+% #output=HTML_8	% use this for producing HTML output (8-bit)
+% #output=UTF_8		% use this for producing HTML output (Unicode UTF-8)
+% #output=PostScript	% use this for producing PostScript output
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#useshortmarkers	% ITRANS command. Allows me to use ##
+			% instead of #<lang> and #end<lang>
+			% this is the default, ## can always be used, so
+			% it is not necessary to specify this.
+			% use #ignoreshortmarkers to disable ##
+			
+% #usecsx		% uncomment this if using CS/CSX input encoding 
+
+#indianifm=dvng.ifm	% ITRANS command
+#indianfont=\fransdvng	% ITRANS command: argument specifies use of
+			% Frans's dvng font, fransdvng is a command defined
+			% in itrans.sty (idevn.tex)
+
+#sanskritifm=dvng.ifm	% duplicates for #indian, not needed, but just
+#sanskritfont=\fransdvng % provided as an example.
+			
+#hindiifm=dvnc.ifm	% The PostScript devanagari font bundled with ITRANS
+#hindifont=\postdvng	% postdvng is defined in itrans.sty (idevn.tex)
+
+%begin{latexonly}
+\let\usedvng=\largedvng	% use largedvng size devanagari text, by default
+%end{latexonly}
+
+% \newfont{\romancsx}{ncpicsxp at 10pt} % NCS_CSX italic version
+\newfont{\romancsx}{ncprcsxp at 10pt} % NCS_CSX normal version at given pt size
+#romanifm=romancsx.ifm	% Romanized Sanskrit IFM file.
+#romanfont=\romancsx
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+		% also available: \landscapepage
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+{\bf Example Text Input File for ITRANS}
+
+\bigskip
+
+This is english text.
+
+\medskip
+Following sentences are in hindi, using Frans Velthuis's Devanagari font:
+\medskip
+
+%----------------------------------------------------------------------
+##	% ITRANS command, a toggle, here equivalent to #indian
+mai.n isakii kataii paravaah nahii.n karataa ki mere marane ke baada
+meraa yaa merii pratishhThaa kaa kyaa hogaa.
+lekin agar kuchh log mere baare mai.n sochanaa chaahe.n, to mai.n
+chaahuu.Ngaa ki ve yahii kahe.n ki is aadamii ne puure dilo\-dimaag se
+bhaarat aur bhaarat ke logo.n ko pyaar kiyaa, aur ve bhii usake prati
+utane hii anugrahii rahe aur unho.nne use apanaa bharapuur aur aparimit
+sneha pradaan kiyaa.
+
+{\englfont ---} ## % ITRANS command, a toggle, here equivalent to #endindian
+Jawaharlal Nehru
+
+\bigskip
+Some more lines, using a larger font size:
+\medskip
+
+%----------------------------------------------------------------------
+##	% ITRANS command, a toggle, here equivalent to #indian
+\LARGEdvng
+\noindent
+    kahii.n duur jab din Dhal jaaye \\
+    saa.Njh kii dulhan badan churaaye \\
+    chupake se aaye\\
+    mere khayaalo.n ke aa.ngan me.n \\
+    koii sapano ke diip jalaaye, diip jalaaye
+    
+##	% ITRANS command, a toggle, here equivalent to #endindian
+
+\bigskip
+Same lines, using the PostScript Devanagari font that is bundled with ITRANS:
+\smallskip
+
+%----------------------------------------------------------------------
+#hindi
+\LARGEdvng	% override default font definition temporarily
+\noindent
+    kahii.n duur jab din Dhal jaaye \\
+    saa.Njh kii dulhan badan churaaye \\
+    chupake se aaye\\
+    mere khayaalo.n ke aa.ngan me.n \\
+    koii sapano ke diip jalaaye, diip jalaaye
+
+#endhindi
+
+\bigskip
+Back to english.
+
+%----------------------------------------------------------------------
+\bigskip
+Now some example text in romanized sanskrit and then in sanskrit.
+\bigskip
+
+#roman
+
+  karmaNyevaadhikaaraste maa phaleshhu kadaachana | \\
+  maa karmaphalaheturbhuurmaa te saN^go.astvakarmaNi || 47 ||
+
+  yogasthaH kuru karmaaNi saN^ga.n tyaktvaa dhana.njaya | \\
+  sid.hdhyasid.hdhyoH samo bhuutvaa samatva.n yoga uchyate || 48 ||
+
+#endroman
+
+\bigskip
+
+#sanskrit
+
+  karmaNyevaadhikaaraste maa phaleshhu kadaachana | \\
+  maa karmaphalaheturbhuurmaa te saN^go.astvakarmaNi || 47||
+
+  yogasthaH kuru karmaaNi saN^ga.n tyaktvaa dhana.njaya | \\
+  sid.hdhyasid.hdhyoH samo bhuutvaa samatva.n yoga uchyate || 48||
+
+#endsanskrit
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

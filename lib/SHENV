@@ -1,0 +1,50 @@
+#!/bin/ksh
+
+#--- OLD file, not useful
+
+# For texlive, see INSTALL.unx in the top level dir.
+
+#-----------------------------------------------
+# Example Korn-Shell file that shows what environment variables
+# need to set to use ITRANS.
+# In all these examples, replace /usr/share/itrans53/ with the correct path
+# to ITRANS on your machine.
+
+# See src/makefile* for INSTALLDIR values
+# INSTALLDIR=/usr/share/itrans53
+#
+# For C-Shell users, instead of the export <VAR>=<value> syntax, use
+# this: setenv <VAR> <value>
+#
+
+#------------------------------------------------------------
+# ITRANSPATH is used by itrans, to look for the files it needs
+# (such as dvng.ifm, dvng10.tfm, devnac.afm, etc)
+# Not needed if ITRANS installed in default path
+
+# export ITRANSPATH=:/usr/share/itrans53/lib:/usr/share/itrans53/lib/fonts
+
+#------------------------------------------------------------
+# TEXFONTS is used by tex, latex, etc,
+# In some systems, even system wide paths have to be mentioned again here..
+
+export TEXFONTS=/usr/share/itrans53/lib/fonts:
+
+#------------------------------------------------------------
+# looks like dvips does not look for the pk files in TEXFONTS (it
+# does look for TFM files there), anyway, define TEXPKS for dvips
+# to be same as the TEXFONTS definition
+export TEXPKS=$TEXFONTS
+
+#------------------------------------------------------------
+# TEXCONFIG is used by dvips, and it understands the empty path
+# to mean search in the system wide area, so just need to 
+# provide our path here.., system wide paths are taken care of
+# automatically.
+
+export TEXCONFIG=/usr/share/itrans53/lib:/usr/share/itrans53/lib/fonts:
+
+#------------------------------------------------------------
+# TeX and MF input files (\input TeX command, and MetaFont *.mf files)
+export TEXINPUTS=/usr/share/itrans53/lib:/usr/share/itrans53/lib/fonts:
+export MFINPUTS=/usr/share/itrans53/lib/fonts:

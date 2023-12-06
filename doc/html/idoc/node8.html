@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Output Languages Supported</TITLE>
+<META NAME="description" CONTENT="Output Languages Supported">
+<META NAME="keywords" CONTENT="idoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="idoc.css">
+
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="idoc.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html136"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html134"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html128"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html137"
+  HREF="node9.html">Usage Hints</A>
+<B>Up:</B> <A NAME="tex2html135"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html129"
+  HREF="node7.html">Known Problems</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html138"
+  HREF="node8.html#SECTION00081000000000000000">Devanagari Output</A>
+<LI><A NAME="tex2html139"
+  HREF="node8.html#SECTION00082000000000000000">Tamil Output</A>
+<LI><A NAME="tex2html140"
+  HREF="node8.html#SECTION00083000000000000000">Telugu Output</A>
+<LI><A NAME="tex2html141"
+  HREF="node8.html#SECTION00084000000000000000">Bengali Output</A>
+<LI><A NAME="tex2html142"
+  HREF="node8.html#SECTION00085000000000000000">Gujarati Output</A>
+<LI><A NAME="tex2html143"
+  HREF="node8.html#SECTION00086000000000000000">Kannada Output</A>
+<LI><A NAME="tex2html144"
+  HREF="node8.html#SECTION00087000000000000000">Punjabi Output</A>
+<LI><A NAME="tex2html145"
+  HREF="node8.html#SECTION00088000000000000000">Romanized Sanskrit Output</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00080000000000000000">
+Output Languages Supported</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00081000000000000000">
+Devanagari Output</A>
+</H2>
+
+<P>
+Two devanagari fonts are supported.
+The bundled in devanagari font is a PostScript font, called <EM>devnac</EM>.
+<EM>devnac</EM> was developed (and is under further development) by Avinash Chopde.
+The other font is a Metafont font called <EM>devnag</EM> and has been developed by
+Frans Velthuis.
+More details regarding <EM>devnag</EM> can be found in the file <EM>dvng.itx</EM>, more details regarding <EM>devnac</EM> can be found in <EM>dvnc.itx</EM>.
+Transliteration tables for each language are available in those files, too.
+
+<P>
+<EM>devnac</EM> is a PostScript Type III font.
+This font can be used with both the T<SMALL>E</SMALL>X interface, and the direct
+PostScript interface mode of <EM>itrans</EM>.
+
+<P>
+The font is named <EM>dnh</EM> in the T<SMALL>E</SMALL>X interface, and variations are
+also available, named <EM>dnho</EM>, <EM>dnhrc</EM>, <EM>dnhre</EM>.
+In the direct PostScript interface, the generic font changing commands
+<EM>normalfont</EM>, <EM>slantfont</EM>, <EM>compressedfont</EM>,
+<EM>expandedfont</EM>, etc have to be used.
+See the file itrans.pro to get a handle on the workings of the above PostScript
+commands.
+
+<P>
+This devanagari font tries to be a all-encompassing font, for the hindi,
+marathi, and sanskrit languages.
+
+<P>
+See the reference document <EM>dvnc.itx</EM> for the transliteration map and
+example texts.
+The IFM file for this font is <EM>dvnc.ifm</EM>.
+
+<P>
+<EM>devnag</EM> is a Metafont font, and thus can only be used with the
+T<SMALL>E</SMALL>X interface of <EM>itrans</EM>.
+This font is supported by <EM>itrans</EM> in a limited manner, in that
+not all ligatures are available for use.
+Many ligatures are archaic, so I've left them out.
+Again, the document dvng.itx contains complete details and lists of the
+ligatures that are used and that are ignored by itrans.
+The IFM file for this font is <EM>dvng.ifm</EM>.
+
+<P>
+A derivative of the devnag font, called <EM>xdvng</EM> is also available, for
+use with the direct text HTML output mode of ITRANS. See dvng.itx for more
+info on this font.
+
+<P>
+
+<H2><A NAME="SECTION00082000000000000000">
+Tamil Output</A>
+</H2>
+
+<P>
+The tamil font is a Metafont font, and 
+was created at the
+Humanities and Arts Computing Center of the University of Washington,
+USA.
+The Metafont files for this font are also bundled with the itrans
+package.
+
+<P>
+This font can only be used with the T<SMALL>E</SMALL>X interface.
+
+<P>
+The Metafont descriptions of the font are provided, you can use them to
+generate the PK files of any font size desired.
+The Metafont programs for three sizes: 10, 12, and 17 point sizes are
+provided (wntml10.mf, wntml12.mf, and wntml17.mf, respectively).
+
+<P>
+This font was developed at University of Washington, and I would like to
+thank them for making the font available as freeware.
+
+<P>
+See the reference document <EM>tamil.itx</EM> for the transliteration map and
+example texts.
+The IFM file for this font is <EM>wntml.ifm</EM>.
+
+<P>
+
+<H2><A NAME="SECTION00083000000000000000">
+Telugu Output</A>
+</H2>
+
+<P>
+The single font <EM>tel</EM> is currently supported.
+It is a Metafont font.
+This font can only be used with the T<SMALL>E</SMALL>X interface.
+
+<P>
+The telugu font is from the TeluguTeX package (which is &#169;
+Lakshmi V.S. Mukkavilli, 1991).
+This is a Metafont font.
+
+<P>
+See the reference document <EM>tlgutx.itx</EM> for the transliteration map
+and example text.
+The IFM file for this font is <EM>tlgutx.ifm</EM>.
+
+<P>
+
+<H2><A NAME="SECTION00084000000000000000">
+Bengali Output</A>
+</H2>
+
+<P>
+ITRANS 5.1 added support for the TrueType (and PostScript Type 1) Bengali
+font named ItxBeng, and in ITRANS 5.2, Jaijeet Roychowdhury added support
+for the Bengali font from the BWTI package
+
+<P>
+The IFM file for the ItxBeng font is <EM>itxbeng.ifm</EM>, and the IFM file
+for the BWTI font is <TT>bnbeng.ifm</TT>.
+
+<P>
+The ItxBeng font has been provided by Shrikrishna Patil, while the BWTI
+Metafont Bengali font has been developed by Abhijit Das.
+
+<P>
+[ITRANS 4.x supported a LaserJet Softfont called SonarGaon, but that has
+now been removed from ITRANS.]
+
+<P>
+See the file <EM>beng.itx</EM> for documentation on both the bengali fonts 
+supported by ITRANS.
+
+<P>
+
+<H2><A NAME="SECTION00085000000000000000">
+Gujarati Output</A>
+</H2>
+
+<P>
+The gujarati font ItxGuj is a PostScript Type 1 font.
+and this ItxGuj font has been provided by Shrikrishna Patil.
+<TT>itxguj.pfa, itxguj.afm</TT> are the Type 1 PostScript files, and 
+<TT>itxguj.tfm, itxgujo.tfm, itxgujrc.tfm, itxgujre.tfm</TT>
+are the TFM files for use with TeX.
+The user manual for this font is in the file <EM>gujdoc.itx</EM>.
+
+<P>
+The IFM file for this font is <EM>itxguj.ifm</EM>.
+
+<P>
+
+<H2><A NAME="SECTION00086000000000000000">
+Kannada Output</A>
+</H2>
+
+<P>
+The single font <EM>kan</EM> is currently supported.
+It is a Metafont font.
+This font can only be used with the T<SMALL>E</SMALL>X interface.
+
+<P>
+The Kannada font is from the KannadaTeX package (which has been developed
+by G. S. Jagadeesh and Venkatesh P. Gopinath).
+This is a Metafont font.
+
+<P>
+The IFM file and other support in ITRANS for Kannada was added by
+Raghunath K Rao.
+
+<P>
+See the reference document <EM>kantex.itx</EM> for the transliteration map
+and example text.
+The IFM file for this font is <EM>kantex.ifm</EM>.
+
+<P>
+
+<H2><A NAME="SECTION00087000000000000000">
+Punjabi Output</A>
+</H2>
+
+<P>
+Anshuman Pandey added support in ITRANS for
+the Gurmukh<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"> Postscript font `Punjabi' (<TT>pun</TT>) (designed by
+and copyright Hardip Singh Pannu).
+
+<P>
+<TT>pun.pfa, pun.afm</TT> are the Type 1 PostScript files, and 
+<TT>pun.tfm</TT> is the TFM file for use with TeX.
+The user manual for this font is in the file <EM>pundoc.itx</EM>.
+
+<P>
+The IFM file for this font is <EM>pun.ifm</EM>.
+
+<P>
+
+<H2><A NAME="SECTION00088000000000000000">
+Romanized Sanskrit Output</A>
+</H2>
+
+<P>
+The Romanized Sanskrit font NCS_CSX is a PostScript Type 1 font,
+details about this are present in the <EM>romancsx.itx</EM> file.
+
+<P>
+This font can be used with all three output modes of itrans - T<SMALL>E</SMALL>X,
+PostScript, or Direct Text Output.
+The Direct Text Output requires using the TrueType version of this font.
+
+<P>
+The PostScript Type 1 font files are in <TT>ncpr____.afm</TT>,<TT>ncpr____.pfb</TT>,
+<TT>ncpi____.afm</TT>, <TT>ncpi____.pfb</TT>.
+T<SMALL>E</SMALL>X TFM versions are available in <TT>ncprcsxp.tfm</TT>, <TT>ncpicsxp.tfm</TT>.
+TrueType versions are available in
+<TT>ncpr____.ttf</TT>, <TT>ncpi____.ttf</TT>.
+
+<P>
+<HR>
+<A NAME="tex2html136"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html134"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html128"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html137"
+  HREF="node9.html">Usage Hints</A>
+<B>Up:</B> <A NAME="tex2html135"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html129"
+  HREF="node7.html">Known Problems</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

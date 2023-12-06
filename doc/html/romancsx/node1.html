@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fonts Available</TITLE>
+<META NAME="description" CONTENT="Fonts Available">
+<META NAME="keywords" CONTENT="romancsx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="romancsx.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="romancsx.html">
+<LINK REL="up" HREF="romancsx.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html27"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html25"
+  HREF="romancsx.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html19"
+  HREF="romancsx.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html28"
+  HREF="node2.html">Example usage</A>
+<B>Up:</B> <A NAME="tex2html26"
+  HREF="romancsx.html">romancsx.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html20"
+  HREF="romancsx.html">romancsx.itx (ITRANS doc)</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html29"
+  HREF="node1.html#SECTION00011000000000000000">T<SMALL>E</SMALL>X Interface</A>
+<LI><A NAME="tex2html30"
+  HREF="node1.html#SECTION00012000000000000000">Direct PostScript Interface</A>
+<LI><A NAME="tex2html31"
+  HREF="node1.html#SECTION00013000000000000000">Direct Text Interface</A>
+<LI><A NAME="tex2html32"
+  HREF="node1.html#SECTION00014000000000000000">Font Developer</A>
+<LI><A NAME="tex2html33"
+  HREF="node1.html#SECTION00015000000000000000">CS/CSX Encoding</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00010000000000000000">
+Fonts Available</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00011000000000000000">
+T<SMALL>E</SMALL>X Interface</A>
+</H2>
+
+<P>
+The romanized sanskrit font is called <EM>NCS_CSX+-Roman</EM>,
+and its PostScript description
+resides in the file <EM>ncpr____.pfb</EM>.
+It is a Type 1 PostScript font.
+A second font, which is an italic version is also available <EM>ncpi____.pfb</EM>.
+A bold version of the font is also available, as well as Mac versions,
+but they are not bundled in
+with ITRANS. You can download the bold version of NCS_CSX from the
+Internet, see the following section titled ``Font Developer.'' 
+
+<P>
+Since these are PostScript fonts,  you can use them at any font size in
+your document. 
+Here are two examples of loading these fonts (see romancsx.itx for 
+example usage):
+
+<P>
+<code>\newfont{\csroman}{ncpr at 10pt}</code>.
+
+<P>
+or
+
+<P>
+<code>\newfont{\csromani}{ncpi at 10pt}</code>.
+
+<P>
+
+<H2><A NAME="SECTION00012000000000000000">
+Direct PostScript Interface</A>
+</H2>
+
+<P>
+This font can be used with the -P option of ITRANS, to produce direct
+PostScript output.
+
+<P>
+This can be used when you don't want to use T<SMALL>E</SMALL>X for typesetting.
+There are a few sample files provided which show how to use this Direct
+PostScript Output mode (the files ending in .ips are the Direct PostScript
+output files).
+
+<P>
+
+<H2><A NAME="SECTION00013000000000000000">
+Direct Text Interface</A>
+</H2>
+
+<P>
+This font can be used with the -7 or -8 option of ITRANS, to produce direct
+Text (HTML) output. This can be used to convert input ITRANS encoded texts into the
+Classical Sanskrit encoding, and that output text
+ can be viewed using a CS/CSX font on HTML browsers such a Netscape (3.0
+ or later).
+For details on the Classical Sanskrit font encoding, see Dominik Wujastyk's
+documents on the Internet, search for the keywords Indology or
+Classical Sanskrit, or visit the ftp site listed in the ``Font Developer''
+section of this document.
+That ftp site also contains other variations of the NCS_CSX font, which
+includes a bold version of the font, and also contains many other
+CS/CSX fonts.
+
+<P>
+The -7 or -8 mode, with a little bit of output editing,
+can be used in interesting ways -- this can be
+used to convert all ITRANS encoded text into CS/CSX encoded text.
+And since ITRANS also accepts CS/CSX encoded text as input, this offers
+a way to move to 8-bit input text encoding, and also 
+retain all the advantages of the original ITRANS documents!
+
+<P>
+
+<H2><A NAME="SECTION00014000000000000000">
+Font Developer</A>
+</H2>
+
+<P>
+The NCS fonts have been taken from this site:
+
+<P>
+<code> ftp://bombay.oriental.cam.ac.uk/pub/john/software/fonts/csx+/</code>
+
+<P>
+As mentioned in the readme there,
+``The fonts in this archive implement the CSX+ character set designed
+for use in printing Indian language material in Roman script. They
+are based on fonts designed by URW++ Design and Development Incorporated,
+Germany.''
+
+<P>
+For more information, visit Dr. John D Smith's home page, at 
+<BR><A NAME="tex2html1"
+  HREF="http://bombay.oriental.cam.ac.uk/index.html"><TT>http://bombay.oriental.cam.ac.uk/index.html</TT></A>
+<P>
+
+<H2><A NAME="SECTION00015000000000000000">
+CS/CSX Encoding</A>
+</H2>
+
+<P>
+During the 8th World Sanskrit Conference, Vienna 1990, a panel
+was held to discuss the standardization of Sanskrit for
+electronic data transfer.
+Dominik Wujastyk presented a paper, titled ``Standardization of Sanskrit for
+Electronic Data Transfer and Screen Representation,'' which outlines the
+Classical Sanskrit and Classical Sanskrit Extended Encoding.
+The original paper is available in a .zip archive, named ``iass.zip''
+available at: <code> ftp.bcc.ac.uk:/pub/users/ucgadkw/indology</code>.
+
+<P>
+<HR>
+<A NAME="tex2html27"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html25"
+  HREF="romancsx.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html19"
+  HREF="romancsx.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html28"
+  HREF="node2.html">Example usage</A>
+<B>Up:</B> <A NAME="tex2html26"
+  HREF="romancsx.html">romancsx.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html20"
+  HREF="romancsx.html">romancsx.itx (ITRANS doc)</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

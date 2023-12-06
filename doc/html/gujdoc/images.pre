@@ -1,0 +1,401 @@
+#output=TeX
+
+\batchmode
+
+
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}%
+\providecommand{\SM}{\char35gujarati}%
+\providecommand{\EM}{\char35endgujarati} 
+\newfont{\itxgujf}{itxguj at 15pt}
+
+\hyphenchar\itxgujf-1  % disable hyphenation using this font
+
+
+#gujaratiifm=itxguj.ifm
+
+#gujaratifont=\itxgujf
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage67}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#gujarati a #endgujarati}	& {\tt a} \\\hline
+{#gujarati aa #endgujarati}	& {\tt aa {\it or} A} \\\hline
+{#gujarati i #endgujarati}	& {\tt i} \\\hline
+{#gujarati ii #endgujarati}	& {\tt ii {\it or} I} \\\hline
+{#gujarati u #endgujarati}	& {\tt u} \\\hline
+{#gujarati uu #endgujarati}	& {\tt uu {\it or} U} \\\hline
+{#gujarati R^i #endgujarati}	& {\tt RRi {\it or} R\char`^i} \\\hline
+{#gujarati e #endgujarati}	& {\tt e} \\\hline
+{#gujarati ai #endgujarati}	& {\tt ai} \\\hline
+{#gujarati o #endgujarati}	& {\tt o} \\\hline
+{#gujarati au #endgujarati}	& {\tt au} \\\hline
+{#gujarati aM #endgujarati}	& {\tt {\it a}M} \\\hline
+{#gujarati aH #endgujarati}	& {\tt {\it a}H} \\\hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+{#gujarati 0 #endgujarati}	& {\tt0} \\\hline
+{#gujarati 1 #endgujarati}	& {\tt 1} \\\hline
+{#gujarati 2 #endgujarati}	& {\tt 2} \\\hline
+{#gujarati 3 #endgujarati}	& {\tt 3} \\\hline
+{#gujarati 4 #endgujarati}	& {\tt 4} \\\hline
+{#gujarati 5 #endgujarati}	& {\tt 5} \\\hline
+{#gujarati 6 #endgujarati}	& {\tt 6} \\\hline
+{#gujarati 7 #endgujarati}	& {\tt 7} \\\hline
+{#gujarati 8 #endgujarati}	& {\tt 8} \\\hline
+{#gujarati 9 #endgujarati}	& {\tt 9} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage153}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#gujarati ka  #endgujarati}	& {\tt k{\it a}} \\\hline
+{#gujarati kha  #endgujarati}	& {\tt kh{\it a}} \\\hline
+{#gujarati ga  #endgujarati}	& {\tt g{\it a}} \\\hline
+{#gujarati gha  #endgujarati}	& {\tt gh{\it a}} \\\hline
+{#gujarati cha  #endgujarati}	& {\tt ch{\it a}} \\\hline
+{#gujarati Cha  #endgujarati}	& {\tt Ch{\it a or} chh{\it a}} \\\hline
+{#gujarati ja  #endgujarati}	& {\tt j{\it a}} \\\hline
+{#gujarati jha  #endgujarati}	& {\tt jh{\it a}} \\\hline
+{#gujarati Ta  #endgujarati}	& {\tt T{\it a}} \\\hline
+{#gujarati Tha  #endgujarati}	& {\tt Th{\it a}} \\\hline
+{#gujarati Da  #endgujarati}	& {\tt D{\it a}} \\\hline
+{#gujarati Dha  #endgujarati}	& {\tt Dh{\it a}} \\\hline
+{#gujarati Na  #endgujarati}	& {\tt N{\it a}} \\\hline
+{#gujarati ta  #endgujarati}	& {\tt t{\it a}} \\\hline
+{#gujarati tha  #endgujarati}	& {\tt th{\it a}} \\\hline
+{#gujarati da  #endgujarati}	& {\tt d{\it a}} \\\hline
+{#gujarati dha  #endgujarati}	& {\tt dh{\it a}} \\\hline
+{#gujarati na  #endgujarati}	& {\tt n{\it a}} \\\hline
+{#gujarati pa  #endgujarati}	& {\tt p{\it a}} \\\hline
+{#gujarati pha  #endgujarati}	& {\tt ph{\it a}} \\\hline
+{#gujarati ba  #endgujarati}	& {\tt b{\it a}} \\\hline
+{#gujarati bha  #endgujarati}	& {\tt bh{\it a}} \\\hline
+{#gujarati ma  #endgujarati}	& {\tt m{\it a}} \\\hline
+{#gujarati ya  #endgujarati}	& {\tt y{\it a}} \\\hline
+{#gujarati ra  #endgujarati}	& {\tt r{\it a}} \\\hline
+{#gujarati la  #endgujarati}	& {\tt l{\it a}} \\\hline
+{#gujarati va  #endgujarati}	& {\tt v{\it a or} w{\it a}} \\\hline
+{#gujarati sha  #endgujarati}	& {\tt sh{\it a}} \\\hline
+{#gujarati Sha  #endgujarati}	& {\tt Sh{\it a or} shh{\it a}} \\\hline
+{#gujarati sa  #endgujarati}	& {\tt s{\it a}} \\\hline
+{#gujarati ha  #endgujarati}	& {\tt h{\it a}} \\\hline
+{#gujarati lda  #endgujarati}	& {\tt ld{\it a or} L{\it a}} \\\hline
+{#gujarati kSha  #endgujarati}	& {\tt kSh{\it a or} x{\it a}} \\\hline
+{#gujarati j~na  #endgujarati}	& {\tt j\char`~n{\it a or} GY{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage269}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{#gujarati Rga #endgujarati} & {\tt R{\it ga}} \\\hline
+{#gujarati rga #endgujarati} & {\tt rga {\it or} {\it ga}\char`^r} \\\hline
+{#gujarati ga.n #endgujarati} & {\tt {\it ga}.n} \\\hline
+{#gujarati aa.c #endgujarati} & {\tt {\it aa}.c} \\\hline
+{#gujarati Da.N #endgujarati} & {\tt {\it Da}.N} \\\hline
+{#gujarati D.h #endgujarati} & {\tt {\it D}.h} \\\hline
+{#gujarati duH #endgujarati} & {\tt {\it du}H} \\\hline
+{#gujarati AUM #endgujarati}	& {\tt AUM} or {\tt OM} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage313}%
+\begin{tabular}{|c|c|}
+\hline
+{#gujarati ka kaa ki kii ku kuu #endgujarati}
+& {\tt ka kaa ki kii ku kuu} \\\hline
+{#gujarati sa saa si sii su suu #endgujarati}
+& {\tt sa saa si sii su suu} \\\hline
+{#gujarati khRRi khe khai khaM khaH kha.c kha.N #endgujarati}
+& {\tt khRRi khe khai khaM khaH kha.c kha.N} \\\hline
+{#gujarati De Dai DaM DaH Da.c Da.N #endgujarati}
+& {\tt De Dai DaM DaH Da.c Da.N} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage332}%
+\begin{tabular}{|c|c|}
+\hline
+{#gujarati bhaagya #endgujarati} & {\tt bhaagya} \\\hline
+{#gujarati raajya #endgujarati}	& {\tt raajya} \\\hline
+{#gujarati vidyaa #endgujarati}	& {\tt vidyaa} \\\hline
+{#gujarati shishhya #endgujarati}	& {\tt shishhya} \\\hline
+{#gujarati mukhya #endgujarati}	& {\tt mukhya} \\\hline
+{#gujarati gaaDyaa #endgujarati}	& {\tt gaaDyaa} \\\hline
+{#gujarati tyaag #endgujarati}	& {\tt tyaag} \\\hline
+{#gujarati dhyaan #endgujarati}	& {\tt dhyaan} \\\hline
+{#gujarati nyaay #endgujarati}	& {\tt nyaay} \\\hline
+{#gujarati shyaam #endgujarati}	& {\tt shyaam} \\\hline
+{#gujarati jyot #endgujarati}	& {\tt jyot} \\\hline
+{#gujarati manushhy #endgujarati}	& {\tt manushhy} \\\hline
+{#gujarati chaa.ndaNyaa #endgujarati} & {\tt chaa.ndaNyaa} \\\hline
+{#gujarati abhyaas #endgujarati}	& {\tt abhyaas} \\\hline
+{#gujarati kalyaaN #endgujarati}	& {\tt kalyaaN} \\\hline
+{#gujarati ghaDyaald #endgujarati}	& {\tt ghaDyaald} \\\hline
+{#gujarati kachchaa #endgujarati}	& {\tt kachchaa} \\\hline
+{#gujarati khaDDaa #endgujarati}	& {\tt khaDDaa} \\\hline
+{#gujarati khaD.hDaa #endgujarati}	& {\tt khaD.hDaa} \\\hline
+{#gujarati gaThThaa #endgujarati}	& {\tt gaThThaa} \\\hline
+{#gujarati dhakkaa #endgujarati}	& {\tt dhakkaa} \\\hline
+{#gujarati pattaa #endgujarati}	& {\tt pattaa} \\\hline
+{#gujarati tippat #endgujarati}	& {\tt tippat} \\\hline
+{#gujarati pannaas #endgujarati}	& {\tt pannaas} \\\hline
+{#gujarati sajjan #endgujarati}	& {\tt sajjan} \\\hline
+{#gujarati pustak #endgujarati}	& {\tt pustak} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage416}%
+\begin{tabular}{|c|c|}
+\hline
+{#gujarati kasturii #endgujarati}	& {\tt kasturii} \\\hline
+{#gujarati naastik #endgujarati}	& {\tt naastik} \\\hline
+{#gujarati praapt #endgujarati}	& {\tt praapt} \\\hline
+{#gujarati swata.ntr #endgujarati} & {\tt swata.ntr} \\\hline
+{#gujarati svaata.ntry #endgujarati} & {\tt svaata.ntry} \\\hline
+{#gujarati dhvanii #endgujarati}	& {\tt dhvanii} \\\hline
+{#gujarati goshhT #endgujarati}	& {\tt goshhT} \\\hline
+{#gujarati yuddh #endgujarati}	& {\tt yuddh} \\\hline
+{#gujarati yud.hdh #endgujarati}	& {\tt yud.hdh} \\\hline
+{#gujarati pashchim #endgujarati}	& {\tt pashchim} \\\hline
+{#gujarati phakt #endgujarati}	& {\tt phakt} \\\hline
+{#gujarati tarhaa #endgujarati}	& {\tt tarhaa} \\\hline
+{#gujarati artha #endgujarati}	& {\tt artha} \\\hline
+{#gujarati kartaa #endgujarati}	& {\tt kartaa} \\\hline
+{#gujarati gardii #endgujarati}	& {\tt gardii} \\\hline
+{#gujarati nirNay #endgujarati}	& {\tt nirNay} \\\hline
+{#gujarati patra #endgujarati}	& {\tt patra} \\\hline
+{#gujarati trikoN #endgujarati}	& {\tt trikoN} \\\hline
+{#gujarati shraavaN #endgujarati}	& {\tt shraavaN} \\\hline
+{#gujarati aashram #endgujarati}	& {\tt aashram} \\\hline
+{#gujarati shushruushhaa #endgujarati} & {\tt shushruushhaa} \\\hline
+{#gujarati gra.nth #endgujarati}	& {\tt gra.nth} \\\hline
+{#gujarati prajaa #endgujarati}	& {\tt prajaa} \\\hline
+{#gujarati draakShe #endgujarati}	& {\tt draakShe} \\\hline
+{#gujarati gRRihasth #endgujarati}	& {\tt gRRihasth} \\\hline
+{#gujarati prakR^itii #endgujarati}	& {\tt prakR\char`^itii} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage506}%
+\begin{tabular}{|c|c|}
+\hline
+{#gujarati shubhra #endgujarati}	& {\tt shubhra} \\\hline
+{#gujarati sahastra #endgujarati}	& {\tt sahastra} \\\hline
+{#gujarati kriiDaa #endgujarati}	& {\tt kriiDaa} \\\hline
+{#gujarati svachchh #endgujarati}	& {\tt svachchh} \\\hline
+{#gujarati svaruup #endgujarati}	& {\tt svaruup} \\\hline
+{#gujarati Trak #endgujarati}	& {\tt Trak} \\\hline
+{#gujarati aamhii #endgujarati}	& {\tt aamhii} \\\hline
+{#gujarati chaturthii #endgujarati} & {\tt chaturthii} \\\hline
+{#gujarati RRituu #endgujarati}	& {\tt RRituu} \\\hline
+{#gujarati aa.cktobar #endgujarati} & {\tt aa.cktobar} \\\hline
+{#gujarati novhe.nbar #endgujarati} & {\tt novhe.nbar} \\\hline
+{#gujarati gra.cm #endgujarati}	& {\tt gra.cm} \\\hline
+{#gujarati uu.Nchaa #endgujarati}	& {\tt uu.Nchaa} \\\hline
+{#gujarati bailagaaDii #endgujarati} & {\tt bailagaaDii} \\\hline
+{#gujarati gurudvaaraa #endgujarati} & {\tt gurudvaaraa}\\\hline
+{#gujarati gurud.hvaaraa #endgujarati} & {\tt gurud.hvaaraa}\\\hline
+{#gujarati niraaldyaa #endgujarati} & {\tt niraaldyaa} \\\hline
+{#gujarati GYaan #endgujarati}	& {\tt GYaan} \\\hline
+{#gujarati meka.cnik #endgujarati} & {\tt meka.cnik} \\\hline
+{#gujarati mhais #endgujarati}	& {\tt mhais} \\\hline
+{#gujarati deNaaryaa #endgujarati}	& {\tt deNaaryaa} \\\hline
+{#gujarati pratishhThaa #endgujarati} & {\tt pratishhThaa} \\\hline
+{#gujarati itihaas #endgujarati} & {\tt itihaas} \\\hline
+{#gujarati aasthaabaddh #endgujarati} & {\tt aasthaabaddh} \\\hline
+{#gujarati a.ntarraashhTriiy #endgujarati} & {\tt a.ntarraashhTriiy} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

@@ -1,0 +1,448 @@
+% User Documentation for the Itrans Package, Devanagari Devnac PostScript Font
+% Use for Sanskrit, Hindi, and Marathi Languages
+
+\documentclass[11pt]{article}
+
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latex2html
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+\newcommand{\SM}{\char35hindi}
+\newcommand{\EM}{\char35endhindi}
+\newfont{\devnf}{dnh at 15pt}
+%\newfont{\devnf}{dnho at 15pt} % the oblique version 
+%\newfont{\devnf}{dnhrc at 10pt} % the scaled down (x-axis) version
+\hyphenchar\devnf=-1 % disable hyphenation using this font
+
+#hindiifm=dvnc.ifm
+#hindifont=\devnf
+
+\begin{document}
+
+\footnotetext[0]{Last modification: \today}
+
+\centerline{\bf Transliteration Map}
+\medskip
+\centerline{\LARGE\bf DEVNAC font}
+\medskip
+\centerline{\bf (Hindi, Marathi, Sanskrit)}
+\bigskip
+\centerline{\bf itrans}
+\smallskip
+\centerline{\bf \copyright 1991--1998 Avinash Chopde}
+
+\section{Fonts Available}
+
+\subsection{\TeX\ Interface}
+
+The devanagari font is called {\em devnac}, and its PostScript description
+resides in the file {\em devnac.ps}.
+It is a user-defined type III PostScript font.
+Four fonts, variations on the basic devnac font, are bundled with the  itrans
+package.
+Their names (in the \TeX\ interface) are dnh, dnho, dnhrc, and dnhre.
+
+\begin{description}
+\item [dnh] This is the basic devanagari font. There are some other fonts
+available, derived by transforming this font.
+\item [dnho] This is the slanted version of {\em dnh}.
+\item [dnhrc] Both {\em dnho} and {\em dnh} look extremely heavy.
+A scaled down, compressed version
+(along the x-axis) of the basic font is available as {\em dnhrc}.
+\item[dnhre] This is heavier than {\em dnh}, to be used as a bold version.
+\end{description}
+
+Since these are PostScript fonts,  you can use them at any font size in
+your document. 
+In fact, the  font size must be specified when loading in the font.
+In this document (and in idoc.itx), the following line was used for
+loading the font:
+
+\noindent\verb+\newfont{\devnf}{dnh at 15pt}+.
+
+Even though this document has been typeset using a 11 point size, the
+devanagari font is loaded in at 15 point size.
+This is just to emphasize the devanagari characters.
+Normally, I would suggest loading in the font at 15-20\% greater size than
+the other text in the document.
+So, if your document is being typeset at 11 point, load in the devanagari
+fonts using a 13 point size.
+Of course, this relation of size is important only if you wish to mix
+english and devanagari in the same document.
+In any case, go wild, experiment with various font sizes.
+Since the characters are described as outlines in bezier curve form,
+smaller point sizes do not look too good on a 300dpi output device, the
+larger the font size, the better the shapes look.
+
+\subsection{\LaTeX\ Interface}
+
+In ITRANS version 5.2, apart from the addition of a new style file named
+\texttt{itrans.sty}, a font definition file for Devnac was also added.
+The file is named \texttt{Udvnc.fd}, and it can be used to load this font
+using \LaTeX2e commands where the font encoding is \texttt{U} (unknown)
+and the font family is \texttt{dvnc}. Thus, the following can be used
+to load the medium series with normal shape:
+
+\verb=\usefont{U}{dvnc}{m}{n}=
+and then to select a size and baselineskip:
+\verb=\fontsize{18pt}{24pt}\selectfont=
+
+The above will load the \texttt{dnh} version of this font.
+
+\verb=\usefont{U}{dvnc}{b}{sl}=
+will load the \texttt{dnho} version, and
+
+\verb=\usefont{U}{dvnc}{c}{n}=
+will load the \texttt{dnhrc} version, and
+
+\verb=\usefont{U}{dvnc}{bx}{n}=
+will load the \texttt{dnhre} version.
+
+\subsection{Textual Interface - PostScript}
+
+A direct PostScript interface is supported. HTML and Unicode (UTF-8)
+are not supported for this font.
+
+This interface does not offer any wordprocessing capabilities other
+than that of checking when a page is complete, and then
+resetting the current point to the top of the next page.
+Thus, all spaces, lines, etc from the input text appear
+in the output too.
+
+For the  PostScript mode, the user may also directly invoke
+PostScript commands to create various versions of the font, as required.
+Refer to PostScript language manuals for specific help regarding the
+PostScript font manipulation commands.
+If you decide to go this route, take a look at the file {\em itrans.pro},
+it is the prologue that gets sent to the printer.
+It contains definitions of various commands such as {\em normalfont},
+{\em slantfont}, {\em compressedfont}, etc, which may be used to change
+the font being used.
+These PostScript functions take a single argument:~the font size to use.
+All this and more information can be obtained from the prologue file, {\em
+itrans.pro}, and PostScript users should take a look at it.
+For example usage, look through the sample input files provided.
+Files ending in {\em .ips} are the direct PostScript input files, itrans
+(with the -P option) directly produces PostScript output for these files.
+
+The file {\em devnac.ps} contains the PostScript
+language program for this devanagari font.
+
+\subsection{Sanskrit, Hindi and Marathi}
+
+The single IFM file {\em dvnc.ifm} can be used for
+Sanskrit, Hindi or Marathi output.
+
+The marathi form of ra-half is available through the {\tt R}
+character, the second LA is at {\tt L} (or {\tt ld}), etc.
+The table displays the complete mapping from English to Devanagari
+for all the three Indic Scripts.
+
+\subsection{Text Interface - Unicode (UTF-8) for Sanskrit, Hindi, and Marathi}
+
+IFM file to use is named {\em udvng.ifm}.
+
+Unicode (UTF-8) output is supported for this the Devanagari script, but no
+Unicode fonts are included with the ITRANS package. There are many
+Unicode fonts available on the  Web, and more are being developed
+so it should be easy to locate a Unicode font when needed. Not all
+Unicode fonts fully support Indian Languages yet.
+
+\section{Known Problems}
+
+In the \TeX\ interface, characters with any non-zero Y offset are
+not correctly printed in some cases, when the PostScript font Devnac
+is used.
+I have only seen this happen for the {#hindi da#endhindi} consonant,
+in cases such as the da-u consonant-vowel, or the da-ra ligature, words
+such as {\em draaviiDa} (#hindi draaviiDa#endhindi) or {\em dukaanaat}
+{#hindi dukaanaat#endhindi}.
+Note that it is only in certain cases that the
+word is printed incorrectly, in most cases it is handled correctly.
+Usually, when the word appears near the end of the line, \TeX\ (or
+dvips, I'm inclined to think it is dvips)
+inserts a negative kern just before the character with a
+non-zero Y offset, and the word appears squashed up at that point.
+Have no remedy for this, only workaround is to force a line break before the
+problem word, it usually sets everything right.
+
+I have never encountered this problem when using Frans Velthuis's Devnag
+font with the itrans package, therefore this problem is probably related
+to the use of PostScript fonts in \TeX.
+
+\bigskip\hrule
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Devanagari Table}
+\end{htmlonly}
+
+\begin{table}[hp]
+\begin{center}
+\vspace*{-0.5in}\begin{tabular}{c@{\hspace{1in}}c@{\hspace{1in}}c}
+% --- first col is vowels inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#hindi a #endhindi}	& {\tt a} \\ \hline
+{#hindi aa #endhindi}	& {\tt aa {\it or} A} \\ \hline
+{#hindi i #endhindi}	& {\tt i} \\ \hline
+{#hindi ii #endhindi}	& {\tt ii {\it or} I} \\ \hline
+{#hindi u #endhindi}	& {\tt u} \\ \hline
+{#hindi uu #endhindi}	& {\tt uu {\it or} U} \\ \hline
+{#hindi R^i #endhindi}	& {\tt RRi {\it or} R\char`^i} \\ \hline
+{#hindi e #endhindi}	& {\tt e} \\ \hline
+{#hindi ai #endhindi}	& {\tt ai} \\ \hline
+{#hindi o #endhindi}	& {\tt o} \\ \hline
+{#hindi au #endhindi}	& {\tt au} \\ \hline
+{#hindi aM #endhindi}	& {\tt {\it a}M} \\ \hline
+{#hindi aH #endhindi}	& {\tt {\it a}H} \\ \hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{#hindi 0 #endhindi}	& {\tt 0} \\ \hline
+{#hindi 1 #endhindi}	& {\tt 1} \\ \hline
+{#hindi 2 #endhindi}	& {\tt 2} \\ \hline
+{#hindi 3 #endhindi}	& {\tt 3} \\ \hline
+{#hindi 4 #endhindi}	& {\tt 4} \\ \hline
+{#hindi 5 #endhindi}	& {\tt 5} \\ \hline
+{#hindi 6 #endhindi}	& {\tt 6} \\ \hline
+{#hindi 7 #endhindi}	& {\tt 7} \\ \hline
+{#hindi 8 #endhindi}	& {\tt 8} \\ \hline
+{#hindi 9 #endhindi}	& {\tt 9} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end first col 
+&
+% --- second col is consonants 
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#hindi ka  #endhindi}	& {\tt k{\it a}} \\ \hline
+{#hindi kha  #endhindi}	& {\tt kh{\it a}} \\ \hline
+{#hindi ga  #endhindi}	& {\tt g{\it a}} \\ \hline
+{#hindi gha  #endhindi}	& {\tt gh{\it a}} \\ \hline
+{#hindi ~Na  #endhindi}	& {\tt \char`~N{\it a or} N\char`^{\it a}} \\ \hline
+{#hindi cha  #endhindi}	& {\tt ch{\it a}} \\ \hline
+{#hindi chha  #endhindi}	& {\tt chh{\it a}} \\ \hline
+{#hindi ja  #endhindi}	& {\tt j{\it a}} \\ \hline
+{#hindi jha  #endhindi}	& {\tt jh{\it a}} \\ \hline
+{#hindi ~na  #endhindi}	& {\tt \char`~n{\it a or} JN{\it a}} \\ \hline
+{#hindi Ta  #endhindi}	& {\tt T{\it a}} \\ \hline
+{#hindi Tha  #endhindi}	& {\tt Th{\it a}} \\ \hline
+{#hindi Da  #endhindi}	& {\tt D{\it a}} \\ \hline
+{#hindi Dha  #endhindi}	& {\tt Dh{\it a}} \\ \hline
+{#hindi Na  #endhindi}	& {\tt N{\it a}} \\ \hline
+{#hindi ta  #endhindi}	& {\tt t{\it a}} \\ \hline
+{#hindi tha  #endhindi}	& {\tt th{\it a}} \\ \hline
+{#hindi da  #endhindi}	& {\tt d{\it a}} \\ \hline
+{#hindi dha  #endhindi}	& {\tt dh{\it a}} \\ \hline
+{#hindi na  #endhindi}	& {\tt n{\it a}} \\ \hline
+{#hindi pa  #endhindi}	& {\tt p{\it a}} \\ \hline
+{#hindi pha  #endhindi}	& {\tt ph{\it a}} \\ \hline
+{#hindi ba  #endhindi}	& {\tt b{\it a}} \\ \hline
+{#hindi bha  #endhindi}	& {\tt bh{\it a}} \\ \hline
+{#hindi ma  #endhindi}	& {\tt m{\it a}} \\ \hline
+{#hindi ya  #endhindi}	& {\tt y{\it a}} \\ \hline
+{#hindi ra  #endhindi}	& {\tt r{\it a}} \\ \hline
+{#hindi la  #endhindi}	& {\tt l{\it a}} \\ \hline
+{#hindi va  #endhindi}	& {\tt v{\it a or} w{\it a}} \\ \hline
+{#hindi sha  #endhindi}	& {\tt sh{\it a}} \\ \hline
+{#hindi Sha  #endhindi}	& {\tt Sh{\it a or} shh{\it a}} \\ \hline
+{#hindi sa  #endhindi}	& {\tt s{\it a}} \\ \hline
+{#hindi ha  #endhindi}	& {\tt h{\it a}} \\ \hline
+{#hindi lda  #endhindi}	& {\tt ld{\it a or} L{\it a}} \\ \hline
+{#hindi kSha  #endhindi}	& {\tt kSh{\it a or} x{\it a}} \\ \hline
+{#hindi j~na  #endhindi}	& {\tt j\char`~n{\it a or} GY{\it a}} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end second col 
+&
+% --- third col of specials/accents inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{#hindi qa  #endhindi}	& {\tt q{\it a}} \\ \hline
+{#hindi Ka  #endhindi}	& {\tt K{\it a}} \\ \hline
+{#hindi Ga  #endhindi}	& {\tt G{\it a}} \\ \hline
+{#hindi za  #endhindi}	& {\tt J{\it a or} z{\it a}} \\ \hline
+{#hindi fa  #endhindi}	& {\tt f{\it a}} \\ \hline
+{#hindi .Da  #endhindi}	& {\tt .D{\it a}} \\ \hline
+{#hindi .Dha  #endhindi}	& {\tt .Dh{\it a}} \\ \hline
+{#hindi AUM #endhindi}	& {\tt AUM} or {\tt OM} \\ \hline
+{#hindi Rga #endhindi} & {\tt R{\it ga}} \\ \hline
+{#hindi rga #endhindi} & {\tt rga {\it or} {\it ga}\char`^r} \\ \hline
+{#hindi ga.n #endhindi} & {\tt {\it ga}.n} \\ \hline
+{#hindi aa.c #endhindi} & {\tt {\it aa}.c} \\ \hline
+{#hindi Da.N #endhindi} & {\tt {\it Da}.N} \\ \hline
+{#hindi D.h #endhindi} & {\tt {\it D}.h} \\ \hline
+{#hindi duH #endhindi} & {\tt {\it du}H} \\ \hline
+{#hindi .a #endhindi} & {\tt .a} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\end{tabular} % end the larger tabular encompassing all four tables
+\hfill
+\\
+\end{center}
+\caption {\bf ITRANS: Devanagari to English Transliteration Table.}
+\label{ienc}
+\end{table}
+
+%------------------------------------------------------------------------
+\begin{htmlonly}
+\section{Examples}
+\end{htmlonly}
+
+\begin{table}[hp]
+\begin{center}
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Sample Letters} \\
+\hline
+{#hindi ka kaa ki kii ku kuu #endhindi}
+& {\tt ka kaa ki kii ku kuu} \\ \hline
+{#hindi s.h sa saa si sii su suu #endhindi}
+& {\tt s.h sa saa si sii su suu} \\ \hline
+{#hindi khRRi khe khai khaM khaH kha.c kha.N #endhindi}
+& {\tt khRRi khe khai khaM khaH kha.c kha.N} \\ \hline
+{#hindi De Dai DaM DaH Da.c Da.N #endhindi}
+& {\tt De Dai DaM DaH Da.c Da.N} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\vspace{0.1in}
+\begin{tabular}{cc}
+\multicolumn{2}{c}{Sample Words} \\
+% --- first col
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\hline
+{#hindi bhaagya #endhindi} & {\tt bhaagya} \\ \hline
+{#hindi raajya #endhindi}	& {\tt raajya} \\ \hline
+{#hindi vidyaa #endhindi}	& {\tt vidyaa} \\ \hline
+{#hindi shishhya #endhindi}	& {\tt shishhya} \\ \hline
+{#hindi mukhya #endhindi}	& {\tt mukhya} \\ \hline
+{#hindi gaaDyaa #endhindi}	& {\tt gaaDyaa} \\ \hline
+{#hindi tyaag #endhindi}	& {\tt tyaag} \\ \hline
+{#hindi dhyaan #endhindi}	& {\tt dhyaan} \\ \hline
+{#hindi nyaay #endhindi}	& {\tt nyaay} \\ \hline
+{#hindi shyaam #endhindi}	& {\tt shyaam} \\ \hline
+{#hindi jyot #endhindi}	& {\tt jyot} \\ \hline
+{#hindi manushhy #endhindi}	& {\tt manushhy} \\ \hline
+{#hindi chaa.ndaNyaa #endhindi} & {\tt chaa.ndaNyaa} \\ \hline
+{#hindi abhyaas #endhindi}	& {\tt abhyaas} \\ \hline
+{#hindi kalyaaN #endhindi}	& {\tt kalyaaN} \\ \hline
+{#hindi ghaDyaald #endhindi}	& {\tt ghaDyaald} \\ \hline
+{#hindi kachchaa #endhindi}	& {\tt kachchaa} \\ \hline
+{#hindi khaD.hDaa #endhindi}	& {\tt khaD.hDaa} \\ \hline
+{#hindi gaTh.hThaa #endhindi}	& {\tt gaTh.hThaa} \\ \hline
+{#hindi dhakkaa #endhindi}	& {\tt dhakkaa} \\ \hline
+{#hindi pattaa #endhindi}	& {\tt pattaa} \\ \hline
+{#hindi tippat #endhindi}	& {\tt tippat} \\ \hline
+{#hindi pannaas #endhindi}	& {\tt pannaas} \\ \hline
+{#hindi sajjan #endhindi}	& {\tt sajjan} \\ \hline
+{#hindi pustak #endhindi}	& {\tt pustak} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end first col 
+&
+% --- second col 
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\hline
+{#hindi kasturii #endhindi}	& {\tt kasturii} \\ \hline
+{#hindi naastik #endhindi}	& {\tt naastik} \\ \hline
+{#hindi praapt #endhindi}	& {\tt praapt} \\ \hline
+{#hindi swata.ntr #endhindi} & {\tt swata.ntr} \\ \hline
+{#hindi svaata.ntrya #endhindi} & {\tt svaata.ntrya} \\ \hline
+{#hindi dhvanii #endhindi}	& {\tt dhvanii} \\ \hline
+{#hindi goshhT #endhindi}	& {\tt goshhT} \\ \hline
+{#hindi yud.hdh #endhindi}	& {\tt yud.hdh} \\ \hline
+{#hindi yuddh #endhindi}	& {\tt yuddh} \\ \hline
+{#hindi pashchim #endhindi}	& {\tt pashchim} \\ \hline
+{#hindi phakt #endhindi}	& {\tt phakt} \\ \hline
+{#hindi tarhaa #endhindi}	& {\tt tarhaa} \\ \hline
+{#hindi arth #endhindi}	& {\tt arth} \\ \hline
+{#hindi kartaa #endhindi}	& {\tt kartaa} \\ \hline
+{#hindi gardii #endhindi}	& {\tt gardii} \\ \hline
+{#hindi nirNay #endhindi}	& {\tt nirNay} \\ \hline
+{#hindi patr #endhindi}	& {\tt patr} \\ \hline
+{#hindi trikoN #endhindi}	& {\tt trikoN} \\ \hline
+{#hindi shraavaN #endhindi}	& {\tt shraavaN} \\ \hline
+{#hindi aashram #endhindi}	& {\tt aashram} \\ \hline
+{#hindi shushruushhaa #endhindi} & {\tt shushruushhaa} \\ \hline
+{#hindi gra.nth #endhindi}	& {\tt gra.nth} \\ \hline
+{#hindi prajaa #endhindi}	& {\tt prajaa} \\ \hline
+{#hindi draakShe #endhindi}	& {\tt draakShe} \\ \hline
+{#hindi gRRihasth #endhindi}	& {\tt gRRihasth} \\ \hline
+{#hindi prakR^itii #endhindi}	& {\tt prakR\char`^itii} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\end{tabular} % big tabular, nests two tabulars
+\end{center}
+\caption {\bf Examples}
+\end{table}
+
+
+\begin{table}[hp]
+\begin{center}
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\hline
+{#hindi nairR^itya #endhindi} & {\tt nairR\char`^itya} \\ \hline
+{#hindi shubhr #endhindi}	& {\tt shubhr} \\ \hline
+{#hindi sahastr #endhindi}	& {\tt sahastr} \\ \hline
+{#hindi kriiDaa #endhindi}	& {\tt kriiDaa} \\ \hline
+{#hindi svachchh #endhindi}	& {\tt svachchh} \\ \hline
+{#hindi svaruup #endhindi}	& {\tt svaruup} \\ \hline
+{#hindi Trak #endhindi}	& {\tt Trak} \\ \hline
+{#hindi aamhii #endhindi}	& {\tt aamhii} \\ \hline
+{#hindi chaturthii #endhindi} & {\tt chaturthii} \\ \hline
+{#hindi RRituu #endhindi}	& {\tt RRituu} \\ \hline
+{#hindi aa.cktobar #endhindi} & {\tt aa.cktobar} \\ \hline
+{#hindi novhe.nbar #endhindi} & {\tt novhe.nbar} \\ \hline
+{#hindi gra.cm #endhindi}	& {\tt gra.cm} \\ \hline
+{#hindi uu.Nchaa #endhindi}	& {\tt uu.Nchaa} \\ \hline
+{#hindi bailagaaDii #endhindi} & {\tt bailagaaDii} \\ \hline
+{#hindi gurud.hvaaraa #endhindi} & {\tt gurud.hvaaraa}\\ \hline
+{#hindi gurudvaaraa #endhindi} & {\tt gurudvaaraa}\\ \hline
+{#hindi niraaldyaa #endhindi} & {\tt niraaldyaa} \\ \hline
+{#hindi GYaan #endhindi}	& {\tt GYaan} \\ \hline
+{#hindi meka.cnik #endhindi} & {\tt meka.cnik} \\ \hline
+{#hindi mhais #endhindi}	& {\tt mhais} \\ \hline
+{#hindi deNaaryaa #endhindi}	& {\tt deNaaryaa} \\ \hline
+{#hindi pratishhThaa #endhindi} & {\tt pratishhThaa} \\ \hline
+{#hindi itihaas #endhindi} & {\tt itihaas} \\ \hline
+{#hindi aasthaabaddh #endhindi} & {\tt aasthaabaddh} \\ \hline
+{#hindi a.ntarraashhTriiy #endhindi} & {\tt a.ntarraashhTriiy} \\ \hline
+\end{tabular}
+\end{makeimage}
+\end{center}
+\smallskip
+\caption {\bf More Examples}
+\end{table}
+
+\vspace*{1pt}\vfill
+
+\section{Author and Font Developer}
+
+\noindent
+The Devnac font has been developed by Avinash Chopde. \\
+E-mail:
+\htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com}. \\
+Home page:
+\htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+
+\end{document}

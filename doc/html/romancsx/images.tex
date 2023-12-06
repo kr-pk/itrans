@@ -1,0 +1,482 @@
+
+
+\batchmode
+
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    %
+% ---------------------------------------------------------
+% ITRANS 5.30 (29 July 2006) (TeX Interface)
+% Copyright 1991--2001 Avinash Chopde, All Rights Reserved.
+% ---------------------------------------------------------
+%
+\newbox\zErOdEpTh
+\def\kRn#1{{\kern#1em}}
+\def\sBs#1#2{{\setbox\zErOdEpTh=\hbox{\raise#1em\hbox{#2}}%
+\ht\zErOdEpTh=0pt\dp\zErOdEpTh=0pt\box\zErOdEpTh}}
+	
+% ITRANS command
+ 
+% ITRANS command: argument specifies use of
+			
+
+\newfont{\csroman}{ncprcsxp at 10pt}
+\newfont{\csromani}{ncpicsxp at 10pt}
+
+
+
+
+%
+\providecommand{\SM}{\char35roman}%
+\providecommand{\EM}{\char35endroman} 
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.15}
+
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1115}%
+\vbox{{\csroman 
+\obeylines
+  %
+karma{\char245}yev{\char224}dhik{\char224}raste %
+m{\char224} %
+phale{\char249}u %
+kad{\char224}cana |
+  %
+m{\char224} %
+karmaphalaheturbh{\char229}rm{\char224} %
+te %
+sa{\char239}go{\char46}astvakarma{\char245}i || 47 ||
+\csromani
+  %
+yogastha{\char254} %
+kuru %
+karm{\char224}{\char245}i %
+sa{\char239}ga{\char252} %
+tyaktv{\char224} %
+dhana{\char252}jaya |
+  %
+siddhyasiddhyo{\char254} %
+samo %
+bh{\char229}tv{\char224} %
+samatva{\char252} %
+yoga %
+ucyate || 48 ||
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage71}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{{\csroman %
+a }% End of Indic Script text.
+}	& {\tt a} \\\hline
+{{\csroman %
+{\char224} }% End of Indic Script text.
+}	& {\tt aa {\it or} A} \\\hline
+{{\csroman %
+i }% End of Indic Script text.
+}	& {\tt i} \\\hline
+{{\csroman %
+{\char227} }% End of Indic Script text.
+}	& {\tt ii {\it or} I} \\\hline
+{{\csroman %
+u }% End of Indic Script text.
+}	& {\tt u} \\\hline
+{{\csroman %
+{\char229} }% End of Indic Script text.
+}	& {\tt uu {\it or} U} \\\hline
+{{\csroman %
+{\char231} }% End of Indic Script text.
+}	& {\tt RRi {\it or} R\char`^i} \\\hline
+{{\csroman %
+{\char233} }% End of Indic Script text.
+}	& {\tt RRI {\it or} R\char`^I} \\\hline
+{{\csroman %
+{\char235} }% End of Indic Script text.
+}	& {\tt LLi {\it or} L\char`^i} \\\hline
+{{\csroman %
+{\char237} }% End of Indic Script text.
+}	& {\tt LLI {\it or} L\char`^I} \\\hline
+{{\csroman %
+e }% End of Indic Script text.
+}	& {\tt e} \\\hline
+{{\csroman %
+ai }% End of Indic Script text.
+}	& {\tt ai} \\\hline
+{{\csroman %
+o }% End of Indic Script text.
+}	& {\tt o} \\\hline
+{{\csroman %
+au }% End of Indic Script text.
+}	& {\tt au} \\\hline
+{{\csroman %
+a{\char252} }% End of Indic Script text.
+}	& {\tt {\it a}M} \\\hline
+{{\csroman %
+a{\char254} }% End of Indic Script text.
+}	& {\tt {\it a}H} \\\hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{{\csroman 0 }% End of Indic Script text.
+}	& {\tt0} \\\hline
+{{\csroman 1 }% End of Indic Script text.
+}	& {\tt 1} \\\hline
+{{\csroman 2 }% End of Indic Script text.
+}	& {\tt 2} \\\hline
+{{\csroman 3 }% End of Indic Script text.
+}	& {\tt 3} \\\hline
+{{\csroman 4 }% End of Indic Script text.
+}	& {\tt 4} \\\hline
+{{\csroman 5 }% End of Indic Script text.
+}	& {\tt 5} \\\hline
+{{\csroman 6 }% End of Indic Script text.
+}	& {\tt 6} \\\hline
+{{\csroman 7 }% End of Indic Script text.
+}	& {\tt 7} \\\hline
+{{\csroman 8 }% End of Indic Script text.
+}	& {\tt 8} \\\hline
+{{\csroman 9 }% End of Indic Script text.
+}	& {\tt 9} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage166}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{{\csroman %
+ka  }% End of Indic Script text.
+}	& {\tt k{\it a}} \\\hline
+{{\csroman %
+kha  }% End of Indic Script text.
+}	& {\tt kh{\it a}} \\\hline
+{{\csroman %
+ga  }% End of Indic Script text.
+}	& {\tt g{\it a}} \\\hline
+{{\csroman %
+gha  }% End of Indic Script text.
+}	& {\tt gh{\it a}} \\\hline
+{{\csroman %
+{\char239}a  }% End of Indic Script text.
+}	& {\tt\char`~N{\it a or} N\char`^{\it a}} \\\hline
+{{\csroman %
+ca  }% End of Indic Script text.
+}	& {\tt ch{\it a}} \\\hline
+{{\csroman %
+cha  }% End of Indic Script text.
+}	& {\tt Ch{\it a or} chh{\it a}} \\\hline
+{{\csroman %
+ja  }% End of Indic Script text.
+}	& {\tt j{\it a}} \\\hline
+{{\csroman %
+jha  }% End of Indic Script text.
+}	& {\tt jh{\it a}} \\\hline
+{{\csroman %
+{\char164}a  }% End of Indic Script text.
+}	& {\tt\char`~n{\it a or} JN{\it a}} \\\hline
+{{\csroman %
+{\char241}a  }% End of Indic Script text.
+}	& {\tt T{\it a}} \\\hline
+{{\csroman %
+{\char241}ha  }% End of Indic Script text.
+}	& {\tt Th{\it a}} \\\hline
+{{\csroman %
+{\char243}a  }% End of Indic Script text.
+}	& {\tt D{\it a}} \\\hline
+{{\csroman %
+{\char243}ha  }% End of Indic Script text.
+}	& {\tt Dh{\it a}} \\\hline
+{{\csroman %
+{\char245}a  }% End of Indic Script text.
+}	& {\tt N{\it a}} \\\hline
+{{\csroman %
+ta  }% End of Indic Script text.
+}	& {\tt t{\it a}} \\\hline
+{{\csroman %
+tha  }% End of Indic Script text.
+}	& {\tt th{\it a}} \\\hline
+{{\csroman %
+da  }% End of Indic Script text.
+}	& {\tt d{\it a}} \\\hline
+{{\csroman %
+dha  }% End of Indic Script text.
+}	& {\tt dh{\it a}} \\\hline
+{{\csroman %
+na  }% End of Indic Script text.
+}	& {\tt n{\it a}} \\\hline
+{{\csroman %
+pa  }% End of Indic Script text.
+}	& {\tt p{\it a}} \\\hline
+{{\csroman %
+pha  }% End of Indic Script text.
+}	& {\tt ph{\it a}} \\\hline
+{{\csroman %
+ba  }% End of Indic Script text.
+}	& {\tt b{\it a}} \\\hline
+{{\csroman %
+bha  }% End of Indic Script text.
+}	& {\tt bh{\it a}} \\\hline
+{{\csroman %
+ma  }% End of Indic Script text.
+}	& {\tt m{\it a}} \\\hline
+{{\csroman %
+ya  }% End of Indic Script text.
+}	& {\tt y{\it a}} \\\hline
+{{\csroman %
+ra  }% End of Indic Script text.
+}	& {\tt r{\it a}} \\\hline
+{{\csroman %
+la  }% End of Indic Script text.
+}	& {\tt l{\it a}} \\\hline
+{{\csroman %
+va  }% End of Indic Script text.
+}	& {\tt v{\it a}} \\\hline
+{{\csroman %
+{\char247}a  }% End of Indic Script text.
+}	& {\tt sh{\it a}} \\\hline
+{{\csroman %
+{\char249}a  }% End of Indic Script text.
+}	& {\tt Sh{\it a or} shh{\it a}} \\\hline
+{{\csroman %
+sa  }% End of Indic Script text.
+}	& {\tt s{\it a}} \\\hline
+{{\csroman %
+ha  }% End of Indic Script text.
+}	& {\tt h{\it a}} \\\hline
+{{\csroman %
+lda  }% End of Indic Script text.
+}	& {\tt ld{\it a or}} L{\it a} \\\hline
+{{\csroman %
+k{\char249}a  }% End of Indic Script text.
+}	& {\tt kSh{\it a or} x{\it a}} \\\hline
+{{\csroman %
+j{\char164}a  }% End of Indic Script text.
+}	& {\tt j\char`~n{\it a or} GY{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage289}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{{\csroman %
+qa  }% End of Indic Script text.
+}	& {\tt q{\it a}} \\\hline
+{{\csroman %
+Ka  }% End of Indic Script text.
+}	& {\tt K{\it a}} \\\hline
+{{\csroman %
+Ga  }% End of Indic Script text.
+}	& {\tt G{\it a}} \\\hline
+{{\csroman %
+za  }% End of Indic Script text.
+}	& {\tt J{\it a or} z{\it a}} \\\hline
+{{\csroman %
+fa  }% End of Indic Script text.
+}	& {\tt f{\it a}} \\\hline
+{{\csroman %
+{\char46}Da  }% End of Indic Script text.
+}	& {\tt .D{\it a}} \\\hline
+{{\csroman %
+{\char46}Dha  }% End of Indic Script text.
+}	& {\tt .Dh{\it a}} \\\hline
+{{\csroman %
+OM }% End of Indic Script text.
+}	& {\tt AUM} or {\tt OM} \\\hline
+{{\csroman %
+Rga  }% End of Indic Script text.
+}	& {\tt R{\it ga}} \\\hline
+{{\csroman %
+ga{\char94}{\char94}r }% End of Indic Script text.
+} & {\tt {\it ga}\char`^r} \\\hline
+{{\csroman %
+ga{\char252} }% End of Indic Script text.
+} & {\tt {\it ga}.n} \\\hline
+{{\csroman %
+{\char224}{\char46}c }% End of Indic Script text.
+} & {\tt {\it aa}.c} \\\hline
+{{\csroman %
+{\char243}a{\char46}N }% End of Indic Script text.
+} & {\tt {\it Da}.N} \\\hline
+{{\csroman %
+{\char243} }% End of Indic Script text.
+} & {\tt {\it D}.h} \\\hline
+{{\csroman %
+du{\char254} }% End of Indic Script text.
+} & {\tt {\it du}H} \\\hline
+{{\csroman %
+{\char46}a }% End of Indic Script text.
+} & {\tt .a} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

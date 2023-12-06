@@ -1,0 +1,171 @@
+% Devanagari Example
+% $Header: /home/cvsroot/itrans/nextrel/doc/flag.ips,v 1.1.1.1 1996/11/29 01:45:31 avinash Exp $
+% This is an example direct PostScript input to the itrans program.
+% This file shows how to change fonts, change font size, etc
+% in the file..
+%
+% Prints indian anthem, flag song, and the flag itself! Must SEE!
+
+% *** Thanks to numerous others for making lots of spelling corrections
+%     in the original document I wrote... [abc]
+
+% 15 englishfont % set current font to be an english font (see itrans.pro)
+% (itrans sample file: flag.ips) show
+% first, the two songs......
+
+% define functions that load in the font..
+/devn18 {
+    18 normalfont % get the normal devnagri font, at 18 point size
+} def
+
+/devns25 {
+    25 slantfont 	% define a slanted font, using the a 25pt font size
+} def
+
+#hindiifm=dvnc.ifm
+#hindifont=devn18
+
+#hindi
+vijayii vishvatira.ngaa pyaaraa |
+    jha.nDaa uu.Nchaa rahe hamaaraa ||
+sadaa shakti sarasaanevaalaa |
+premasudhaa barasaanevaalaa ||
+viiro.nko harashhaanevaalaa |
+maat.rbhuumi kaa tanamana saaraa |
+    jha.nDaa uu.Nchaa rahe hamaaraa ||
+shaana na isakii jaane paaye |
+chaahe jaana bhale hii jaaye ||
+vishvavijaya karake dikhalaaye |
+taba hove praNa puurNa hamaaraa |
+    jha.nDaa uu.Nchaa rahe hamaaraa ||
+#endhindi
+
+newline
+0.4 setlinewidth
+currentpoint
+currentpoint exch pop 0.0 exch moveto
+206 0 rmoveto 200 0 rlineto stroke % draw a straight line..
+moveto % use x,y of first currentpoint above
+       % this is important, the current point must always exist
+       % for itrans.pro and this document to print correctly:
+       % the macros newline, etc make use of it.
+newline
+
+#hindifont=devns25 % use the slanted font, 25pt font size
+
+#hindi
+        jana gaNa mana adhinaayaka jaya he
+            bhaarata bhaagya vidhaataa
+        pa.njaaba si.ndhu gujaraata maraaThaa
+            dravi.Da utkala va.nga
+        vi.ndhya himaachala yamunaa ga.ngaa
+            uchchhala jaladhi tara.nga
+        tava shubha naame jaage
+        tava shubha aashishha maage
+            gaahe tava jaya gaathaa
+        jana gaNa ma.ngala daayaka jaya he
+            bhaarata bhaagya vidhaataa
+        jaya he jaya he jaya he
+            jaya jaya jaya jaya he
+
+                         - raviindranaatha Taagora #endhindi
+
+% now, code to draw an indian flag.
+% draw the center wheel
+/drawwheel { % diameter drawwheel --
+	     % draws a wheel at the currentpoint, of the  given diameter
+
+    2 div /rad exch def % get radius
+    gsave
+
+    currentpoint translate
+
+    0 0 rad 0 360 arc stroke	% draw the wheel outline
+
+    % compute radius of the small circles hanging off the wheel..
+    /smallrad rad 7.5 sin mul def
+    /smallcx rad 7.5 cos mul def
+
+    0 15 345 { % draw the 24 spokes
+	gsave
+	rotate % use the for loop variable value, 0..245
+
+	0 0 moveto rad 0 lineto stroke % draw spoke
+
+	smallcx smallrad -1 mul smallrad 82.5 262.5 arc fill
+	grestore
+    } for
+    grestore
+} def
+
+% some color definitions
+/blackcolor {
+    0.0 setgray
+} def
+
+/whitecolor {
+    1.0 setgray
+} def
+
+/redcolor {
+    1.0 0.0 0.0 setrgbcolor
+} def
+
+/bluecolor {
+    0.0 0.0 1.0 setrgbcolor
+} def
+
+/greencolor {
+    0.0 1.0 0.0 setrgbcolor
+} def
+
+/saffroncolor {
+    1.0 0.34 0.0 setrgbcolor
+} def
+
+%------------------------------------------------------------------------
+% The following may be redefined to blackcolor, see below....
+
+
+% draw the entire flag 
+/drawflag { % width drawwheel --
+	     % draws a flag at the currentpoint, of the  given width
+	     % (height = width/2)
+    /width exch def
+    gsave
+    currentpoint translate
+    /height width 2.0 div def
+    /hrect height 3.0 div def
+
+    % draw bottom green rect (use intensity = 58.7%)
+    greencolor
+    0 0 moveto width 0 lineto width hrect lineto 0 hrect lineto
+    closepath fill
+
+    % draw top saffron rect (== 100% red, 34% green use intensity=50.0%)
+    0 hrect 2.0 mul translate
+    saffroncolor
+    0 0 moveto width 0 lineto width hrect lineto 0 hrect lineto
+    closepath fill
+    0 hrect -2.0 mul translate % restore matrix
+
+    % draw center wheel
+    blackcolor
+    0.8 setlinewidth
+    width 2.0 div height 2.0 div moveto
+    hrect 0.95 mul drawwheel
+
+    % draw a boundary
+    blackcolor 0.4 setlinewidth
+    0 0 moveto width 0 lineto width height lineto 0 height lineto
+    closepath stroke
+    0 hrect moveto width hrect lineto stroke
+    0 hrect hrect add moveto width hrect hrect add lineto stroke
+
+    grestore
+} def
+
+% draw the flag next to the first song...
+250 560 moveto 300 drawflag
+
+% no showpage in flag.ips, since itrans will produce it..

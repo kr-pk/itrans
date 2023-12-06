@@ -1,0 +1,176 @@
+.\" man page for itrans $Header:$
+.TH ITRANS 1 "" "local"
+.SH NAME
+itrans \- modify input text as directed by an indian language metric file,
+for the purpose of printing out transliterated indian language documents
+.SH SYNOPSIS
+.B itrans
+[
+.B -v
+[
+.B -v
+]
+]
+[
+.B -7
+]
+[
+.B -8
+]
+[
+.B -U
+]
+[
+.B -P
+[
+.B -f
+.I <fontsize>
+]
+]
+[
+.B -i
+.I <input file>
+]
+[
+.B -o
+.I <output file>
+]
+[
+.B -h|H
+]
+.br
+.SH DESCRIPTION
+Note: be sure to consult the user manual idoc.itx and other *.itx files
+as needed, from the doc/ directory. They contain more information on the
+input ITRANS accepts, and the languages supported, and all the transliteration
+maps.
+
+The command
+.sp
+.ce
+itrans < idoc.itx > idoc.tex
+.sp
+takes the input file idoc.itx and copies it to the output file idoc.tex,
+after modifying all portions in the input designated as transliterated
+indian language text.
+.sp
+.B itrans
+looks for the  indian language metric file in the standard places, as
+defined by the environment variable ITRANSPATH.
+Set this variable to the path name(s) where the files dvnc.ifm,
+dvng.ifm, devnac.afm, devnac.ps, itrans.pro, etc are to be found (multiple
+directory names are
+separated by the letter ":" --- similar to the PATH environment
+variable).
+ITRANSPATH should also contain the directories that store all the
+*.tfm and *.afm files:
+If you are using the tamil font, ITRANSPATH should contain the
+name of the directory that wntml10.tfm resides in.
+If you are using the telugu font, ITRANSPATH should contain the
+name of the directory that tel10.tfm resides in.
+If you are using the devanagari PostScript font (Devnac),
+ITRANSPATH should contain the
+name of the directory that devnac.afm resides in.
+If you are using the devanagari Metafont font (Devnag),
+ITRANSPATH should contain the
+name of the directory that dvng10.tfm resides in.
+.sp     
+.SH OPTIONS
+The input text may be in TeX format, or just in direct PostScript format.
+By default, TeX  format is assumed.
+The command line switches are:
+.sp
+.IP "\fB-P\fP"
+Overrides the default TeX input assumption, and expects that direct
+PostScript output has to be produced.
+.IP "\fB-f\fP \fI<fontsize>\fI"
+If using the PostScript output version, you may need to specify the
+font size to use.
+By default, a 30 point size is assumed.
+This option may not be really necessary, since you can change font
+sizes and types as desired in the input text itself, see the sample file
+flag.ips, and the prologue file itrans.pro, for details regarding
+changing fonts (you must have some PostScript programming ability to
+do this).
+.IP "\fB-7\fP"
+.IP "\fB-8\fP"
+Overrides the default TeX input assumption, and expects that direct
+Text output has to be produced. This can only be used with fonts that
+support this mode, such as Romanized-Sanskrit output using the
+CSUtopia group of fonts. This allows users to get output text that can be
+transported to a PC or a Mac that has the CSUtopia Type1 or TypeType installed.
+Later on, more Indic Scripts may also be supported here, when freeware Type1 
+or TrueType fonts become available.
+Use -7 to get 7 bit ASCII output, and -8 for 8-bit text output. Both
+these flags produce text that can be viewed using WWW HTML browsers.
+.IP "\fB-U\fP"
+Assumes the output is to be in Unicode UTF-8 format.
+This is generally  used for HTML files, and viewed on browsers that
+support Unicode, with Unicode fonts.
+.IP "\fB-i\fP \fI<input filename>\fI"
+Use this option to provide a input file name, if this option is absent,
+the input file is assumed to be stdin.
+.IP "\fB-o\fP \fI<output filename>\fI"
+Use this option to provide a output file name, if this option is absent,
+the output file is assumed to be stdout.
+.IP "\fB-v\fP"
+Set verbose mode, itrans prints out messages regarding what it is doing.
+Multiple -v options increase the amount of information dumped to stderr.
+Two -v's will print each input word in comments to stdout (or the output file),
+this makes it easier to track down errors in the output file and relate
+the output to the input.
+.IP "\fB-h|H\fP"
+Help option; prints out a synopsis of the command line arguments to
+itrans.
+.sp
+.SH EXAMPLE USAGE
+.sp
+A large number of sample input documents have been provided, in the
+itrans/doc directory.
+Files with names ending in
+.B .itx
+are TeX input files, and files with names ending in 
+.B .ips
+are PostScript input files.
+To print out a file named
+.B nehru.itx,
+the following commands can be used (current directory is assumed to be
+the itrans/doc directory, and ITRANSPATH environment variable is assumed
+to be set correctly):
+.sp
+$ itrans -i nehru.itx -o nehru.tex
+.br
+$ latex nehru.tex
+.br
+$ dvips nehru.dvi | lp
+.sp
+To print out a file named
+.B flag.ips,
+use the following commands:
+.sp
+.br
+$ itrans -P -f 25 < flag.ips > flag.ps
+.br
+$ cat ../lib/devnac.ps ../lib/itrans.pro flag.ps | lp
+.sp
+The above examples assume that the lp command takes in as input a
+PostScript file, and prints it on a PostScript printer.
+You may have to use some other print command to print out the PostScript
+files generated, see your system administrator for details.
+.sp
+.SH FILES
+.I *.ifm
+in the lib directory.
+.sp
+.I *.afm, *.tfm
+in the usual directories.
+.br
+.SH "SEE ALSO"
+tex(1), latex(1), dvips(1), afm2tfm(1), the report "Printing Transliterated
+Indian Language Documents", which describes the use of this package in detail.
+.SH BUGS
+See the user manual, and other documents, available in the
+.B doc 
+directory of the itrans archive, at http://www.aczoom.com/itrans/
+.SH AUTHOR
+Avinash Chopde <avinash@aczoom.com>

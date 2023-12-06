@@ -1,0 +1,490 @@
+--------------------------
+****** Version 5.34, 10 Apr 2013
+    1) Have itrans automatically pass through extended Unicode (non-ASCII) UTF-8 chars
+       from the input. There was a problem in that CSX codes like 0o342 (0xE2) for AA end up
+       breaking up Unicode double quote (0xE2 0x80 0x9C) and causing invalid UTF-8 output.
+
+    2) Suppress "Note... echoing to output" messages from itrans output, unless -v is provided.
+        "Note (around line %d): character [%c] (dec %d) unrecognized by lexer, echoing to output\n"
+
+    IMPORTANT: Windows is no longer supported. Last pre-built version it has is ITRANS 3.2.
+
+****** Version 5.33, 10 Mar 2013
+    1) Suppress copyright messages to stdout. This supports use as a filter,
+       so only actual conversion is output to stdout or to output file.
+
+****** Version 5.32, 06 Feb 2011, 09 Dec 2012
+    1) [06 Feb 2011] Discovered a problem with UTF-8 output for Kannada, Telugu. The
+       ukan.ifm etc files need to be processed like Devanagari, i.e,
+       C+C+V and not C+V+C-Viraam which is done for TeX output.
+    2) [Dec 2012]
+       * UTF-8 Roman output for j~n fixed. Needs to use character code 241 in UTF,
+       and 164 in ISO-8859-1, or extended ASCII. jnh and gya changed in uroman.ifm.
+       * "La" (lda) also changed - now is l-underbar in UTF-8 (but not ISO-8859) output.
+       tblall docs updated: http://www.aczoom.com/itrans/html/tblall/node4.html
+       though there may be errors in conversion due to invalid Latex2HTML setup.
+
+****** Version 5.31 (executables still 5.30), 01 Dec 2009
+    1) This is primarily a packaging change, with some bug fixes in config
+       files. No changes in the executable.
+
+    2) dvng: instead of using the dvng font, it now uses dvnb which contains
+       the GY j~n character needed.
+       The current TeX distribution, texlive, has latest Velthuis Devnag
+       package which does not have j~n, and also removes old \char43.
+       The "dvnb" font has j~n at 224 and 236. So, updated all tex files
+       to refer to dvnb10 instead of dvng10 (though kept names \largedvng, etc
+       the same), and change ja-nya and gya in dvng and dvngfull IFM files
+       to refer to 224/236.
+       Updated files:
+       idevn.tex
+       webincl.tex
+       dvng.ifm
+       dvngfull.ifm
+
+       Note that texlive may have an older version of idevn.tex, so
+       make sure the itrans version of idevn.tex is picked up first by 
+       LaTeX, for example, by adding these lines to appropriate
+       environment variables or to /usr/local/texlive/2009/texmf.cnf
+       (see file INSTALL.unix)
+
+    3) The web input file webincl.tex is now available in this package
+       lib/ directory. It is used by the itrans cgi script, which is
+       available in itrans-cgi.zip archive.
+
+    4) Docs
+       .ps files removed, now using .pdf files instead.
+       .html files regenerated, managed to get latex2html running.
+       See doc/README for some details, as well as contrib/mkl2h
+
+****** Version 5.30, 22 July 2001
+    1) Added support for Unicode UTF-8 output
+    2) Binary pre-built installations created for Linux-i386 and Win32
+    3) Created support for "make install" to install itrans on
+       a Unix box (Linux, etc).
+
+    ** 10 Dec, 2001
+    1) Minor fixes to makefile.gcc, etc - "make install" should now work
+
+    ** 5 Oct, 2002
+    1) itrans.h mods for MacOS X/Darwin compilcation, from Shrisha Rao
+
+    ** 12 Aug, 2003
+    1) Updated Gurmukhi doc to make it clear the tables have #usecsx on.
+
+    ** 22 Feb, 2003
+    1) Updated ubeng.ifm, added Unicode yya (ya-dot)
+
+    ** 29 Jul, 2006
+    1) buffer checks in iyacc.y and dflt_mkl.c - handle bad input, too many
+    half-consonants in a letter - as in when users send in binary files
+    instead of text to the Online Web Interface to ITRANS.
+    2) removed: itrans16.exe  - 16-bit Windows exe, for Windows 3.1,
+    no longer supported. 32-bit Windows itrans.exe is available.
+
+    ** 28 Apr, 2007
+    1) idevn.tex - add % after font definition \normaldvng etc, to
+    avoid a space character after every #indian or ##
+
+    ** 26 Mar, 2007
+    1) uroman.ifm:
+    fixed tmpl-ii should be 0x012B was 0x16B same as tmpl-uu.
+    2) udvng.ifm:
+    make O be the VOWEL SIGN CANDRA O  (AA + ardha-chandra)
+    Only Unicode conversion supports this, for now.
+
+    ** 27 Sep, 2009
+    1) Email, Web updates in readme
+    2) tlgutx.ifm sa was too like na, created a new tmplC for sa.
+    3) The current TeX distribution, texlive, has latest Velthuis Devnag
+       package which does not have j~n, and also removes old \char43.
+       The "dvnb" font has j~n at 224 and 236. So, updated all tex files
+       to refer to dvnb10 instead of dvng10 (though kept names \largedvng, etc
+       the same), and change ja-nya and gya in dvng and dvngfull IFM files
+       to refer to 224/236.
+
+--------------------------
+****** Version 5.22, 18 December 1998 [also March 1999, and Feb 2000]
+Minor changes to 5.20
+    1) Fixed bug in Telugu processing - code was ignoring explicit IFM
+       rules for multiple consonants (C1-C2 : ka-kha, etc).
+    2) Added Tikkana.ifm for TrueType telugu font (Potana, Tikkana, etc).
+    3) Minor:
+       - Added pagenumbering in Devanagari when
+         \usepackage[devnag]{itrans} used in input files [NOT WORKING] 
+       - xdvng.ifm now has ka-shha rule (== ksha)
+       - contrib/latex2html.txt updated, all html docs regenerated,
+         many had missing images; beng.itx changes for latex2html [March 1999]
+       - HTML output font commands now accept + in SIZE spec, to allow
+         #<langfont>=<FONT FACE="xdvng" SIZE="+3">
+
+--------------------------
+****** Version 5.20, 16 September 1998
+This release contains additions and bug fixes only. All ITRANS 5.1
+documents will be correctly handled by this release.
+    1) Added additional ITRANS codes:
+       RRi == R^i     RRI == R^I
+       LLi == L^i     LLI == L^I
+       '   == .a      (only when #usecsx is in effect)
+    2) Gurmukhi now supported.
+       Anshuman Pandey developed the ITRANS support for the
+       "Punjabi" Gurmukhi PostScript font.
+    3) Bengali: New font from the BWTI package by Abhijit Das (Barda).
+       Jaijeet Roychowdhury added support for it in ITRANS, it is a
+       TeX Metafont font.
+       Added "Y" (yya in the IFM file) for ease of use with Bengali
+       Changed:
+          f --> Y
+       Added "J" (jadot in the IFM file) for ease of use with Bengali
+          y, z == J
+       Note: both Y and J can be used with any language, not just Bengali.
+    4) Added new document: tblall.itx - table that shows ITRANS encoding
+       for every language and font supported by ITRANS.
+    5) #include=<filename> now searches for filename in all directories
+       defined in the environment variable ITRANSPATH
+    6) HTML output: added #endfont=<string> and extended #<langfont>, ex:
+       #endfont=</FONT>		% this is a global command, for all languages
+       ....
+       #hindifont=<FONT FACE="Xdvng">	% this is language specific
+       now, every #hindi will then print <FONT FACE="Xdvng">
+       & any #end<lang> will print </FONT>
+    7) xdvng.ifm - : token fixed (AHA), change Itrans to itrans (small i)
+       to fix all the *-half rules.
+       dvng.ifm - ra-ri, ra-li, etc rules end word spacing fixed.
+	  l-underbar (CSX code 215) accepted as L/ld (LDA).
+	  Added two three-consonant conjuncts: da-va-ya and da-va-ra
+	  Enabled the ka-shha rules (so kSh prints same as the "ksh" special
+	  just based on the ifm file - this allowed removal of the special
+	  "kSh" rule from the code in ilex.l).
+       dvngfull.ifm - added ra-ri, ra-li, da-va-ya, etc rules (copied
+       from dvng.ifm)
+    8) tamil.mf modified, replaced with Siddharthan Ramachandramurthi's
+       version, changed shapes to be slanted.
+    9) Added Shree's updates & fixes to wntml.ifm: fixed 5.1 bugs, and
+       updated with more rules to allow easier handling of Sanskrit docs
+       Changed:
+          t --> T
+	  dh --> t
+       This makes it more in line with Anthony Stone's and other standard
+       transliterations.
+   10) Updated Velthuis's Devanagari fonts, received from Anshuman Pandey.
+   11) Added Ashok Basargekar's chart (Velthuis-like layout) to dvng.itx 
+   12) Added j0 option to lib/DVIPSRC to make ItxGuj,ItxBeng,etc fonts work
+   13) All LaTeX2.09 *.itx documents changed to LaTeX2e.
+   14) Most *.itx documents now available as HTML too (Ross's LaTeX2HTML).
+   15) ichar.c bug, causing coredump when ksha appeared in #telugu, fixed.
+   16) Fixed Kannada documentation (kantex.itx) - any #<lang> markers can
+       now be used with Kannada, no need to restrict usage to #telugu here.
+   17) Minor:
+       -- LaTeX changes to all tables in all user manual documents
+       ITRANS/doc/*.itx; eliminated some large non-useful tables (like
+       consonant-vowel forms for all consonants and vowels); added hints
+       to make latex2thml work better on all the .itx docs.
+       -- Fixed telmode.mf, comment out mode line, to stop mf error messages.
+          Fixed similar problem in kanmain.mf for Kannada.
+   18) #useshortmarkers is now the default, short markers (##) are always
+       on. To turn off, use #ignoreshortmarkers.
+   19) 
+
+--------------------------
+****** Version 5.10, June 1997
+    1) Missing files "psfonts.map" & "FONTS.SCALE" added to the lib directory.
+    2) 8.3 filename notation adapted for files telchars?.mf and itxbengrc
+       and itxbengre - they are now telchrs?.mf & itxbngrc & itxbngre.
+    3) ItxBeng font modified - to display on Win95 Netscape.
+    4) Bug in itrans.c with the -P direct PostScript output option fixed.
+    5) realloc() call changed to handle problems on SunOS.
+
+****** Version 5.10, May 1997
+    1) ITRANS now accepts IFM consonant conjunct definitions of 3 or more
+       consonants too! Example:
+	CCADD na-dha-ya ;
+	CCS na-dha-ya tmplA ;
+	CC na-dha-ya-implicit 2 ; PCC 251 0 0 ; PCC 255 0 0 ;
+	...
+
+****** Version 5.05, Feb 1996
+    1) Added support for Bengali (ItxBeng PostScript Type 1 font)
+       TeX, PostScript, Direct Text (HTML, etc) output modes.
+
+    2) Added support for Sandeep Saibal's Xdvng (Type1 & TrueType)
+       font, for Direct Text output - mainly HTML. Xdvng is from
+       Saibal's Jtrans package.
+
+    3) All devanagari fonts: ra-ri, ra-rii, ra-li, ra-lii modified
+       -- all these are now full vowels, with the ra-rafar on top,
+       i.e rR^i  ==>  R^i.r, etc
+
+****** Version 5.04, Dec 1996
+    1) Complete compatibility with ITRANS 4.04 encoding.
+       Just added new codes:
+       Added: w (== v), kSh (== ksh), ~N (== for N^), ~n (== for JN),
+              dny (== GY), ^r (== .r - half-ra)
+
+    2) ## is now enabled by default. Also, ## can be used to turn on and off
+       any language marker -- no longer restricted to #indian.
+       A ## that is meant to start Indic Text processing will assume that
+       the last seen language marker tag is to be restarted.
+       Ex:
+       #gujarati 
+         .................. 
+	 ## [this implies, turn off gujarati]
+	 .....
+	 ## [this implies turn on gujarati again]
+	#endgujarati
+	etc..
+
+    3) Added #output= tag. So, no need to provide args like -P or -T to
+       ITRANS, the input file itself can tell ITRANS what kind of output
+       to produce - "TeX" (is default), or "PostScript", or just plain
+       "Text".
+       #output=Text or #output=PostScript or #output=TeX
+
+    4) Added support for Gujarati (ItxGuj PostScript Type 1 font)
+    5) Added support for Romanized Sanskrit (CSUtopia* PostScript Type1 fonts)
+    6) #include=<filename>
+       added as a new ITRANS command, this command will behave as if the
+       given file name was copied in at that point. Can appear anywhere
+       in the document, and can have nested #include commands (to some maximum).
+    7) Itrans now has a -T option (Direct Text Output). Currently, this
+       can be used to convert any ITRANS text into Romanized-Sanskrit output,
+       which can be viewed on the PC/Mac using the TrueType or Type 1
+       CSUtopia fonts.
+       In later releases, this will be used to produce Gujarati, Bengali
+       or any other Indic Script output as long as a freeware Type 1 or
+       TrueType font exists for that script. This will allow viewing
+       Itrans encoded texts directly in WWW HTML browsers, when such
+       browsers start supporting TrueType or Type 1 fonts.
+    8) There is no longer any need for separate Marathi IFM files, so
+       mdvng.ifm and mdvnc.ifm have been removed from the package.
+       The basic devanagari IFM files: dvng.ifm and dvnc.ifm offer 
+       both the marathi half-ra (as "R"), and the second LA, LDA (as "L").
+    9) TAMIL encoding changed. I had the 5 "n" sounds all incorrect, I think
+       the stuff is more correct now! 
+		4.x     5.x    Unicode Name
+		--      --     ------------
+		ng -->  ~N     NGA
+		ny -->  ~n     NYA
+		N  -->  N      NNA
+		n  -->  ^n     NNNA
+		n^ -->  n      NA
+    10) #endwordvowel=a
+       OR
+       #endwordvowel=.h
+       commands added.
+       These are useful for allowing use of the same IFM file for multiple
+       langauges where the only difference is how a word (without any
+       ending vowel) is to be handled. For Hindi/Marathi, use:
+	       #endwordvowel=a
+       in your input text, for Sanskrit (to add a viraam at end of words
+       without a ending vowel), use:
+	       #endwordvowel=.h
+       Normally, the IFM file will provide a reasonable default value,
+       which is "a" for the scripts similar to Devanagari.
+       If left unspecified in the IFM file, the default is ".h".
+       These #endwordvowel commands will override the DEFAULTVOWEL
+       assignment read from the IFM file.
+
+--------------------------
+****** Version 4.02, 15 Dec 1994
+****** Version 4.03,  1 Jan 1995
+****** Version 4.04, 21 Feb 1995
+
+    This version makes changes that are incompatible with 3.xx or earlier
+    ITRANS texts. Markers have changed, but no transliteration codes have
+    changed -- so old ITRANS encoded texts will be accepted as is.
+    
+    1) Support for CSX (Classical Sanskrit Encoding) texts.
+       See doc/icsx.itx (or better still, just print out doc/icsx.ps).
+    2) All ITRANS commands now begin with # (previously, \ was used, but
+       that confuses ITRANS commands with TeX commands).
+       Short markers have been changed to ##
+       Only one short marker is available, and it acts as a toggle.
+       To convert pre-4.0 docs to 4.0, a sed script is provided.
+       If you do not have sed on your machine, you will have to manually
+       make the modifications to your input files.
+    3) Added TeX macro file (lib/idevn.tex) for easier use of Devanagari fonts.
+    4) Fixed the hindi ra-faar bug. RA-<cons>-<cons>..<vowel> would not
+       be handled correctly in previous releases. So, rdhva, etc input
+       printed incorrectly. Fixed this problem, so now rdhva, etc work ok.
+    5) Added a sample input file - doc/sample.itx. Beginning (or advanced)
+       users should take a look at this small file.
+    6) "M" now works like anusvara (".n").
+
+    Ver 4.01:
+    1) Added m-overdot (== anusvara) to CSX code.
+    2) Fixed bad bug in idevn.tex - \par redefinition in \obeyspaceslines
+       would eat up any numerical text at the beginning of a line!
+       (Needed a \relax at the end.)
+       
+    Ver 4.02:
+    1) Added | as a command in idevn.tex to print Da.nDaa when using
+       Frans's font.
+    2) Modified icsx.itx to make it a bit clearer that uppercase characters
+       have different meanings than lowercase chars, even in CS/CSX mode.
+    3) Added the file csx2i.c to the src/ directory, is a standalone
+       filter program to accept CS/CSX input text through stdin, and produce
+       ITRANS encoded text on stdout.
+       
+    Ver 4.03:
+    1) Bug fixed: "tryaa" now prints correctly (was printed
+       as ta-half, yaa, ra-faar! Should be: ta-ra conjunct, yaa).
+
+    Ver 4.04:
+    1) Removed the "aM" ilex.l rule, since "M" itself is recognized as
+       anusvara, and so there is no need for "aM" rule. This does not
+       matter for devanagari, but for other languages, which do not have
+       aM rules in the .ifm files, but do have anusvara, this works out
+       much better.
+    2) TeX output now suppress { } characters, and prints them as char codes
+       in the .tex output files, since { and } are TeX characters used
+       for defining scope and having ITRANS print out { } makes it very
+       confusing to search for matching braces in .tex files.
+    3) DOS executable now made with the latest flex (2.4.7), supposed
+       to fix some 8-bit input bugs.
+    4) Added sample makefiles for Linux (gcc/flex), Sun, SGI, etc.
+    
+****** Version 3.00, 21 June 1992
+****** Version 3.01, 17 July 1992
+****** Version 3.02, 7 August 1992
+****** Version 3.10, 11 September 1992
+****** Version 3.11, 5 October 1992
+****** Version 3.12, 15 October 1992
+****** Version 3.20, 10 December 1992
+    1) Changed Ri, RI, Li, and LI to R^i, R^I, L^i, and L^I, respectively.
+       These vowels are not used much anyway, and I needed "R" for
+       a consonant (telugu, tamil, and bengali).
+       Changed chandra-bindu to .N (was .C)
+       Changed "ng" to "N^", changed "jn" to "JN". These are minimally
+       used consonants, but caused problems for na-ga, and ja-na ligatures.
+    2) All words must end in vowels - if a word has a consonant at the end
+       without a vowel, it will be assumed that the "a" vowel is present.
+       Thus, in hindi: instead of writing "hama", just "ham" is sufficient.
+       This was done to increase readability. To get a viraam at the end
+       of a word, use ".h" (without "a"), ex: "ham.h".
+       This mechanism is activated for devanagari and bengali only.
+    3) Added support for the the telugu font from the TeluguTeX package
+    4) Removed support for the bit-mapped bengali font - BANGLA-V1.1
+    5) Added support for the bit-mapped bengali font - SGAON
+       This is originally a HP SoftFont, and can be converted to TeX PK 
+       format, and to PostScript. Thus, it can be used with both TeX and
+       PostScript.
+    6) Devnac PostScript font: added the ligatures sha-ba, sha-va, sha-cha
+    7) split up code in ichar.c to different files handling each indian
+       language.
+    8) added short marker symbols (!< and >!) to delimit indian lang texts
+	(turned off by default, use command \useshortmarkers to enable).
+    9) added support for digits (0..9) in the IFM file format.
+    10) Default IFM file (dvnc.ifm) is not loaded  on startup, it will
+       be loaded only if necessary --- so tamil only users will see
+       faster startup times (as will telugu, bengali, etc users).
+    11) Added the marathi la - (use mdvnc.ifm to get this).
+       Changed the "gy" consonant to "GY" - to reduce conflict with
+       the ga-ya consonant conjunct.
+       Modified the dda-ya ligature.
+       Improved the da-dha ligature.
+       Many of the above changes/bug fixes to the devnac font have been made
+       at the suggestion of Muduhakar Deshpande, I would like to thank him
+       for his input.
+    12) IFM file format has changed!
+
+****** Version 2.11, 30 November 1991
+    1) Minor changes, mainly break up package into two parts:
+       itrns211 and itrnsps, where itrsps contains the printer
+       ready postscript documentation. (ZIP or ZOO format archives.))
+       This is in anticipation of downloading to IBM-PC archives, such
+       as SIMTEL, etc.
+    2) Fixed bug to allow \kern command in PostScript mode too..
+
+****** Version 2.10, 14 October 1991
+    0) Major features: IFM file added for Frans Velthuis's devanagari
+       font (it is called Devnag);
+       lots of new ligatures added to the Devnac PostScript font.
+       Ligatures can now be inhibited by using the characters {}
+       between two consonants in the input text.
+       All ra-<consonants> can now be printed using the hindi form
+       (before 2.1 these ligatures were not automatically handled,
+        users had to use the special .r to get what they needed.
+        From 2.1, the correct form will be used.)
+       Marathi users can use alternate IFM files, which use the
+       marathi form of ra-half.
+    1) A few codenames (internal IFM file format data) changed to
+       better reflect the actual character represented.
+       This does mean that all pre 2.1 release itrans IFM files are now
+       obsolete and incompatible with this and future releases.
+       Also made a change in the way PCC .. dx dy works, for details
+       see the file tech.tex.
+    2) Finally have a better understanding of the archiac vowels (Ri, RI, Li
+       and LI). Therefore the old naming scheme (RI RU LI RU) thrown out.
+       RI in the old scheme is Ri in release 2.1
+       RU in the old scheme is RI in release 2.1
+       LI in the old scheme is Li in release 2.1
+       LU in the old scheme is LI in release 2.1
+       The Devnac font only had the Ri character, it was called
+       RU earlier (pre 2.1).
+       The Devnag font (Frans Velthuis's) uses all four of the above vowels.
+
+--------------------------
+****** Version 2.0, 26 August 1991
+    0) Thanks to the following persons for many of the bug fixes and
+	suggestions: Samir Agarwal, Madhu Deshpande, Gary Thrapp,
+	Vick Khera, and many others.
+
+    1) With the help of Sriram Tyagarajan, added support for Tamil.
+       Uses the Washington Tamil font, it was created by the Humanities and
+       Arts Computing Center of the University of Washington, USA.
+
+    2) Because of 1, and other changes to support multi-languages,
+       new keywords have been introduced:
+       \indianifm=xxxxxxx   %% set the current IFM file
+       There is the concept of a current IFM font file, which contains
+       the font data used to construct indian language characters.
+       All \marathi or \hindi or \tamil do is to mark the beginning of
+       the transliterated text, they do not load in any IFM files, all
+       loading must be done thru the \indianifm command.
+       \indianfont=yyyyyyy %% command that will printed at \hindi
+       See idoc.itex for more info.
+
+       (Old documents with \marathi etc will still work since the default
+	IFM file loaded in is devnac.ifm --- the hindi/marathi font
+	metric file.)
+
+    3) Changed file extension .itex to .itx, and changed name of file
+       devnac.text to devnac.ps
+       Lots of other changes, see idoc.itx the user's manual.
+
+    4) added support for MSDOS machines (this version and onwards will
+       be developed on the PC---a 80386 machine).
+    5) Corrected the ifm definitions for big i, dha-ya ligature, etc
+       in the devnac.ifm file.
+    6) -I ./xxx.ifm would not work, it would still search for the
+       file xxx.ifm in the ITRANSPATH.
+       Fixed so that now it realizes that ./xxx.ifm is a full path
+       name and  does not look for in the ITRANSPATH.
+    7) Changed variable name "inline" to "line_in", some compilers
+       did not like the word "inline" (shades of C++...) [font.c]
+
+--------------------------
+****** Version 1.01, 11 June 1991
+
+    Most of these bugs came about to support non-ansi systems..
+
+    1)  stdlib.h is missing on many systems, so removed its
+	inclusion from itrans.h (instead, added the declaration
+	for getenv() - the only thing needed from stdlib.h).
+
+    2)  sprintf() works differently on non-ansi-C machines - instead of
+	returning number of characters printed, it simply returns a
+	pointer to the string!
+	So, changed itotex.c and itops.c to specifically use strlen()
+	instead of relying on sprintf().
+	Thanks to Dinesh Dattatraya Gaitonde (CMU) for catching this.
+
+    3) Bug in function font.c::S_ccadd() - return TRUE; missing, added.
+
+    4) Specifically define the macro YYDEBUG so as to include the
+       integer yydebug in iyacc.c
+
+    5) YFLAGS was missing from the Makefile, added it.
+
+--------------------------

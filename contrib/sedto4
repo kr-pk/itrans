@@ -1,0 +1,64 @@
+#
+# sed script to convert ITRANS pre 4.0 documents to 4.0 format
+#
+# to convert an input file file.s to  4.0 format, use these steps
+#     sed -f sedto4 < file.itx > temp.itx
+# then, check the file temp.itx to see whether it looks correct, and
+# rename it to file.itx if desired.
+#
+
+# most commonly used
+#
+s/\\indianifm/#indianifm/g
+s/\\indianfont/#indianfont/g
+s/\\indian/#indian/g
+s/\\endindian/#endindian/g
+s/!</##/g
+s/>!/##/g
+
+# other possible tokens
+#
+s/\\marathi/#marathi/g
+s/\\endmarathi/#endmarathi/g
+s/\\hindi/#hindi/g
+s/\\endhindi/#endhindi/g
+s/\\tamil/#tamil/g
+s/\\endtamil/#endtamil/g
+s/\\sanskrit/#sanskrit/g
+s/\\endsanskrit/#endsanskrit/g
+s/\\bengali/#bengali/g
+s/\\endbengali/#endbengali/g
+s/\\telugu/#telugu/g
+s/\\endtelugu/#endtelugu/g
+s/\\malayalam/#malayalam/g
+s/\\endmalayalam/#endmalayalam/g
+s/\\gujarati/#gujarati/g
+s/\\endgujarati/#endgujarati/g
+s/\\oriya/#oriya/g
+s/\\endoriya/#endoriya/g
+s/\\kannada/#kannada/g
+s/\\endkannada/#endkannada/g
+#
+s/\\marathiifm/#marathiifm/g
+s/\\hindiifm/#hindiifm/g
+s/\\tamilifm/#tamilifm/g
+s/\\sanskritifm/#sanskritifm/g
+s/\\bengaliifm/#bengaliifm/g
+s/\\teluguifm/#teluguifm/g
+s/\\malayalamifm/#malayalamifm/g
+s/\\gujaratiifm/#gujaratiifm/g
+s/\\oriyaifm/#oriyaifm/g
+s/\\kannadaifm/#kannadaifm/g
+#
+s/\\hindifont/#hindifont/g
+s/\\tamilfont/#tamilfont/g
+s/\\marathifont/#marathifont/g
+s/\\sanskritfont/#sanskritfont/g
+s/\\bengalifont/#bengalifont/g
+s/\\telugufont/#telugufont/g
+s/\\malayalamfont/#malayalamfont/g
+s/\\gujaratifont/#gujaratifont/g
+s/\\oriyafont/#oriyafont/g
+s/\\kannadafont/#kannadafont/g
+#
+# --- end of sed command file

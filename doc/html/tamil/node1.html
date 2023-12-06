@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fonts Available -- TEX Interface</TITLE>
+<META NAME="description" CONTENT="Fonts Available -- TEX Interface">
+<META NAME="keywords" CONTENT="tamil">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="tamil.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="tamil.html">
+<LINK REL="up" HREF="tamil.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html27"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html25"
+  HREF="tamil.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html19"
+  HREF="tamil.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html28"
+  HREF="node2.html">Example</A>
+<B>Up:</B> <A NAME="tex2html26"
+  HREF="tamil.html">tamil.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html20"
+  HREF="tamil.html">tamil.itx (ITRANS doc)</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html29"
+  HREF="node1.html#SECTION00011000000000000000">Points to Note</A>
+<LI><A NAME="tex2html30"
+  HREF="node1.html#SECTION00012000000000000000">Archaic Character Forms</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00010000000000000000">
+Fonts Available -- T<SMALL>E</SMALL>X Interface</A>
+</H1>
+
+<P>
+The single font <EM>wntml</EM>, is available in three sizes: 10, 12 and
+17&nbsp;points.
+The names are <EM>wntml10</EM>, <EM>wntml12</EM>, and <EM>wntml17</EM>
+respectively.
+
+<P>
+In this document (and in idoc.itx), the following lines were used for
+loading the font:
+
+<P>
+<code>\newfont{\tmlb}{wntml12}</code>.
+
+<P>
+<code>\newfont{\tmls}{wntml10}</code>.
+
+<P>
+The command <TT>&#92;tmlb</TT> refers to the font of size 12, and the
+command <TT>&#92;tmls</TT> refers to the font of size 10 points.
+
+<P>
+This package also includes the MF and PK files for the font.
+Since the MF files are also present, you can use them to generate any
+other PK and TFM files you need, to get fonts that are transformed
+versions (scaled, slanted, etc) of the basic Washington Tamil font.
+
+<P>
+
+<H2><A NAME="SECTION00011000000000000000">
+Points to Note</A>
+</H2>
+
+<P>
+
+<UL>
+<LI>The font used, wntml, is a Metafont description, hence, this font
+cannot be used to directly generate PostScript output from itrans.
+The only way to use this font with <EM>itrans</EM> is to produce documents
+in T<SMALL>E</SMALL>X.
+
+<P>
+</LI>
+<LI>The font used, wntml, does not have any numerals or any punctuation
+characters.
+Therefore, if you need to use numbers or punctuation marks between the
+&#35;tamil and &#35;endtamil markers, remember to change the font before any number or
+any punctuation mark.
+
+<P>
+For numbers, it is usually sufficient to use the $ enclosing scope to
+make them print correctly, since a $ enters mathmode and uses the math
+fonts.
+For punctuation marks, the user needs to explicitly change fonts:
+example:
+
+<P>
+<TT>&#35;tamil......{&#92;rm ;}.......&#35;endtamil</TT>.
+
+<P>
+The example in the previous section uses these methods.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<H2><A NAME="SECTION00012000000000000000">
+Archaic Character Forms</A>
+</H2>
+
+<P>
+As shown in table 2, the consonant-vowel forms follow certain modern
+tamil conventions. (I use the terms modern and archaic loosely, and they
+only reflect current tamil standards in India, other countries may not
+follow these.)
+It is possible to get the older alternate character forms that print out thus:
+
+<P>
+<TT>NA:</TT> <IMG
+ WIDTH="37" HEIGHT="21" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="{\tmlb {\char49} }">
+<P>
+<TT>Nai:</TT> <IMG
+ WIDTH="43" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="{\tmlb {\char54} }">
+<P>
+<TT>No:</TT> <IMG
+ WIDTH="48" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="{\tmlb {\char22\char49} }">
+<P>
+<TT>NO:</TT> <IMG
+ WIDTH="48" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="{\tmlb {\char23\char49} }">
+<P>
+<TT>nA:</TT> <IMG
+ WIDTH="30" HEIGHT="21" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.gif"
+ ALT="{\tmlb {\char145} }">
+<P>
+<TT>nai:</TT> <IMG
+ WIDTH="36" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif"
+ ALT="{\tmlb {\char150} }">
+<P>
+<TT>no:</TT> <IMG
+ WIDTH="42" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.gif"
+ ALT="{\tmlb {\char22\char145} }">
+<P>
+<TT>nO:</TT> <IMG
+ WIDTH="42" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="{\tmlb {\char23\char145} }">
+<P>
+<TT>Lai:</TT> <IMG
+ WIDTH="33" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="{\tmlb {\char134} }">
+<P>
+<TT>RA:</TT> <IMG
+ WIDTH="24" HEIGHT="21" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.gif"
+ ALT="{\tmlb {\char137} }">
+<P>
+<TT>Ro:</TT> <IMG
+ WIDTH="36" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="{\tmlb {\char22\char137} }">
+<P>
+<TT>RO:</TT> <IMG
+ WIDTH="36" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="{\tmlb {\char23\char137} }">
+<P>
+
+<P><P>
+<BR>
+To enable these forms, you need to edit the wntml.ifm file: better
+make a copy, and name it wntmla.ifm, and edit the new file.
+
+<P>
+Search the wntmla.ifm file for the word <EM>ARCHAIC</EM>, and delete
+that word.
+You should see twelve such instances, corresponding to the characters
+above.
+
+<P>
+Once that is done, specify the new IFM file with the <TT>&#35;tamilifm</TT>
+keyword, and all the above twelve consonant forms will print out as above.
+(See the user manual idoc.itx for exact details regarding the <TT>&#35;tamilifm</TT> keyword.)
+
+<P>
+<HR>
+<A NAME="tex2html27"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html25"
+  HREF="tamil.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html19"
+  HREF="tamil.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html28"
+  HREF="node2.html">Example</A>
+<B>Up:</B> <A NAME="tex2html26"
+  HREF="tamil.html">tamil.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html20"
+  HREF="tamil.html">tamil.itx (ITRANS doc)</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

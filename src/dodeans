@@ -1,0 +1,26 @@
+#!/bin/sh
+# Do not de-ansify header files!
+for f in iyacc.y \
+	itrans.c \
+	ilex.l \
+	marker.c \
+	dflt_mkl.c \
+	tmil_mkl.c \
+	tlgu_mkl.c \
+	font.c \
+	pifm.c \
+	ichar.c \
+	iother.c \
+	tfmload.c \
+	itotex.c \
+	itohtml.c \
+	itops.c \
+	utils.c \
+	ytabc \
+	lexyyc
+
+do
+	deansify < $f > tmp$$
+	mv $f $f.ansi
+	mv tmp$$ $f
+done

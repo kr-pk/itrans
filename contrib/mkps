@@ -1,0 +1,20 @@
+#!/bin/bash
+# Converts a .itx file (TeX input) to a .ps file and a .pdf file
+# example: mkps <file1>.itx ... <filen>.itx
+# runs latex (twice: to get labels correct) and dvips on the files.
+
+set -x
+
+ITRANS=/usr/local/bin/itrans
+
+for i in $*
+do
+    j=`basename $i .itx`
+    $ITRANS -v -i $i -o $j.tex
+    latex $j.tex
+    latex $j.tex
+    dvips $j.dvi
+    # dvipdf $j.dvi # fails/hangs on beng.dvi, but ps2pdf works
+    ps2pdf $j.ps
+    rm -f $j.tex $j.aux $j.log $j.dvi $j.out
+done

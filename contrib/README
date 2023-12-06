@@ -1,0 +1,35 @@
+
+ITRANS/contrib:
+
+This directory contains scripts and tools and documents that may be
+useful with ITRANS.
+
+This directory may contain files contributed by other people, more info
+will be available with the associated files.
+
+More tools can be found at various other WWW & FTP sites, visit the
+ITRANS home page for info:
+	
+    http://www.aczoom.com/itrans/
+
+-------------------------------------------------------------------
+Some files described:
+
+mkps		-- shell script to convert a .itx to a .ps file
+
+itransenc.ifm	-- produces ITRANS output from ITRANS input
+
+latex2html.txt	-- describes how to use Ross Moore's extensions
+                   to Latex2HTML to convert .itx files to .html
+		   where all the Indic Script text is displayed using
+		   GIF images.
+
+mkl2h		-- shell script to create html doc from a .itx using
+		   latex2html, this is what I used to create HTML files
+		   out of all the ITRANS/doc/*.itx files.
+
+prnounce.itx	-- document describes pronunciation of Devanagari letters
+
+sadhawin.ifm	-- IFM files for the Tamil Adhawin font
+sadhawin234.ifm	-- another version of the IFM file for Adhawin
+

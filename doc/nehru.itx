@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latex2html
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+
+% Devanagari Example (devnac font)
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+\newfont{\devnf}{dnh at 22pt}
+\newfont{\devno}{dnho at 22pt}
+\newfont{\devnc}{dnhrc at 22pt}
+\newfont{\devne}{dnh at 15pt}
+\hyphenchar\devnf=-1
+\hyphenchar\devno=-1
+\hyphenchar\devnc=-1
+\hyphenchar\devne=-1
+
+#hindiifm=dvnc.ifm
+
+#hindifont=
+% Not setting any font, since this file changes the font many times, itself.
+
+\setlength{\baselineskip}{30pt}
+\setlength{\textwidth}{6.20in}
+
+\begin{document}
+
+\pagestyle{empty}
+\centerline{\bf Nehru's Words}
+\bigskip
+
+{#hindi
+
+\devne
+\noindent {\rm ``...} sone ke pahale miilo.n lambaa saphar tay karanaa hai
+{\rm ...''}
+
+\devnc
+mai.n isakii kataii paravaah nahii.n karataa ki mere marane ke baada
+meraa yaa merii pratishhThaa kaa kyaa hogaa |
+lekin agar kuchh log mere baare mai.n sochanaa chaahe.n, to mai.n
+\hfill\break chaahuu.Ngaa
+% The reason there is a break in the line above, is because otherwise
+% the word chaahuu.Ngaa does not print out correct---due the
+% problem of glue added by TeX (see the Known Problems Section in
+% idoc.itx
+ki ve yahii kahe.n ki is aadamii ne puure dilo-dimaag se
+bhaarat aur bhaarat ke logo.n ko pyaar kiyaa, aur ve bhii usake prati
+utane hii
+anugrahii rahe aur unho.nne use apanaa bharapuur aur aparimit sneha
+pradaan kiyaa |
+\vfill
+
+\devne
+\noindent bhaarat kii khoj me.n
+
+\devnf
+ek samay aisaa aataa hai jab puuraa raashhTr ek mahaan uddeshya kii
+puurti ke lie aasthaabaddha ho jaataa hai aur tab itihaasa
+parivartanashiil aur yugapravartak ban jaataa hai |
+\vfill
+
+\devne
+\noindent drashhTaa
+
+\devnc
+jiivan ko saarthak banaanevaale aadarshho ke prati nishhThaa -
+hamame.n yahii ek chiiz he jo shaashvat hai aur kabhii bhii chhiinii
+nahii.n jaa sakatii |
+\vfill
+
+\devne
+\noindent taakirka
+
+\devnc
+mastishhk maanav kii sabase baDii puu.njii hai aura
+tark usakii kaaryapraNaalii...
+\vfill
+
+\devne
+\noindent raajadarshii
+
+\devnf
+jab tak ham apane raashhTriiya aur a.ntarraashhTriiy samba.ndho.n
+me.n naitik muulyo.n kii sarvoparitaa ko sviikaar nahii.n karate, taba
+tak hame.n chirasthaayii shaa.ntii praapt nahii.n ho sahatii |
+\vfill
+
+\devne
+\noindent nirmaataa
+
+\devnc
+aaJakal sabase badaa mandira, masjid aur gurudvaaraa vah sthaan hai
+jahaa.N manushhya puurii maanavataa kii bhalaai ke liye kaam karataa ho
+| is se baDii jagah kaun sii ho sakatii hai....jahaa.N laakho.n
+vyaktiyo.n ne mil kar kaam kiyaa hai, apanaa khuun pasiinaa bahaayaa
+hai aur kitano.n ne apane jiivan ki aahuuti bhii de dii hai !
+
+#endhindi} 
+
+\end{document}

@@ -1,0 +1,98 @@
+\documentstyle{article}
+\input idevn.tex	% TeX macros that ease ITRANS devanagari font usage
+%-----
+% ITRANS song book....prepend this header to print out songs,
+% using TeX (either Devnac or Devnag font)
+% Need ITRANS 4.0 or 5.x
+%-----
+
+% User Configuration Option -- One column or Two column output.
+% \def\maketwocolumn{YES}	% Uncomment this for 2-column printing
+% \def\makelandscape{YES}	% Uncomment this for landscape format
+
+% \pagestyle{empty} % no page numbers for hindi songs
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit this if needed, default should be ok for most users.
+
+\fransdvng
+\normaldvng
+
+\ifx\undefined\maketwocolumn
+% --- One column output
+    %\let\usedvng=\normaldvng	% 10pt devanagri font 
+    \let\usedvng=\largedvng	% 11pt devanagari font
+    %\let\usedvng=\Largedvng	% 12pt devanagari font
+    %\let\usedvng=\LARGEdvng	% 14pt devanagari font
+
+    \let\smallcmr=\eightrm
+    \let\titlefont=\tenrm
+\else
+% --- Two column output
+    %\let\usedvng=\LARGEdvng	% 12pt devanagari font
+    %\let\usedvng=\normaldvng	% 10pt devanagri font 
+    %\let\usedvng=\largedvng	% 11pt devanagari font
+    \let\usedvng=\Largedvng	% 12pt devanagari font
+    %\let\usedvng=\normaldvng	% 10pt devanagri font 
+
+    \let\smallcmr=\sixrm
+    \let\titlefont=\eightrm
+\fi
+
+% font options (normaldvng, largedvng, etc):
+% sizes: normal < large < Large < LARGE < huge < Huge
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% if needed, redefine "space" to allow each input line to be broken into
+% multiple output lines (\let =~ is the default, which enforces line rule)
+% That has to done in the idevn.tex file, or add this command after
+% \startsong in your input file:
+% {\global\let =\ }% Comment this out for: 1 input line --> 1 output line
+% (you cannot uncomment the command here, it has to appear after \startsong)
+%-----
+% Uncomment one of the following paragraphs:
+%    First one is for Frans Velthuis's font.
+%    Second one uses the font that is bundled with the ITRANS package.
+% ONLY one of these should be uncommented at any one time.............
+
+% ** Frans's font....(Metafont) (Uncomment the following TWO lines.)
+#indianifm=dvng.ifm  % ITRANS command
+#indianfont=\fransdvng
+
+%-----OR--------
+
+% ** Devnac font (PostScript) (Uncomment the following TWO lines.)
+% #indianifm=dvnc.ifm  % ITRANS command
+% #indianfont=\postdvng
+
+#useshortmarkers % this allows use of ## (beginindian) and  ## (endindian)
+% -----------------------------------------------------------------
+% Page Settings
+\ifx\undefined\makelandscape
+    % Use Portrait Size Page
+    \portraitpage 
+    % use a slightly wider page
+    \addtolength{\textwidth}{0.25in}
+\else
+    % Use Landscape Size Page
+    \landscapepage 
+\fi
+
+% -----------------------------------------------------------------
+% The idevn.tex file is now included with ITRANS 4.0, but it has
+% a new method of specifying the songtitle (using printtitle).
+% For backward compatibility, need to define songtitle.
+\def\songtitle#1#2#3#4{%
+    \film{#1}\singer{#2}\lyrics{#3}\music{#4}\printtitle}
+
+% -----------------------------------------------------------------
+\begin{document}
+
+\ifx\undefined\maketwocolumn
+    \relax
+\else
+    \twocolumn
+\fi
+
+\hrule height0.4pt
+% ----------------------- End of isitx.hdr ------------------------

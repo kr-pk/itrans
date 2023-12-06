@@ -1,0 +1,294 @@
+Comment *===================================================================
+Comment * Copyright 1997-1998   Avinash Chopde, All Rights Reserved.
+Comment *
+Comment * Permission to use, copy, modify and distribute this software
+Comment * and its documentation for any purpose is hereby granted without
+Comment * fee, provided that the above copyright notice appear in all
+Comment * copies and that both that copyright notice and this permission
+Comment * notice appear in supporting documentation, and that the name of
+Comment * Avinash Chopde not be used in advertising or publicity
+Comment * pertaining to distribution of the software without specific,
+Comment * written prior permission.
+Comment * Avinash Chopde makes no representations about the suitability
+Comment * of this software for any purpose.
+Comment * It is provided "as is" without express or implied warranty.
+Comment *
+Comment * AVINASH CHOPDE DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS
+Comment * SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+Comment * AND FITNESS, IN NO EVENT SHALL AVINASH CHOPDE BE LIABLE FOR
+Comment * ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+Comment * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER
+Comment * IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+Comment * ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
+Comment * OF THIS SOFTWARE.
+Comment *
+Comment * Author:  Shree
+Comment *
+Comment * Modified to take directly the e-texts for sanskrit
+Comment * and print in tamil script
+Comment * T, used for t Tamil
+Comment * t, used for th of Tamil
+Comment * flipped na and nnx also 
+Comment ===================================================================
+
+Comment Using following maps:
+Comment vowels: a aa i ii u uu ri ay aay ai o oo au (..gap..) aha
+
+itrans: StartINDIAN
+itrans: TEXT_TTY tamil
+itrans: HYPHENCHAR -1 ;
+itrans: Comment Created October 1997, Shree
+itrans: Comment Updated Feb 21, 1998, Shree - deleted 2-3-4 
+
+itrans: Comment The Vowels
+itrans: CC a 1 ; PCC 243 0 0 ;
+itrans: CC aa 1 ; PCC 244 0 0 ;
+itrans: CC i 1 ; PCC 245 0 0 ;
+itrans: CC ii 1 ; PCC 246 0 0 ;
+itrans: CC u 1 ; PCC 247 0 0 ;
+itrans: CC uu 1 ; PCC 248 0 0 ;
+itrans: Comment Vowels rii, li & lii not used...
+itrans: CC ri 1 ; PCC 149 0 0 ;
+itrans: CC ay 1 ; PCC 249 0 0 ;
+itrans: CC aay 1 ; PCC 250 0 0 ;
+itrans: CC ai 1 ; PCC 251 0 0 ;
+itrans: CC o 1 ; PCC 252 0 0 ;
+itrans: CC oo 1 ; PCC 253 0 0 ;
+itrans: CC au 2 ; PCC 252 0 0 ; PCC 176 0 0 ;
+itrans: Comment am not used
+itrans: Comment visarga is not ek , need a diff number here
+itrans: CC aha 1 ; PCC 58 0 0 ;
+
+itrans: Comment kadot refers to the special char "ek" in Tamil
+itrans: Comment (looks like the mathematical symbol for "therefore"!)
+itrans: Comment "q" in the input text refers to this char.
+itrans: Comment kadot only exists in the half form, since it is
+itrans: Comment used as a special in Tamil. (see visargha (aha) also)
+itrans: CC kadot-implicit 1 ; PCC 254 0 0 ;
+itrans: CC kadot-half 1 ; PCC 254 0 0 ;
+itrans: CC kadot-half 1 ; PCC 254 0 0 ;
+itrans: CC kadot-a 1 ; PCC 254 0 0 ;
+
+itrans: CCADD tmpl ;
+itrans: CC tmpl-half 3 ; PCC implicit 0 0 ; PCC 217 -500 0 ; PCC none 250 0 ;
+itrans: CC tmpl-a 1 ; PCC implicit 0 0 ;
+itrans: CC tmpl-aa 2 ; PCC implicit 0 0 ; PCC 223 0 0 ;
+itrans: CC tmpl-i 2 ; PCC implicit 0 0 ; PCC 211 0 0 ;
+itrans: CC tmpl-ii 2 ; PCC implicit 0 0 ; PCC 214 0 0 ;
+itrans: CC tmpl-u 2 ; PCC implicit 0 0 ; PCC 228 0 0 ;
+itrans: CC tmpl-uu 2 ; PCC implicit 0 0 ; PCC 237 0 0 ;
+itrans: CC tmpl-ri 2 ; PCC implicit 0 0 ; PCC 150 0 0 ;
+itrans: CC tmpl-ay 2 ; PCC 188 0 0 ; PCC implicit 0 0 ;
+itrans: CC tmpl-aay 2 ; PCC 189 0 0 ; PCC implicit 0 0 ;
+itrans: CC tmpl-ai 2 ; PCC 190 0 0 ; PCC implicit 0 0 ;
+itrans: CC tmpl-o 3 ; PCC 188 0 0 ; PCC implicit 0 0 ; PCC 223 0 0 ;
+itrans: CC tmpl-oo 3 ; PCC 189 0 0 ; PCC implicit 0 0 ; PCC 223 0 0 ;
+itrans: CC tmpl-au 3 ; PCC 188 0 0 ; PCC implicit 0 0 ; PCC 176 0 0 ;
+
+itrans: Comment Consonants
+
+itrans: CCS ka tmpl ;
+itrans: CC ka-implicit 1 ; PCC 161 0 0 ;
+itrans: CC ka-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+itrans: CC ka-ii 2 ; PCC implicit 0 0 ; PCC 215 0 0 ;
+itrans: CC ka-u 1 ; PCC 193 0 0 ;
+itrans: CC ka-uu 1 ; PCC 225 0 0 ;
+
+itrans: Comment "kh" is interchangeble with "k"
+itrans: CCS kha ka ;
+itrans: CC kha-implicit 1 ; PCC 161 0 0 ;
+
+itrans: Comment "g" is interchangeble with "k"
+itrans: CCS ga ka ;
+itrans: CC ga-implicit 1 ; PCC 161 0 0 ;
+
+itrans: Comment "gh" is interchangeble with "k"
+itrans: CCS gha ka ;
+itrans: CC gha-implicit 1 ; PCC 161 0 0 ;
+
+itrans: CCS nga tmpl ;
+itrans: CC nga-implicit 1 ; PCC 162 0 0 ;
+itrans: CC nga-u 1 ; PCC 194 0 0 ;
+itrans: CC nga-uu 2 ; PCC 194 0 0 ; PCC 226 0 0 ;
+
+itrans: CCS cha tmpl ;
+itrans: CC cha-implicit 1 ; PCC 163 0 0 ;
+itrans: CC cha-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+itrans: CC cha-ii 2 ; PCC implicit 0 0 ; PCC 215 0 0 ;
+itrans: CC cha-u 1 ; PCC 195  0 0 ;
+itrans: CC cha-uu 1 ; PCC 227 0 0 ;
+
+itrans: Comment "chh" is interchangeble with "ch"
+itrans: CCS chha cha ;
+itrans: CC chha-implicit 1 ; PCC 163 0 0 ;
+
+itrans: CCS ja tmpl ;
+itrans: CC ja-implicit 1 ; PCC 185 0 0 ;
+itrans: CC ja-i 2 ; PCC 185 0 0 ; PCC 212 0 0 ;
+
+itrans: Comment "jh" is interchangeble with "j"
+itrans: CCS jha ja ;
+itrans: CC jha-implicit 1 ; PCC 185 0 0 ;
+
+itrans: CCS jnh tmpl ;
+itrans: CC jnh-implicit 1 ; PCC 164 0 0 ;
+itrans: CC jnh-i 2 ; PCC implicit  0 0 ; PCC 212 0 0 ;
+itrans: CC jnh-u 1 ; PCC 196  0 0 ;
+itrans: CC jnh-uu 2 ; PCC 196 0 0 ; PCC 187 0 0 ;
+
+itrans: CCS tta tmpl ;
+itrans: CC tta-implicit 1 ; PCC 165  0 0 ;
+itrans: CC tta-i 2 ; PCC implicit  0 0 ; PCC 213 0 0  ; 
+itrans: CC tta-ii 2 ; PCC implicit  0 0 ; PCC 216 0 0 ; 
+itrans: CC tta-u 1 ; PCC 197  0 0 ;
+itrans: CC tta-uu 1 ; PCC 229   0 0 ;
+
+itrans: Comment "tth" is interchangeble with "tt"
+itrans: CCS ttha tta ;
+itrans: CC ttha-implicit 1 ; PCC 165  0 0 ;
+
+itrans: Comment "dd" is interchangeble with "tt"
+itrans: CCS dda tta ;
+itrans: CC dda-implicit 1 ; PCC 165  0 0 ;
+
+itrans: Comment "ddh" is interchangeble with "tt"
+itrans: CCS ddha tta ;
+itrans: CC ddha-implicit 1 ; PCC 165  0 0 ;
+
+itrans: CCS nna tmpl ;
+itrans: CC nna-implicit 1 ; PCC 166 0 0 ;
+itrans: CC nna-aa 1 ; PCC 230 0 0 ;
+itrans: CC nna-u 1 ; PCC 198 0 0 ;
+itrans: CC nna-uu 2 ; PCC 198 0 0 ; PCC 187 0 0 ;
+itrans: CC nna-ai 2 ; PCC 191 0 0 ; PCC implicit 0 0 ;
+
+itrans: CCS ta tmpl ;
+itrans: CC ta-implicit 1 ; PCC 167 0 0 ;
+itrans: CC ta-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+itrans: CC ta-ii 2 ; PCC implicit 0 0 ; PCC 215 0 0 ;
+itrans: CC ta-u 1 ; PCC 199 0 0 ;
+itrans: CC ta-uu 2 ; PCC 199 0 0 ; PCC 187 0 0 ;
+
+itrans: Comment "th" is interchangeble with "t"
+itrans: CCS tha ta ;
+itrans: CC tha-implicit 1 ; PCC 167 0 0 ;
+
+itrans: Comment "d" is interchangeble with "t"
+itrans: CCS da ta ;
+itrans: CC da-implicit 1 ; PCC 167 0 0 ;
+
+itrans: Comment "dh" is interchangeble with "t"
+itrans: CCS dha ta ;
+itrans: CC dha-implicit 1 ; PCC 167 0 0 ;
+
+Comment flipped na and nnx ??? check
+itrans: CCS na tmpl ;
+itrans: CC na-implicit 1 ; PCC 168 0 0 ;
+itrans: CC na-u 1 ; PCC 200 0 0 ;
+itrans: CC na-uu 2 ; PCC 200 0 0 ; PCC 187 0 0 ;
+
+itrans: CCS nnx tmpl ;
+itrans: CC nnx-implicit 1 ; PCC 178 0 0 ;
+itrans: CC nnx-u 1 ; PCC 210 0 0 ;
+itrans: CC nnx-uu 2 ; PCC 210 0 0 ; PCC 187 0 0 ;
+
+itrans: CCS pa tmpl ;
+itrans: CC pa-implicit 1 ; PCC 169 0 0 ;
+itrans: CC pa-u 1 ; PCC 201 0 0 ;
+itrans: CC pa-uu 1 ; PCC 233 0 0 ;
+
+itrans: Comment "ph" is interchangeble with "p"
+itrans: CCS pha pa ;
+itrans: CC pha-implicit 1 ; PCC 169 0 0 ;
+
+itrans: Comment "b" is interchangeble with "p"
+itrans: CCS ba pa ;
+itrans: CC ba-implicit 1 ; PCC 169 0 0 ;
+
+itrans: Comment "bh" is interchangeble with "p"
+itrans: CCS bha pa ;
+itrans: CC bha-implicit 1 ; PCC 169 0 0 ;
+
+itrans: CCS ma tmpl ;
+itrans: CC ma-implicit 1 ; PCC 170 0 0 ;
+itrans: Comment CC ma-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+itrans: CC ma-u 1 ; PCC 202 0 0 ;
+itrans: CC ma-uu 2 ; PCC 202 0 0 ; PCC 234 0 0 ; 
+
+itrans: Comment "ya" is also code 235
+itrans: CCS ya tmpl ;
+itrans: CC ya-implicit 1 ; PCC 171 0 0 ;
+itrans: CC ya-u 1 ; PCC 203 0 0 ;
+itrans: CC ya-uu 2 ; PCC implicit 0 0 ; PCC 226 0 0 ; 
+
+itrans: Comment "ra" is also code 236
+itrans: CCS ra tmpl ;
+itrans: CC ra-implicit 1 ; PCC 172 0 0 ;
+itrans: CC ra-u 1 ; PCC 204 0 0 ;
+itrans: Comment needs checking
+itrans: CC ra-uu 2 ; PCC 204 0 0 ; PCC 234 0 0 ;
+
+itrans: CCS la tmpl ;
+itrans: CC la-implicit 1 ; PCC 173 0 0 ;
+itrans: CC la-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+itrans: CC la-u 1 ; PCC 205 0 0 ;
+itrans: CC la-uu 2 ; PCC 205 0 0 ; PCC 187 0 0 ;
+itrans: CC la-ai 2 ; PCC 191 0 0 ; PCC implicit 0 0 ;
+
+itrans: CCS va tmpl ;
+itrans: CC va-implicit 1 ; PCC 174 0 0 ;
+itrans: CC va-u 1 ; PCC 206 0 0 ;
+itrans: CC va-uu 2 ; PCC implicit 0 0 ; PCC 226 0 0 ;
+itrans: CC va-ai 2 ; PCC 191 0 0 ; PCC implicit 0 0 ;
+
+itrans: CCS jadot tmpl ;
+itrans: CC jadot-implicit 1 ; PCC 175 0 0 ;
+itrans: CC jadot-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+itrans: CC jadot-u 1 ; PCC 207 0 0 ;
+itrans: CC jadot-uu 2 ; PCC implicit 0 0 ; PCC 226 0 0 ;
+
+itrans: CCS lda tmpl ;
+itrans: CC lda-implicit 1 ; PCC 176 0 0 ;
+itrans: CC lda-aa 1 ; PCC 232 0 0 ;
+itrans: CC lda-u 1 ; PCC 208 0 0 ;
+itrans: CC lda-uu 2 ; PCC implicit 0 0 ; PCC 226 0 0 ;
+itrans: CC lda-ai 2 ; PCC 191 0 0 ; PCC implicit 0 0 ;
+
+itrans: CCS rra tmpl ;
+itrans: CC rra-implicit 1 ; PCC 177 0 0 ;
+itrans: CC rra-aa 1 ; PCC 231 0 0 ;
+itrans: CC rra-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+itrans: CC rra-u 1 ; PCC 209 0 0 ;
+itrans: CC rra-uu 2 ; PCC 209 0 0 ; PCC 187 0 0 ;
+
+itrans: Comment "sh" is interchangeble with "ch"
+itrans: CCS sha tmpl ;
+itrans: CC sha-implicit 1 ; PCC 179 0 0 ;
+
+itrans: CCS shha tmpl ;
+itrans: CC shha-half 3 ; PCC 180 0 0 ; PCC 217 -750 0 ; PCC none 500 0 ;
+itrans: CC shha-implicit 1 ; PCC 180 0 0 ;
+itrans: CC shha-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+
+itrans: CCS sa tmpl ;
+itrans: CC sa-implicit 1 ; PCC 181 0 0 ;
+
+itrans: CCS ha tmpl ;
+itrans: CC ha-implicit 1 ; PCC 184 0 0 ;
+itrans: CC ha-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+
+itrans: CCS ksha tmpl ;
+itrans: CC ksha-half 3 ; PCC 186 0 0 ; PCC 217 -750 0 ; PCC none 500 0 ;
+itrans: CC ksha-implicit 1 ; PCC 186 0 0 ;
+itrans: CC ksha-i 2 ; PCC implicit 0 0 ; PCC 212 0 0 ;
+
+itrans: Comment "gya" is interchangeble with "jnh" NY
+itrans: CCS gya ya ;
+itrans: CC gya-implicit 4 ; PCC 164 0 0 ; PCC 217 -500 0 ; PCC none 250 0 ; PCC 171 0 0 ;
+
+itrans: Comment Specials
+itrans: CC anusvara-implicit 3 ; PCC 170 0 0 ; PCC 217 -500 0 ; PCC none 250 0 ;
+itrans: CC aum-implicit 1 ; PCC 192 0 0 ; 
+itrans: CC sri-implicit 1 ; PCC 224 0 0 ; 
+
+itrans: EndINDIAN

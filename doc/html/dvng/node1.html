@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fonts Available</TITLE>
+<META NAME="description" CONTENT="Fonts Available">
+<META NAME="keywords" CONTENT="dvng">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="dvng.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="dvng.html">
+<LINK REL="up" HREF="dvng.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html37"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html35"
+  HREF="dvng.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html29"
+  HREF="dvng.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html38"
+  HREF="node2.html">Font Developer</A>
+<B>Up:</B> <A NAME="tex2html36"
+  HREF="dvng.html">dvng.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html30"
+  HREF="dvng.html">dvng.itx (ITRANS doc)</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html39"
+  HREF="node1.html#SECTION00011000000000000000">T<SMALL>E</SMALL>X Interface</A>
+<LI><A NAME="tex2html40"
+  HREF="node1.html#SECTION00012000000000000000">Direct Textual Interface - HTML</A>
+<LI><A NAME="tex2html41"
+  HREF="node1.html#SECTION00013000000000000000">Text Interface - Unicode (UTF-8) for Sanskrit, Hindi, and Marathi</A>
+<LI><A NAME="tex2html42"
+  HREF="node1.html#SECTION00014000000000000000">Sanskrit (or Hindi) and Marathi</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00010000000000000000">
+Fonts Available</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00011000000000000000">
+T<SMALL>E</SMALL>X Interface</A>
+</H2>
+
+<P>
+This devanagari font <EM>devnag</EM> is a Metafont font,
+developed by Frans Velthuis, and his package is called ``Devanagari for
+TeX''.
+
+<P>
+The devnag font is in a archive named <TT>devnag</TT> or <TT>devanagari</TT>.
+It is available at all CTAN T<SMALL>E</SMALL>X archives
+in the languages directory. At the time of writing this document (2001),
+it was certainly available at ftp.cdrom.com, ctan.tug.org, and many other sites.
+Please use your Internet search tools to locate the CTAN site closest to
+you for downloading the devnag archive.
+
+<P>
+This font is not bundled with the itrans package, but is available at
+many FTP sites, including in the texlive package.
+
+<P>
+This ITRANS package make use of Velthuis's Devanagari for TeX package,
+version 2.15 (released 2008). This contains a change from the previous
+1.6 version - the font family <TT>dvnb</TT> is used instead of <TT>dvng</TT>. This is required
+to get the correct <TT>j~n<I>a and</I> GY<I>a</I></TT> consonant variations. 
+
+<P>
+
+<P>
+<BR>
+
+<P>
+Devnag also has another Metafont file (dvpn10.mf) which generates a
+variation of the Devnag font.
+If you have Metafont on your system, you may
+use it to generate the PK and TFM files for T<SMALL>E</SMALL>X.
+This variation was developed by Thomas Ridgeway, and in his words,
+it is ``a trivial variation of dvnb10.mf to resemble devanagari 
+written with an ordinary writing pen''.
+Looks nice.
+
+<P>
+Note that the <EM>dvpn10.mf</EM> file alone is insufficient to
+generate the T<SMALL>E</SMALL>X font, the complete devnag package is required
+to make it usable.
+And, you must know enough about Metafont to run it.
+
+<P>
+
+<P><P>
+<BR>
+
+<P>
+<B>Important:</B> 
+itrans does not automatically handle all the ligatures present in the
+devnag font.
+The Devnag font does contain many three- and four- consonant ligatures, most
+of which are not currently supported using <EM>itrans</EM>.
+See the section titled ``Limitations'' for more details.
+
+<P>
+
+<H2><A NAME="SECTION00012000000000000000">
+Direct Textual Interface - HTML</A>
+</H2>
+
+<P>
+HTML interface is supported using this font,
+Unicode (UTF-8) is supported for this the Devanagari script, but no
+Unicode fonts are included with the ITRANS package.
+
+<P>
+Since this is a T<SMALL>E</SMALL>X font, this interface cannot be used as is for HTML.
+But, Sandeep Sibal, developer of the Jtrans package, has made available a
+font named Xdvng, which is derived from the dvng/dvnb fonts, and which allows
+use of Xdvng with the direct Text HTML output mode of ITRANS.
+See the example files for HTML output in the ITRANS doc directory
+(ITRANS/doc/s1html.itx); the
+IFM file to use is named <EM>xdvng.ifm</EM>.
+The IFM file has been developed by Sandeep Sibal, and the Xdvng font 
+(available for multiple platforms) has been
+developed by Sandeep Sibal and Arun Gupta
+See
+ 
+<A NAME="tex2html1"
+  HREF="http://www.sibal.com/sandeep/jtrans/"><TT>http://www.sibal.com/sandeep/jtrans/</TT></A>
+for info on Sandeep Sibal's Jtrans package.
+
+<P>
+
+<H2><A NAME="SECTION00013000000000000000">
+Text Interface - Unicode (UTF-8) for Sanskrit, Hindi, and Marathi</A>
+</H2>
+
+<P>
+IFM file to use is named <EM>udvng.ifm</EM>.
+
+<P>
+Unicode (UTF-8) output is supported for this the Devanagari script, but no
+Unicode fonts are included with the ITRANS package. There are many
+Unicode fonts available on the  Web, and more are being developed
+so it should be easy to locate a Unicode font when needed. Not all
+Unicode fonts fully support Indian Languages yet.
+
+<P>
+
+<H2><A NAME="SECTION00014000000000000000">
+Sanskrit (or Hindi) and Marathi</A>
+</H2>
+
+<P>
+The IFM file <EM>dvng.ifm</EM> can be used for
+Sanskrit, Hindi or Marathi output.
+
+<P>
+The marathi form of ra-half is available through the <TT>R</TT>
+character and the second LA is at <TT>L</TT> (or <TT>ld</TT>), etc.
+The tables (<A HREF="node3.html#ienc">1</A> and <A HREF="node8.html#ienc-velth">7</A>) display
+the complete mapping from English to Devanagari
+for all the three Indic Scripts.
+
+<P>
+A second IFM file is also provided, <EM>dvngfull.ifm</EM>, and is meant to be
+used for text that needs to use many archaic consonant conjunct forms.
+Use this file only if you really need all the consonant conjuncts; in
+most cases a smaller set of consonant conjuncts, as defined by the
+dvng.ifm file suffices.
+The tables that follow include information on which conjunct glyphs
+are available using which IFM file.
+dvng.ifm file is the one most commonly used, since this has the ``best''
+set of ligatures.
+
+<P>
+<HR>
+<A NAME="tex2html37"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html35"
+  HREF="dvng.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html29"
+  HREF="dvng.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html38"
+  HREF="node2.html">Font Developer</A>
+<B>Up:</B> <A NAME="tex2html36"
+  HREF="dvng.html">dvng.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html30"
+  HREF="dvng.html">dvng.itx (ITRANS doc)</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

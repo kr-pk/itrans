@@ -1,0 +1,539 @@
+% $Header: /home/cvsroot/itrans/nextrel/doc/tech.tex,v 1.1.1.1 1996/11/29 01:45:31 avinash Exp $
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+\newcommand{\SM}{\verb+\char92marathi+}
+\newcommand{\EM}{\verb+\char92endmarathi+}
+\documentclass[11pt]{article}
+\setlength{\textwidth}{5.75in}
+\newfont{\devnf}{dnh at 15pt}
+
+\begin{document}
+
+\centerline{\LARGE\bf The {\em itrans} Preprocessor}
+\medskip
+\centerline{\bf TECHNICAL INFORMATION}
+\medskip
+\centerline{\bf \copyright 1991 Avinash Chopde}
+\medskip
+\hrule
+\bigskip
+
+\section{Reference}
+
+{\tt
+WARNING: The information in this document relates to ITRANS 2.11 and
+earlier only.
+THIS INFORMATION MAY BE INCORRECT/INCOMPLETE AS OF ITRANS 3.00 versions
+onwards.
+}
+
+This is a project that aims to develop a single tool for handling the
+printing of various indian language documents, assuming that the input is
+in some transliterated form.
+The transliteration mechanism for all indian languages will be through
+the english language.
+
+See the document {\em Printing Transliterated Indian Language Documents},
+in the file {\em idoc.itx} for more details---that document is the
+user manual for the {\em itrans} package.
+This document discusses the technical aspects of the program.
+
+\section{Input Parsing}
+
+I have made the following assumptions regarding how the words in a
+indian language (well, not all, but most of them) are assembled.
+(In the following discussion, {\em alphabet} refers to the list of basic
+characters in the language script, a
+{\em letter} refers to an element from the complete list of characters---basic
+plus all the composite forms.)
+
+The alphabet is divided into two groups: vowels and consonants.
+
+Each indian language letter may be a vowel, or a consonant-vowel pair, or a
+ligature-vowel pair.
+
+Ligatures are sequences of consonants.
+
+If a consonant {\em xxx} is followed by another consonant {\em yyy}, then it is
+assumed to imply a half-consonant, i.e., the half-form of {\em xxx} must be
+displayed at that point.
+Of course, if the ligature for the pair xxx-yyy exists, the ligature
+is used instead.
+Note that not all indian languages make use of ligatures.
+
+Apart from the vowels and consonants, some special forms are also
+provided, such as the chandra-bindu, the anuswara, virama, etc.
+These special forms always form the suffix on the letter they affect,
+i.e., you specify the letter first, then the special form.
+A bunch of letters separated by white space or punctuation forms a word.
+
+Based on these assumptions, a simple parser has been built, to recognize
+the basic unit---the letter.
+
+\section{Letter Construction}
+
+The fonts that are used here provide only the basic characters---vowels,
+consonants (both full and half forms), special forms, and, some ligatures. 
+Every letter is built by printing its constituent characters.
+This mapping of the consonant-vowel pairs, of the ligatures, etc, to
+actual characters to be used from the specific font is specified through
+the IFM file (indian language font metric file).
+The IFM file is a text file, and follows somewhat the syntax of Adobe AFM
+files.
+In it is described how to construct every consonant-vowel form using the
+given font, how to construct a ligature of consonant-consonant pairs,
+the character codes of the special forms, etc.
+The description is provided as a list of character codes, and their
+offsets.
+For example a description for some letter looks like:
+
+PCC 97 0 0 ; PCC 129 -70 0 ;
+
+This is a two character chain, first character has code 97, second
+character has a code of 129.
+The first character is printed with an offset (x,y) of (0,0).
+Then the second character is printed with an offset of (-70,0), i.e., a
+kern of -70 units.
+One unit is equivalent of $1/1000$ of the current font size.
+The entire IFM file structure is described in a later section.
+
+As shown in the example above, the chain of characters is printed out by
+performing two operations on every character code in the chain:
+
+\begin{verbatim}
+for every component of the form:    PCC <code> <dx> <dy> ;
+
+move <dx>, <dy>;
+
+display character <code>;
+
+/*POSTSCRIPT FONT ONLY*/
+    if (<dy> is non-zero) move 0, -<dy>;
+    if (width of char <code> is defined as zero) move -<dx>, 0;
+/*POSTSCRIPT FONT ONLY*/
+
+\end{verbatim}
+
+This relies on the fact that both \TeX\ and PostScript have a notion of a
+current point.
+Two values allow kerning to be specified in  both X and Y  directions.
+If a movement in Y direction is des
+Note that if the font being used is a PostScript font, then two other
+actions may be performed.
+If \verb+ <dy>+ is non-zero, itrans reapplies a negative offset to
+restore the baseline y coordinate (otherwise the line will keep getting
+skewed! Note that this step is not necessary for \TeX---it takes care 
+of keeping the baseline horizontal).
+Secondly, if the width of the character has been defined to be zero, a
+negative x kern is applied.
+This is done just for convenience---zero width characters are always
+used as accent marks, and they should not contribute to the actual
+character width, so the current position in X is restored to the original
+value after a accent mark (zero width character) is printed.
+
+Only PostScript fonts may have zero-width characters, the above does not
+apply to \TeX\ Matafont fonts.
+I.e, for \TeX, the last {\em move -<dx>, 0;} is never executed, even if
+the charwidth for the given character is zero.
+(This is partly due to my laziness, I did not want to write code that
+reads in a TFM file to get the char widths!)
+
+The above given description is used to specify both consonant-vowel
+forms, and consonant-consonant (ligature) forms.
+Currently, only ligatures composed of two consonants can be defined.
+
+If a consonant-vowel form appears in the input text, but has not been
+defined in the IFM file, an error message is printed on the screen, and
+the character is omitted.
+
+If a consonant-consonant-vowel (ligature) form appears in the input text,
+but has not been
+defined in the IFM file, it is not considered an error, instead, the
+first consonant is printed in the half-form, and the second consonant
+is printed out as its appropriate vowel form.
+Long consonant chains, such as consonant-consonant-$\cdots$-consonant-vowel 
+are also handled in a similar manner---first a check if made if a ligature
+exists for any two consecutive consonants, if yes, it is used, else, the
+half forms of the consonants are used.
+Beginning with the first consonant in the list,
+itrans checks if a double-consonant ligature has
+been defined for  that consonant and  the next one in the list.
+If such a character exists, then it is used and both consonants are consumed,
+and itrans repeats the procedure for the next consonant.
+
+There is an exception to the above rule: if at all possible, the last two
+consonants are handled together, that is if a ligature of the last two
+consonants
+exists, that is used over the pairing that would result from the above method.
+(See the user manual idoc.itx for example in the section Usage Hints.)
+
+\section{IFM File Code Names}
+
+The IFM file uses code names to refer to vowels and consonants.
+For example, the ``I'' char in the input text for devanagari refers
+to the ``ii'' code name in the IFM file (in this case, so does the input
+char pair ``ii'').
+Figure 1 shows the relationship between  the input vowel text forms
+accepted by the
+lexer, and the code name for the vowels in the IFM file.
+(Note that no indian language script makes use of the complete set
+of code names available in the IFM file.)
+
+(Figures 1 \& 2 may be out-of-date, see the files imap.h and ilex.l
+for correct info.)
+
+Similarly, the consonant names are as given in figure 2.
+Again, only a subset of these may be used by a particular indian
+language script.
+
+\bigskip
+\begin{figure}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+{\em Input Text}	& {\em IFM Code Name}  & {\em Used For} \\
+\hline\hline
+a	& a	& devanagari, tamil \\ \hline
+aa	& aa	& devanagari, tamil \\ \hline
+i	& i	& devanagari, tamil \\ \hline
+ii or I	& ii	& devanagari, tamil \\ \hline
+u	& u	& devanagari, tamil \\ \hline
+uu or U	& uu	& devanagari, tamil \\ \hline
+Ri	& ri	& devanagari \\ \hline
+RI	& rii	& devanagari \\ \hline
+Li	& li	& devanagari \\ \hline
+LI	& lii	& devanagari \\ \hline
+e	& ay	& devanagari, tamil \\ \hline
+E	& aay	& tamil \\ \hline
+ai	& ai	& devanagari, tamil \\ \hline
+o	& o	& devanagari, tamil \\ \hline
+O	& oo	& tamil \\ \hline
+au	& au	& devanagari, tamil \\ \hline
+aM	& am	& devanagari\\ \hline
+H	& aha	& devanagari\\ \hline
+\end{tabular}
+\end{center}
+\caption {Vowel Input Forms and Code Names}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+{\em Input Text}	& {\em IFM Code Name}\\ \hline \hline
+k	& ka	\\ \hline
+q	& kadot	\\ \hline
+kh	& kha	\\ \hline
+K	& khadot	\\ \hline
+g	& ga	\\ \hline
+G	& gadot	\\ \hline
+gh	& gha	\\ \hline
+ng	& nga	\\ \hline
+c	& cha	\\ \hline
+ch	& chha	\\ \hline
+j	& ja	\\ \hline
+z	& jadot	\\ \hline
+jh	& jha	\\ \hline
+jn	& jnh	\\ \hline
+T	& tta	\\ \hline
+Th	& ttha	\\ \hline
+D	& dda	\\ \hline
+.D	& ddadot	\\ \hline
+Dh	& ddha	\\ \hline
+.Dh	& ddhadot	\\ \hline
+N	& nna	\\ \hline
+t	& ta	\\ \hline
+th	& tha	\\ \hline
+d	& da	\\ \hline
+dh	& dha	\\ \hline
+n	& na	\\ \hline
+p	& pa	\\ \hline
+\end{tabular}
+\hfill
+\begin{tabular}{|c|c|}
+\hline
+{\em Input Text}	& {\em IFM Code Name}\\ \hline \hline
+ph	& pha	\\ \hline
+f	& phadot	\\ \hline
+b	& ba	\\ \hline
+bh	& bha	\\ \hline
+m	& ma	\\ \hline
+y	& ya	\\ \hline
+r	& ra	\\ \hline
+l	& la	\\ \hline
+v	& va	\\ \hline
+sh	& sha	\\ \hline
+shh	& shha	\\ \hline
+s	& sa	\\ \hline
+h	& ha	\\ \hline
+ld	& lda	\\ \hline
+x	& ksha	\\ \hline
+gy	& gya	\\ \hline
+ny	& nya	\\ \hline
+n\^	& nnx	\\ \hline
+R	& rra	\\ \hline
+.r	& rahalf	\\ \hline
+.n	& anusvara	\\ \hline
+.c	& chandra	\\ \hline
+.C	& chandrabindu	\\ \hline
+.h	& viraam	\\ \hline
+SRI	& sri	\\ \hline
+AUM	& aum	\\ \hline
+\end{tabular}
+\\
+\end{center}
+\caption {Consonant Input Forms and Code Names}
+\end{figure}
+
+\section{IFM File Data}
+
+Currently, the IFM data resides in a file of its own, file name ends in 
+{\em .ifm}, example {\em dvnc.ifm}.
+I still hope
+that I may some day be able to include the IFM data into the Adobe AFM file.
+Hence, all the lines in the IFM file start off with the word {\em
+Comment\/}, so that regular Adobe programs that scan the AFM file may
+skip over this data.
+The marker {\em -I-} follows the comment word, and this marks the line as
+containing legal metric data for the indian language.
+
+Every line in the AFM file consists of semicolon separated fields.
+Each line describes a composite alphabet form, such as a consonant-vowel
+description or a consonant-consonant form, or a vowel form, or a half
+form of a consonant, etc.
+The english words used to specify the characters of the indian language
+alphabet are meant to sound right, in some vague manner, and are usually
+self-descriptive.
+These english words (such as ii, aa, aha, etc) have no relation to what
+the user types to get the required character, that mapping is defined by
+the lexer input file, {\em ilex.l}.
+
+Every field in a line in the IFM file starts off with an opcode,
+describing what to expect next.
+
+The following lines are representative of the data in the AFM file:
+
+\begin{verbatim}
+Comment -I- StartINDIAN
+Comment -I- FONT marathi dmta.afm
+Comment -I- CC a 2 ; PCC 97 0 0 ; PCC 129 -70 0 ;
+Comment -I- CC a 2 ; PCC 97 0 0 ; PCC 129 -70 0 ;
+Comment -I- CC gha-ii 3 ; PCC implicit 0 0 ; PCC 129 -70 0 ; PCC 132 0 0 ;
+Comment -I- CCS gha ga ;
+Comment -I- CCADD tmplA ;
+Comment -I- EndINDIAN
+\end{verbatim}
+
+
+The opcodes StartINDIAN and EndIndian are used to bracket the indian
+language character description data.
+
+The FONT opcode gives the name of the language, and the name of the file
+which contains the AFM data for this font.
+If the font is a Metafont description, then the TFM file name is
+specified here.
+The TFM file name is just used as an indication that the font used is a
+\TeX\ font, the file is not actually opened or read.
+Thus, if the font used is a Metafont description, you could as well say
+``junk.tfm'' in the FONT opcode---only the extension ``.tfm'' is
+important.
+The first word in the FONT line is the language, and it must be one of the
+languages ITRANS recognizes (see the function get\_lang\_tok() in marker.c).
+This word determines how the input is scanned for tokens.
+For example, the input letters ``Ri''refer to a vowel in
+sanskrit/marathi/hindi, but in tamil, that vowel is not present.
+But tamil uses the ``R'' symbol for a consonant, so the input ``Ri''
+is scanned as the consonant ``R'' followed by the vowel ``i'', while in
+sanksrit it is scanned as the vowel ``Ri''.
+Thus, it is important to define the correct language in the FONT statement
+in the IFM file.
+
+The CC words stands for composite character, and it defines how to
+construct the given character using the font.
+In the example above, it shows that the {\em a} character is made up of
+two units: char code 97, and char code 129.
+See the previous section regarding the PCC opcode.
+The second CC line above describes how to create the {\em ii} vowel form
+of the consonant {\em gha}.
+The first PCC character code in the line is not a number, but states {\em
+implicit}.
+This requires that a special character, called {\em gha-implicit} be
+defined earlier.
+Semantically, gha-implicit means the implicit form of the consonant gha.
+Thus, whenever the code implicit appears in the description of some
+consonant xxx, at that point, the program inserts the definition of the
+xxx-implicit letter.
+(Naturally, the description of xxx-implicit cannot have the code implicit 
+in its description.)
+
+Most consonants are similar in the manner in which the vowel forms are
+constructed, using the implicit form of the consonant, and a few other
+character forms.
+For example, kha-aa, gha-aa, da-aa, dda-aa, are all constructed by using
+this description:
+PCC implicit 0 0 ; PCC 130 -70 0 ;
+So, instead of restating this description for all these consonants, the
+CCS keyword can be used instead.
+The CCS keyword assigns equivalences, 
+
+CCS xxx yyy ;
+
+states that a given consonant
+xxx is similar to a already defined consonant yyy, and  if some vowel
+form (x) is missing, i.e. xxx-x description is missing, then it looks up
+the description for yyy-x, and uses that.
+This chaining can be made as deep as necessary:
+
+CCS bbb aaa ;
+
+CCS ccc bbb ;
+
+CCC ddd ccc ;
+
+etc
+
+CCS also works similarly for ligature forms:
+
+CCS ga-ra tmplC ;
+
+which states that the ga-ra ligature should use the form of the tmplC
+dummy consonant (dummy consonants are explained further in this section).
+Note that it is usually dangerous to specify ligature equivalence to one
+of the constituent consonants, since most of the consonants do not use the
+codename "implicit" in all their form definitions.
+Thus, be careful of such definitions:
+
+CCS ga-ra ga ;
+
+or
+
+CCS ga-ra ra ;
+
+This will create problems if the half form of the ga-ra ligature is
+required since both ga and ra (and every other consonant too)
+have a half-form definition that does not include the code "implicit",
+hence instead of the ga-ra-half form, what will print out will
+be just the ga-half form or the ra-half form, depending on which
+CCS line (from the above two lines) is present in the IFM file.
+One way around this problem is to specifically define the half-form of
+the ga-ra ligature, so as to stop the program from looking for it 
+through the CCS chain.
+It is usually only the half form that causes problems (as of october 1991),
+since all the other forms do contain the "implicit" code in their
+definitions.
+
+A special consonant form, ``*'' is available for use with the CCS
+keyword for ligatures:
+It acts as a meta-character implying all the consonants.
+
+CCS *-ra tmplC ;
+
+CCS ga-* tmplC ;
+
+Instead of providing consonant equivalences between consonants,
+additional dummy consonants may be created, these exist only in the IFM
+file, and used only for equivalencing a real consonant.
+The CCADD line defines the creation of a placeholder consonant.
+
+CCADD tmplA ;
+
+This states that the IFM will make use of a dummy consonant called tmplA,
+and then all its vowel forms (including the half form) can be defined.
+See the file dvnc.ifm for complete example.
+All that tmplA is used for is to define equivalences, again from the
+dvnc.ifm file, you will see lines like:
+
+CCS chha tmplA ;
+
+CCS tta tmplA ;
+
+which state that if some required vowel form of chha or tta is missing,
+then try to use the definition of the same vowel form in tmplA.
+
+Each IFM file can make up to 10 such dummy consonants.
+
+\section{Example Usage or When to Make New IFM Files}
+
+So, to what end  can this knowledge  of the IFM file format be applied ?
+
+\begin{enumerate}
+\item Assume that you need to disable all ligature printing, you
+are printing at a very small font size, and ligatures do not print out
+legibly.
+To do this, you should copy the dvnc.ifm file to sdvnc.ifm, and remove all
+ligature definitions from sdvnc.ifm.
+Ligature definitions are those which contain two consonants separated by
+a dash: examples:
+{\obeylines
+CCS tta-tta  tmplA ;
+CC tta-tta-implicit 1 ; PCC 147 0 0 ;
+}
+All such ligature definitions can be deleted from sdvnc.ifm.
+And then, in your input file that contains the transliterated text, add
+the command:
+
+$\backslash$indianifm=sdvnc.ifm
+
+(See the user manual on itrans for more information on the indianifm
+keyword.)
+
+Now, no ligatures are available, and nothing needs to be done to the
+input text at all to suppress the ligatures.
+Instead of the ligatures, the half-forms of the consonants will be used
+wherever required.
+
+\item Another use would be if you do not like the spacing of certain
+characters when they are composed to form consonant forms.
+Well, as seen in the previous example, it is quite simple to copy the IFM
+file into a new one, change the deltas (the numbers) as required, and use
+the new IFM in the input text.
+
+\item By changing the character definitions in the IFM file, one can
+produce different printed forms for the character.
+For example, to print the normal form of {\em ii} in devanagari prints out
+as: {\devnf \char105\kern-0.04em\char128}.
+% itrans: CC ii 2 ; PCC 105 0 0 ; PCC 128 -40 0 ;
+Now, what if you need to make it print out as: {\devnf \char97\char132} ?
+This is easily done, just comment out the old definition of the {\em ii}
+character (it is called {\em ii} in the ifm file), and make it read:
+
+{\obeylines
+Comment -I- CC ii 2 ; PCC 97 0 0 ; PCC 132 0 0 ;
+}
+
+Now, all instances of {\em ii} in the input text will print out as:
+{\devnf \char97\char132 }.
+
+\renewcommand{\arraystretch}{1.25}
+\renewcommand{\arraystretch}{1.25}
+\renewcommand{\arraystretch}{1.25}
+\renewcommand{\arraystretch}{1.25}
+This method can be used to change any character form you need, as long as
+the constituent parts of the new character are available in the font.
+
+\item You have received a new font, either you developed it yourself, or
+\renewcommand{\arraystretch}{1.25}
+got it elsewhere, and you would like to use it through the itrans
+mechanism.
+This involves two steps.
+First, you need to map the vowels and consonants available through itrans
+(see figures 1 and 2) to the font characters.
+Second, you create a IFM file for the font.
+The first step is the biggest hurdle, especially if you feel that you
+need to add new consonant names to ilex.l.
+(Of course, that implies lots of source code changes: now iyacc.y will
+have to be modified to accept the new token, imap.h will have to edited
+to add the codename for the font, and font.c will have to be edited to
+add the new codename into a static data structure!)
+If that happens, send me e-mail, maybe I will permanently add the name to
+ilex.l, but I  hope that current set of names accepted by ilex.l will
+suffice.
+If they do, then no source code changes are necessary, just need to
+create the IFM file and you are in business.
+
+If you wish, you could send me the IFM file you create, and the font
+(if it is in public domain, otherwise the IFM file only will suffice),
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,306 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Romanized Sanskrit output User Doc for ITRANS (Version 5.00+)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latex2html
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#sanskritifm=dvng.ifm	% ITRANS command
+#sanskritfont=\fransdvng % ITRANS command: argument specifies use of
+			% Frans's font, fransdvng is a command defined
+			% in itrans.sty (idevn.tex)
+%begin{latexonly}
+\let\usedvng=\largedvng	% override the default size (normaldvng)
+%end{latexonly}
+
+\newfont{\csroman}{ncprcsxp at 10pt}
+\newfont{\csromani}{ncpicsxp at 10pt}
+
+#romanifm=romancsx.ifm
+#romanfont=\csroman
+
+\newcommand{\SM}{\char35roman}
+\newcommand{\EM}{\char35endroman}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\arraystretch}{1.15}
+
+\begin{document}
+
+\footnotetext[0]{Last modification: \today}
+
+\centerline{\bf Transliteration Map}
+\medskip
+\centerline{\LARGE\bf NCS\_CSX font}
+\medskip
+\centerline{\bf (Romanized Sanskrit)}
+\bigskip
+\centerline{\bf itrans}
+\smallskip
+\centerline{\bf \copyright 1996--2001 Avinash Chopde}
+
+\section{Fonts Available}
+
+\subsection{\TeX\ Interface}
+
+The romanized sanskrit font is called {\em NCS\_CSX+-Roman},
+and its PostScript description
+resides in the file {\em ncpr\_\_\_\_.pfb}.
+It is a Type 1 PostScript font.
+A second font, which is an italic version is also available {\em ncpi\_\_\_\_.pfb}.
+A bold version of the font is also available, as well as Mac versions,
+but they are not bundled in
+with ITRANS. You can download the bold version of NCS\_CSX from the
+Internet, see the following section titled ``Font Developer.'' 
+
+Since these are PostScript fonts,  you can use them at any font size in
+your document. 
+Here are two examples of loading these fonts (see romancsx.itx for 
+example usage):
+
+\noindent\verb+\newfont{\csroman}{ncpr at 10pt}+.
+
+or
+
+\noindent\verb+\newfont{\csromani}{ncpi at 10pt}+.
+
+\subsection{Direct PostScript Interface}
+
+This font can be used with the -P option of ITRANS, to produce direct
+PostScript output.
+
+This can be used when you don't want to use \TeX\ for typesetting.
+There are a few sample files provided which show how to use this Direct
+PostScript Output mode (the files ending in .ips are the Direct PostScript
+output files).
+
+\subsection{Direct Text Interface}
+
+This font can be used with the -7 or -8 option of ITRANS, to produce direct
+Text (HTML) output. This can be used to convert input ITRANS encoded texts into the
+Classical Sanskrit encoding, and that output text
+ can be viewed using a CS/CSX font on HTML browsers such a Netscape (3.0
+ or later).
+For details on the Classical Sanskrit font encoding, see Dominik Wujastyk's
+documents on the Internet, search for the keywords Indology or
+Classical Sanskrit, or visit the ftp site listed in the ``Font Developer''
+section of this document.
+That ftp site also contains other variations of the NCS\_CSX font, which
+includes a bold version of the font, and also contains many other
+CS/CSX fonts.
+
+The -7 or -8 mode, with a little bit of output editing,
+can be used in interesting ways --- this can be
+used to convert all ITRANS encoded text into CS/CSX encoded text.
+And since ITRANS also accepts CS/CSX encoded text as input, this offers
+a way to move to 8-bit input text encoding, and also 
+retain all the advantages of the original ITRANS documents!
+
+\subsection{Font Developer}
+
+The NCS fonts have been taken from this site:
+
+{\verb- ftp://bombay.oriental.cam.ac.uk/pub/john/software/fonts/csx+/-}
+
+As mentioned in the readme there,
+``The fonts in this archive implement the CSX+ character set designed
+for use in printing Indian language material in Roman script. They
+are based on fonts designed by URW++ Design and Development Incorporated,
+Germany.''
+
+For more information, visit Dr. John D Smith's home page, at \\
+\htmladdnormallink{\texttt{http://bombay.oriental.cam.ac.uk/index.html}}{http://bombay.oriental.cam.ac.uk/index.html}
+
+\subsection{CS/CSX Encoding}
+
+During the 8th World Sanskrit Conference, Vienna 1990, a panel
+was held to discuss the standardization of Sanskrit for
+electronic data transfer.
+Dominik Wujastyk presented a paper, titled ``Standardization of Sanskrit for
+Electronic Data Transfer and Screen Representation,'' which outlines the
+Classical Sanskrit and Classical Sanskrit Extended Encoding.
+The original paper is available in a .zip archive, named ``iass.zip''
+available at: {\verb+ ftp.bcc.ac.uk:/pub/users/ucgadkw/indology+}.
+
+\section{Example usage}
+
+This input:
+\bigskip
+
+{\obeylines
+{\tt \SM}
+\begin{verbatim}
+    karmaNyevaadhikaaraste maa phaleshhu kadaachana |
+    maa karmaphalaheturbhuurmaa te sa~Ngo.astvakarmaNi || 47 ||
+\csromani
+    yogasthaH kuru karmaaNi sa~Nga.n tyaktvaa dhana.njaya |
+    sid.hdhyasid.hdhyoH samo bhuutvaa samatva.n yoga uchyate || 48 ||
+\end{verbatim}
+\noindent
+{\tt \EM}}
+
+\bigskip
+\noindent
+produces:
+\bigskip
+
+{
+#roman \obeylines
+  karmaNyevaadhikaaraste maa phaleshhu kadaachana |
+  maa karmaphalaheturbhuurmaa te sa~Ngo.astvakarmaNi || 47 ||
+\csromani
+  yogasthaH kuru karmaaNi sa~Nga.n tyaktvaa dhana.njaya |
+  sid.hdhyasid.hdhyoH samo bhuutvaa samatva.n yoga uchyate || 48 ||
+
+#endroman
+}
+
+\bigskip
+\hrule
+\vfill
+
+\section{Author}
+
+\noindent
+ITRANS has been developed by Avinash Chopde. \\
+E-mail:
+\htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com}. \\
+Home page:
+\htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+
+\bigskip
+\hrule
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Romanized Sanskrit Table}
+\end{htmlonly}
+
+\begin{table}[hp]
+\begin{center}
+\vspace*{-0.00in}\begin{tabular}{c@{\hspace{1in}}c@{\hspace{1in}}c}
+% --- first col is vowels inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#roman a #endroman}	& {\tt a} \\ \hline
+{#roman aa #endroman}	& {\tt aa {\it or} A} \\ \hline
+{#roman i #endroman}	& {\tt i} \\ \hline
+{#roman ii #endroman}	& {\tt ii {\it or} I} \\ \hline
+{#roman u #endroman}	& {\tt u} \\ \hline
+{#roman uu #endroman}	& {\tt uu {\it or} U} \\ \hline
+{#roman R^i #endroman}	& {\tt RRi {\it or} R\char`^i} \\ \hline
+{#roman R^I #endroman}	& {\tt RRI {\it or} R\char`^I} \\ \hline
+{#roman L^i #endroman}	& {\tt LLi {\it or} L\char`^i} \\ \hline
+{#roman L^I #endroman}	& {\tt LLI {\it or} L\char`^I} \\ \hline
+{#roman e #endroman}	& {\tt e} \\ \hline
+{#roman ai #endroman}	& {\tt ai} \\ \hline
+{#roman o #endroman}	& {\tt o} \\ \hline
+{#roman au #endroman}	& {\tt au} \\ \hline
+{#roman aM #endroman}	& {\tt {\it a}M} \\ \hline
+{#roman aH #endroman}	& {\tt {\it a}H} \\ \hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{#roman 0 #endroman}	& {\tt 0} \\ \hline
+{#roman 1 #endroman}	& {\tt 1} \\ \hline
+{#roman 2 #endroman}	& {\tt 2} \\ \hline
+{#roman 3 #endroman}	& {\tt 3} \\ \hline
+{#roman 4 #endroman}	& {\tt 4} \\ \hline
+{#roman 5 #endroman}	& {\tt 5} \\ \hline
+{#roman 6 #endroman}	& {\tt 6} \\ \hline
+{#roman 7 #endroman}	& {\tt 7} \\ \hline
+{#roman 8 #endroman}	& {\tt 8} \\ \hline
+{#roman 9 #endroman}	& {\tt 9} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end first col 
+&
+% --- second col is consonants 
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#roman ka  #endroman}	& {\tt k{\it a}} \\ \hline
+{#roman kha  #endroman}	& {\tt kh{\it a}} \\ \hline
+{#roman ga  #endroman}	& {\tt g{\it a}} \\ \hline
+{#roman gha  #endroman}	& {\tt gh{\it a}} \\ \hline
+{#roman ~Na  #endroman}	& {\tt \char`~N{\it a or} N\char`^{\it a}} \\ \hline
+{#roman cha  #endroman}	& {\tt ch{\it a}} \\ \hline
+{#roman Cha  #endroman}	& {\tt Ch{\it a or} chh{\it a}} \\ \hline
+{#roman ja  #endroman}	& {\tt j{\it a}} \\ \hline
+{#roman jha  #endroman}	& {\tt jh{\it a}} \\ \hline
+{#roman ~na  #endroman}	& {\tt \char`~n{\it a or} JN{\it a}} \\ \hline
+{#roman Ta  #endroman}	& {\tt T{\it a}} \\ \hline
+{#roman Tha  #endroman}	& {\tt Th{\it a}} \\ \hline
+{#roman Da  #endroman}	& {\tt D{\it a}} \\ \hline
+{#roman Dha  #endroman}	& {\tt Dh{\it a}} \\ \hline
+{#roman Na  #endroman}	& {\tt N{\it a}} \\ \hline
+{#roman ta  #endroman}	& {\tt t{\it a}} \\ \hline
+{#roman tha  #endroman}	& {\tt th{\it a}} \\ \hline
+{#roman da  #endroman}	& {\tt d{\it a}} \\ \hline
+{#roman dha  #endroman}	& {\tt dh{\it a}} \\ \hline
+{#roman na  #endroman}	& {\tt n{\it a}} \\ \hline
+{#roman pa  #endroman}	& {\tt p{\it a}} \\ \hline
+{#roman pha  #endroman}	& {\tt ph{\it a}} \\ \hline
+{#roman ba  #endroman}	& {\tt b{\it a}} \\ \hline
+{#roman bha  #endroman}	& {\tt bh{\it a}} \\ \hline
+{#roman ma  #endroman}	& {\tt m{\it a}} \\ \hline
+{#roman ya  #endroman}	& {\tt y{\it a}} \\ \hline
+{#roman ra  #endroman}	& {\tt r{\it a}} \\ \hline
+{#roman la  #endroman}	& {\tt l{\it a}} \\ \hline
+{#roman va  #endroman}	& {\tt v{\it a}} \\ \hline
+{#roman sha  #endroman}	& {\tt sh{\it a}} \\ \hline
+{#roman Sha  #endroman}	& {\tt Sh{\it a or} shh{\it a}} \\ \hline
+{#roman sa  #endroman}	& {\tt s{\it a}} \\ \hline
+{#roman ha  #endroman}	& {\tt h{\it a}} \\ \hline
+{#roman lda  #endroman}	& {\tt ld{\it a or}} L{\it a} \\ \hline
+{#roman kSha  #endroman}	& {\tt kSh{\it a or} x{\it a}} \\ \hline
+{#roman j~na  #endroman}	& {\tt j\char`~n{\it a or} GY{\it a}} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end second col 
+&
+% --- third col of specials/accents inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{#roman qa  #endroman}	& {\tt q{\it a}} \\ \hline
+{#roman Ka  #endroman}	& {\tt K{\it a}} \\ \hline
+{#roman Ga  #endroman}	& {\tt G{\it a}} \\ \hline
+{#roman za  #endroman}	& {\tt J{\it a or} z{\it a}} \\ \hline
+{#roman fa  #endroman}	& {\tt f{\it a}} \\ \hline
+{#roman .Da  #endroman}	& {\tt .D{\it a}} \\ \hline
+{#roman .Dha  #endroman}	& {\tt .Dh{\it a}} \\ \hline
+{#roman AUM #endroman}	& {\tt AUM} or {\tt OM} \\ \hline
+{#roman Rga  #endroman}	& {\tt R{\it ga}} \\ \hline
+{#roman ga^r #endroman} & {\tt {\it ga}\char`^r} \\ \hline
+{#roman ga.n #endroman} & {\tt {\it ga}.n} \\ \hline
+{#roman aa.c #endroman} & {\tt {\it aa}.c} \\ \hline
+{#roman Da.N #endroman} & {\tt {\it Da}.N} \\ \hline
+{#roman D.h #endroman} & {\tt {\it D}.h} \\ \hline
+{#roman duH #endroman} & {\tt {\it du}H} \\ \hline
+{#roman .a #endroman} & {\tt .a} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\end{tabular} % end the larger tabular encompassing all four tables
+\hfill
+\\
+\end{center}
+\caption {{\bf ITRANS: Romanized Sanskrit to English Transliteration Table}.}
+\label{ienc}
+\end{table}
+
+%-------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

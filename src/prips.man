@@ -1,0 +1,66 @@
+
+
+
+PRIPS(1)                                                 PRIPS(1)
+
+
+NNAAMMEE
+       prips - prepare incomplete itrans output files (PostScript
+       Interface) for printing
+
+SSYYNNOOPPSSIISS
+       pprriippss _<_f_i_l_e_n_a_m_e_>
+
+DDEESSCCRRIIPPTTIIOONN
+       The command
+
+                             prips hindi.ps
+
+       prints out  the  files  devnac.ps,  itrans.pro,  and  then
+       hindi.ps  onto  stdout.   The usual form of usage for this
+       command is:
+                         prips <filename> | lp
+
+       where lp is assumed to be a  PostScript  capable  printer,
+       and  <filename>  is  the name of the file output by iittrraannss
+       when run using the  PostScript  interface  (-P  option  of
+       itrans).
+
+       pprriippss  currently  is  a  shell file, and must be edited at
+       your site so  as  to  pick  up  the  files  devnac.ps  and
+       itrans.pro from the correct place.  The variable LIBDIR in
+       the file prips should be changed to  reflect  the  correct
+       path.
+
+       pprriippss  can  be  also  modified  for  use  with  any  other
+       PostScript font,  if  used  by  ITRANS.   Instead  of  the
+       devnac.ps  file,  the particular font file should be used.
+       prips is a text file, check it out if you need  to  modify
+       it to support other languages such as bengali or gujarati.
+
+       prips resides in the src directory (or bin, if  installed)
+       of  the  itrans  package.   For  MS-DOS  machines, use the
+       prips.bat file --- it will have  to  edited  as  mentioned
+       above  (though  it does not have any LIBDIR variable; just
+       edit the COPY statement itself.)
+
+
+FFIILLEESS
+       _p_r_i_p_s or _p_r_i_p_s_._b_a_t in the bin directory.
+
+SSEEEE AALLSSOO
+       itrans(1)
+
+AAUUTTHHOORR
+       Avinash Chopde <avinash@aczoom.com>
+
+
+
+
+
+
+
+
+local                                                           1
+
+

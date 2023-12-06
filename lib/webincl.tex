@@ -1,0 +1,222 @@
+% Template file for Web Interface to ITRANS
+% Load all languages and all fonts
+% It includes all tex files, and commands needed by the web interface
+% so, any change to the web form may need a change in here - when
+% additional language/fontsize combinations are added, when additional
+% text typesetting combinations are added (prose, lines, verse2column, etc).
+% Processed by LaTeX - contains LaTeX/TeX commands only.
+% April 2001, Avinash Chopde <avinash@aczoom.com> http://www.aczoom.com/
+% -----------------------------------------------------------------
+% Font Stuff
+% Define all fonts to be of similar sizes visually - using
+% dvng as the benchmark.
+% Web page current has these sizes:
+% small, normal, large, huge   --> dvng sizes 10, 12, 18, 36
+% ------------------------------------------------------------------
+% ----- telugu
+\input itrnstlg   
+\newfont{\tlgsmall}{tel12 at 15pt}
+\newfont{\tlgnormal}{tel18}
+\newfont{\tlglarge}{tel18 at 28pt}
+\newfont{\tlghuge}{tel18 at 54pt}
+
+\hyphenchar\tlgsmall=-1 % disable hyphenation using this font
+\hyphenchar\tlgnormal=-1 % disable hyphenation using this font
+\hyphenchar\tlglarge=-1 % disable hyphenation using this font
+\hyphenchar\tlghuge=-1 % disable hyphenation using this font
+
+% --------- kannada
+\newfont{\kansmall}{kan12 at 15pt}
+\newfont{\kannormal}{kan18}
+\newfont{\kanlarge}{kan18 at 28pt}
+\newfont{\kanhuge}{kan18 at 54pt}
+
+\hyphenchar\kansmall=-1 % disable hyphenation using this font
+\hyphenchar\kannormal=-1 % disable hyphenation using this font
+\hyphenchar\kanlarge=-1 % disable hyphenation using this font
+\hyphenchar\kanhuge=-1 % disable hyphenation using this font
+
+% ------   tamil
+\newfont{\tmlsmall}{wntml12 at 12pt}
+\newfont{\tmlnormal}{wntml17 at 17pt}
+\newfont{\tmllarge}{wntml17 at 23pt}
+\newfont{\tmlhuge}{wntml17 at 48pt}
+
+\hyphenchar\tmlsmall=-1 % disable hyphenation using this font
+\hyphenchar\tmlnormal=-1 % disable hyphenation using this font
+\hyphenchar\tmllarge=-1 % disable hyphenation using this font
+\hyphenchar\tmlhuge=-1 % disable hyphenation using this font
+
+% -------------- bengali
+\newfont{\bngsmall}{itxbeng at 11pt}
+\newfont{\bngnormal}{itxbeng at 12pt}
+\newfont{\bnglarge}{itxbeng at 20pt}
+\newfont{\bnghuge}{itxbeng at 40pt} 
+
+\hyphenchar\bngsmall=-1 % disable hyphenation using this font
+\hyphenchar\bngnormal=-1 % disable hyphenation using this font
+\hyphenchar\bnglarge=-1 % disable hyphenation using this font
+\hyphenchar\bnghuge=-1 % disable hyphenation using this font
+
+% ------------ gujarati
+\newfont{\gujsmall}{itxgujre at 12pt}
+\newfont{\gujnormal}{itxgujre at 15pt}
+\newfont{\gujlarge}{itxgujre at 24pt}
+\newfont{\gujhuge}{itxgujre at 44pt}
+
+\hyphenchar\gujsmall=-1 % disable hyphenation using this font
+\hyphenchar\gujnormal=-1 % disable hyphenation using this font
+\hyphenchar\gujlarge=-1 % disable hyphenation using this font
+\hyphenchar\gujhuge=-1 % disable hyphenation using this font
+
+% --------- Devanagari
+% idevn sizes: small (9) < normal (10) < large (11) < Large (12)
+%      < LARGE (14) < huge (17) < Huge (21)
+% idevn.tex contains devanagari stuff, as well as definitions for ITRANS
+% song book .s files.
+
+\input idevn
+\franstrue
+
+\newfont{\dvnbsmall}{dvnb10 at 10pt}
+\newfont{\dvnbnormal}{dvnb10 at 12pt}
+\newfont{\dvnblarge}{dvnb10 at 18pt}
+\newfont{\dvnbhuge}{dvnb10 at 40pt}
+
+\hyphenchar\dvnbsmall=-1 % disable hyphenation using this font
+\hyphenchar\dvnbnormal=-1 % disable hyphenation using this font
+\hyphenchar\dvnblarge=-1 % disable hyphenation using this font
+\hyphenchar\dvnbhuge=-1 % disable hyphenation using this font
+
+% Devnac postScript font
+% \newfont{\devnfsmall}{dnh}
+% \newfont{\devnfnormal}{dnh at 15pt}
+% \newfont{\devnflarge}{dnh at 25pt}
+% \newfont{\devnfhuge}{dnh at 40pt}
+
+% ------------ gurmukhi (punjabi)
+\newfont{\grmsmall}{pun at 12pt}
+\newfont{\grmnormal}{pun at 15pt}
+\newfont{\grmlarge}{pun at 24pt}
+\newfont{\grmhuge}{pun at 44pt}
+
+\hyphenchar\grmsmall=-1 % disable hyphenation using this font
+\hyphenchar\grmnormal=-1 % disable hyphenation using this font
+\hyphenchar\grmlarge=-1 % disable hyphenation using this font
+\hyphenchar\grmhuge=-1 % disable hyphenation using this font
+
+% ------------ romancsx
+% CSUtopia: putr8i
+% NCS_CSX+: ncprcsxp
+% Times_CSX+:  tcprcsxp
+% use similar font as used by english (engsmall etc)
+
+\newfont{\rcsxsmall}{ncprcsxp}
+\newfont{\rcsxnormal}{ncprcsxp at 12pt}
+\newfont{\rcsxlarge}{ncprcsxp at 18pt}
+\newfont{\rcsxhuge}{ncprcsxp at 36pt}
+
+% ------------ english
+% english fonts cmr/cmbx looks bad in PDF,
+% use New Century Schoolbook or Times
+%  Times looks best when PDF files are viewed using Acrobat, but Acrobat
+%  is very poor at displaying any other fonts (Times_CSX+ etc).
+% gsview/ghostscript is very good at displaying all fonts in PDF files,
+% so sticking with New Century Schoolbook for both English and Roman CSX
+% ncs: pncr8r
+% times: ptmr8r 
+
+% texlive 2008: does not have pncr fonts ...
+% \usepackage{newcent}
+% \newfont{\ncssmall}{pncr8r at 11pt}
+% \newfont{\ncsnormal}{pncr8r at 12pt}
+% \newfont{\ncslarge}{pncr8r at 19pt}
+% \newfont{\ncshuge}{pncr8r at 40pt}
+
+% \usepackage{times}
+% \newfont{\tmsmall}{ptmr8r at 12pt}
+% \newfont{\tmnormal}{ptmr8r at 14pt}
+% \newfont{\tmlarge}{ptmr8r at 21pt}
+% \newfont{\tmhuge}{ptmr8r at 46pt}
+
+\newfont{\cmrsmall}{cmr10}
+\newfont{\cmrnormal}{cmr12}
+\newfont{\cmrlarge}{cmr17}
+\newfont{\cmrhuge}{cmr17 at 36pt}
+
+% \newfont{\cmbxsmall}{cmbx10}
+% \newfont{\cmbxnormal}{cmbx12}
+% \newfont{\cmbxlarge}{cmbx17}
+% \newfont{\cmbxhuge}{cmbx17 at 36pt}
+
+% \newcommand{\engsmall}{\let\englfont=\ncssmall\englfont}
+% \newcommand{\engnormal}{\let\englfont=\ncsnormal\englfont}
+% \newcommand{\englarge}{\let\englfont=\ncslarge\englfont}
+% \newcommand{\enghuge}{\let\englfont=\ncshuge\englfont}
+\newcommand{\engsmall}{\let\englfont=\cmrsmall\englfont}
+\newcommand{\engnormal}{\let\englfont=\cmrnormal\englfont}
+\newcommand{\englarge}{\let\englfont=\cmrlarge\englfont}
+\newcommand{\enghuge}{\let\englfont=\cmrhuge\englfont}
+% ----------------------
+\def\`{{\englfont ``}} % use \` for right double quote in hindi text
+\def\'{{\englfont ''}} % use \' for left double quote in hindi text
+\def\-{{\englfont -}} % use \- for dash in hindi text
+
+\def\.{{\englfont .}}% use \. for period in hindi -text
+\def\m+{\sBs{-0.30}{\char32}\kRn{-0.5}\sBs{0.50}{\char94}}
+
+\newcommand{\SCOUNT}{\stepcounter{scounter}\arabic{scounter}}
+\newcounter{scounter}
+\newcommand{\RCOUNT}{\stepcounter{rcounter}\arabic{rcounter}}
+\newcounter{rcounter}
+
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+
+% ------------------------------------------------------------
+% The key font changing commands. Current textsize is held
+% in a variable, combining script name suffix with textsize
+% gives the correct font to use.
+
+\def\itrfont#1{\csname #1\itrsize\endcsname}
+
+% define commands that will be used for every #<script>font ITRANS command
+% can't use #indianfont=\itrfont{dvng} in ITRANS ( { } not supported), need
+% to define #indianfont=\itrfontdvng and tml tlg etc
+\def\itrfontdvnb{\itrfont{dvnb}\specialsforfrans}
+\def\itrfonttml{\itrfont{tml}\specialsforfrans}
+\def\itrfonttlg{\itrfont{tlg}}
+\def\itrfontbng{\itrfont{bng}}
+\def\itrfontgrm{\itrfont{grm}}
+\def\itrfontrcsx{\itrfont{rcsx}}
+\def\itrfontkan{\itrfont{kan}}
+\def\itrfontguj{\itrfont{guj}}
+\def\itrfonteng{\itrfont{eng}}
+
+% define commands that will be used to set current text size - used by
+% the web interface CGI script directly. Again, no { } chars allowed
+% in command names/arguments.
+\def\itrsizesmall{\normalbaselineskip=15pt\normalbaselines\gdef\itrsize{small}}
+\def\itrsizenormal{\normalbaselineskip=18pt\normalbaselines\gdef\itrsize{normal}}
+\def\itrsizelarge{\normalbaselineskip=25pt\normalbaselines\gdef\itrsize{large}}
+\def\itrsizehuge{\normalbaselineskip=54pt\normalbaselines\gdef\itrsize{huge}}
+% XXX - April 2001 - The baselineskip is not working, lines are
+% still too close together....
+% -- that is because baselines for a paragraph are computed when the next
+% paragraph is begun... use baselinestretch instead?
+
+\def\itrsize{normal}\itrfonteng % default
+% ------------------------------------------------------------
+% override some isongs definitions, for the web page use
+\def\songfile{Online Input}
+\def\year#1{} % missing from idevn.tex
+% the CGI script may redefine \songfile if needed
+% ------------------------------------------------------------
+
+% web interface uses following commands to enable line formats
+
+\newenvironment{itrprose}{}{}
+\newenvironment{itrlines}{\obeylines}{}
+\newenvironment{itrverse}{\obeylines\obeyspaces}{}
+\newenvironment{itrversetwocol}{\obeylines\obeyspaces\begin{multicols}{2}}{\end{multicols}}
+% ------------------------------------------------------------

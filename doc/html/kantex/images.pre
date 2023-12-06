@@ -1,0 +1,414 @@
+#output=TeX
+
+\batchmode
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}%
+\providecommand{\ST}{\char35kannada}%
+\providecommand{\ET}{\char35endkannada} 
+\newfont{\cmt}{cmtt12}
+\newfont{\cmts}{cmtt9}
+
+
+\newfont{\kansmall}{kan12}
+\newfont{\kanb}{kan12b}
+\newfont{\kannx}{kan12nx}
+\newfont{\kans}{kan12s}
+\newfont{\kan}{kan18}
+
+
+
+\hyphenchar\kannx-1  % disable hyphenation using this font
+
+\hyphenchar\kans-1  % disable hyphenation using this font
+
+\hyphenchar\kan-1  % disable hyphenation using this font
+
+
+#kannadaifm=kantex.ifm
+
+#kannadafont=\kan
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage71}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+{#kannada a #endkannada}	& {\tt a} \\\hline
+{#kannada aa #endkannada}	& {\tt aa {\it or} A} \\\hline
+{#kannada i #endkannada}	& {\tt i} \\\hline
+{#kannada ii #endkannada}	& {\tt ii {\it or} I} \\\hline
+{#kannada u #endkannada}	& {\tt u} \\\hline
+{#kannada uu #endkannada}	& {\tt uu {\it or} U} \\\hline
+{#kannada R^i #endkannada}	& {\tt RRi {\it or} R\char`^i} \\\hline
+{#kannada R^I #endkannada}	& {\tt RRI {\it or} R\char`^I} \\\hline
+{#kannada L^i #endkannada}	& {\tt LLi {\it or} L\char`^i} \\\hline
+{#kannada L^I #endkannada}	& {\tt LLI {\it or} L\char`^I} \\\hline
+{#kannada e #endkannada}	& {\tt e} \\\hline
+{#kannada E #endkannada}	& {\tt E} \\\hline
+{#kannada ai #endkannada}	& {\tt ai} \\\hline
+{#kannada o #endkannada}	& {\tt o} \\\hline
+{#kannada O #endkannada}	& {\tt O} \\\hline
+{#kannada au #endkannada}	& {\tt au} \\\hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{#kannada 0 #endkannada}	& {\tt0} \\\hline
+{#kannada 1 #endkannada}	& {\tt 1} \\\hline
+{#kannada 2 #endkannada}	& {\tt 2} \\\hline
+{#kannada 3 #endkannada}	& {\tt 3} \\\hline
+{#kannada 4 #endkannada}	& {\tt 4} \\\hline
+{#kannada 5 #endkannada}	& {\tt 5} \\\hline
+{#kannada 6 #endkannada}	& {\tt 6} \\\hline
+{#kannada 7 #endkannada}	& {\tt 7} \\\hline
+{#kannada 8 #endkannada}	& {\tt 8} \\\hline
+{#kannada 9 #endkannada}	& {\tt 9} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage166}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#kannada ka  #endkannada}	& {\tt k{\it a}} \\\hline
+{#kannada kha  #endkannada}	& {\tt kh{\it a}} \\\hline
+{#kannada ga  #endkannada}	& {\tt g{\it a}} \\\hline
+{#kannada gha  #endkannada}	& {\tt gh{\it a}} \\\hline
+{#kannada ~Na  #endkannada}	& {\tt\char`~N{\it a or} N\char`^{\it a}} \\\hline
+{#kannada cha  #endkannada}	& {\tt ch{\it a}} \\\hline
+{#kannada Cha  #endkannada}	& {\tt Ch{\it a or} chh{\it a}} \\\hline
+{#kannada ja  #endkannada}	& {\tt j{\it a}} \\\hline
+{#kannada jha  #endkannada}	& {\tt jh{\it a}} \\\hline
+{#kannada ~na  #endkannada}	& {\tt\char`~n{\it a or} JN{\it a}} \\\hline
+{#kannada Ta  #endkannada}	& {\tt T{\it a}} \\\hline
+{#kannada Tha  #endkannada}	& {\tt Th{\it a}} \\\hline
+{#kannada Da  #endkannada}	& {\tt D{\it a}} \\\hline
+{#kannada Dha  #endkannada}	& {\tt Dh{\it a}} \\\hline
+{#kannada Na  #endkannada}	& {\tt N{\it a}} \\\hline
+{#kannada ta  #endkannada}	& {\tt t{\it a}} \\\hline
+{#kannada tha  #endkannada}	& {\tt th{\it a}} \\\hline
+{#kannada da  #endkannada}	& {\tt d{\it a}} \\\hline
+{#kannada dha  #endkannada}	& {\tt dh{\it a}} \\\hline
+{#kannada na  #endkannada}	& {\tt n{\it a}} \\\hline
+{#kannada pa  #endkannada}	& {\tt p{\it a}} \\\hline
+{#kannada pha  #endkannada}	& {\tt ph{\it a}} \\\hline
+{#kannada ba  #endkannada}	& {\tt b{\it a}} \\\hline
+{#kannada bha  #endkannada}	& {\tt bh{\it a}} \\\hline
+{#kannada ma  #endkannada}	& {\tt m{\it a}} \\\hline
+{#kannada ya  #endkannada}	& {\tt y{\it a}} \\\hline
+{#kannada ra  #endkannada}	& {\tt r{\it a}} \\\hline
+{#kannada la  #endkannada}	& {\tt l{\it a}} \\\hline
+{#kannada La  #endkannada}	& {\tt L{\it a}} \\\hline
+{#kannada va  #endkannada}	& {\tt v{\it a}} \\\hline
+{#kannada sha  #endkannada}	& {\tt sh{\it a}} \\\hline
+{#kannada Sha  #endkannada}	& {\tt Sh{\it a or} shh{\it a}} \\\hline
+{#kannada sa  #endkannada}	& {\tt s{\it a}} \\\hline
+{#kannada ha  #endkannada}	& {\tt h{\it a}} \\\hline
+{#kannada xa  #endkannada}	& {\tt x{\it a or} ksh{\it a}} \\\hline
+{#kannada GYa  #endkannada}	& {\tt j\char`~n{\it a or} GY{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage288}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+{#kannada ga.n #endkannada} & {\tt {\it ga}.n} \\\hline
+{#kannada va^r #endkannada} & {\tt {\it va}\char`^\char`^r} \\\hline
+{#kannada m.h #endkannada} & {\tt {\it m}\{\}} \\\hline
+{#kannada duH #endkannada} & {\tt {\it du}H} \\\hline
+{#kannada .a #endkannada} & {\tt .a} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1222}%
+#kannada kuveMpu #endkannada
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1223}%
+#kannada kaleya bale#endkannada
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+
+#kannadafont=\kannx
+%
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1224}%
+\vbox{#kannada
+bAgiloLu  kai  mugidu  oLage  bA  yAtrikane\\
+shileyallavI  guDiyu  kaleya  baleyu\\
+kaMbaniya  mAleyanu  edeya  baTTaloLiTTu\\
+dhanyateya  kusumagaLa  arpisilli\\
+#endkannada}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1225}%
+\vbox{#kannada
+ga.nTegaLa  daniyilla  jAgaTegaLililla\\
+kapU^rradAratiya  jyotiyilla\\
+bhagavaMta  tAneMba  rUpago.nDihudilli\\
+rasikateya  kaDalukki  harivudilli\\
+#endkannada}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1226}%
+\vbox{#kannada
+sarasadiMduliyutide  shileyu  rAmAyaNavanilli\\
+bAdarAyaNanaMte  bhAratavu  hADutihudilli\\
+kushalatege  beragAgi  mUkavAgide  kAlavilli\\
+#endkannada}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1228}%
+#kannada da rA bhE.ndre #endkannada
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1229}%
+#kannada moDala maneya #endkannada
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+
+#kannadafont=\kannx
+%
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1230}%
+\vbox{#kannada
+moDala maneya muttina nIrina\\
+erakAva hoyda nuNNane erakAva hoyda\\
+#endkannada}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1231}%
+\vbox{#kannada
+bAgila teredu beLaku haridu\\
+jagavella toyda dEvanu jagavella toyda\\
+#endkannada}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1232}%
+\vbox{#kannada
+elegaLa mEle hUgaLa oLage \\
+amRRitada bi.ndu ka.nDavu amRRitada bi.ndu\\
+#endkannada}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1233}%
+\vbox{#kannada
+yAririsiharu mugilina mEli.nda\\
+illige ida ta.ndu Iga illige ida ta.ndu\\
+#endkannada}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1234}%
+\vbox{#kannada
+giDaga.nTegaLa koraLoLagi.nda hakkigaLa hADu\\
+horaTitu hakkigaLa hADu\\
+#endkannada}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1235}%
+\vbox{#kannada
+ga.ndhava^rra sImeyAyitu kADina nADu\\
+kshaNadoLu kADina nADu\\
+#endkannada}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

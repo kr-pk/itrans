@@ -1,0 +1,1010 @@
+\documentclass[11pt]{article}
+% User Documentation for the ITRANS Package
+% The Kannada Language Transliteration Table
+% by Raghunath K. Rao (rrao@crystal.cirrus.com) 
+
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latex2html
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+\newcommand{\ST}{\char35kannada}
+\newcommand{\ET}{\char35endkannada}
+\newfont{\cmt}{cmtt12}
+\newfont{\cmts}{cmtt9}
+
+\newfont{\kansmall}{kan12}
+\newfont{\kanb}{kan12b}
+\newfont{\kannx}{kan12nx}
+\newfont{\kans}{kan12s}
+\newfont{\kan}{kan18}
+
+\hyphenchar\kannx=-1 % disable hyphenation using this font
+\hyphenchar\kans=-1 % disable hyphenation using this font
+\hyphenchar\kan=-1 % disable hyphenation using this font
+
+#kannadaifm=kantex.ifm
+#kannadafont=\kan
+
+\begin{document}
+
+\footnotetext[0]{Last modification: \today}
+
+\centerline{\LARGE\bf Transliteration Map}
+\medskip
+\centerline{\LARGE\bf Kannada Font (kan)}
+\bigskip
+\centerline{\LARGE\bf itrans}
+\smallskip
+\centerline{\bf \copyright 1997 Avinash Chopde}
+\bigskip
+\centerline{\LARGE\bf Kannada}
+\smallskip
+\centerline{\bf Support added by Raghunath K Rao}
+\smallskip
+
+\section{Fonts Available}
+
+\subsection{\TeX\ Interface}
+
+The Kannada font {\em kan} is a Metafont font,
+developed by G.\ S.\ Jagadeesh (gjagadeesh@cas.org) 
+and Venkatesh P.\ Gopinath (venkates@eecs.berkeley.edu), who are
+also the authors of KanTeX - a package capable of typesetting
+Kannada documents without requiring a pre-processor.
+
+The font was adapted to itrans by Raghunath K. Rao (rrao@crystal.cirrus.com) 
+with the assistance of the KanTeX authors and Avinash Chopde, the author of
+ITRANS.
+The {\em kan} font is bundled with the itrans package with the permission
+of the authors of the font.
+
+\subsection{Textual Interface}
+
+Since this is a \TeX\ font, this interface cannot be used.
+(The Text interface directly produces PostScript or HTML, and it
+requires a PostScript font or TrueType font.)
+
+\subsection{Font Developer}
+
+This font has been created by {\tt G.\ S.\ Jagadeesh} 
+and {\tt Venkatesh P.\ Gopinath}.
+and is part of a complete Kannada typesetting system called
+KanTeX, also created by the same authors.
+
+\subsection{Font Variations}
+
+The {\tt KanTeX} package contains many font sizes and variations---it
+also includes all the source Metafont files, so any Metafont user can 
+create her own font variations.
+
+As packaged with ITRANS  there are TFM and
+PK files for these font sizes: 10, 11, 12, 15, 18, 20, 25, 30, 35, 40,
+55, 72 and 172. 
+Most font sizes come in bold and slanted versions.
+
+This document has made use of the {\tt kan12}, {\tt kan12s}, {\tt kan12nx},
+and {\tt kan18} fonts.
+
+%----------------------------------------------------------------------
+
+\subsection{Author}
+
+\noindent
+ITRANS has been developed by Avinash Chopde. \\
+E-mail:
+\htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com}. \\
+Home page:
+\htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+\medskip 
+\\
+The {\em kan} (KanTeX) font was adapted to ITRANS by Raghunath K. Rao. \\
+E-mail: {\tt rrao@crystal.cirrus.com}.\\
+
+\bigskip\hrule
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Kannada Table}
+\end{htmlonly}
+
+\begin{table}[hp]
+\begin{center}
+\begin{tabular}{c@{\hspace{1in}}c@{\hspace{1in}}c}
+% --- first col is vowels inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+{#kannada a #endkannada}	& {\tt a} \\ \hline
+{#kannada aa #endkannada}	& {\tt aa {\it or} A} \\ \hline
+{#kannada i #endkannada}	& {\tt i} \\ \hline
+{#kannada ii #endkannada}	& {\tt ii {\it or} I} \\ \hline
+{#kannada u #endkannada}	& {\tt u} \\ \hline
+{#kannada uu #endkannada}	& {\tt uu {\it or} U} \\ \hline
+{#kannada R^i #endkannada}	& {\tt RRi {\it or} R\char`^i} \\ \hline
+{#kannada R^I #endkannada}	& {\tt RRI {\it or} R\char`^I} \\ \hline
+{#kannada L^i #endkannada}	& {\tt LLi {\it or} L\char`^i} \\ \hline
+{#kannada L^I #endkannada}	& {\tt LLI {\it or} L\char`^I} \\ \hline
+{#kannada e #endkannada}	& {\tt e} \\ \hline
+{#kannada E #endkannada}	& {\tt E} \\ \hline
+{#kannada ai #endkannada}	& {\tt ai} \\ \hline
+{#kannada o #endkannada}	& {\tt o} \\ \hline
+{#kannada O #endkannada}	& {\tt O} \\ \hline
+{#kannada au #endkannada}	& {\tt au} \\ \hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{#kannada 0 #endkannada}	& {\tt 0} \\ \hline
+{#kannada 1 #endkannada}	& {\tt 1} \\ \hline
+{#kannada 2 #endkannada}	& {\tt 2} \\ \hline
+{#kannada 3 #endkannada}	& {\tt 3} \\ \hline
+{#kannada 4 #endkannada}	& {\tt 4} \\ \hline
+{#kannada 5 #endkannada}	& {\tt 5} \\ \hline
+{#kannada 6 #endkannada}	& {\tt 6} \\ \hline
+{#kannada 7 #endkannada}	& {\tt 7} \\ \hline
+{#kannada 8 #endkannada}	& {\tt 8} \\ \hline
+{#kannada 9 #endkannada}	& {\tt 9} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end first col 
+&
+% --- second col is consonants 
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#kannada ka  #endkannada}	& {\tt k{\it a}} \\ \hline
+{#kannada kha  #endkannada}	& {\tt kh{\it a}} \\ \hline
+{#kannada ga  #endkannada}	& {\tt g{\it a}} \\ \hline
+{#kannada gha  #endkannada}	& {\tt gh{\it a}} \\ \hline
+{#kannada ~Na  #endkannada}	& {\tt \char`~N{\it a or} N\char`^{\it a}} \\ \hline
+{#kannada cha  #endkannada}	& {\tt ch{\it a}} \\ \hline
+{#kannada Cha  #endkannada}	& {\tt Ch{\it a or} chh{\it a}} \\ \hline
+{#kannada ja  #endkannada}	& {\tt j{\it a}} \\ \hline
+{#kannada jha  #endkannada}	& {\tt jh{\it a}} \\ \hline
+{#kannada ~na  #endkannada}	& {\tt \char`~n{\it a or} JN{\it a}} \\ \hline
+{#kannada Ta  #endkannada}	& {\tt T{\it a}} \\ \hline
+{#kannada Tha  #endkannada}	& {\tt Th{\it a}} \\ \hline
+{#kannada Da  #endkannada}	& {\tt D{\it a}} \\ \hline
+{#kannada Dha  #endkannada}	& {\tt Dh{\it a}} \\ \hline
+{#kannada Na  #endkannada}	& {\tt N{\it a}} \\ \hline
+{#kannada ta  #endkannada}	& {\tt t{\it a}} \\ \hline
+{#kannada tha  #endkannada}	& {\tt th{\it a}} \\ \hline
+{#kannada da  #endkannada}	& {\tt d{\it a}} \\ \hline
+{#kannada dha  #endkannada}	& {\tt dh{\it a}} \\ \hline
+{#kannada na  #endkannada}	& {\tt n{\it a}} \\ \hline
+{#kannada pa  #endkannada}	& {\tt p{\it a}} \\ \hline
+{#kannada pha  #endkannada}	& {\tt ph{\it a}} \\ \hline
+{#kannada ba  #endkannada}	& {\tt b{\it a}} \\ \hline
+{#kannada bha  #endkannada}	& {\tt bh{\it a}} \\ \hline
+{#kannada ma  #endkannada}	& {\tt m{\it a}} \\ \hline
+{#kannada ya  #endkannada}	& {\tt y{\it a}} \\ \hline
+{#kannada ra  #endkannada}	& {\tt r{\it a}} \\ \hline
+{#kannada la  #endkannada}	& {\tt l{\it a}} \\ \hline
+{#kannada La  #endkannada}	& {\tt L{\it a}} \\ \hline
+{#kannada va  #endkannada}	& {\tt v{\it a}} \\ \hline
+{#kannada sha  #endkannada}	& {\tt sh{\it a}} \\ \hline
+{#kannada Sha  #endkannada}	& {\tt Sh{\it a or} shh{\it a}} \\ \hline
+{#kannada sa  #endkannada}	& {\tt s{\it a}} \\ \hline
+{#kannada ha  #endkannada}	& {\tt h{\it a}} \\ \hline
+{#kannada xa  #endkannada}	& {\tt x{\it a or} ksh{\it a}} \\ \hline
+{#kannada GYa  #endkannada}	& {\tt j\char`~n{\it a or} GY{\it a}} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end second col 
+&
+% --- third col of specials/accents inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+{#kannada ga.n #endkannada} & {\tt {\it ga}.n} \\ \hline
+{#kannada va^r #endkannada} & {\tt {\it va}\char`^\char`^r} \\ \hline
+{#kannada m.h #endkannada} & {\tt {\it m}\{\}} \\ \hline
+{#kannada duH #endkannada} & {\tt {\it du}H} \\ \hline
+{#kannada .a #endkannada} & {\tt .a} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\end{tabular} % end the larger tabular encompassing all four tables
+\hfill
+\\
+\end{center}
+\caption {\label{fig1}\bf ITRANS: Kannada to English Transliteration Table.}
+\end{table}
+
+%-------------------------------------------------------------------------
+
+\section{Examples}
+
+These examples have been taken from the {\em KanTeX} package, with
+modifications for use the ITRANS transliteration scheme. 
+
+\subsection{A Poem by #kannada kuveMpu #endkannada}
+
+\centerline{#kannada kaleya bale#endkannada}
+
+\centerline{(kaleya bale: By Kuvempu)}
+
+\medskip
+#kannadafont=\kannx
+{#kannada
+
+bAgiloLu  kai  mugidu  oLage  bA  yAtrikane\\
+shileyallavI  guDiyu  kaleya  baleyu\\
+kaMbaniya  mAleyanu  edeya  baTTaloLiTTu\\
+dhanyateya  kusumagaLa  arpisilli\\
+
+ga.nTegaLa  daniyilla  jAgaTegaLililla\\
+kapU^rradAratiya  jyotiyilla\\
+bhagavaMta  tAneMba  rUpago.nDihudilli\\
+rasikateya  kaDalukki  harivudilli\\
+
+sarasadiMduliyutide  shileyu  rAmAyaNavanilli\\
+bAdarAyaNanaMte  bhAratavu  hADutihudilli\\
+kushalatege  beragAgi  mUkavAgide  kAlavilli\\
+
+#endkannada}
+
+\bigskip
+\noindent This is the input text that produced the above:
+\smallskip
+
+\noindent {\tt \char92 centerline\char123\ST kaleya bale\ET\char125}
+
+\noindent {\tt \char92 centerline\char123 kaleya bale: By Kuvempu \char125}
+
+\noindent {\tt \char123 \ST}
+
+\begin{verbatim}
+
+bAgiloLu  kai  mugidu  oLage  bA  yAtrikane\\
+shileyallavI  guDiyu  kaleya  baleyu\\
+kaMbaniya  mAleyanu  edeya  baTTaloLiTTu\\
+dhanyateya  kusumagaLa  arpisilli\\
+
+ga.nTegaLa  daniyilla  jAgaTegaLililla\\
+kapU^rradAratiya  jyotiyilla\\
+bhagavaMta  tAneMba  rUpago.nDihudilli\\
+rasikateya  kaDalukki  harivudilli\\
+
+sarasadiMduliyutide  shileyu  rAmAyaNavanilli\\
+bAdarAyaNanaMte  bhAratavu  hADutihudilli\\
+kushalatege  beragAgi  mUkavAgide  kAlavilli\\
+
+\end{verbatim}
+{\tt \ET\char125}
+
+\pagebreak
+
+\subsection{A Poem by #kannada da rA bhE.ndre #endkannada}
+
+\centerline{#kannada moDala maneya #endkannada}
+
+\centerline{(moDala maneya: By Da Raa Bhendre )}
+
+\medskip
+#kannadafont=\kannx
+{#kannada
+
+moDala maneya muttina nIrina\\
+erakAva hoyda nuNNane erakAva hoyda\\
+
+bAgila teredu beLaku haridu\\
+jagavella toyda dEvanu jagavella toyda\\
+
+elegaLa mEle hUgaLa oLage \\
+amRRitada bi.ndu ka.nDavu amRRitada bi.ndu\\
+
+yAririsiharu mugilina mEli.nda\\
+illige ida ta.ndu Iga illige ida ta.ndu\\
+
+giDaga.nTegaLa koraLoLagi.nda hakkigaLa hADu\\
+horaTitu hakkigaLa hADu\\
+
+ga.ndhava^rra sImeyAyitu kADina nADu\\
+kshaNadoLu kADina nADu\\
+
+#endkannada}
+
+\bigskip
+\noindent This is the input text that produced the above:
+\smallskip
+
+\noindent {\tt \char92 centerline\char123\ST moDala maneya \ET\char125}
+
+\noindent {\tt \char92 centerline\char123 moDala maneya: By Da Raa Bhendre \char125}
+
+\noindent {\tt \char123 \ST}
+
+\begin{verbatim}
+moDala maneya muttina nIrina\\
+erakAva hoyda nuNNane erakAva hoyda\\
+
+bAgila teredu beLaku haridu\\
+jagavella toyda dEvanu jagavella toyda\\
+
+elegaLa mEle hUgaLa oLage \\
+amRRitada bi.ndu ka.nDavu amRRitada bi.ndu\\
+
+yAririsiharu mugilina mEli.nda\\
+illige ida ta.ndu Iga illige ida ta.ndu\\
+
+giDaga.nTegaLa koraLoLagi.nda hakkigaLa hADu\\
+horaTitu hakkigaLa hADu\\
+
+ga.ndhava^rra sImeyAyitu kADina nADu\\
+kshaNadoLu kADina nADu\\
+
+\end{verbatim}
+{\tt \ET\char125}
+
+%----------------------------------------------------------------------
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{comment}
+
+\begin{comment} % ----------------- this table is not really useful, ignore
+\begin{htmlonly}
+\section{Consonant-Vowel Forms}
+\end{htmlonly}
+
+#kannadafont=\kansmall
+% All the consonant-vowel forms
+\begin{table}[p]
+\vspace*{0in}
+\hspace*{0.0in}\vbox{
+\begin{center}
+\begin{makeimage}
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\tt / &
+\tt a &
+\tt A &
+\tt i &
+\tt I &
+\tt u &
+\tt U &
+\tt RRi &
+\tt RRI &
+\tt LLi &
+\tt LLI &
+\tt e &
+\tt E &
+\tt ai &
+\tt o &
+\tt O &
+\tt au \\ \hline \hline
+% the khadi.sh stuff......
+\tt k &
+#kannada ka #endkannada &
+#kannada kaa #endkannada &
+#kannada ki #endkannada &
+#kannada kii #endkannada &
+#kannada ku #endkannada &
+#kannada kuu #endkannada &
+#kannada kR^i #endkannada &
+#kannada kR^I #endkannada &
+#kannada kL^i #endkannada &
+#kannada kL^I #endkannada &
+#kannada ke #endkannada &
+#kannada kE #endkannada &
+#kannada kai #endkannada &
+#kannada ko #endkannada &
+#kannada kO #endkannada &
+#kannada kau #endkannada \\ \hline
+\tt kh &
+#kannada kha #endkannada &
+#kannada khaa #endkannada &
+#kannada khi #endkannada &
+#kannada khii #endkannada &
+#kannada khu #endkannada &
+#kannada khuu #endkannada &
+#kannada khR^i #endkannada &
+#kannada khR^I #endkannada &
+#kannada khL^i #endkannada &
+#kannada khL^I #endkannada &
+#kannada khe #endkannada &
+#kannada khE #endkannada &
+#kannada khai #endkannada &
+#kannada kho #endkannada &
+#kannada khO #endkannada &
+#kannada khau #endkannada \\ \hline
+\tt g &
+#kannada ga #endkannada &
+#kannada gaa #endkannada &
+#kannada gi #endkannada &
+#kannada gii #endkannada &
+#kannada gu #endkannada &
+#kannada guu #endkannada &
+#kannada gR^i #endkannada &
+#kannada gR^I #endkannada &
+#kannada gL^i #endkannada &
+#kannada gL^I #endkannada &
+#kannada ge #endkannada &
+#kannada gE #endkannada &
+#kannada gai #endkannada &
+#kannada go #endkannada &
+#kannada gO #endkannada &
+#kannada gau #endkannada \\ \hline
+\tt gh &
+#kannada gha #endkannada &
+#kannada ghaa #endkannada &
+#kannada ghi #endkannada &
+#kannada ghii #endkannada &
+#kannada ghu #endkannada &
+#kannada ghuu #endkannada &
+#kannada ghR^i #endkannada &
+#kannada ghR^I #endkannada &
+#kannada ghL^i #endkannada &
+#kannada ghL^I #endkannada &
+#kannada ghe #endkannada &
+#kannada ghE #endkannada &
+#kannada ghai #endkannada &
+#kannada gho #endkannada &
+#kannada ghO #endkannada &
+#kannada ghau #endkannada \\ \hline
+\tt ~N &
+#kannada ~Na #endkannada &
+#kannada ~Naa #endkannada &
+#kannada ~Ni #endkannada &
+#kannada ~Nii #endkannada &
+#kannada ~Nu #endkannada &
+#kannada ~Nuu #endkannada &
+#kannada ~NR^i #endkannada &
+#kannada ~NR^I #endkannada &
+#kannada ~NL^i #endkannada &
+#kannada ~NL^I #endkannada &
+#kannada ~Ne #endkannada &
+#kannada ~NE #endkannada &
+#kannada ~Nai #endkannada &
+#kannada ~No #endkannada &
+#kannada ~NO #endkannada &
+#kannada ~Nau #endkannada \\ \hline
+\tt ch &
+#kannada cha #endkannada &
+#kannada chaa #endkannada &
+#kannada chi #endkannada &
+#kannada chii #endkannada &
+#kannada chu #endkannada &
+#kannada chuu #endkannada &
+#kannada chR^i #endkannada &
+#kannada chR^I #endkannada &
+#kannada chL^i #endkannada &
+#kannada chL^I #endkannada &
+#kannada che #endkannada &
+#kannada chE #endkannada &
+#kannada chai #endkannada &
+#kannada cho #endkannada &
+#kannada chO #endkannada &
+#kannada chau #endkannada \\ \hline
+\tt ch &
+#kannada Cha #endkannada &
+#kannada Chaa #endkannada &
+#kannada Chi #endkannada &
+#kannada Chii #endkannada &
+#kannada Chu #endkannada &
+#kannada Chuu #endkannada &
+#kannada ChR^i #endkannada &
+#kannada ChR^I #endkannada &
+#kannada ChL^i #endkannada &
+#kannada ChL^I #endkannada &
+#kannada Che #endkannada &
+#kannada ChE #endkannada &
+#kannada Chai #endkannada &
+#kannada Cho #endkannada &
+#kannada ChO #endkannada &
+#kannada Chau #endkannada \\ \hline
+\tt j &
+#kannada ja #endkannada &
+#kannada jaa #endkannada &
+#kannada ji #endkannada &
+#kannada jii #endkannada &
+#kannada ju #endkannada &
+#kannada juu #endkannada &
+#kannada jR^i #endkannada &
+#kannada jR^I #endkannada &
+#kannada jL^i #endkannada &
+#kannada jL^I #endkannada &
+#kannada je #endkannada &
+#kannada jE #endkannada &
+#kannada jai #endkannada &
+#kannada jo #endkannada &
+#kannada jO #endkannada &
+#kannada jau #endkannada \\ \hline
+\tt jh &
+#kannada jha #endkannada &
+#kannada jhaa #endkannada &
+#kannada jhi #endkannada &
+#kannada jhii #endkannada &
+#kannada jhu #endkannada &
+#kannada jhuu #endkannada &
+#kannada jhR^i #endkannada &
+#kannada jhR^I #endkannada &
+#kannada jhL^i #endkannada &
+#kannada jhL^I #endkannada &
+#kannada jhe #endkannada &
+#kannada jhE #endkannada &
+#kannada jhai #endkannada &
+#kannada jho #endkannada &
+#kannada jhO #endkannada &
+#kannada jhau #endkannada \\ \hline
+\tt \char`~n &
+#kannada ~na #endkannada &
+#kannada ~naa #endkannada &
+#kannada ~ni #endkannada &
+#kannada ~nii #endkannada &
+#kannada ~nu #endkannada &
+#kannada ~nuu #endkannada &
+#kannada ~nR^i #endkannada &
+#kannada ~nR^I #endkannada &
+#kannada ~nL^i #endkannada &
+#kannada ~nL^I #endkannada &
+#kannada ~ne #endkannada &
+#kannada ~nE #endkannada &
+#kannada ~nai #endkannada &
+#kannada ~no #endkannada &
+#kannada ~nO #endkannada &
+#kannada ~nau #endkannada \\ \hline
+\tt T &
+#kannada Ta #endkannada &
+#kannada Taa #endkannada &
+#kannada Ti #endkannada &
+#kannada Tii #endkannada &
+#kannada Tu #endkannada &
+#kannada Tuu #endkannada &
+#kannada TR^i #endkannada &
+#kannada TR^I #endkannada &
+#kannada TL^i #endkannada &
+#kannada TL^I #endkannada &
+#kannada Te #endkannada &
+#kannada TE #endkannada &
+#kannada Tai #endkannada &
+#kannada To #endkannada &
+#kannada TO #endkannada &
+#kannada Tau #endkannada \\ \hline
+\tt Th &
+#kannada Tha #endkannada &
+#kannada Thaa #endkannada &
+#kannada Thi #endkannada &
+#kannada Thii #endkannada &
+#kannada Thu #endkannada &
+#kannada Thuu #endkannada &
+#kannada ThR^i #endkannada &
+#kannada ThR^I #endkannada &
+#kannada ThL^i #endkannada &
+#kannada ThL^I #endkannada &
+#kannada The #endkannada &
+#kannada ThE #endkannada &
+#kannada Thai #endkannada &
+#kannada Tho #endkannada &
+#kannada ThO #endkannada &
+#kannada Thau #endkannada \\ \hline
+\tt D &
+#kannada Da #endkannada &
+#kannada Daa #endkannada &
+#kannada Di #endkannada &
+#kannada Dii #endkannada &
+#kannada Du #endkannada &
+#kannada Duu #endkannada &
+#kannada DR^i #endkannada &
+#kannada DR^I #endkannada &
+#kannada DL^i #endkannada &
+#kannada DL^I #endkannada &
+#kannada De #endkannada &
+#kannada DE #endkannada &
+#kannada Dai #endkannada &
+#kannada Do #endkannada &
+#kannada DO #endkannada &
+#kannada Dau #endkannada \\ \hline
+\tt Dh &
+#kannada Dha #endkannada &
+#kannada Dhaa #endkannada &
+#kannada Dhi #endkannada &
+#kannada Dhii #endkannada &
+#kannada Dhu #endkannada &
+#kannada Dhuu #endkannada &
+#kannada DhR^i #endkannada &
+#kannada DhR^I #endkannada &
+#kannada DhL^i #endkannada &
+#kannada DhL^I #endkannada &
+#kannada Dhe #endkannada &
+#kannada DhE #endkannada &
+#kannada Dhai #endkannada &
+#kannada Dho #endkannada &
+#kannada DhO #endkannada &
+#kannada Dhau #endkannada \\ \hline
+\tt N &
+#kannada Na #endkannada &
+#kannada Naa #endkannada &
+#kannada Ni #endkannada &
+#kannada Nii #endkannada &
+#kannada Nu #endkannada &
+#kannada Nuu #endkannada &
+#kannada NR^i #endkannada &
+#kannada NR^I #endkannada &
+#kannada NL^i #endkannada &
+#kannada NL^I #endkannada &
+#kannada Ne #endkannada &
+#kannada NE #endkannada &
+#kannada Nai #endkannada &
+#kannada No #endkannada &
+#kannada NO #endkannada &
+#kannada Nau #endkannada \\ \hline
+\tt t &
+#kannada ta #endkannada &
+#kannada taa #endkannada &
+#kannada ti #endkannada &
+#kannada tii #endkannada &
+#kannada tu #endkannada &
+#kannada tuu #endkannada &
+#kannada tR^i #endkannada &
+#kannada tR^I #endkannada &
+#kannada tL^i #endkannada &
+#kannada tL^I #endkannada &
+#kannada te #endkannada &
+#kannada tE #endkannada &
+#kannada tai #endkannada &
+#kannada to #endkannada &
+#kannada tO #endkannada &
+#kannada tau #endkannada \\ \hline
+\tt th &
+#kannada tha #endkannada &
+#kannada thaa #endkannada &
+#kannada thi #endkannada &
+#kannada thii #endkannada &
+#kannada thu #endkannada &
+#kannada thuu #endkannada &
+#kannada thR^i #endkannada &
+#kannada thR^I #endkannada &
+#kannada thL^i #endkannada &
+#kannada thL^I #endkannada &
+#kannada the #endkannada &
+#kannada thE #endkannada &
+#kannada thai #endkannada &
+#kannada tho #endkannada &
+#kannada thO #endkannada &
+#kannada thau #endkannada \\ \hline
+\tt d &
+#kannada da #endkannada &
+#kannada daa #endkannada &
+#kannada di #endkannada &
+#kannada dii #endkannada &
+#kannada du #endkannada &
+#kannada duu #endkannada &
+#kannada dR^i #endkannada &
+#kannada dR^I #endkannada &
+#kannada dL^i #endkannada &
+#kannada dL^I #endkannada &
+#kannada de #endkannada &
+#kannada dE #endkannada &
+#kannada dai #endkannada &
+#kannada do #endkannada &
+#kannada dO #endkannada &
+#kannada dau #endkannada \\ \hline
+\tt dh &
+#kannada dha #endkannada &
+#kannada dhaa #endkannada &
+#kannada dhi #endkannada &
+#kannada dhii #endkannada &
+#kannada dhu #endkannada &
+#kannada dhuu #endkannada &
+#kannada dhR^i #endkannada &
+#kannada dhR^I #endkannada &
+#kannada dhL^i #endkannada &
+#kannada dhL^I #endkannada &
+#kannada dhe #endkannada &
+#kannada dhE #endkannada &
+#kannada dhai #endkannada &
+#kannada dho #endkannada &
+#kannada dhO #endkannada &
+#kannada dhau #endkannada \\ \hline
+\tt n &
+#kannada na #endkannada &
+#kannada naa #endkannada &
+#kannada ni #endkannada &
+#kannada nii #endkannada &
+#kannada nu #endkannada &
+#kannada nuu #endkannada &
+#kannada nR^i #endkannada &
+#kannada nR^I #endkannada &
+#kannada nL^i #endkannada &
+#kannada nL^I #endkannada &
+#kannada ne #endkannada &
+#kannada nE #endkannada &
+#kannada nai #endkannada &
+#kannada no #endkannada &
+#kannada nO #endkannada &
+#kannada nau #endkannada \\ \hline
+\tt p &
+#kannada pa #endkannada &
+#kannada paa #endkannada &
+#kannada pi #endkannada &
+#kannada pii #endkannada &
+#kannada pu #endkannada &
+#kannada puu #endkannada &
+#kannada pR^i #endkannada &
+#kannada pR^I #endkannada &
+#kannada pL^i #endkannada &
+#kannada pL^I #endkannada &
+#kannada pe #endkannada &
+#kannada pE #endkannada &
+#kannada pai #endkannada &
+#kannada po #endkannada &
+#kannada pO #endkannada &
+#kannada pau #endkannada \\ \hline
+\tt ph &
+#kannada pha #endkannada &
+#kannada phaa #endkannada &
+#kannada phi #endkannada &
+#kannada phii #endkannada &
+#kannada phu #endkannada &
+#kannada phuu #endkannada &
+#kannada phR^i #endkannada &
+#kannada phR^I #endkannada &
+#kannada phL^i #endkannada &
+#kannada phL^I #endkannada &
+#kannada phe #endkannada &
+#kannada phE #endkannada &
+#kannada phai #endkannada &
+#kannada pho #endkannada &
+#kannada phO #endkannada &
+#kannada phau #endkannada \\ \hline
+\tt b &
+#kannada ba #endkannada &
+#kannada baa #endkannada &
+#kannada bi #endkannada &
+#kannada bii #endkannada &
+#kannada bu #endkannada &
+#kannada buu #endkannada &
+#kannada bR^i #endkannada &
+#kannada bR^I #endkannada &
+#kannada bL^i #endkannada &
+#kannada bL^I #endkannada &
+#kannada be #endkannada &
+#kannada bE #endkannada &
+#kannada bai #endkannada &
+#kannada bo #endkannada &
+#kannada bO #endkannada &
+#kannada bau #endkannada \\ \hline
+\tt bh &
+#kannada bha #endkannada &
+#kannada bhaa #endkannada &
+#kannada bhi #endkannada &
+#kannada bhii #endkannada &
+#kannada bhu #endkannada &
+#kannada bhuu #endkannada &
+#kannada bhR^i #endkannada &
+#kannada bhR^I #endkannada &
+#kannada bhL^i #endkannada &
+#kannada bhL^I #endkannada &
+#kannada bhe #endkannada &
+#kannada bhE #endkannada &
+#kannada bhai #endkannada &
+#kannada bho #endkannada &
+#kannada bhO #endkannada &
+#kannada bhau #endkannada \\ \hline
+\tt m &
+#kannada ma #endkannada &
+#kannada maa #endkannada &
+#kannada mi #endkannada &
+#kannada mii #endkannada &
+#kannada mu #endkannada &
+#kannada muu #endkannada &
+#kannada mR^i #endkannada &
+#kannada mR^I #endkannada &
+#kannada mL^i #endkannada &
+#kannada mL^I #endkannada &
+#kannada me #endkannada &
+#kannada mE #endkannada &
+#kannada mai #endkannada &
+#kannada mo #endkannada &
+#kannada mO #endkannada &
+#kannada mau #endkannada \\ \hline
+\tt y &
+#kannada ya #endkannada &
+#kannada yaa #endkannada &
+#kannada yi #endkannada &
+#kannada yii #endkannada &
+#kannada yu #endkannada &
+#kannada yuu #endkannada &
+#kannada yR^i #endkannada &
+#kannada yR^I #endkannada &
+#kannada yL^i #endkannada &
+#kannada yL^I #endkannada &
+#kannada ye #endkannada &
+#kannada yE #endkannada &
+#kannada yai #endkannada &
+#kannada yo #endkannada &
+#kannada yO #endkannada &
+#kannada yau #endkannada \\ \hline
+\tt r &
+#kannada ra #endkannada &
+#kannada raa #endkannada &
+#kannada ri #endkannada &
+#kannada rii #endkannada &
+#kannada ru #endkannada &
+#kannada ruu #endkannada &
+#kannada rR^i #endkannada &
+#kannada rR^I #endkannada &
+#kannada rL^i #endkannada &
+#kannada rL^I #endkannada &
+#kannada re #endkannada &
+#kannada rE #endkannada &
+#kannada rai #endkannada &
+#kannada ro #endkannada &
+#kannada rO #endkannada &
+#kannada rau #endkannada \\ \hline
+\tt l &
+#kannada la #endkannada &
+#kannada laa #endkannada &
+#kannada li #endkannada &
+#kannada lii #endkannada &
+#kannada lu #endkannada &
+#kannada luu #endkannada &
+#kannada lR^i #endkannada &
+#kannada lR^I #endkannada &
+#kannada lL^i #endkannada &
+#kannada lL^I #endkannada &
+#kannada le #endkannada &
+#kannada lE #endkannada &
+#kannada lai #endkannada &
+#kannada lo #endkannada &
+#kannada lO #endkannada &
+#kannada lau #endkannada \\ \hline
+\tt v &
+#kannada va #endkannada &
+#kannada vaa #endkannada &
+#kannada vi #endkannada &
+#kannada vii #endkannada &
+#kannada vu #endkannada &
+#kannada vuu #endkannada &
+#kannada vR^i #endkannada &
+#kannada vR^I #endkannada &
+#kannada vL^i #endkannada &
+#kannada vL^I #endkannada &
+#kannada ve #endkannada &
+#kannada vE #endkannada &
+#kannada vai #endkannada &
+#kannada vo #endkannada &
+#kannada vO #endkannada &
+#kannada vau #endkannada \\ \hline
+\tt sh &
+#kannada sha #endkannada &
+#kannada shaa #endkannada &
+#kannada shi #endkannada &
+#kannada shii #endkannada &
+#kannada shu #endkannada &
+#kannada shuu #endkannada &
+#kannada shR^i #endkannada &
+#kannada shR^I #endkannada &
+#kannada shL^i #endkannada &
+#kannada shL^I #endkannada &
+#kannada she #endkannada &
+#kannada shE #endkannada &
+#kannada shai #endkannada &
+#kannada sho #endkannada &
+#kannada shO #endkannada &
+#kannada shau #endkannada \\ \hline
+\tt Sh &
+#kannada Sha #endkannada &
+#kannada Shaa #endkannada &
+#kannada Shi #endkannada &
+#kannada Shii #endkannada &
+#kannada Shu #endkannada &
+#kannada Shuu #endkannada &
+#kannada ShR^i #endkannada &
+#kannada ShR^I #endkannada &
+#kannada ShL^i #endkannada &
+#kannada ShL^I #endkannada &
+#kannada She #endkannada &
+#kannada ShE #endkannada &
+#kannada Shai #endkannada &
+#kannada Sho #endkannada &
+#kannada ShO #endkannada &
+#kannada Shau #endkannada \\ \hline
+\tt s &
+#kannada sa #endkannada &
+#kannada saa #endkannada &
+#kannada si #endkannada &
+#kannada sii #endkannada &
+#kannada su #endkannada &
+#kannada suu #endkannada &
+#kannada sR^i #endkannada &
+#kannada sR^I #endkannada &
+#kannada sL^i #endkannada &
+#kannada sL^I #endkannada &
+#kannada se #endkannada &
+#kannada sE #endkannada &
+#kannada sai #endkannada &
+#kannada so #endkannada &
+#kannada sO #endkannada &
+#kannada sau #endkannada \\ \hline
+\tt h &
+#kannada ha #endkannada &
+#kannada haa #endkannada &
+#kannada hi #endkannada &
+#kannada hii #endkannada &
+#kannada hu #endkannada &
+#kannada huu #endkannada &
+#kannada hR^i #endkannada &
+#kannada hR^I #endkannada &
+#kannada hL^i #endkannada &
+#kannada hL^I #endkannada &
+#kannada he #endkannada &
+#kannada hE #endkannada &
+#kannada hai #endkannada &
+#kannada ho #endkannada &
+#kannada hO #endkannada &
+#kannada hau #endkannada \\ \hline
+\tt ld &
+#kannada lda #endkannada &
+#kannada ldaa #endkannada &
+#kannada ldi #endkannada &
+#kannada ldii #endkannada &
+#kannada ldu #endkannada &
+#kannada lduu #endkannada &
+#kannada ldR^i #endkannada &
+#kannada ldR^I #endkannada &
+#kannada ldL^i #endkannada &
+#kannada ldL^I #endkannada &
+#kannada lde #endkannada &
+#kannada ldE #endkannada &
+#kannada ldai #endkannada &
+#kannada ldo #endkannada &
+#kannada ldO #endkannada &
+#kannada ldau #endkannada \\ \hline
+\tt ksh &
+#kannada ksha #endkannada &
+#kannada kshaa #endkannada &
+#kannada kshi #endkannada &
+#kannada kshii #endkannada &
+#kannada kshu #endkannada &
+#kannada kshuu #endkannada &
+#kannada kshR^i #endkannada &
+#kannada kshR^I #endkannada &
+#kannada kshL^i #endkannada &
+#kannada kshL^I #endkannada &
+#kannada kshe #endkannada &
+#kannada kshE #endkannada &
+#kannada kshai #endkannada &
+#kannada ksho #endkannada &
+#kannada kshO #endkannada &
+#kannada kshau #endkannada \\ \hline
+\tt GY &
+#kannada GYa #endkannada &
+#kannada GYaa #endkannada &
+#kannada GYi #endkannada &
+#kannada GYii #endkannada &
+#kannada GYu #endkannada &
+#kannada GYuu #endkannada &
+#kannada GYR^i #endkannada &
+#kannada GYR^I #endkannada &
+#kannada GYL^i #endkannada &
+#kannada GYL^I #endkannada &
+#kannada GYe #endkannada &
+#kannada GYE #endkannada &
+#kannada GYai #endkannada &
+#kannada GYo #endkannada &
+#kannada GYO #endkannada &
+#kannada GYau #endkannada \\ \hline
+% end of the khadi.sh stuff......
+\end{tabular}
+\end{makeimage}
+\vspace{0.10in}
+\end{center}
+} % end vbox
+\caption {\label{fig2}\bf Kannada Consonants with their Vowel Forms.}
+\end{table}
+\end{comment} % ----------------- this table is not really useful, ignore
+%-------------------------------------------------------------------------

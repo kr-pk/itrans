@@ -1,0 +1,86 @@
+# README for the itrans package, 5.32
+
+                    Version 5.32, of the itrans package
+     (Supports Devanagari, Gujarati, Telugu, Kannada, Bengali, Tamil,
+                    Punjabi, and Romanized Sanskrit)
+            -----------------------------------------------------
+                    http://www.aczoom.com/itrans/
+            -----------------------------------------------------
+
+This is a package for printing text in Indian language scripts.
+
+This package only does the transliteration mapping, the fonts
+may be developed elsewhere.
+
+ITRANS is distributed in the following archives:
+
+    [required]
+    itransNN.zip  - ITRANS source code (Unix format) in a ZIP archive
+                      - also includes binary for MS-DOS
+                  - includes docs in .itx (ITRANS) format
+    itransfn.zip  - fonts for use with ITRANS
+    iupdateN.zip  - Updates to itransNN.zip [when needed]
+
+    [pre-compiled binary archives, includes fonts for use with ITRANS]
+    itransNN-i386.tgz   - for i386 Linux platforms (tested on Slackware)
+    itransNN-win32.zip  - for Win32 (Windows 95/NT or newer)
+
+    [optional]
+    itransht.zip  - docs in HTML (using Ross Moore's Latex2HTML for ITRANS)
+    itransps.zip  - docs in PostScript format, for printing.
+
+----- Navigating the complexities of ITRANS:
+ Beginning users: Consult these files: idoc.itx and other *.itx files in the
+ doc/ directory, and if you have to deal with installation issues, also
+ check out INSTALL.unix or INSTALL.pc in the top directory.
+
+Also, check out the ITRANS home page for more info and links to the
+Online ITRANS interface and other e-mail tools that make using ITRANS
+much easier, no installation required:
+
+        http://www.aczoom.com/itrans/
+
+Previous release ITRANS users: See the CHANGES file for list of changes.
+
+-----
+
+Directories & Files (all directories have README files with more info):
+
+src/            ITRANS source code, and makefiles.
+                Also includes binary for Linux (ELF) and MS-DOS.
+
+INSTALL.unix    Installation instructions for ITRANS on Unix systems.
+INSTALL.pc      Installation instructions for ITRANS on DOS/Win systems.
+
+TRANS.TXT       Quick review of the ITRANS encoding table.
+
+CHANGES         list of changes between consecutive released ITRANS versions.
+
+lib/fonts       All fonts used by ITRANS.
+
+lib/fonts/README    List all font files in lib/fonts and their uses.
+
+itrans.lst, itransps.lst, itransht.lst, itransfn.lst
+		List of files in the respective ITRANS archives
+
+lib/            Input files that define char composition - the *.ifm files.
+                Also contains examples of environment variables needed,
+                dvipsrc scripts, etc.
+
+doc/            ITRANS documentation.
+
+doc/idoc.itx    The main ITRANS manual
+		(all docs also available in PostScript and HTML formats).
+
+doc/ex_*.itx    Example input files, for LaTeX, HTML, Unicode, etc output.
+
+contrib/        Additional files and tools that may be useful.
+
+----
+    COPYRIGHT file has licensing information - Simplified BSD License.
+----
+Avinash Chopde
+e-mail: avinash@aczoom.com
+home page: http://www.aczoom.com/
+
+---------------------------------------------------------------------

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>itrans Mechanism</TITLE>
+<META NAME="description" CONTENT="itrans Mechanism">
+<META NAME="keywords" CONTENT="idoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="idoc.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="idoc.html">
+<LINK REL="up" HREF="idoc.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html54"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html52"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html46"
+  HREF="idoc.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html55"
+  HREF="node2.html">Input Format</A>
+<B>Up:</B> <A NAME="tex2html53"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html47"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00010000000000000000">
+<EM>itrans</EM> Mechanism</A>
+</H1>
+
+<P>
+<EM>itrans</EM>
+works by assigning every Indian language letter an english equivalent.
+Transliteration tables mapping devanagari or tamil or telugu, etc.
+characters into english
+equivalents are provided in the reference documents for each language,
+all of which are described in following sections of this document.
+
+<P>
+<EM>itrans</EM> scans the input text for consonants, vowels, and special
+forms.
+Consonants suffixed with vowel codes create a complete composite
+character. A consonant may be suffixed with one or more consonants to
+create ligature forms.
+All this transliteration is automatically handled, and appropriate Indian
+language characters are produced.
+If ligatures exist for a particular combination of
+consonants, they will be used automatically.
+If a ligature does not exist for some combination of the consonants,
+half-forms of the consonants will be used.
+The user can also override the ligature mechanism so that even if a
+ligature exists, the half forms of consonants will be used.
+Some languages such as tamil do not have any ligatures, in
+that case the appropriate action is taken -- for tamil, a dot is printed
+on top of a consonant if it is not followed by a vowel form.
+
+<P>
+All these features make itrans an highly customizable and easy-to-use
+package.
+Even the transliteration map given here is not 
+mandatory--the user can always edit the lexical source file and
+provide whatever mapping desired.
+
+<P>
+<EM>itrans</EM> is just a transliteration/char composition package.
+The task of actually placing characters on the page and spacing them
+correctly is left to other programs, such as T<SMALL>E</SMALL>X. 
+T<SMALL>E</SMALL>X is the preferred interface, but,
+other modes are available for direct Text output (suitable for HTML
+output or Unicode UTF-8 output).
+ITRANS version 5.1 added a new output mode - direct text HTML output -
+which allows ITRANS output in certain scripts to be directly viewed on WWW
+browsers such as Netscape (version 3.0 or newer).
+ITRANS version 5.3 added support for Unicode (UTF-8) output.
+These additional modes are available only for certain languages - not all
+are supported. Consult the  language specific documentation for
+supported modes for each font.
+
+<P>
+<HR>
+<A NAME="tex2html54"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html52"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html46"
+  HREF="idoc.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html55"
+  HREF="node2.html">Input Format</A>
+<B>Up:</B> <A NAME="tex2html53"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html47"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

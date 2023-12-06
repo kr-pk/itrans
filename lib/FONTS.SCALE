@@ -1,0 +1,19 @@
+*** Older X11 systems:
+*** Example fonts.scale file for X11 Window systems
+*** Copy this as "fonts.scale" to the lib/fonts directory, and run
+*** mkfontdir. See your X11 manual for more info on install Type 1 fonts.
+*** 2002: If using X11 and xfs edit the file /etc/X11/fs/config
+*** and add your font directory to the "catalogue" entry.  Then run
+*** /etc/rc.d/init.d restart
+*** DELETE THIS AND ABOVE LINES!  ***
+10
+ncpr____.pfb -itrans-ncprcsxp-regular-r-normal--0-0-0-0-p-0-itrans-fontspecific
+ncpi____.pfb -itrans-ncprcsxp-regular-i-normal--0-0-0-0-p-0-itrans-fontspecific
+ncpr____.pfb -itrans-ncprcsxp-regular-r-normal--0-0-0-0-p-0-iso8859-1
+ncpi____.pfb -itrans-ncprcsxp-regular-i-normal--0-0-0-0-p-0-iso8859-1
+itxguj.pfa -itrans-itxguj-regular-r-normal--0-0-0-0-p-0-itrans-fontspecific
+itxbeng.pfa -itrans-itxbeng-regular-r-normal--0-0-0-0-p-0-itrans-fontspecific
+xdvng.pfb -itrans-xdvng-regular-r-normal--0-0-0-0-p-0-itrans-fontspecific
+itxguj.pfa -itrans-itxguj-regular-r-normal--0-0-0-0-p-0-iso8859-1
+itxbeng.pfa -itrans-itxbeng-regular-r-normal--0-0-0-0-p-0-iso8859-1
+xdvng.pfb -itrans-xdvng-regular-r-normal--0-0-0-0-p-0-iso8859-1

@@ -1,0 +1,369 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>ITRANS Usage</TITLE>
+<META NAME="description" CONTENT="ITRANS Usage">
+<META NAME="keywords" CONTENT="pundoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="pundoc.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="pundoc.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html40"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html38"
+  HREF="pundoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html32"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html41"
+  HREF="node3.html">Examples</A>
+<B>Up:</B> <A NAME="tex2html39"
+  HREF="pundoc.html">pundoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html33"
+  HREF="node1.html">Fonts</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html42"
+  HREF="node2.html#SECTION00021000000000000000">Nuances</A>
+<LI><A NAME="tex2html43"
+  HREF="node2.html#SECTION00022000000000000000">Variations</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00020000000000000000">
+ITRANS Usage</A>
+</H1>
+
+<P>
+The identifiers <TT>&#35;gurmukhi</TT> and <TT>&#35;endgurmukhi</TT>
+can to be used to encode Gurmukh<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"> text in ITRANS.
+
+<P>
+
+<H2><A NAME="SECTION00021000000000000000">
+Nuances</A>
+</H2>
+
+<P>
+Many of the conventions of the Gurmukh<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"> script have been hard-coded
+into the <TT>pun.ifm</TT> file. Some of these are illustrated below:
+
+<P>
+
+<OL>
+<LI><B>Geminate consonants</B> in Gurmukh<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"> are not written
+twice or with consonant conjuncts. Rather the first letter is dropped
+and only the second letter is written. A diacritic called <I>addak</I>
+is placed above the preceding letter, ie. <IMG
+ WIDTH="27" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="hatth\/">   <TT>hatth</TT>. As 
+can be seen from the input transliteration, nothing special needs to be 
+done to produce the <I>addak</I> in ITRANS; the IFM file is coded for 
+geminate consonants. However, an <I>addak</I> may be explicitly
+encoded as <TT>.c</TT>, ie. <IMG
+ WIDTH="44" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="a.cdak\/">   <TT>a.cdak</TT>. Geminate consonants 
+of the form <I>unaspirated-unaspirated</I> (ie. <I>kk</I>) and 
+<I>unaspirated-aspirated</I> (ie. <I>kkh</I>) are accounted for.
+
+<P>
+When the geminate consonants are <I>nn</I> or <I>mm</I>, a sign called
+<I><IMG
+ WIDTH="8" HEIGHT="26" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="\textrm{\d{t\/}}">ipp<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"></I> is used instead of <I>addak</I>, ie. 
+<I>lamm<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"></I>   <IMG
+ WIDTH="34" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.gif"
+ ALT="lammii\/">   <TT>lammii</TT>. <I><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.gif"
+ ALT="\textrm{\d{T\/}}">ipp<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"></I> 
+is one of the nasalization diacritics. Again the <I>addak</I> is
+automatically produced by the IFM file.
+
+<P>
+The following is a list of geminated consonants supported in this IFM file:
+<IMG
+ WIDTH="658" HEIGHT="188" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.gif"
+ ALT="\begin{multicols}{4}
+{\tt k} $+$\ {\tt ka} $=$\  ...">
+<BR>
+
+<P>
+</LI>
+<LI><B>Nasalization</B> in Gurmukh<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"> is indicated by two 
+diacritics called <I><IMG
+ WIDTH="8" HEIGHT="26" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="\textrm{\d{t\/}}">ipp<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"></I> and <I>bi<IMG
+ WIDTH="17" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="\textrm{\d{m\/}}\kern.05em">d<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"></I>.
+I have coded these as <TT>.n</TT> and <TT>.N</TT>, respectively. In doing
+so I have redefined the character codes for <I>anusv<IMG
+ WIDTH="10" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="\textrm{\={a\/}}">ra</I> and
+<I>candrabindu</I> in <TT>pun.ifm</TT>.
+
+<P>
+<I><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.gif"
+ ALT="\textrm{\d{T\/}}">ipp<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"></I> is used with the vowels <I>a</I>, <I>i</I>, 
+and <I>u</I>, and with <I><IMG
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.gif"
+ ALT="\textrm{\={u\/}}"></I> when it is in word-final 
+position, ie. <IMG
+ WIDTH="29" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="mu.nDaa\/">   <TT>mu.nDaa</TT>. <I>Bi<IMG
+ WIDTH="17" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="\textrm{\d{m\/}}\kern.05em">d<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"></I> 
+is used with all other vowels, ie. <IMG
+ WIDTH="31" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="shaa.Nt\/">   <TT>shaa.Nt</TT>.
+
+<P>
+A nasal and consonant when of the same class may either be encoded
+with the nasal class code or with <I><IMG
+ WIDTH="8" HEIGHT="26" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="\textrm{\d{t\/}}">ipp<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"></I> <TT>.n</TT>. For
+example, <I>a<IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img13.gif"
+ ALT="\textrm{\.{n\/}}\kern.05em">ga</I> may either be encoded <IMG
+ WIDTH="32" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.gif"
+ ALT="aN^ga\/">   <TT>aN&#94;ga</TT> 
+or <IMG
+ WIDTH="32" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.gif"
+ ALT="a.nga\/">   <TT>a.nga</TT>. In either case, the IFM file will 
+automatically handle and produce the correct output.
+
+<P>
+</LI>
+<LI><B>Consonant conjuncts</B> are limited in Gurmukh<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em">
+and are much simpler than those of Devan<IMG
+ WIDTH="10" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="\textrm{\={a\/}}">gar<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em">. I have
+completed some conjuncts, but I have still researching
+for a comprehensive list. Once I have included these in the IFM
+file then the file will be complete. The list of consonant
+conjunctions coded in the IFM is as follows:
+
+<P>
+<BR>
+
+<P>
+<IMG
+ WIDTH="689" HEIGHT="77" ALIGN="BOTTOM" BORDER="0"
+ SRC="img16.gif"
+ ALT="\begin{multicols}{5}
+{\tt k} + {\tt ra} $=$\  ...">
+<BR>
+
+<P>
+<BR>
+
+<P>
+There are five consonants in Old Pa&#241;j<IMG
+ WIDTH="10" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="\textrm{\={a\/}}">b<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"> which are actually 
+conjunct consonants. These are the voiced aspirate (breathy voice) 
+consonants given below. I have accounted for them in the IFM file.
+
+<P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="401" HEIGHT="72" ALIGN="BOTTOM" BORDER="0"
+ SRC="img17.gif"
+ ALT="\begin{tabular}{\vert ll\vert ll\vert ll\vert ll\vert ll\vert}
+\hline
+\multicolu...
+...ian vha ...">
+<BR>
+
+</DIV>
+
+<P><P>
+<BR>
+
+<P>
+</LI>
+<LI><B>Vowel-bearers</B> are null characters which are modified 
+with diacritics to form the vowels. The vowel bearers are <I>u</I> 
+<IMG
+ WIDTH="14" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif"
+ ALT="{\pun \lq \char117}"> for back vowels, <I>a</I> <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="{\pun \lq \char97}"> for low vowels,
+and <I>i</I> <IMG
+ WIDTH="13" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="{\pun \lq \char101}"> for front vowels. I could not account
+for these in the IFM file so they had to be accessed directly
+through character codes from the <TT>pun</TT> font. The codes
+are <TT>u</TT>, <TT>a</TT>, and <TT>i</TT>, respectively. Perhaps
+Avinash Chopde could account for them if it is decided that
+Gurmukh<IMG
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="\textrm{\={\i\/}}\kern.15em"> will be made a part of ITRANS. Suggested 
+input for the vowel-bearers are <TT>`a</TT>, <TT>`u</TT>, and 
+<TT>`i</TT>.
+</LI>
+</OL>
+
+<P>
+
+<H2><A NAME="SECTION00022000000000000000">
+Variations</A>
+</H2>
+
+<P>
+
+<OL>
+<LI>The <I>m<IMG
+ WIDTH="10" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="\textrm{\={a\/}}">tr<IMG
+ WIDTH="10" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="\textrm{\={a\/}}"></I> for <IMG
+ WIDTH="18" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.gif"
+ ALT="au\/">   <TT>au</TT> is sometimes not
+written. A word like <IMG
+ WIDTH="44" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img22.gif"
+ ALT="augaNu\/">   <TT>augaNu</TT> may be written
+alternately as <IMG
+ WIDTH="58" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="a_ugaNu\/">   <TT>a&#95;ugaNu</TT>.
+</LI>
+</OL>
+
+<P>
+<HR>
+<A NAME="tex2html40"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html38"
+  HREF="pundoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html32"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html41"
+  HREF="node3.html">Examples</A>
+<B>Up:</B> <A NAME="tex2html39"
+  HREF="pundoc.html">pundoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html33"
+  HREF="node1.html">Fonts</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

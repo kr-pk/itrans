@@ -1,0 +1,98 @@
+# Used for making ITRANS Distributions, useful to developers only.
+#
+# make -f Makefile.dist     [makes main archives - ARCHIT and ARCHFN]
+# do this, copy to a Windows system, and do a "nmake -f makefile.bcc install"
+# then, the ARCHWIN archive can be built - see rules for ARCHWIN
+# also need to update local Linux system before doing ARCHBIN
+# example: su -c "make -f makefile.gcc install", and then can run:
+# make -f Makefile.dist all    [makes all archives]
+# make -f Makefile.dist update    [makes update - if any files in iupdate.lst]
+
+# ROOTDIR contains the entire itrans source code tree, and will
+# be used to store the  ZIP archives for distribution
+# Change FTP destination if version# changes
+
+# itrans-cgi.zip used to be created by running ~cgi/webitrans/mkdist, now can be done here.
+
+SHELL=/bin/bash
+
+ROOTDIR=../..
+CGIROOTDIR=~cgi/webitrans
+
+ARCHDIR=itrans-5.3
+
+ARCHIT=itrans532.zip
+ARCHBIN=itrans532-i386.tgz
+# Windows binary is in standard archive ARCHIT, don't need ARCHWIN
+ARCHFN=itransfn.zip
+ARCHHT=itransht.zip
+ARCHPS=itransps.zip
+ARCHUPD=iupdate1.zip
+ARCHCGI=itrans-cgi.zip
+
+INSTALLDIR=/usr/share/itrans53
+
+main:	${ARCHIT} ${ARCHFN}
+
+${ARCHIT}: link
+	cd ${ROOTDIR} ; rm -f ${ARCHIT} ; \
+	zip ${ARCHIT} -9 -v -D -@ < ${ARCHDIR}/itrans.lst ; \
+	echo -e "-----\n\nITRANS 5.32 Source with Win32 exe\n\n" | zip ${ARCHIT} -z
+
+all: ${ARCHIT} ${ARCHBIN} ${ARCHFN} ${ARCHHT} ${ARCHPS} ${ARCHCGI}
+
+# ftp not used, using lftp 
+ftp:
+	cd ${ROOTDIR} ; \
+  ncftpput -u aczoom www.aczoom.com /www/files/itrans/53 \
+  ${ARCHIT} ${ARCHBIN} ${ARCHWIN} ${ARCHFN} ${ARCHHT} ${ARCHPS} ${ARCHCGI}
+
+lftp:
+	cd ${ROOTDIR} ; \
+  (echo "open www.aczoom.com && \
+     cd /www/files/itrans/53 && \
+     mput ${ARCHIT} ${ARCHBIN} ${ARCHFN} ${ARCHHT} ${ARCHPS} ${ARCHCGI}" ;\
+   echo "pwd ; dir ; quit") | lftp
+
+update: ${ARCHUPD}
+
+# pre-made binary for Linux (Fedora) i386
+${ARCHBIN}: link
+	cd ${ROOTDIR} ; rm -f ${ARCHBIN} ; \
+	tar chvzf ${ARCHBIN} /usr/local/bin/itrans ${INSTALLDIR}
+
+${ARCHFN}: link
+	cd ${ROOTDIR} ; rm -f ${ARCHFN} ; \
+	zip ${ARCHFN} -9 -v -D -@ < ${ARCHDIR}/itransfn.lst ; \
+	echo -e "-----\n\nITRANS 5.32 Fonts\n\n" | zip ${ARCHFN} -z
+
+${ARCHHT}: link
+	cd ${ROOTDIR} ; rm -f ${ARCHHT} ; \
+	zip ${ARCHHT} -9 -v -D -r -@ < ${ARCHDIR}/itransht.lst ; \
+	echo -e "-----\n\nITRANS 5.32 Documentation - HTML\n\n" | zip ${ARCHHT} -z
+
+${ARCHPS}: link
+	cd ${ROOTDIR} ; rm -f ${ARCHPS} ; \
+	zip ${ARCHPS} -9 -v -D -@ < ${ARCHDIR}/itransps.lst ; \
+	echo -e "-----\n\nITRANS 5.32 Documentation - PDF\n\n" | zip ${ARCHPS} -z
+
+${ARCHUPD}: link
+	cd ${ROOTDIR} ; rm -f ${ARCHUPD} ; \
+	zip ${ARCHUPD} -9 -v -D -@ < ${ARCHDIR}/iupdate.lst ; \
+	echo -e "-----\n\nITRANS 5.30 - Update 1 - 2008-06\n\n" | zip ${ARCHUPD} -z
+
+${ARCHCGI}: link
+	cd ${CGIROOTDIR} ; rm -f ${ARCHCGI} ; \
+	zip ${ARCHCGI} -9 -v -D -@ < itranscg.lst ; \
+	echo -e "-----\n\nITRANS 5.32 Online ITRANS CGI Scripts -" `date +%F` "\n\n" | zip ${ARCHCGI} -z 
+	cp ${CGIROOTDIR}/${ARCHCGI} ${ROOTDIR}
+
+link:
+	#-ln -s ${ROOTDIR} ${ROOTDIR}/${ARCHDIR}
+
+upload:
+	@echo "Run make -f Makefile.dist lftp or:"
+	@echo "Go to " ${ROOTDIR} "and run:"
+	@echo "lftp www.aczoom.com < lftp.script"
+#	@read -p "Hit Enter to Continue, ^C to kill/exit...." DummyArg
+	@echo "Also go to doc/html directory to upload HTML doc versions"

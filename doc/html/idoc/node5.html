@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Direct Text Output - for HTML</TITLE>
+<META NAME="description" CONTENT="Direct Text Output - for HTML">
+<META NAME="keywords" CONTENT="idoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="idoc.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="idoc.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html104"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html102"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html96"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html105"
+  HREF="node6.html">Program Options</A>
+<B>Up:</B> <A NAME="tex2html103"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html97"
+  HREF="node4.html">Direct PostScript Output</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html106"
+  HREF="node5.html#SECTION00051000000000000000">Direct Text (HTML) Output Requirements</A>
+<LI><A NAME="tex2html107"
+  HREF="node5.html#SECTION00052000000000000000">HTML Output - Unicode - UTF-8</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00050000000000000000">
+Direct Text Output - for HTML</A>
+</H1>
+
+<P>
+This is a new mode added in release 5.1, which just like the PostScript
+mode, does not offer any typesetting functionality.
+In fact, this mode is provided for generating text that can be displayed
+on any WWW browser such as Netscape (version 3.0 or later).
+Not all languages are supported in this mode -- it requires availablity
+of a TrueType font, and right now (ITRANS 5.10) the following languages
+are supported: Romanized Sanskrit, Gujarati, Bengali, and Devanagari scripts.
+
+<P>
+Two types of HTML output are supported: 7-bit ASCII (which uses the
+<code>&amp;#nnn</code> HTML codes for character codes 127 to 255), and 8-bit
+text output (which outputs character codes 127 to 255 directly).
+I think 7-bit output should be more portable, but in practice, I found it
+to create problems on Macintosh computers, so, I use 8-bit output in the
+examples.
+
+<P>
+Three platforms have been tested: Unix/X11R6 (Type 1 fonts - <code>*.pfa</code>
+or <code>*.pfb</code>), Macintosh (TrueType - <code>*.hqx</code> files), and
+Windows (TryeType - <code>*.ttf</code>).
+All the fonts required are present in the ITRANS/lib/fonts directory of
+the ITRANS package, the user has to install the appropriate font on his
+or her system to allow viewing of the ITRANS output in the native Indic
+Script.
+
+<P>
+
+<H2><A NAME="SECTION00051000000000000000">
+Direct Text (HTML) Output Requirements</A>
+</H2>
+
+<P>
+The font should be available in Type 1 or TrueType format, and must
+be usable in regular word-processors (without ITRANS).
+
+<P>
+
+<H2><A NAME="SECTION00052000000000000000">
+HTML Output - Unicode - UTF-8</A>
+</H2>
+
+<P>
+ITRANS 5.3 added support for Unicode output using UTF-8 encoding for
+the output.
+
+<P>
+The UTF-8 text output can be displayed on any Web browser or loaded
+into any text editor that can handle UTF-8 text. 
+To view the text in Indian language scripts requires availability
+of an Unicode font, for the specific language.  ITRANS does not
+come with any Unicode fonts, it is expected that in due time,
+there will be freeware Unicode fonts for all Indian languages
+available on the Internet.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="173"></A>
+<TABLE>
+<CAPTION><STRONG>Table 1:</STRONG>
+<B>ITRANS: Unicode IFM files.</B></CAPTION>
+<TR><TD><TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">Sanskrit/Hindi/Marathi</TD>
+<TD ALIGN="CENTER"><EM>udvng.ifm</EM></TD>
+</TR>
+<TR><TD ALIGN="CENTER">Gujarati</TD>
+<TD ALIGN="CENTER"><EM>uguj.ifm</EM></TD>
+</TR>
+<TR><TD ALIGN="CENTER">Bengali</TD>
+<TD ALIGN="CENTER"><EM>ubeng.ifm</EM></TD>
+</TR>
+<TR><TD ALIGN="CENTER">Tamil</TD>
+<TD ALIGN="CENTER"><EM>utml.ifm</EM></TD>
+</TR>
+<TR><TD ALIGN="CENTER">Telugu</TD>
+<TD ALIGN="CENTER"><EM>utel.ifm</EM></TD>
+</TR>
+<TR><TD ALIGN="CENTER">Kannada</TD>
+<TD ALIGN="CENTER"><EM>ukan.ifm</EM></TD>
+</TR>
+<TR><TD ALIGN="CENTER">Romanized Sanskrit</TD>
+<TD ALIGN="CENTER"><EM>uroman.ifm</EM></TD>
+</TR>
+<TR><TD ALIGN="CENTER">Gurmukhi</TD>
+<TD ALIGN="CENTER"><EM>ugur.ifm</EM></TD>
+</TR>
+<TR><TD ALIGN="CENTER">Malayalam</TD>
+<TD ALIGN="CENTER"><EM>umal.ifm</EM></TD>
+</TR>
+<TR><TD ALIGN="CENTER">Oriya</TD>
+<TD ALIGN="CENTER"><EM>uoriya.ifm</EM></TD>
+</TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+The Oriya and Malayalam scripts are supported through the  Unicode
+interface only - these scripts are not supported in the T<SMALL>E</SMALL>X or
+PostScript interfaces.
+
+<P>
+<HR>
+<A NAME="tex2html104"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html102"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html96"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html105"
+  HREF="node6.html">Program Options</A>
+<B>Up:</B> <A NAME="tex2html103"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html97"
+  HREF="node4.html">Direct PostScript Output</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

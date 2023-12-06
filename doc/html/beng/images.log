@@ -1,0 +1,2012 @@
+This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7) (format=latex 2009.7.21)  4 DEC 2009 09:32
+entering extended mode
+ %&-line parsing enabled.
+**./images.tex
+(./images.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, sanskrit, loaded.
+
+(/usr/local/texlive/2008/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/local/texlive/2008/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/local/texlive/2008/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/share/itrans53/lib/itrans.sty
+File: itrans.sty 1998/6/12
+(/usr/share/itrans53/lib/idevn.tex)) (/usr/local/texlive/2008/texmf/tex/latex/h
+tml/html.sty (/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/hyperref.st
+y
+Package: hyperref 2009/05/01 v6.78r Hypertext links for LaTeX
+(/usr/local/texlive/2008/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+) (/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode not detected.
+) (/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+) (/usr/local/texlive/2008/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+) (/usr/local/texlive/2008/texmf-dist/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2008/09/08 v1.4 Code for color options of hyperref/bookmark (H
+O)
+(/usr/local/texlive/2008/texmf-dist/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2008/09/08 xcolor patch
+))
+\@linkdim=\dimen103
+\Hy@linkcounter=\count87
+\Hy@pagecounter=\count88
+(/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/05/01 v6.78r Hyperref: PDFDocEncoding definition (HO)
+) (/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+) (/usr/local/texlive/2008/texmf/tex/latex/config/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+) (/usr/local/texlive/2008/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/04/10 v3.1 Keyval support for LaTeX options (HO)
+)
+Package hyperref Info: Hyper figures OFF on input line 2953.
+Package hyperref Info: Link nesting OFF on input line 2958.
+Package hyperref Info: Hyper index ON on input line 2961.
+Package hyperref Info: Plain pages OFF on input line 2968.
+Package hyperref Info: Backreferencing OFF on input line 2973.
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3163.
+(/usr/local/texlive/2008/texmf/tex/latex/html/url.sty
+Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
+ names
+)
+LaTeX Info: Redefining \url on input line 3400.
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+) (/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/04/10 v0.4 LuaTeX support for pdfTeX utility functions
+ (HO)
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/10 v1.1 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected on input line 145.
+))) (/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2007/09/29 v1.3 Key value parser with default handler suppor
+t (HO)
+)
+\Fld@menulength=\count89
+\Field@Width=\dimen104
+\Fld@charsize=\dimen105
+\Field@toks=\toks15
+Package hyperref Info: Hyper figures OFF on input line 4317.
+Package hyperref Info: Link nesting OFF on input line 4322.
+Package hyperref Info: Hyper index ON on input line 4325.
+Package hyperref Info: backreferencing OFF on input line 4332.
+Package hyperref Info: Link coloring OFF on input line 4337.
+Package hyperref Info: Link coloring with OCG OFF on input line 4342.
+Package hyperref Info: PDF/A mode OFF on input line 4347.
+(/usr/local/texlive/2008/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count90
+\c@Item=\count91
+\c@Hfootnote=\count92
+)
+*hyperref using default driver hdvips*
+(/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2009/05/01 v6.78r Hyperref driver for dvips
+(/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2009/05/01 v6.78r Hyperref definitions for pdfmark specials
+\pdf@docset=\toks16
+\pdf@box=\box26
+\pdf@toks=\toks17
+\pdf@defaulttoks=\toks18
+\Fld@listcount=\count93
+))
+Package: html 1999/07/19 v1.38 hypertext commands for latex2html (nd, hws, rrm)
+
+\c@lpart=\count94
+\c@lchapter=\count95
+\c@chapter=\count96
+\c@lsection=\count97
+\c@lsubsection=\count98
+\c@lsubsubsection=\count99
+\c@lparagraph=\count100
+\c@lsubparagraph=\count101
+\c@lsubsubparagraph=\count102
+\ptrfile=\write3
+) (/usr/local/texlive/2008/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip43
+\LTright=\skip44
+\LTpre=\skip45
+\LTpost=\skip46
+\LTchunksize=\count103
+\LTcapwidth=\dimen106
+\LT@head=\box27
+\LT@firsthead=\box28
+\LT@foot=\box29
+\LT@lastfoot=\box30
+\LT@cols=\count104
+\LT@rows=\count105
+\c@LT@tables=\count106
+\c@LT@chunks=\count107
+\LT@p@ftn=\toks19
+)
+\zErOdEpTh=\box31
+(/usr/local/texlive/2008/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+(/usr/local/texlive/2008/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 130.
+(/usr/local/texlive/2008/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+) (/usr/local/texlive/2008/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+)) (/usr/local/texlive/2008/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2006/05/05 v1.1b Input encoding file
+\inpenc@prehook=\toks20
+\inpenc@posthook=\toks21
+(/usr/local/texlive/2008/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2006/05/05 v1.1b Input encoding file
+))
+\sizebox=\box32
+\lthtmlwrite=\write4
+(./images.aux)
+\openout1 = `images.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+Package hyperref Info: Link coloring OFF on input line 179.
+(/usr/local/texlive/2008/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+(/usr/local/texlive/2008/texmf-dist/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count108
+)
+LaTeX Info: Redefining \ref on input line 179.
+LaTeX Info: Redefining \pageref on input line 179.
+\@outlinefile=\write5
+\openout5 = `images.out'.
+
+\AtBeginShipoutBox=\box33
+
+latex2htmlLength hsize=451.0pt
+
+latex2htmlLength vsize=554.0pt
+
+latex2htmlLength hoffset=0.0pt
+
+latex2htmlLength voffset=0.0pt
+
+latex2htmlLength topmargin=0.0pt
+
+latex2htmlLength topskip=0.00003pt
+
+latex2htmlLength headheight=0.0pt
+
+latex2htmlLength headsep=0.0pt
+
+latex2htmlLength parskip=0.0pt plus 1.0pt
+
+latex2htmlLength oddsidemargin=0.0pt
+
+latex2htmlLength evensidemargin=0.0pt
+
+l2hSize :tex2html_ind_inline3806:11.7pt::11.7pt::40.72768pt.
+[1
+
+
+
+]
+l2hSize :tex2html_wrap3820:78.81989pt::3.435pt::451.0pt.
+[2
+
+
+]
+Missing character: There is no ^^@ in font bnr10!
+Missing character: There is no ^^@ in font bnr10!
+l2hSize :tex2html_wrap3821:71.19994pt::2.79999pt::451.0pt.
+[3
+
+
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 307.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 307.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 307.
+Missing character: There is no ^^@ in font bnr10!
+Missing character: There is no ^^@ in font bnr10!
+l2hSize :makeimage127:110.60248pt::105.12749pt::451.0pt.
+[4
+
+
+]
+l2hSize :makeimage193:99.63737pt::94.16238pt::451.0pt.
+[5
+
+
+]
+Missing character: There is no ^^@ in font bnr10!
+l2hSize :makeimage250:73.96992pt::68.49493pt::451.0pt.
+[6
+
+
+]
+Underfull \hbox (badness 10000) detected at line 841
+\OT1/cmtt/m/n/10.95 t\OT1/cmr/m/it/10.95 a
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 841
+\OT1/cmtt/m/n/10.95 p\OT1/cmr/m/it/10.95 a
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 841
+\OT1/cmtt/m/n/10.95 Sh\OT1/cmr/m/it/10.95 a
+ []
+
+
+Overfull \hbox (34.91606pt too wide) detected at line 843
+ [] 
+ []
+
+l2hSize :tex2html_wrap2869:163.85362pt::158.37865pt::451.0pt.
+[7
+
+
+]
+! Undefined control sequence.
+l.848 $	{\ttk
+             \_ShN}$%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+l2hSize :tex2html_wrap_inline3837:7.60416pt::0.0pt::28.13593pt.
+[8
+
+
+]
+Overfull \hbox (21.1948pt too wide) in alignment at lines 855--859
+ [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (21.1948pt too wide) in alignment at lines 859--865
+ [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (21.1948pt too wide) in alignment at lines 865--867
+ [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (21.1948pt too wide) in alignment at lines 867--869
+ [] [] [] [] [] [] [] 
+ []
+
+! Undefined control sequence.
+l.876 	{\ttkk
+             } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.883 	{\ttdhikkaar
+                   }  &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.894 	{\ttkT
+             } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.901 	{\ttakTopaas
+                   } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no ^^@ in font bnr10!
+! Undefined control sequence.
+l.912 	{\ttkt
+             } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.919 	{\ttDaaktaar
+                   } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.930 	{\ttkb
+             } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.937 	{\ttpakba
+                } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.948 	{\ttkm
+             } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.955 	{\ttrukmiNI
+                  } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.966 	{\ttkr
+             } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.973 	{\ttbakra
+                } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.984 	{\ttkl
+             } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.991 	{\ttklIba
+                } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1002 	{\ttkSh
+               } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1009 	{\ttrakShaa
+                   } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1021 	{\ttk
+             \_ShN}\footnotemark &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1028 	{\tttIk
+               \_ShNa } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1040 	{\ttk
+             \_Shm}&
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1047 	{\ttlak
+               \_ShmI} &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1058 	{\ttks
+              } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1065 	{\ttriksaa
+                  } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1076 	{\ttgdh
+               } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1083 	{\ttmugdha
+                  } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1094 	{\ttgn
+              } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1101 	{\ttagni
+                } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no ^^@ in font bnr10!
+! Undefined control sequence.
+l.1112 	{\ttgb
+              } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1119 	{\ttdigbijaY
+                    } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1130 	{\ttgm
+              } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1137 	{\ttJugma
+                 } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1148 	{\ttlm
+              } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1155 	{\ttglaani
+                  } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1166 	{\ttghn
+               } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1173 	{\ttbighna
+                  } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1191 	{\ttsha
+               \char126 Nkita} &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1210 	{\ttaakaa
+                 \char126 Nk\_Shaa } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no ^^@ in font bnr10!
+! Undefined control sequence.
+l.1228 	{\ttsha
+               \char126 Nkha} &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (21.1948pt too wide) in alignment at lines 869--1234
+ [] [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1234
+ []
+
+! Undefined control sequence.
+l.1246 	{\ttbyaa
+                \char126 Ng} &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1264 	{\ttsa
+              \char126 Ngha} &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1282 	{\ttbaa
+               \char126 NmaY} &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1293 	{\ttchch
+                 } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1300 	{\ttsaachchaa
+                     } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1311 	{\ttchchh
+                  } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1318 	{\ttbaachchhaa
+                      } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1330 	{\ttchchhb
+                   } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1337 	{\ttuchchhbaas
+                      } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1348 	{\ttch
+              \char126 n } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1355 	{\ttJaach
+                 \char126 naa } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1366 	{\ttjj
+               } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1373 	{\ttlajjaa
+                   } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1385 	{\ttjjb
+                } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1392 	{\ttujjbal
+                   } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1403 	{\ttjjh
+                } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1410 	{\ttkujjhaTikaa
+                        } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1421 	{\ttGY
+              }&
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1428 	{\ttbiGYaan
+                    } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1439 	{\ttjb
+              }&
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1446 	{\ttjbaalaa
+                    } &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 1 on input line 1454.
+
+*** image for makeimage606 is too tall at 647.46896pt, reducing to .95 vsize **
+*
+l2hSize :makeimage606:526.29831pt::0.0pt::451.0pt.
+[9
+
+
+]
+! Missing \endcsname inserted.
+<to be read again> 
+                   \endgraf 
+l.1462 \begin
+             {longtable}{|c|c|c|c|c|c|c|}
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \endgraf 
+l.1462 \begin
+             {longtable}{|c|c|c|c|c|c|c|}
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\reserved@a ...\csname \color@endgroup \endcsname 
+                                                  
+l.1462 \begin
+             {longtable}{|c|c|c|c|c|c|c|}
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Extra }, or forgotten \endgroup.
+\sbox ...hbox {\color@setgroup #2\color@endgroup }
+                                                  
+l.1462 \begin
+             {longtable}{|c|c|c|c|c|c|c|}
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.1462 \begin
+             {longtable}{|c|c|c|c|c|c|c|}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1463 \caption
+               {Conjunct Consonants\protect, Part 2} \\
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.1464 \hline
+              conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example...
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1462--1464
+
+ []
+
+! Misplaced alignment tab character &.
+l.1464 \hline conjunct &
+                         ITRANS & bn & itxbeng & ITRANS example & bn example...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.1464 \hline conjunct & ITRANS &
+                                  bn & itxbeng & ITRANS example & bn example...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.1464 \hline conjunct & ITRANS & bn &
+                                       itxbeng & ITRANS example & bn example...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.1464 \hline conjunct & ITRANS & bn & itxbeng &
+                                                 ITRANS example & bn example...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.1464 ...ITRANS & bn & itxbeng & ITRANS example &
+                                                   bn example & itxbeng exam...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.1464 ... itxbeng & ITRANS example & bn example &
+                                                   itxbeng example \\\hline
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.1464 ... & bn example & itxbeng example \\\hline
+                                                  
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1464--1464
+
+ []
+
+! Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced \span.
+\sp@n ->\span 
+              \omit \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\sp@n ->\span \omit 
+                    \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced \span.
+\sp@n ->\span 
+              \omit \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\sp@n ->\span \omit 
+                    \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced \span.
+\sp@n ->\span 
+              \omit \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\sp@n ->\span \omit 
+                    \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced \span.
+\sp@n ->\span 
+              \omit \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\sp@n ->\span \omit 
+                    \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced \span.
+\sp@n ->\span 
+              \omit \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\sp@n ->\span \omit 
+                    \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced \span.
+\sp@n ->\span 
+              \omit \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\sp@n ->\span \omit 
+                    \advance \@multicnt \m@ne 
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Undefined control sequence.
+<argument> ...nextchar \ifcase \@chclass \@classz 
+                                                  \or \@classi \or \@classii...
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@mkpream ...hclass }\ifcase \@lastchclass \@acol 
+                                                  \or \or \@preamerr \@ne \o...
+l.1465 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced \crcr.
+\LT@echunk ->\crcr 
+                   \LT@save@row \cr \egroup \global \setbox \@ne \lastbox \u...
+l.1466 	\endfirsthead
+                     
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<argument> &
+            
+l.1466 	\endfirsthead
+                     
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\LT@entry ...->\ifhmode \@firstofone {&}\fi \omit 
+                                                  \ifnum #1=\c@LT@chunks \el...
+l.1466 	\endfirsthead
+                     
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced alignment tab character &.
+<argument> &
+            
+l.1466 	\endfirsthead
+                     
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\LT@entry ...->\ifhmode \@firstofone {&}\fi \omit 
+                                                  \ifnum #1=\c@LT@chunks \el...
+l.1466 	\endfirsthead
+                     
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced alignment tab character &.
+<argument> &
+            
+l.1466 	\endfirsthead
+                     
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\LT@entry ...->\ifhmode \@firstofone {&}\fi \omit 
+                                                  \ifnum #1=\c@LT@chunks \el...
+l.1466 	\endfirsthead
+                     
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced alignment tab character &.
+<argument> &
+            
+l.1466 	\endfirsthead
+                     
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\LT@entry ...->\ifhmode \@firstofone {&}\fi \omit 
+                                                  \ifnum #1=\c@LT@chunks \el...
+l.1466 	\endfirsthead
+                     
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced alignment tab character &.
+<argument> &
+            
+l.1466 	\endfirsthead
+                     
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\LT@entry ...->\ifhmode \@firstofone {&}\fi \omit 
+                                                  \ifnum #1=\c@LT@chunks \el...
+l.1466 	\endfirsthead
+                     
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced alignment tab character &.
+<argument> &
+            
+l.1466 	\endfirsthead
+                     
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\LT@entry ...->\ifhmode \@firstofone {&}\fi \omit 
+                                                  \ifnum #1=\c@LT@chunks \el...
+l.1466 	\endfirsthead
+                     
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced alignment tab character &.
+<argument> &
+            
+l.1466 	\endfirsthead
+                     
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \omit.
+\LT@entry ...->\ifhmode \@firstofone {&}\fi \omit 
+                                                  \ifnum #1=\c@LT@chunks \el...
+l.1466 	\endfirsthead
+                     
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Misplaced \cr.
+\LT@echunk ->\crcr \LT@save@row \cr 
+                                    \egroup \global \setbox \@ne \lastbox \u...
+l.1466 	\endfirsthead
+                     
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Extra }, or forgotten \endgroup.
+\LT@echunk ->\crcr \LT@save@row \cr \egroup 
+                                            \global \setbox \@ne \lastbox \u...
+l.1466 	\endfirsthead
+                     
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Extra }, or forgotten \endgroup.
+\LT@echunk ...etbox \@ne \lastbox \unskip \egroup 
+                                                  
+l.1466 	\endfirsthead
+                     
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1466 	\endfirsthead
+                     
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1466 	\endfirsthead
+                     
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1466 	\endfirsthead
+                     
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1466 	\endfirsthead
+                     
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1466 	\endfirsthead
+                     
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1466 	\endfirsthead
+                     
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   \cr 
+l.1466 	\endfirsthead
+                     
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1467 \par
+           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1468 \caption
+               []{Conjunct Consonants (contd)} \\
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.1469 	\hline
+              
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! You can't use `\hrule' here except with leaders.
+\hline ->\noalign {\ifnum 0=`}\fi \hrule 
+                                         \@height \arrayrulewidth \futurelet...
+l.1469 	\hline
+              
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \futurelet 
+l.1469 	\hline
+              
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \futurelet 
+l.1469 	\hline
+              
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1470 	conjunct & I
+                    TRANS & bn & itxbeng & ITRANS example & bn example & itx...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1470 	conjunct & ITRANS & b
+                             n & itxbeng & ITRANS example & bn example & itx...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1470 	conjunct & ITRANS & bn & i
+                                  txbeng & ITRANS example & bn example & itx...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1470 	conjunct & ITRANS & bn & itxbeng & I
+                                            TRANS example & bn example & itx...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1470 ...RANS & bn & itxbeng & ITRANS example & b
+                                                  n example & itxbeng exampl...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1470 ...txbeng & ITRANS example & bn example & i
+                                                  txbeng example \\\hline
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.1470 ... & bn example & itxbeng example \\\hline
+                                                  
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! You can't use `\hrule' here except with leaders.
+\hline ->\noalign {\ifnum 0=`}\fi \hrule 
+                                         \@height \arrayrulewidth \futurelet...
+l.1470 ... & bn example & itxbeng example \\\hline
+                                                  
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \futurelet 
+l.1470 ... & bn example & itxbeng example \\\hline
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \futurelet 
+l.1470 ... & bn example & itxbeng example \\\hline
+                                                  
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.1471 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.1471 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Undefined control sequence.
+<argument> ...nextchar \ifcase \@chclass \@classz 
+                                                  \or \@classi \or \@classii...
+l.1471 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@mkpream ...hclass }\ifcase \@lastchclass \@acol 
+                                                  \or \or \@preamerr \@ne \o...
+l.1471 	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+                                                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1472 	\endhead
+                
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (212.25569pt too wide) in alignment at lines 1466--1472
+ [] [] [] [] [] [] [] 
+ []
+
+! Argument of \LT@max@sel has an extra }.
+<inserted text> 
+                \par 
+l.1472 	\endhead
+                
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+! Paragraph ended before \LT@max@sel was complete.
+<to be read again> 
+                   \par 
+l.1472 	\endhead
+                
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1472 	\endhead
+                
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1472 	\endhead
+                
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1472 	\endhead
+                
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1472 	\endhead
+                
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1472 	\endhead
+                
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1472 	\endhead
+                
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   \cr 
+l.1472 	\endhead
+                
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1473 \par
+           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.1474 ...umn{7}{r}{continued on the next page...}
+                                                   \\\endfoot
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Undefined control sequence.
+<argument> ...nextchar \ifcase \@chclass \@classz 
+                                                  \or \@classi \or \@classii...
+l.1474 ...umn{7}{r}{continued on the next page...}
+                                                   \\\endfoot
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@mkpream ...hclass }\ifcase \@lastchclass \@acol 
+                                                  \or \or \@preamerr \@ne \o...
+l.1474 ...umn{7}{r}{continued on the next page...}
+                                                   \\\endfoot
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Runaway argument?
+! Paragraph ended before \LT@entry was complete.
+<to be read again> 
+                   \par 
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Argument of \LT@max@sel has an extra }.
+<inserted text> 
+                \par 
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+! Paragraph ended before \LT@max@sel was complete.
+<to be read again> 
+                   \par 
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   \cr 
+l.1474 ...ontinued on the next page...} \\\endfoot
+                                                  
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1475 \par
+           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.1476 \hline
+              \endlastfoot
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! You can't use `\hrule' here except with leaders.
+\hline ->\noalign {\ifnum 0=`}\fi \hrule 
+                                         \@height \arrayrulewidth \futurelet...
+l.1476 \hline
+              \endlastfoot
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \futurelet 
+l.1476 \hline
+              \endlastfoot
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \futurelet 
+l.1476 \hline
+              \endlastfoot
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+Runaway argument?
+! Paragraph ended before \LT@entry was complete.
+<to be read again> 
+                   \par 
+l.1476 \hline \endlastfoot
+                          
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Undefined control sequence.
+<template> ...colsep {\hfil \ignorespaces \@sharp 
+                                                  \unskip \hfil }\hskip \tab...
+l.1476 \hline \endlastfoot
+                          
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Argument of \LT@max@sel has an extra }.
+<inserted text> 
+                \par 
+l.1476 \hline \endlastfoot
+                          
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+! Paragraph ended before \LT@max@sel was complete.
+<to be read again> 
+                   \par 
+l.1476 \hline \endlastfoot
+                          
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1476 \hline \endlastfoot
+                          
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1476 \hline \endlastfoot
+                          
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1476 \hline \endlastfoot
+                          
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1476 \hline \endlastfoot
+                          
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1476 \hline \endlastfoot
+                          
+There should be exactly one # between &'s, when an
+\halign or \valign is being set up. In this case you had
+none, so I've put one in; maybe that will work.
+
+! Missing # inserted in alignment preamble.
+<to be read again> 
+                   &
+l.1476 \hline \endlastfoot
+                          
+(That makes 100 errors; please try again.) 
+Here is how much of TeX's memory you used:
+ 4312 strings out of 495063
+ 63039 string characters out of 1181974
+ 172086 words of memory out of 3000000
+ 7458 multiletter control sequences out of 10000+50000
+ 8318 words of font info for 29 fonts, out of 3000000 for 5000
+ 28 hyphenation exceptions out of 8191
+ 44i,18n,23p,307b,333s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on images.dvi (9 pages, 24844 bytes).

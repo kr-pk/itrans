@@ -1,0 +1,714 @@
+
+
+\batchmode
+
+
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}%
+\providecommand{\SM}{\char35gujarati}%
+\providecommand{\EM}{\char35endgujarati} 
+\newfont{\itxgujf}{itxguj at 15pt}
+
+\hyphenchar\itxgujf-1  % disable hyphenation using this font
+
+
+%
+% ---------------------------------------------------------
+% ITRANS 5.30 (29 July 2006) (TeX Interface)
+% Copyright 1991--2001 Avinash Chopde, All Rights Reserved.
+% ---------------------------------------------------------
+%
+\newbox\zErOdEpTh
+\def\kRn#1{{\kern#1em}}
+\def\sBs#1#2{{\setbox\zErOdEpTh=\hbox{\raise#1em\hbox{#2}}%
+\ht\zErOdEpTh=0pt\dp\zErOdEpTh=0pt\box\zErOdEpTh}}
+
+
+
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage67}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{{\itxgujf %
+{\char231} }% End of Indic Script text.
+}	& {\tt a} \\\hline
+{{\itxgujf %
+{\char231}{\char201} }% End of Indic Script text.
+}	& {\tt aa {\it or} A} \\\hline
+{{\itxgujf %
+r }% End of Indic Script text.
+}	& {\tt i} \\\hline
+{{\itxgujf %
+W }% End of Indic Script text.
+}	& {\tt ii {\it or} I} \\\hline
+{{\itxgujf %
+L }% End of Indic Script text.
+}	& {\tt u} \\\hline
+{{\itxgujf %
+{\char184} }% End of Indic Script text.
+}	& {\tt uu {\it or} U} \\\hline
+{{\itxgujf %
+K }% End of Indic Script text.
+}	& {\tt RRi {\it or} R\char`^i} \\\hline
+{{\itxgujf %
+{\char231}e }% End of Indic Script text.
+}	& {\tt e} \\\hline
+{{\itxgujf %
+{\char231}D }% End of Indic Script text.
+}	& {\tt ai} \\\hline
+{{\itxgujf %
+{\char231}m }% End of Indic Script text.
+}	& {\tt o} \\\hline
+{{\itxgujf %
+{\char231}O }% End of Indic Script text.
+}	& {\tt au} \\\hline
+{{\itxgujf %
+{\char231}{\char214} }% End of Indic Script text.
+}	& {\tt {\it a}M} \\\hline
+{{\itxgujf %
+{\char231}{\char58} }% End of Indic Script text.
+}	& {\tt {\it a}H} \\\hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+{{\itxgujf 0 }% End of Indic Script text.
+}	& {\tt0} \\\hline
+{{\itxgujf 1 }% End of Indic Script text.
+}	& {\tt 1} \\\hline
+{{\itxgujf 2 }% End of Indic Script text.
+}	& {\tt 2} \\\hline
+{{\itxgujf 3 }% End of Indic Script text.
+}	& {\tt 3} \\\hline
+{{\itxgujf 4 }% End of Indic Script text.
+}	& {\tt 4} \\\hline
+{{\itxgujf 5 }% End of Indic Script text.
+}	& {\tt 5} \\\hline
+{{\itxgujf 6 }% End of Indic Script text.
+}	& {\tt 6} \\\hline
+{{\itxgujf 7 }% End of Indic Script text.
+}	& {\tt 7} \\\hline
+{{\itxgujf 8 }% End of Indic Script text.
+}	& {\tt 8} \\\hline
+{{\itxgujf 9 }% End of Indic Script text.
+}	& {\tt 9} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage153}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{{\itxgujf %
+{\char205}\kRn{0.030}  }% End of Indic Script text.
+}	& {\tt k{\it a}} \\\hline
+{{\itxgujf %
+{\char251}  }% End of Indic Script text.
+}	& {\tt kh{\it a}} \\\hline
+{{\itxgujf %
+{\char169}  }% End of Indic Script text.
+}	& {\tt g{\it a}} \\\hline
+{{\itxgujf %
+{\char202}  }% End of Indic Script text.
+}	& {\tt gh{\it a}} \\\hline
+{{\itxgujf %
+{\char235}  }% End of Indic Script text.
+}	& {\tt ch{\it a}} \\\hline
+{{\itxgujf %
+{\char227}  }% End of Indic Script text.
+}	& {\tt Ch{\it a or} chh{\it a}} \\\hline
+{{\itxgujf %
+{\char239}\kRn{0.020}  }% End of Indic Script text.
+}	& {\tt j{\it a}} \\\hline
+{{\itxgujf %
+w  }% End of Indic Script text.
+}	& {\tt jh{\it a}} \\\hline
+{{\itxgujf %
+{\char203}  }% End of Indic Script text.
+}	& {\tt T{\it a}} \\\hline
+{{\itxgujf %
+{\char233}  }% End of Indic Script text.
+}	& {\tt Th{\it a}} \\\hline
+{{\itxgujf %
+{\char229}  }% End of Indic Script text.
+}	& {\tt D{\it a}} \\\hline
+{{\itxgujf %
+{\char195}  }% End of Indic Script text.
+}	& {\tt Dh{\it a}} \\\hline
+{{\itxgujf %
+{\char208}  }% End of Indic Script text.
+}	& {\tt N{\it a}} \\\hline
+{{\itxgujf %
+p  }% End of Indic Script text.
+}	& {\tt t{\it a}} \\\hline
+{{\itxgujf %
+q  }% End of Indic Script text.
+}	& {\tt th{\it a}} \\\hline
+{{\itxgujf %
+{\char236}  }% End of Indic Script text.
+}	& {\tt d{\it a}} \\\hline
+{{\itxgujf %
+{\char207}  }% End of Indic Script text.
+}	& {\tt dh{\it a}} \\\hline
+{{\itxgujf %
+o  }% End of Indic Script text.
+}	& {\tt n{\it a}} \\\hline
+{{\itxgujf %
+n  }% End of Indic Script text.
+}	& {\tt p{\it a}} \\\hline
+{{\itxgujf %
+{\char162}  }% End of Indic Script text.
+}	& {\tt ph{\it a}} \\\hline
+{{\itxgujf %
+{\char234}  }% End of Indic Script text.
+}	& {\tt b{\it a}} \\\hline
+{{\itxgujf %
+l  }% End of Indic Script text.
+}	& {\tt bh{\it a}} \\\hline
+{{\itxgujf %
+{\char186}  }% End of Indic Script text.
+}	& {\tt m{\it a}} \\\hline
+{{\itxgujf %
+x  }% End of Indic Script text.
+}	& {\tt y{\it a}} \\\hline
+{{\itxgujf %
+v  }% End of Indic Script text.
+}	& {\tt r{\it a}} \\\hline
+{{\itxgujf %
+{\char191}  }% End of Indic Script text.
+}	& {\tt l{\it a}} \\\hline
+{{\itxgujf %
+s  }% End of Indic Script text.
+}	& {\tt v{\it a or} w{\it a}} \\\hline
+{{\itxgujf %
+{\char187}  }% End of Indic Script text.
+}	& {\tt sh{\it a}} \\\hline
+{{\itxgujf %
+{\char197}  }% End of Indic Script text.
+}	& {\tt Sh{\it a or} shh{\it a}} \\\hline
+{{\itxgujf %
+{\char178}  }% End of Indic Script text.
+}	& {\tt s{\it a}} \\\hline
+{{\itxgujf %
+{\char181}  }% End of Indic Script text.
+}	& {\tt h{\it a}} \\\hline
+{{\itxgujf %
+{\char194}  }% End of Indic Script text.
+}	& {\tt ld{\it a or} L{\it a}} \\\hline
+{{\itxgujf %
+{\char237}  }% End of Indic Script text.
+}	& {\tt kSh{\it a or} x{\it a}} \\\hline
+{{\itxgujf %
+{\char216}  }% End of Indic Script text.
+}	& {\tt j\char`~n{\it a or} GY{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage269}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{{\itxgujf %
+R{\char169} }% End of Indic Script text.
+} & {\tt R{\it ga}} \\\hline
+{{\itxgujf %
+{\char169}{\char225} }% End of Indic Script text.
+} & {\tt rga {\it or} {\it ga}\char`^r} \\\hline
+{{\itxgujf %
+{\char169}{\char214} }% End of Indic Script text.
+} & {\tt {\it ga}.n} \\\hline
+{{\itxgujf %
+{\char231}{\char201}{\char209} }% End of Indic Script text.
+} & {\tt {\it aa}.c} \\\hline
+{{\itxgujf %
+{\char229}f }% End of Indic Script text.
+} & {\tt {\it Da}.N} \\\hline
+{{\itxgujf %
+{\char229}\kRn{-0.040}t }% End of Indic Script text.
+} & {\tt {\it D}.h} \\\hline
+{{\itxgujf %
+{\char236}u{\char58} }% End of Indic Script text.
+} & {\tt {\it du}H} \\\hline
+{{\itxgujf %
+{\char221} }% End of Indic Script text.
+}	& {\tt AUM} or {\tt OM} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage313}%
+\begin{tabular}{|c|c|}
+\hline
+{{\itxgujf %
+{\char205}\kRn{0.030} %
+{\char205}\kRn{0.030}{\char201} %
+{\char175}{\char205}\kRn{0.030} %
+{\char205}\kRn{0.030}I %
+{\char205}\kRn{0.030}u %
+{\char205}\kRn{0.030}U }% End of Indic Script text.
+}
+& {\tt ka kaa ki kii ku kuu} \\\hline
+{{\itxgujf %
+{\char178} %
+{\char178}{\char201} %
+i{\char178} %
+{\char178}I %
+{\char178}u %
+{\char178}U }% End of Indic Script text.
+}
+& {\tt sa saa si sii su suu} \\\hline
+{{\itxgujf %
+{\char251}{\char242} %
+{\char251}e %
+{\char251}D %
+{\char251}{\char214} %
+{\char251}{\char58} %
+{\char251}{\char209} %
+{\char251}f }% End of Indic Script text.
+}
+& {\tt khRRi khe khai khaM khaH kha.c kha.N} \\\hline
+{{\itxgujf %
+{\char229}e %
+{\char229}D %
+{\char229}{\char214} %
+{\char229}{\char58} %
+{\char229}{\char209} %
+{\char229}f }% End of Indic Script text.
+}
+& {\tt De Dai DaM DaH Da.c Da.N} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage332}%
+\begin{tabular}{|c|c|}
+\hline
+{{\itxgujf %
+l{\char201}{\char167}x }% End of Indic Script text.
+} & {\tt bhaagya} \\\hline
+{{\itxgujf %
+v{\char201}{\char239}x }% End of Indic Script text.
+}	& {\tt raajya} \\\hline
+{{\itxgujf %
+is{\char176}{\char201} }% End of Indic Script text.
+}	& {\tt vidyaa} \\\hline
+{{\itxgujf %
+i{\char187}{\char188}\kRn{-0.040}x }% End of Indic Script text.
+}	& {\tt shishhya} \\\hline
+{{\itxgujf %
+{\char186}u{\char240}x }% End of Indic Script text.
+}	& {\tt mukhya} \\\hline
+{{\itxgujf %
+{\char169}{\char201}{\char229}\kRn{-0.040}tx{\char201} }% End of Indic Script text.
+}	& {\tt gaaDyaa} \\\hline
+{{\itxgujf %
+T\kRn{-0.070}x{\char201}{\char169} }% End of Indic Script text.
+}	& {\tt tyaag} \\\hline
+{{\itxgujf %
+{\char206}\kRn{-0.070}x{\char201}o }% End of Indic Script text.
+}	& {\tt dhyaan} \\\hline
+{{\itxgujf %
+{\char193}\kRn{-0.070}x{\char201}x }% End of Indic Script text.
+}	& {\tt nyaay} \\\hline
+{{\itxgujf %
+X\kRn{-0.030}x{\char201}{\char186} }% End of Indic Script text.
+}	& {\tt shyaam} \\\hline
+{{\itxgujf %
+{\char239}xmp }% End of Indic Script text.
+}	& {\tt jyot} \\\hline
+{{\itxgujf %
+{\char186}ou{\char188}\kRn{-0.040}x }% End of Indic Script text.
+}	& {\tt manushhy} \\\hline
+{{\itxgujf %
+{\char235}{\char201}{\char214}{\char236}z\kRn{-0.030}x{\char201} }% End of Indic Script text.
+} & {\tt chaa.ndaNyaa} \\\hline
+{{\itxgujf %
+{\char231}{\char245}\kRn{-0.070}x{\char201}{\char178} }% End of Indic Script text.
+}	& {\tt abhyaas} \\\hline
+{{\itxgujf %
+{\char205}\kRn{0.030}{\char165}\kRn{-0.070}x{\char201}{\char208} }% End of Indic Script text.
+}	& {\tt kalyaaN} \\\hline
+{{\itxgujf %
+{\char202}{\char229}\kRn{-0.040}tx{\char201}{\char194} }% End of Indic Script text.
+}	& {\tt ghaDyaald} \\\hline
+{{\itxgujf %
+{\char205}\kRn{0.030}C\kRn{-0.070}{\char235}{\char201} }% End of Indic Script text.
+}	& {\tt kachchaa} \\\hline
+{{\itxgujf %
+{\char251}k{\char201} }% End of Indic Script text.
+}	& {\tt khaDDaa} \\\hline
+{{\itxgujf %
+{\char251}{\char229}\kRn{-0.040}t{\char229}{\char201} }% End of Indic Script text.
+}	& {\tt khaD.hDaa} \\\hline
+{{\itxgujf %
+{\char169}F{\char201} }% End of Indic Script text.
+}	& {\tt gaThThaa} \\\hline
+{{\itxgujf %
+{\char207}{\char163}\kRn{-0.030}{\char205}\kRn{0.030}{\char201} }% End of Indic Script text.
+}	& {\tt dhakkaa} \\\hline
+{{\itxgujf %
+nG{\char201} }% End of Indic Script text.
+}	& {\tt pattaa} \\\hline
+{{\itxgujf %
+ipP\kRn{-0.040}np }% End of Indic Script text.
+}	& {\tt tippat} \\\hline
+{{\itxgujf %
+n{\char193}\kRn{-0.070}o{\char201}{\char178} }% End of Indic Script text.
+}	& {\tt pannaas} \\\hline
+{{\itxgujf %
+{\char178}{\char239}{\char239}\kRn{0.020}o }% End of Indic Script text.
+}	& {\tt sajjan} \\\hline
+{{\itxgujf %
+nuSp{\char205}\kRn{0.030} }% End of Indic Script text.
+}	& {\tt pustak} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage416}%
+\begin{tabular}{|c|c|}
+\hline
+{{\itxgujf %
+{\char205}\kRn{0.030}SpuvI }% End of Indic Script text.
+}	& {\tt kasturii} \\\hline
+{{\itxgujf %
+o{\char201}iSp{\char205}\kRn{0.030} }% End of Indic Script text.
+}	& {\tt naastik} \\\hline
+{{\itxgujf %
+n{\char179}{\char201}P\kRn{-0.040}p }% End of Indic Script text.
+}	& {\tt praapt} \\\hline
+{{\itxgujf %
+Ssp{\char214}E }% End of Indic Script text.
+} & {\tt swata.ntr} \\\hline
+{{\itxgujf %
+Ss{\char201}p{\char214}{\char228}\kRn{-0.040}x }% End of Indic Script text.
+} & {\tt svaata.ntry} \\\hline
+{{\itxgujf %
+{\char206}\kRn{-0.070}soI }% End of Indic Script text.
+}	& {\tt dhvanii} \\\hline
+{{\itxgujf %
+{\char169}m{\char188}\kRn{-0.040}{\char203} }% End of Indic Script text.
+}	& {\tt goshhT} \\\hline
+{{\itxgujf %
+xu{\char250} }% End of Indic Script text.
+}	& {\tt yuddh} \\\hline
+{{\itxgujf %
+xu{\char236}\kRn{-0.040}t{\char207} }% End of Indic Script text.
+}	& {\tt yud.hdh} \\\hline
+{{\itxgujf %
+nig{\char186} }% End of Indic Script text.
+}	& {\tt pashchim} \\\hline
+{{\itxgujf %
+{\char162}{\char163}\kRn{-0.030}p }% End of Indic Script text.
+}	& {\tt phakt} \\\hline
+{{\itxgujf %
+p{\char181}{\char201}{\char225} }% End of Indic Script text.
+}	& {\tt tarhaa} \\\hline
+{{\itxgujf %
+{\char231}q{\char225} }% End of Indic Script text.
+}	& {\tt artha} \\\hline
+{{\itxgujf %
+{\char205}\kRn{0.030}p{\char201}{\char225} }% End of Indic Script text.
+}	& {\tt kartaa} \\\hline
+{{\itxgujf %
+{\char169}{\char236}I{\char225} }% End of Indic Script text.
+}	& {\tt gardii} \\\hline
+{{\itxgujf %
+io{\char208}{\char225}x }% End of Indic Script text.
+}	& {\tt nirNay} \\\hline
+{{\itxgujf %
+nE }% End of Indic Script text.
+}	& {\tt patra} \\\hline
+{{\itxgujf %
+iE{\char205}\kRn{0.030}m{\char208} }% End of Indic Script text.
+}	& {\tt trikoN} \\\hline
+{{\itxgujf %
+{\char185}{\char201}s{\char208} }% End of Indic Script text.
+}	& {\tt shraavaN} \\\hline
+{{\itxgujf %
+{\char231}{\char201}{\char185}{\char186} }% End of Indic Script text.
+}	& {\tt aashram} \\\hline
+{{\itxgujf %
+{\char187}u{\char185}U{\char197}{\char201} }% End of Indic Script text.
+} & {\tt shushruushhaa} \\\hline
+{{\itxgujf %
+{\char169}{\char179}{\char214}q }% End of Indic Script text.
+}	& {\tt gra.nth} \\\hline
+{{\itxgujf %
+n{\char179}{\char239}\kRn{0.020}{\char201} }% End of Indic Script text.
+}	& {\tt prajaa} \\\hline
+{{\itxgujf %
+Z{\char201}{\char237}e }% End of Indic Script text.
+}	& {\tt draakShe} \\\hline
+{{\itxgujf %
+{\char169}{\char242}{\char181}Sq }% End of Indic Script text.
+}	& {\tt gRRihasth} \\\hline
+{{\itxgujf %
+n{\char179}{\char205}\kRn{0.030}{\char242}pI }% End of Indic Script text.
+}	& {\tt prakR\char`^itii} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage506}%
+\begin{tabular}{|c|c|}
+\hline
+{{\itxgujf %
+{\char187}ul{\char179} }% End of Indic Script text.
+}	& {\tt shubhra} \\\hline
+{{\itxgujf %
+{\char178}{\char181}SE }% End of Indic Script text.
+}	& {\tt sahastra} \\\hline
+{{\itxgujf %
+{\char205}{\char179}I{\char229}{\char201} }% End of Indic Script text.
+}	& {\tt kriiDaa} \\\hline
+{{\itxgujf %
+SsC\kRn{-0.070}{\char227} }% End of Indic Script text.
+}	& {\tt svachchh} \\\hline
+{{\itxgujf %
+Ss{\char196}n }% End of Indic Script text.
+}	& {\tt svaruup} \\\hline
+{{\itxgujf %
+{\char203}\kRn{-0.040}{\char172}{\char205}\kRn{0.030} }% End of Indic Script text.
+}	& {\tt Trak} \\\hline
+{{\itxgujf %
+{\char231}{\char201}{\char170}\kRn{-0.070}{\char181}I }% End of Indic Script text.
+}	& {\tt aamhii} \\\hline
+{{\itxgujf %
+{\char235}puqI{\char225} }% End of Indic Script text.
+} & {\tt chaturthii} \\\hline
+{{\itxgujf %
+KpU }% End of Indic Script text.
+}	& {\tt RRituu} \\\hline
+{{\itxgujf %
+{\char231}{\char201}{\char209}{\char163}\kRn{-0.030}pm{\char234}v }% End of Indic Script text.
+} & {\tt aa.cktobar} \\\hline
+{{\itxgujf %
+omV\kRn{-0.070}{\char181}e{\char214}{\char234}v }% End of Indic Script text.
+} & {\tt novhe.nbar} \\\hline
+{{\itxgujf %
+{\char169}{\char179}{\char209}{\char186} }% End of Indic Script text.
+}	& {\tt gra.cm} \\\hline
+{{\itxgujf %
+{\char184}f{\char235}{\char201} }% End of Indic Script text.
+}	& {\tt uu.Nchaa} \\\hline
+{{\itxgujf %
+{\char234}D{\char191}{\char169}{\char201}{\char229}I }% End of Indic Script text.
+} & {\tt bailagaaDii} \\\hline
+{{\itxgujf %
+{\char169}uvu{\char232}{\char201}v{\char201} }% End of Indic Script text.
+} & {\tt gurudvaaraa}\\\hline
+{{\itxgujf %
+{\char169}uvu{\char236}\kRn{-0.040}ts{\char201}v{\char201} }% End of Indic Script text.
+} & {\tt gurud.hvaaraa}\\\hline
+{{\itxgujf %
+iov{\char201}{\char241}x{\char201} }% End of Indic Script text.
+} & {\tt niraaldyaa} \\\hline
+{{\itxgujf %
+{\char216}{\char201}o }% End of Indic Script text.
+}	& {\tt GYaan} \\\hline
+{{\itxgujf %
+{\char186}e{\char205}\kRn{0.030}{\char209}io{\char205}\kRn{0.030} }% End of Indic Script text.
+} & {\tt meka.cnik} \\\hline
+{{\itxgujf %
+{\char170}\kRn{-0.070}{\char181}D{\char178} }% End of Indic Script text.
+}	& {\tt mhais} \\\hline
+{{\itxgujf %
+{\char236}e{\char208}{\char201}x{\char201}{\char225} }% End of Indic Script text.
+}	& {\tt deNaaryaa} \\\hline
+{{\itxgujf %
+n{\char179}ip{\char188}\kRn{-0.040}{\char233}{\char201} }% End of Indic Script text.
+} & {\tt pratishhThaa} \\\hline
+{{\itxgujf %
+rip{\char181}{\char201}{\char178} }% End of Indic Script text.
+} & {\tt itihaas} \\\hline
+{{\itxgujf %
+{\char231}{\char201}Sq{\char201}{\char234}{\char250} }% End of Indic Script text.
+} & {\tt aasthaabaddh} \\\hline
+{{\itxgujf %
+{\char231}{\char214}pv{\char201}{\char225}{\char188}\kRn{-0.040}{\char203}\kRn{-0.040}{\char172}Ix }% End of Indic Script text.
+} & {\tt a.ntarraashhTriiy} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

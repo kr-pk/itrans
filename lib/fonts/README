@@ -1,0 +1,210 @@
+====================================================================
+itrans, avinash chopde <avinash@aczoom.com>   http://www.aczoom.com/itrans/
+Files in the ITRANS/lib/fonts directory.
+
+These fonts are not part of ITRANS - they have been collected
+from various places on the Web, and are copyright by their
+respective owners. A search on the Web with the font name will
+yield more info.
+
+These files are provided in one place just for convenience in
+using ITRANS, they will be removed if the owners object to this
+collection.
+
+====================================================================
+ITRANS 5.31 changes - dvng10 replaced by dvnb10. See top level CHANGES
+file for details.
+====================================================================
+
+These are fonts that can be used on X11, PC, or Mac, for scripts that
+are currently supported in ITRANS for direct text output.
+Contain TeX and PostScript fonts too.
+
+Note:
+1) Most font files are in the correct format, you just need to install
+them on your machine. Read your system manuals for instructions.
+2) For the Mac, the font files are encoded in HQX format. To extract the
+real font files, run the .hqx file through DeHQX or Stuffit-Expander.
+3) For Unix/X11 systems, use the .pfa or .pfa PostScript Type 1 fonts.
+Example fonts.scale file is available in ITRANS/lib directory.
+4) Some fonts here are from packages available elsewhere, such as
+TeluguTeX and Devnag. Use WWW search tools to find the locations where
+you can get complete packages; both these are certainly available at all
+TeX CTAN sites and their mirrors: ftp.cdrom.com, www.ctan.org, etc.
+
+File Types:
+
+*.mf	- TeX Metafont Source Files.
+*.tfm	- TeX Metafont Font Metrics.
+*.fd	- LaTeX font definiton files (LaTeX2e)
+*.afm	- PostScript Type 1 Font Metrics.
+*.pfa	- PostScript Type 1 Font - ASCII format
+	- for X11R6 displays or PostScript printers. 
+*.pfb	- PostScript Type 1 Font - Binary format.
+	- for X11R6 displays or PostScript printers. 
+*.ttf	- TrueType Font - For MS-Windows PCs.
+*.hqx	- TrueType Font Suitcase - BinHex'ed - For Macintoshes.
+
+----------------------------------------------------------------------------
+
+--------- Devnac PostScript Type III Font
+
+devnac.ps		-- devnagari font description, in PostScript
+			-- Type III PostScript Font
+
+devnac.afm		-- the AFM (Adode Font Metric) file.
+			-- referenced by the devn.ifm file, used by the
+			-- itrans program
+
+dnh.tfm
+dnho.tfm
+dnhrc.tfm
+dnhre.tfm		-- the TFM files, used by TeX  (Devnagari Font)
+			-- these correspond to the available fonts.
+			-- PostScript font.
+
+--------- Gujarati (Donated by Shrikrishna Patil to ITRANS)
+
+itxguj.afm		-- ItxGuj PostScript Type 1 Font files.
+itxguj.pfa
+itxguj.ttf	(PC - Windows)
+itxguj.hqx	(Macintosh)
+itxguj.tfm
+itxgujo.tfm
+itxgujrc.tfm
+itxgujre.tfm
+
+--------- Bengali (Donated by Shrikrishna Patil to ITRANS)
+
+itxbeng.afm		-- ItxBeng PostScript Type 1 Font files.
+itxbeng.pfa
+itxbeng.ttf (PC - Windows)
+itxbeng.hqx (Macintosh)
+itxbeng.tfm
+itxbengo.tfm
+itxbengrc.tfm
+itxbengre.tfm
+
+--------- Bengali - bwti package, by Abhijit Das, abhij@csa.iisc.ernet.in
+
+bn.mf bnbanjon.mf bndigit.mf bnjuk.mf bnkaar.mf bnlig.mf
+bnmacro.mf bnmisc.mf bnswar.mf  -  all for Bengali letters, original
+bnligtbl.mf, bnpunct.mf -- files modified, by Jaijeet Roychowdhury
+
+bnr10.mf, bnr10.tfm	-- 10 pt Bengali bwti font
+bnsl10.mf, bnsl10.tfm 	-- 10 pt Slanted bwti font
+
+--------- Romanized Sanskrit (NCS_CSX -- modified New Century Schoolbook)
+
+ncpr____.afm
+ncpr____.pfb
+ncpr____.pfm
+ncpr____.ttf		-- NCS_CSX+-Roman
+ncprcsxp.tfm		-- for TeX, created using afm2tfm
+
+ncpi____.afm
+ncpi____.pfb
+ncpi____.pfm
+ncpi____.ttf		-- NCS_CSX+-Italic
+ncpicsxp.tfm		-- for TeX, created using afm2tfm
+
+CSX+ fonts
+
+    The fonts in this archive implement the CSX+ character set designed
+    for use in printing Indian language material in Roman script. They
+    are based on fonts designed by
+
+      URW++ Design and Development Incorporated
+      Poppenbuetteler Bogen 29A
+      D-22399 Hamburg
+      Germany
+
+  Fonts distributed under GPL
+  GPL details: http://www.fsf.org/copyleft/gpl.html
+
+  Applies to NCS_CSX+ font files.
+
+--------- Gujarati
+
+itxguj.afm		-- ItxGuj PostScript Type 1 and TeX Font files.
+itxguj.pfa
+itxguj.tfm
+itxgujo.tfm
+itxgujrc.tfm
+itxgujre.tfm
+
+--------- Tamil (from the Washington Tamil package)
+
+wntml10.tfm
+wntml12.tfm
+wntml17.tfm		-- Washington Tamil TeX TFM files.
+
+tamilORG.mf		-- Original tamil.mf from Washington, currently unused
+tamil.mf		-- Siddharthan's modified version, this is used 
+tamilmax.mf
+wntamil.mf
+wntml10.mf
+wntml12.mf
+wntml17.mf		-- Metafont files, used to generate the TFM and
+			-- the PK files.
+			-- You can use these to generate any size font,
+			-- if you need more sizes/transformations.
+
+--------- Kannada (from the KannadaTeX package)
+---------(KannadaTeX is GPLed, but the authors have given permission
+          to allow the use and bundling of their fonts with ITRANS.)
+
+kan*.mf
+kan*.tfm
+
+NOTE: This archive contains only a few of the fonts from the KannadaTeX
+package. Download the original KannadaTeX archive to obtain all the
+*.mf font files - it contains .mf files for many different font sizes and
+shapes.
+Note that kanmain.mf is changed slightly from the original (mode= line
+commented, and last line %end uncommented).
+
+--------- Xdvng (from Jtrans package)
+
+xdvng: Copyright Arun Gupta.
+
+xdvng.afm
+xdvng.hqx
+xdvng.pfb
+xdvng.ttf
+
+--------- Pun (PostScript font `Punjabi')
+
+pun.afm
+pun.pfb
+pun.tfm
+
+----------------------------------------------------------------------------
+itransxt.tgz	archive:
+
+--------- Frans Velthuis's Devnag Metafont, for Devanagari, Version 1.6 (1998)
+
+Removed from ITRANS, download this package separately. It is present
+in the Indic package in texlive.
+
+Following files kept, though not really necessary:
+dvnb10.tfm
+
+--------- Telugu (from the TeluguTeX package)
+
+tel*.mf
+tel*.tfm
+
+Fonts from TeluguTeX package
+
+  Copyright (C) 1991 Lakshmankumar Mukkavilli
+
+  Uses a modified GPL:
+
+  ftp://ftp.dante.de/tex-archive/languages/telugu/CopyrightLong
+  for complete details.
+
+  GPL details: http://www.fsf.org/copyleft/gpl.html
+
+----------------------------------------------------------------------------
+

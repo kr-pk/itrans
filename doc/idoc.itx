@@ -1,0 +1,1016 @@
+\documentclass[11pt]{article}
+
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latext2html
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+
+% The General User Documentation for the Itrans Package
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+\newcommand{\IC}{\char35include=}
+\newcommand{\SM}{\char35marathi}
+\newcommand{\EM}{\char35endmarathi}
+\newcommand{\MI}{\char35marathiifm=dvnc}
+\newcommand{\MFN}{\char35marathifont=\char92devnf}
+
+\newfont{\devnf}{dnh at 15pt}
+%\newfont{\devnf}{dnho at 15pt} % the oblique version 
+%\newfont{\devnf}{dnhrc at 15pt} % the scaled down (x-axis) version
+\hyphenchar\devnf=-1 % disable hyphenation using this font
+
+#marathiifm=dvnc.ifm
+#marathifont=\devnf
+
+\newfont{\tmlb}{wntml12}
+\hyphenchar\tmlb=-1 % disable hyphenation using this font
+
+#tamilifm=wntml.ifm
+#tamilfont=\tmlb
+
+\begin{document}
+
+\centerline{\LARGE\bf Printing Transliterated}
+\medskip
+\centerline{\LARGE\bf Indian Language Documents}
+\bigskip
+\centerline{\LARGE\bf itrans}
+\centerline{\tt version 5.30}
+\smallskip
+\centerline{\bf \copyright 1991--2001 Avinash Chopde}
+\smallskip
+\centerline{Home page: \htmladdnormallink{\texttt{http://www.aczoom.com/itrans/}}{http://www.aczoom.com/itrans/}}
+\bigskip
+\hrule
+\bigskip
+
+\footnotetext[0]{Last modification: \today}
+
+This software is a pre-processor, it converts input representing
+Indic Text to the actual Indian Language Script, for printout or
+for display on Web pages.
+The input is uses English letters, so it can be created
+using any simple text editor.
+
+This document describes the use of the program {\em
+itrans}, which may be used to generate Devanagari, Tamil, Bengali,
+Telugu, Gujarati, Kannada, Punjabi (Gurmukhi), or Romanized Sanskrit
+output from input in an english transliterated form.
+
+Many examples of ITRANS use are available on the web,
+archives for different purposes are available.
+One such project is a collection of Hindi Film Song Lyrics; another
+project is a collection of Sanskrit documents.
+There are also tools on the Web that make it much easier to use ITRANS -
+you can use ITRANS over e-mail, or use your WWW Browser to type ITRANS
+text, etc.
+Links to many such sites are available through the ITRANS home page at
+and you can also use
+WWW search tools (use the keywords \verb=ITRANS= and \verb=indian=) to
+search the Web.
+
+\section{{\em itrans} Mechanism}
+
+{\em itrans}
+works by assigning every Indian language letter an english equivalent.
+Transliteration tables mapping devanagari or tamil or telugu, etc.
+characters into english
+equivalents are provided in the reference documents for each language,
+all of which are described in following sections of this document.
+
+{\em itrans} scans the input text for consonants, vowels, and special
+forms.
+Consonants suffixed with vowel codes create a complete composite
+character. A consonant may be suffixed with one or more consonants to
+create ligature forms.
+All this transliteration is automatically handled, and appropriate Indian
+language characters are produced.
+If ligatures exist for a particular combination of
+consonants, they will be used automatically.
+If a ligature does not exist for some combination of the consonants,
+half-forms of the consonants will be used.
+The user can also override the ligature mechanism so that even if a
+ligature exists, the half forms of consonants will be used.
+Some languages such as tamil do not have any ligatures, in
+that case the appropriate action is taken --- for tamil, a dot is printed
+on top of a consonant if it is not followed by a vowel form.
+
+All these features make itrans an highly customizable and easy-to-use
+package.
+Even the transliteration map given here is not 
+mandatory---the user can always edit the lexical source file and
+provide whatever mapping desired.
+
+{\em itrans\/} is just a transliteration/char composition package.
+The task of actually placing characters on the page and spacing them
+correctly is left to other programs, such as \TeX. 
+\TeX\ is the preferred interface, but,
+other modes are available for direct Text output (suitable for HTML
+output or Unicode UTF-8 output).
+ITRANS version 5.1 added a new output mode - direct text HTML output -
+which allows ITRANS output in certain scripts to be directly viewed on WWW
+browsers such as Netscape (version 3.0 or newer).
+ITRANS version 5.3 added support for Unicode (UTF-8) output.
+These additional modes are available only for certain languages - not all
+are supported. Consult the  language specific documentation for
+supported modes for each font.
+
+\section{Input Format}
+
+{\em itrans} makes use of an IFM file --- Indian language font metric
+file, which is a ASCII file containing descriptions on how to  generate
+the Indian language characters from the basic characters available in the
+font.
+
+{\em Sidenote}: This IFM file format is an {\em itrans} specific concept,
+it allows
+all character composition directives to be loaded in at runtime, making
+it easy to support many different Indian languages.
+The IFM file is an ASCII text file, and all IFM files end in the suffix
+\verb=.ifm=.
+% See the technical reference manual, {\em tech.tex}, if you need more
+% complete information regarding the IFM file format.
+
+{\em itrans} scans through the input text, and copies everything to
+the output unchanged, except for portions between marker words,
+such as {\SM} and {\EM}.
+Some eight--ten different marker words are available, see the
+section~\ref{markers} for more information.
+All english text between these words is mapped into Indian language characters,
+based on the transliteration map in the IFM file.
+
+At the beginning of the input file, the user has to specify the IFM file,
+and the name of the \TeX\ or PostScript or HTML command that changes the
+font to the Indian language font.
+For example, if the IFM file is named dvnc.ifm, and the font is
+available through the {\tt \char92devnf} \TeX\ command, the following two lines
+should be present in the input file:
+
+\noindent\MI
+
+\noindent\MFN
+
+This also assumes the user will be using the markers \SM\ and \EM,
+see~\ref{markers} for all the other language markers and commands.
+
+Once the above initialization is made, the \SM\ marker then specifies the
+beginning of the marathi transliterated text, and makes use of the
+specified IFM file (dvnc.ifm).
+At that point, {\em itrans} also outputs the command ({\tt\char92devnf})
+specified in the {\tt\char35 marathifont} directive.
+This command should change the font to the devanagari font, and may do
+other things such as change the baselineskip length, etc.
+
+Note that both the  \TeX\ interface and the Direct Text interface
+(both PostScript and direct Text HTML mode) follow identical input
+text requirements.
+For further examples, see the sample documents provided.
+All transliterated files have been given the file extension
+{\em .itx}.
+[Older ITRANS version also used .ips extensions for direct PostScript
+output, but since ITRANS version 5.0, the \verb=\char35 output= command has been
+added which allows specifying the output mode in the input file itself.)
+
+\subsection{The ``\char35include='' command}
+
+Itrans accepts an ``include'' filename command in the input.
+Syntax:
+
+\noindent
+\IC\verb=<filename>=
+
+This command can appear anywhere in the input document, and Itrans behaves
+as if the contents of that file were actually present at that point in the
+document.
+
+This ``include'' comamnd can be nested in multiple files (to a compiled-in
+maximum).
+
+\subsection{The ``\char35output='' command}
+
+This command should be the first ITRANS command in any input file, that is,
+it should appear before any other \char35$<$command$>$.
+It can be used to direct ITRANS to produce kind of output - TeX, or PostScript,
+or direct Text HTML output. So, instead of using arguments to ITRANS (such as
+-P or -7 or -8 or -U),
+users can include this command in the input file itself, making it clear what
+the input file is to be used for.
+The four valid options for this command are:\\
+\char35output=HTML\_7\\
+\char35output=HTML\_8\\
+\char35output=UTF\_8\\
+\char35output=PostScript\\
+\char35output=TeX
+
+\subsection{The ``\char35endfont='' command}
+
+This command is generally of use in HTML output modes only, though if
+needed, it could be used in any mode.
+
+This command allows the user to specify a string that will be echoed to
+the output file whenever any
+\char35end{\rm $<$language$>$}
+is seen.
+
+For example, it is useful to use this in HTML documents, where every
+end of Indic script needs to print out a \texttt{\char`</FONT\char`>}
+command, and
+this can be done automatically by specifying:
+
+\texttt{\char35endfont=\char`</FONT\char`>}
+
+This, in conjunction with something like:
+
+\texttt{\char35hindifont=\char`<FONT FACE=name SIZE=size\char`>}
+
+makes it easy to use ITRANS in HTML output mode.
+
+Note that there is single \char35endfont command, and it applies to all
+language markers.
+
+\subsection{\char35$<$lang$>$, \char35end$<$lang$>$, and \char35\char35 markers} 
+\label{markers}
+
+You can use any of these marker sets to delimit the Indian language text.
+The marker names indian/marathi/hindi/tamil do not actually do
+anything
+by themselves, but make use of the corresponding command names to load in
+the IFM file or output the font changing command string.
+So, use any one of the sets you feel suits your needs best, each can be
+used for every language supported for ITRANS, the marker is just used to
+enter ITRANS mode, the actual language is always correctly recognized
+based on the IFM file.
+Since the marker words are all long, a shorter version of markers is also
+available, and the short markers are enabled by default, though it is
+possible to turn them off.
+
+\begin{enumerate}
+\item {\tt indian} marker.
+
+To set the IFM file name: {\tt \char35 indianifm=XXX.ifm}
+
+To set the font command name: {\tt \char35 indianfont=YYY}
+
+Start Marker: {\tt \char35 indian}
+
+End Marker: {\tt \char35 endindian}
+
+\item {\tt hindi} marker.
+
+To set the IFM file name: {\tt \char35 hindiifm=XXX.ifm}
+
+To set the font command name: {\tt \char35 hindifont=YYY}
+
+Start Marker: {\tt \char35 hindi}
+
+End Marker: {\tt \char35 endhindi}
+
+\item {\tt sanskrit}, {\tt marathi}, {\tt tamil}, {\tt telugu}, {\tt bengali},
+{\tt gujarati}, {\tt roman}, {\tt kannada}, {\tt gurmukhi}.
+
+Just as for hindi and indian, there are markers for all these languages.
+Follow above examples, replace {\tt indian} with {\tt $<$language$>$}
+as required.
+
+\item {\tt \#\#} short marker.
+
+These markers are activated by default. To turn them off, use the
+{\tt \char35 ignoreshortmarkers} command.
+
+\bigskip
+
+\end{enumerate}
+
+\subsubsection{``\char35useshortmakers'' and ```\char35ignoreshortmarkers''}
+
+The short marker is a toggle marker.
+When scanning text in non-ITRANS mode (non Indic text), if a short marker
+is seen, it implies restoring back
+ITRANS processing, using whatever language marker was last encountered.
+Then, the next seen short marker implies ITRANS should exit processing of
+the indian language text.
+
+This, if the input text has the following input:
+
+\bigskip
+
+{\tt
+\char35 hindi \hspace{1in} $<$some text$>$ \hspace{1in} \char35 endhindi
+
+$<$some more text$>$ 
+
+\char35\char35 \hspace{1in} $<$short marker text$>$ \hspace{1in} \char35\char35
+}
+
+\bigskip
+
+then the first short marker seen above will be considered equivalent
+to \char35hindi, since that was the last ITRANS marker seen in the text at
+that point.
+
+If the short marker is the first marker seen in the text, i.e., there was
+no other ITRANS marker seen until that point,
+then the \#\# shortmarker will be taken to
+be equivalent to \char35indian.
+
+\subsection{``\char35usecsx''}
+
+The CS/CSX input encoding can be accepted along with the ITRANS encoding
+when this command is used. See the {\tt icsx.itx} document for more
+inforamtion on CS/CSX support in ITRANS.
+
+\subsection{``\char35endwordvowel=''}
+
+See the section~\ref{endwordvowel} for info on this command.
+
+\section{\TeX\ Interface}
+
+{\em itrans} can accept \TeX\ input and generate \TeX\ output for all
+languages for which either a PostScript font description or a Metafont
+description is  available.
+
+For example, the {#marathi aa#endmarathi} character in the table
+in the document {\em dvnc.itx} was produced by this input text:
+
+\noindent\verb= {=\SM \verb= aa =\EM\verb=}=
+
+Thus, the character {\em aa}, when bracketed between {\SM} and 
+{\EM} produces {#marathi aa#endmarathi}, when the appropriate
+IFM file
+name and font command name have been set correctly (as mentioned in the
+previous section).
+
+For further examples, see the sample documents provided.
+All \TeX\ transliterated files have been given the file extension
+{\em .itx}.
+
+Normally, all english text between the words {\SM} and {\EM} is mapped into
+marathi characters, except for any word following a backslash character.
+Thus, you can include \TeX\ commands in the transliterated text
+portion, the only restriction is that the command should be made up of
+letters and numerals only.
+
+Examples: \verb= \indent or \hskip1in or \kern0.4em,= \verb=etc=.
+Note that in the sample documents shown, \TeX\ commands are usually
+surrounded by curly braces---they used as scope delimiters only, are not
+absolutely necessary, but are recommended.
+
+\subsection{\TeX\ Requirements}
+
+To use this pre-processor, you must have the following tools:
+\begin{enumerate}
+
+\item \TeX\ tools, including the capability to output dvi files using
+PostScript fonts (if you need to use the devnac devanagari font).
+This implies having {\em dvips}, release 5.41 or newer, a program written
+by Tomas Rokicki. If you don't have it, see the Frequently-Asked-Questions in
+the newsgroup
+comp.text.tex for details on how to get hold of {\em dvips}.
+Actually, if you only need to use tamil or Frans Velthuis's Devnag font,
+or telugu, you don't need a dvi-to-ps converter.
+Those fonts are described in Metafont, thus any dvi-to-your-printer
+converter will be able to handle it (once you run Metafont and generate
+the printer specific files).
+
+For the  IBM PC, the emTeX package includes the {\em dvips} executable.
+{\em dvips} for the PC also resides in the SIMTEL archives.
+
+\item ANSI C compatible compiler, and optionally, the flex and yacc tools.
+This program is provided with the source code, and a makefile.
+The makefile is specific to my machine, you may have to edit it to
+get it working correctly on your machine.
+If you do not have an ANSI C compatible compiler, you will have to make
+the ``noansi'' object, see the makefile for details; it automatically
+de-ansifies all the C sources.
+Also, if you need to modify the ilex.l or iyacc.y source files for your
+specific needs, you'll need the flex and yacc tools on your system.
+
+The ITRANS package also contains an executable for MS-DOS machines, thus
+for MS-DOS machines, you need not go through the compilation step.
+
+\end{enumerate}
+
+\subsection{\LaTeX\ Style Files}
+
+In ITRANS release 5.2, a new style file was added {\em itrans.sty}.
+This is the file created by Ross Moore to allow ITRANS documents to be
+processed through latex2html, but this style file is useable for normal
+\LaTeX documents also.
+
+This style file should be loaded with the \verb=\usepackage= command, and there
+are many options available with this package.
+
+\begin{description}
+
+\item[preprocess] This is applicable only when using latex2html, and it
+has no effect when running normal \LaTeX. So, it is probably ok to
+always use this option even if you never plan on running latex2html.
+
+\item[devanagari] This will load the \texttt{idevn.tex} file, which has
+some macros that are useful for using Devanagari with \TeX. \texttt{idevn.tex}
+will actually be loaded even if no option is provided, so the devanagari
+option is not really necessary at this time (ITRANS release 5.2).
+
+\item[telugu] This will load the \texttt{itrnstlg.tex} file, which has
+some macros that are useful for generating some special Telugu characters.
+
+\item[\em other options] itrans.sty has many other options, take at look
+at that file to view all of them, but in practice, you may not need to
+use any of those options yet.
+
+\end{description}
+
+Example lines to load itrans.sty:
+
+\verb=\usepackage[preprocess]{itrans}}=   {\em or}
+
+\verb=\usepackage[preprocess,telugu]{itrans}}=
+
+\section{Direct PostScript Output}
+
+{\em Note: This section is applicable to the PostScript fonts only:
+devanagari font {\em devnac}, Gujarati {\em ItxGuj},
+Bengali {\em ItxBeng}, Devanagari {\em Xdvng}, and Romanized Sanskrit
+{\em NCS\_CSX}.
+The tamil font {\em wntml}, the devanagari font {\em devnag},
+the telugu font {\em tel} and the kannada font {\em kan}
+cannot be used for this purpose since they are not PostScript fonts.}
+
+As mentioned earlier, the Direct PostScript Output
+interface is an extremely primitive interface for
+printing, but will suffice for printing documents containing only
+Indic Script text (no english), and requiring no typesetting features such as
+centering, right flush text, etc.
+In addition to generating the devanagari characters, this method preserves
+the line breaks and spaces in the input text.
+So, unlike in the \TeX\ version, which programatically decides where to
+break a line, here you have to include a end-of-line in the exact spot
+where you desire a new line to start in the output.
+And, if you need indented lines, you have to add spaces to simulate
+horizontal skips.
+
+The previous section titled {\em Input Format} applies to this interface, too.
+Thus, the user needs to specify the IFM file name, the font command name,
+etc before writing text between the Indian language markers such as
+\SM\ and \EM.
+For further examples, see the sample document provided in the ITRANS
+archive, file may be named something like {\verb=s1.ips=}.
+The PostScript prologue  for itrans is in the file {\em itrans.pro}.
+Check the file out, it contains some useful PostScript procedures.
+
+\subsection{Direct PostScript Output Requirements}
+
+\begin{enumerate}
+\item All that is required is the capability to print PostScript files.
+Note that the {\em devnac} font used is a user defined PostScript font
+(Type III Font), so the printer (or the RIP used) must be capable of
+rendering Type III fonts if you need to use this font.
+\end{enumerate}
+
+\section{Direct Text Output -- for HTML}
+
+This is a new mode added in release 5.1, which just like the PostScript
+mode, does not offer any typesetting functionality.
+In fact, this mode is provided for generating text that can be displayed
+on any WWW browser such as Netscape (version 3.0 or later).
+Not all languages are supported in this mode --- it requires availablity
+of a TrueType font, and right now (ITRANS 5.10) the following languages
+are supported: Romanized Sanskrit, Gujarati, Bengali, and Devanagari scripts.
+
+Two types of HTML output are supported: 7-bit ASCII (which uses the
+\verb=&#nnn= HTML codes for character codes 127 to 255), and 8-bit
+text output (which outputs character codes 127 to 255 directly).
+I think 7-bit output should be more portable, but in practice, I found it
+to create problems on Macintosh computers, so, I use 8-bit output in the
+examples.
+
+Three platforms have been tested: Unix/X11R6 (Type 1 fonts - \verb=*.pfa=
+or \verb=*.pfb=), Macintosh (TrueType - \verb=*.hqx= files), and
+Windows (TryeType - \verb=*.ttf=).
+All the fonts required are present in the ITRANS/lib/fonts directory of
+the ITRANS package, the user has to install the appropriate font on his
+or her system to allow viewing of the ITRANS output in the native Indic
+Script.
+
+\subsection{Direct Text (HTML) Output Requirements}
+
+The font should be available in Type 1 or TrueType format, and must
+be usable in regular word-processors (without ITRANS).
+
+\subsection{HTML Output -- Unicode -- UTF-8}
+
+ITRANS 5.3 added support for Unicode output using UTF-8 encoding for
+the output.
+
+The UTF-8 text output can be displayed on any Web browser or loaded
+into any text editor that can handle UTF-8 text. 
+To view the text in Indian language scripts requires availability
+of an Unicode font, for the specific language.  ITRANS does not
+come with any Unicode fonts, it is expected that in due time,
+there will be freeware Unicode fonts for all Indian languages
+available on the Internet.
+
+\begin{table}
+\begin{tabular}{|c|c|}
+\hline
+Sanskrit/Hindi/Marathi & {\em udvng.ifm} \\
+Gujarati & {\em uguj.ifm} \\
+Bengali & {\em ubeng.ifm} \\
+Tamil & {\em utml.ifm} \\
+Telugu & {\em utel.ifm} \\
+Kannada & {\em ukan.ifm} \\
+Romanized Sanskrit & {\em uroman.ifm} \\
+Gurmukhi & {\em ugur.ifm} \\
+Malayalam & {\em umal.ifm} \\
+Oriya & {\em uoriya.ifm} \\
+\hline
+\end{tabular}
+\caption {\bf ITRANS: Unicode IFM files.}
+\end{table}
+
+The Oriya and Malayalam scripts are supported through the  Unicode
+interface only - these scripts are not supported in the \TeX\ or
+PostScript interfaces.
+
+\section{Program Options}
+
+See the manual page for details regarding the program options need to
+be specified to itrans to make it run in the Direct PostScript Output mode
+(option -P), or direct Text (HTML) mode (options -7 or -8 or -U).
+Without any of these options, the \TeX\ interface is assumed.
+Running itrans also requires that the enviornment variable ITRANSPATH
+be set correctly: it should contain the list of directories contain
+all the {\tt *.ifm}, {\tt *.tfm}, and {\tt *.afm} files that itrans may
+need.
+Again, the manual page has more details on this.
+If at any time itrans prints out a error about some file not found, it
+usually implies that ITRANSPATH has to be modified to include the
+directory of that file.
+
+\section{Known Problems}
+
+\begin{enumerate}
+
+\item Version 4.00+ {\em itrans} can handle simple comments in the
+transliterated text portion of the input file.
+\% character begins a comment, the end-of-line terminates a comment.
+Handling of comments is not fully coded yet, and has some problems in
+that the \% always starts a comment, only exception being when \% is
+preceded by a backslash ({\tt\char92}). Of course, there are many other
+instances where \% should not begin a comment, those are ignored for now.
+(And may be ignored for ever, recognizing comments correctly
+would require too much effort.)
+
+\item In the \TeX\ interface, characters with any non-zero Y offset are
+not correctly printed in some cases, when the PostScript font Devnac
+is used.
+One such case is the da-ra ligature, words
+such as {\em draaviiDa} (#marathi draaviiDa#endmarathi).
+(Another case is the ha-u form #marathi hu#endmarathi, see how
+it is handled in the sample input file nehru.itx.)
+Note that it is only in certain cases that the
+word is printed incorrectly, in most cases it is handled correctly.
+Usually, when the word appears near the end of the line, \TeX\ (or
+dvips, but that sounds improbable)
+inserts a kern (a glue factor ?) just before the character with a
+non-zero Y offset, and the word appears squashed up or pulled apart at
+that point.
+Have no remedy for this, only workaround is to force a line break before the
+problem word, it usually sets everything right.
+
+I have never encountered this problem when using Frans Velthuis's Devnag
+font with the itrans package, therefore this problem is probably related
+to the use of PostScript fonts in \TeX.
+If you do notice this problem with the Devnag font too, please let me
+know.
+
+\end{enumerate}
+
+\section{Output Languages Supported}
+
+\subsection{Devanagari Output}
+
+Two devanagari fonts are supported.
+The bundled in devanagari font is a PostScript font, called {\em devnac}.
+{\em devnac} was developed (and is under further development) by Avinash Chopde.
+The other font is a Metafont font called {\em devnag} and has been developed by
+Frans Velthuis.
+More details regarding {\em devnag} can be found in the file {\em
+dvng.itx}, more details regarding {\em devnac} can be found in {\em
+dvnc.itx}.
+Transliteration tables for each language are available in those files, too.
+
+{\em devnac} is a PostScript Type III font.
+This font can be used with both the \TeX\ interface, and the direct
+PostScript interface mode of {\em itrans}.
+
+The font is named {\em dnh} in the \TeX\ interface, and variations are
+also available, named {\em dnho}, {\em dnhrc}, {\em dnhre}.
+In the direct PostScript interface, the generic font changing commands
+{\em normalfont}, {\em slantfont}, {\em compressedfont},
+{\em expandedfont}, etc have to be used.
+See the file itrans.pro to get a handle on the workings of the above PostScript
+commands.
+
+This devanagari font tries to be a all-encompassing font, for the hindi,
+marathi, and sanskrit languages.
+
+See the reference document {\em dvnc.itx} for the transliteration map and
+example texts.
+The IFM file for this font is {\em dvnc.ifm}.
+
+{\em devnag} is a Metafont font, and thus can only be used with the
+\TeX\ interface of {\em itrans}.
+This font is supported by {\em itrans} in a limited manner, in that
+not all ligatures are available for use.
+Many ligatures are archaic, so I've left them out.
+Again, the document dvng.itx contains complete details and lists of the
+ligatures that are used and that are ignored by itrans.
+The IFM file for this font is {\em dvng.ifm}.
+
+A derivative of the devnag font, called {\em xdvng} is also available, for
+use with the direct text HTML output mode of ITRANS. See dvng.itx for more
+info on this font.
+
+\subsection{Tamil Output}
+
+The tamil font is a Metafont font, and 
+was created at the
+Humanities and Arts Computing Center of the University of Washington,
+USA.
+The Metafont files for this font are also bundled with the itrans
+package.
+
+This font can only be used with the \TeX\ interface.
+
+The Metafont descriptions of the font are provided, you can use them to
+generate the PK files of any font size desired.
+The Metafont programs for three sizes: 10, 12, and 17 point sizes are
+provided (wntml10.mf, wntml12.mf, and wntml17.mf, respectively).
+
+This font was developed at University of Washington, and I would like to
+thank them for making the font available as freeware.
+
+See the reference document {\em tamil.itx} for the transliteration map and
+example texts.
+The IFM file for this font is {\em wntml.ifm}.
+
+\subsection{Telugu Output}
+
+The single font {\em tel} is currently supported.
+It is a Metafont font.
+This font can only be used with the \TeX\ interface.
+
+The telugu font is from the TeluguTeX package (which is \copyright
+Lakshmi V.S. Mukkavilli, 1991).
+This is a Metafont font.
+
+See the reference document {\em tlgutx.itx} for the transliteration map
+and example text.
+The IFM file for this font is {\em tlgutx.ifm}.
+
+\subsection{Bengali Output}
+
+ITRANS 5.1 added support for the TrueType (and PostScript Type 1) Bengali
+font named ItxBeng, and in ITRANS 5.2, Jaijeet Roychowdhury added support
+for the Bengali font from the BWTI package
+
+The IFM file for the ItxBeng font is {\em itxbeng.ifm}, and the IFM file
+for the BWTI font is {\tt bnbeng.ifm}.
+
+The ItxBeng font has been provided by Shrikrishna Patil, while the BWTI
+Metafont Bengali font has been developed by Abhijit Das.
+
+[ITRANS 4.x supported a LaserJet Softfont called SonarGaon, but that has
+now been removed from ITRANS.]
+
+See the file {\em beng.itx} for documentation on both the bengali fonts 
+supported by ITRANS.
+
+% very old:
+% This font is a PostScript font, and does not have a AFM file, thus, it
+% cannot be used with the \TeX\ interface at all---this font is supported
+% for the direct text input interface only.
+% {\em banglasc} is bundled in with the itrans package, the font is in the
+% file named {\em banglasc.ps}.
+% 
+% The user manual for this font is in the file called {\em bnglsc.itx}.
+% That file is also a good example of sample input text.
+% The IFM file for this font is {\em banglasc.ifm}.
+% ---------
+
+\subsection{Gujarati Output}
+
+The gujarati font ItxGuj is a PostScript Type 1 font.
+and this ItxGuj font has been provided by Shrikrishna Patil.
+{\tt itxguj.pfa, itxguj.afm} are the Type 1 PostScript files, and 
+{\tt itxguj.tfm, itxgujo.tfm, itxgujrc.tfm, itxgujre.tfm}
+are the TFM files for use with TeX.
+The user manual for this font is in the file {\em gujdoc.itx}.
+
+The IFM file for this font is {\em itxguj.ifm}.
+
+\subsection{Kannada Output}
+
+The single font {\em kan} is currently supported.
+It is a Metafont font.
+This font can only be used with the \TeX\ interface.
+
+The Kannada font is from the KannadaTeX package (which has been developed
+by G.\ S.\ Jagadeesh and Venkatesh P.\ Gopinath).
+This is a Metafont font.
+
+The IFM file and other support in ITRANS for Kannada was added by
+Raghunath K Rao.
+
+See the reference document {\em kantex.itx} for the transliteration map
+and example text.
+The IFM file for this font is {\em kantex.ifm}.
+
+\subsection{Punjabi Output}
+
+Anshuman Pandey added support in ITRANS for
+the Gurmukh{\=\i} Postscript font `Punjabi' ({\tt pun}) (designed by
+and copyright Hardip Singh Pannu).
+
+{\tt pun.pfa, pun.afm} are the Type 1 PostScript files, and 
+{\tt pun.tfm} is the TFM file for use with TeX.
+The user manual for this font is in the file {\em pundoc.itx}.
+
+The IFM file for this font is {\em pun.ifm}.
+
+\subsection{Romanized Sanskrit Output}
+
+The Romanized Sanskrit font NCS\_CSX is a PostScript Type 1 font,
+details about this are present in the {\em romancsx.itx} file.
+
+This font can be used with all three output modes of itrans -- \TeX,
+PostScript, or Direct Text Output.
+The Direct Text Output requires using the TrueType version of this font.
+
+The PostScript Type 1 font files are in {\tt ncpr\_\_\_\_.afm},{\tt ncpr\_\_\_\_.pfb},
+{\tt ncpi\_\_\_\_.afm}, {\tt ncpi\_\_\_\_.pfb}.
+\TeX\ TFM versions are available in {\tt ncprcsxp.tfm}, {\tt ncpicsxp.tfm}.
+TrueType versions are available in
+{\tt ncpr\_\_\_\_.ttf}, {\tt ncpi\_\_\_\_.ttf}.
+
+\section{Usage Hints}
+
+\subsection{Ligature suppression}
+As mentioned earlier, the system automatically uses
+ligatures whenever possible.
+For example,  since the \verb=ta-ta= ligature exists,
+input text of the form \verb=tti= is printed as
+#marathi tti#endmarathi.
+If instead you need it to be printed as #marathi t{}ti #endmarathi you have
+two choices.
+One, if you never want the \verb=ta-ta= ligature to be used, you
+can edit the IFM file and comment out all the lines that refer to the
+\verb=ta-ta= ligature. 
+(The IFM file is a text file, for more information, see the
+technical documentation in tech.tex.)
+
+On the other hand, if you do want to keep the ligature, except in a few
+locations in the input text (say for small point type), or if you do
+not want to edit the IFM file, you can use the ligature inhibitors
+\verb={}= to prevent a ligature from being used.
+Whenever the \verb={}= characters are inserted between two consonants,
+{\em itrans} refrains from using the ligature (if it exists, if it does
+not, then these characters have basically no effect).
+Instead, the half-forms of the consonants (as appropriate) are used.
+Thus, even if the IFM file contains the \verb=ta-ta= ligature,
+the input text \verb=t{}ti= always appears as 
+#marathi t{}ti#endmarathi.
+
+\subsection{Breaking lexical scan}
+Use the character \_ after a consonant letter to break the lexical
+scan.
+This becomes necessary because of the default behavior of the scanner,
+which tries to match the largest possible input pattern.
+Thus, when you write {\tt ai} in the transliterated text, it comes out
+as #marathi ai #endmarathi in marathi or #tamil ai #endtamil in tamil.
+Now, that is just what you want for the {\tt ai} vowel, but what if
+you wanted it to be scanned as two vowels: {\tt a}, followed by
+{\tt i} ?
+In such cases, you need to break the lexical scan, by following the
+first vowel, the {\tt a} character, with the \_
+character to stop the scanner from associating {\tt i} with the
+{\tt a} preceding it.
+So, {\tt a\_i} in the input text results in:
+#marathi a_i #endmarathi for marathi and #tamil a_i #endtamil for tamil.
+
+This is a thing to watch out for in all cases where some character has
+a multiple letter mapping, and each letter by itself also represents some
+other character.
+In the above example, {\tt ai} is the two letter map, and both
+{\tt a} and {\tt i} represent other vowels.
+
+Note that if you wish to suppress any ligature, you should use the
+\{\} letters consecutively, as explained in the previous paragraph.
+Using \_ to follow some consonant allows a ligature, if it
+exists for the consonant pair, to be used. (Of course, tamil does
+not have any ligatures.)
+
+To get a printable underscore in the Indian language text, follow
+normal \TeX\ usage---use backslash underscore---{\tt \char92\_}.
+
+Since ITRANS supports many Indian languages, it has a large list of input
+tokens that are mapped to consonants.
+For example even if {\tt ai} is not a vowel in one of the languages
+supported by ITRANS, it still is always recognized as  the {\tt ai} vowel,
+and thus if you need it to be recognized as the {\tt a} and {\tt i}
+vowels, use the \_ character as mentioned above.
+
+\subsubsection{List of all ITRANS recognized English letters}
+Here's the list of ASCII input characters that are special to ITRANS:
+
+{\tt\parindent=0pt
+
+0 1 2 3 4 5 6 7 8 9 \\
+.a .c .N .n \char`^r .D .Dh A AUM \\
+a aa ai au b bh ch chh D Dh d dh dny E e f G g gh GY \\
+H h I i ii J j jh JN K k kh kSh L L\char`^i L\char`^I LLi LLI l ld \\
+M m N \char`"n \char`~n n \char`^n N\char`^\ ny O o OM p ph q \\
+.r \char`^r .R R R\char`^i R\char`^I RRi RRI r S SRI s sh shh \\
+T Th t th U u uu v x Y y z
+
+\char35{\rm $<$language$>$} \par
+\char35end{\rm $<$language$>$} \par
+\char35{\rm $<$language$>$}ifm \par
+\char35{\rm $<$language$>$}font \par
+\char35output=HTML\_7 \par
+\char35output=HTML\_8 \par
+\char35output=UTF\_8 \par
+\char35output=TeX \par
+\char35output=PostScript \par
+\char35ignoreshortmarkers \par
+\char35useshortmarkers \par
+\char35usecsx \par
+\char35ignorecsx \par
+\char35include= \par
+\char35endwordvowel=a \par
+\char35endwordvowel=.h \par
+\#\# \ \ \ \{\} \ \ \ \_ \ \ \ \char`` \ \ \ \par
+
+}
+
+Version 4.0 and onwards added support for the Classical Sanskrit and Classical
+Sanskrit Extended encoding, which adds one ASCII character to the above
+list ({\tt c}) and many non-ASCII characters, see the document {\tt icsx.itx}
+for more details. 
+
+\subsection{Punctuation Issues}
+The fonts provided may be missing some or all punctuation
+characters, some may also be missing numbers.
+For example, the tamil font used, wntml,
+does not have any numerals or any punctuation
+characters.
+The devanagari font does have numbers and some punctuation marks (the
+double-quote is missing, for example).
+
+For devanagari, when using \TeX, use the {\tt idevn.tex} (automatically
+loaded by {\tt itrans.sty}, use the \verb=\usepackage{itrans.sty}=
+command in \LaTeX) which provides
+modes for setting a devanagari font, and offers many commands that ease
+devanagari input.
+See the ITRANS Song Book documents for examples of idevn.tex usage, or,
+check out the sample document file {\tt sample.itx}.
+
+In all punctuation problems, you can always get the required punctuation or digit
+character by ending the Indian language transliteration scope (using one
+of the endmarkers), then
+printing the required punctuation mark, and the restarting the 
+transliteration by using the start marker.
+
+An easier method, in \TeX\ is to make use of the math mode for numbers.
+It is usually sufficient to use the \$ enclosing scope to
+make numbers print correctly, since a \$ enters mathmode and uses the math
+fonts.
+For punctuation marks, the user needs to explicitly change fonts:
+example:
+
+{\tt \SM ......\{\char92rm ;\}.......\EM}.
+
+But that is preferable over this form:
+
+{\tt \SM ......\EM ; \SM.......\EM}.
+
+\subsection{Multi-consonant conjuncts}
+How does itrans handle ligatures with more than two consonants ?
+For example, \verb=shhTmii= contains three consonants.
+This ligature produces
+#marathi shhTmii#endmarathi, the way itrans works is as follows:
+Beginning with the first consonant in the list,
+itrans checks if a double-consonant ligature has
+been defined for  that consonant and  the next one in the list.
+If such a character exists, then it is used and both consonants are consumed,
+and itrans repeats the procedure for the next consonant.
+
+There is one exception to the above rule: if at all possible, the last two
+consonants are handled together, that is if a ligature of the last two
+consonants
+exists, that is used over the pairing that would result from the above method.
+Example: \verb=shhTrii= produces
+#marathi shhTrii#endmarathi, both \verb=shha-Ta= and \verb=Ta-ra= ligatures
+exist, but since the consonants \verb=Ta= and \verb=ra= are the last two
+consonants, that ligature is used over \verb=shha-Ta=.
+
+Of course, this default behavior can be changed by appropriately placing
+the ligature inhibitor sequence, \verb={}=.
+Example: \verb=shhTr{}ii= produces #marathi shhT{}rii#endmarathi.
+
+Also, in ITRANS version 5.10, ITRANS now supports direct specification of
+3 or more consonant conjuncts in the .IFM file. So, if the above given
+description leads to incorrect output, we can now fix it by providing
+explicit rules for 3 or more multi-consonant conjuncts in the IFM file.
+
+\subsection{Word endings and the \char35endwordvowel command}
+\label{endwordvowel}
+To increase readability of the Indian text (in english), each word
+for the devanagari and bengali language is assumed to end in a vowel.
+Each Indian language letter can be generally
+written as C + [C + [C + [...] + C]] + V, where C is a consonant, and V is a
+vowel.
+When a consonant appears at the end of the word, and the vowel is ``a'', then
+it is not necessary to include the final ``a''---if a word ends in a consonant,
+ITRANS will automatically add the vowel ``a'' to the final consonant---for 
+devanagari and bengali only.
+Thus, in hindi, instead of writing ``hama'', you can write ``ham'', which
+is how the word {#marathi ham #endmarathi} is pronounced anyway.
+To add a halant to any consonant, use ``.h'', thus ``ham.h'' produces
+#marathi ham.h#endmarathi.
+
+Use this default mechanism only when it increases the readability, for
+example in hindi it is better to write ``ek'', ``is'', ``tab'', instead
+of ``eka'', ``isa'', ``taba'' for #marathi ek, is, tab#endmarathi.
+But, it is better to include the ``a'' in words such as ``manushhya''---#marathi
+manushhya#endmarathi.
+
+This default mechanism is activated only for the devanagari and bengali
+input.
+(The keyword DEFAULTVOWEL in the IFM file directs whether the last
+consonant in a word should be considered as paired the half-form, or the a-form,
+if the form is left unspecified.)
+
+The above default working can be avoided by specifying the vowel to end words
+in the input document.
+
+\char35endwordvowel=a \par
+\char35endwordvowel=.h \par
+
+The first command makes the default vowel be ``a'', which the second command
+will make the default vowel a ``half-form''---viraam.
+The endwordvowel command will override the DEFAULTVOWEL specification
+in the IFM file.
+So, for sanskrit, it is useful to include this command in the input file:
+
+\char35endwordvowel=.h \par
+
+which puts a viraam at the end of any word that does not end in a vowel.
+
+%% \bigskip\bigskip
+%% {\em (Around 1988, I was in need of a good typesetting package
+%% that would print out text in marathi or hindi.
+%% I located some directions to public domain software,
+%% but after some searching, found out that 
+%% they either never really existed in usable form, or were of poor quality.
+%% Commercial packages were available, list prices ranged from
+%% US\$100 to US\$4000~!
+%% So, I decided to get it done myself, took me three years to find the
+%% time, but now I hope that some other (starving!)
+%% student, and everybody else who is searching for such a package,
+%% will find this package useful.)}
+
+
+\bigskip
+\hrule
+\vfill
+
+\bigskip
+\section{Author}
+
+\noindent
+ITRANS has been developed by Avinash Chopde. \\
+E-mail:
+\htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com}. \\
+Home page:
+\htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+
+Over the years, numerous people from all over the world have made
+important additions to the ITRANS package as it exists today. It is not
+possible to thank everyone here, but I have tried to include correct
+acknowledgements in appropriate documents - the CHANGES text file 
+lists all changes in each release and the names of persons who
+contributed each extension, and each of the language document files
+also acknowledge the help received from particular individuals.
+
+I would like to thank all the users of ITRANS, past and present,
+who send me additions and extensions and send in bug reports.
+Thanks to all!
+
+\end{document}

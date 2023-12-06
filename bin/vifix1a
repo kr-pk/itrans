@@ -1,0 +1,98 @@
+:%s/  *$//
+:%s/M\([kg]\)/\~N\1/g
+:%s/saMj\~n/sa\.nj\~n/
+:%s/saMny/sa\.nny/
+:%s/M\([cCj]\)/\~n\1/g
+:%s/M\([TD]\)/N\1/g
+:%s/M\([tdn]\)/n\1/g
+:%s/M\([pbm]\)/m\1/g
+:%s/\.n\([kg]\)/\~N\1/g
+:%s/\.n\([cCj]\)/\~n\1/g
+:%s/\.n\([TDN\)/N\1/g
+:%s/\.n\([td]\)/n\1/g
+:%s/\.n\([pb]\)/m\1/g
+:%s/  *$//
+:%s/\([A-z]\)|/\1 |/g
+:%s/  *|/ |/g
+:%s/|\([0-9]\)/| \1/
+:%s/\([0-9]\)  *|/\1|/
+:%s/| |/||/g
+:%s/m /M /g
+:%s/M |/m |/g
+:%s/m$/M/
+:%s/\.h / /g
+:%s/RR/R^/g
+:%s/LL/L^/g
+:%s/ddhy/d\.hdhy/g
+:%s/—/-/g
+:%s/–/-/g
+:%s/\-/\\\-/g
+:%s/:/H/g
+:%s/ “ / “/g
+:%s/ ” /” /g
+:%s/^“ /“/
+:%s/ ”$/”/
+:%s/“/\\ldq{}/g
+:%s/”/\\rdq{}/g
+:%s/ ‘ / ‘/g
+:%s/ ’ /’ /g
+:%s/^‘ /‘/
+:%s/ ’$/’/
+:%s/‘/\\ldq{}/g
+:%s/’/\\rdq{}/g
+:%s/ `/ \\ldq{}/g
+:%s/^`/\\ldq{}/g
+:%s/,'/,\\rdq{}/g
+:%s/',/\\rdq{},/g
+:%s/^' /\\ldq{} /
+:%s/^'/\\ldq{}/
+:%s/ '/ \\ldq{}/g
+:%s/('/(\\ldq{}/g
+:%s/ '$/'/
+:%s/' /\\rdq{} /g
+:%s/'$/\\rdq{} /g
+:%s/')/\\rdq{})/g
+:%s/^" /"/
+:%s/ "$/"/
+:%s/^"/\\ldq{}/g
+:%s/ "/ \\ldq{}/g
+:%s/,"/,\\rdq{}/g
+:%s/",/\\rdq{},/g
+:%s/" /\\rdq{} /g
+:%s/"$/\\rdq{}/g
+:%s/ldq{} /ldq{}/g
+:%s/ \\rdq{} /\\rdq{}/g
+:%s/ड़/\.Da/g
+:%s/\.DaA/\.DA/g
+:%s/ढ़/\.Dha/g
+:%s/\.DhaA/\.DhA/g
+:%s/ज़/j/g
+:%s/\.jaA/\.jA/g
+:%s/फ़/pha/g
+:%s/\.phaA/\.phA/g
+:%s/॰/0/g
+:%s/य़ा/yyA/g
+:%s/य़/ya/g
+:%s/aA/A/g
+:%s/upkar/uShkar/
+:%s/_/@@_/g
+:%s/\~nj\~n/\.nj\~n/g
+:%s/―/\-/g
+:%s/dhd/ddh/g
+:%s/^oM$/OM/
+:%s/^oM /OM /
+:%s/^OM /OM /
+:%s/ oM / OM /g
+:%s/॰/\\\./g
+:%s/|\([A-z]\)/| \1/g
+:%s/\([A-Z]\)|/\1 |/g
+:%s/\([a-z]\)|/\1 |/g
+:%s/sam\([rlvsh]\)/saM\1/g
+:%s/samkSh/sa.nkSh/g
+:%s/hams/haMs/g
+:%s/bramh/brahm/g
+:%s/O\~Nk/OMk/g
+:1r /home/sanskrit/www/doc_trial/fortransfer/addtitle.txt
+:$s/$/##Proofread by/
+:wq
+:!quit!

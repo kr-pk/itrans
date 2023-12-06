@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>idoc.itx (ITRANS doc)</TITLE>
+<META NAME="description" CONTENT="idoc.itx (ITRANS doc)">
+<META NAME="keywords" CONTENT="idoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="idoc.css">
+
+<LINK REL="next" HREF="node1.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html7"
+  HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html5"
+  HREF="../..">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev_g.gif">   <BR>
+<B> Next:</B> <A NAME="tex2html8"
+  HREF="node1.html">itrans Mechanism</A>
+<B>Up:</B> <A NAME="tex2html6"
+  HREF="../..">ITRANS</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+2"><B>Printing Transliterated</B></FONT></DIV>
+
+<P>
+<BR>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+2"><B>Indian Language Documents</B></FONT></DIV>
+
+<P><P>
+<BR>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+2"><B>itrans</B></FONT></DIV>
+<DIV ALIGN="CENTER">
+<TT>version 5.30</TT></DIV>
+
+<P></P>
+<DIV ALIGN="CENTER">
+<B>&#169;1991-2001 Avinash Chopde</B></DIV>
+
+<P></P>
+<DIV ALIGN="CENTER">
+Home page: <A NAME="tex2html1"
+  HREF="http://www.aczoom.com/itrans/"><TT>http://www.aczoom.com/itrans/</TT></A></DIV>
+
+<P><P>
+<BR>
+<HR>
+<P><P>
+<BR>
+
+<P>
+
+<P>
+This software is a pre-processor, it converts input representing
+Indic Text to the actual Indian Language Script, for printout or
+for display on Web pages.
+The input is uses English letters, so it can be created
+using any simple text editor.
+
+<P>
+This document describes the use of the program <EM>itrans</EM>, which may be used to generate Devanagari, Tamil, Bengali,
+Telugu, Gujarati, Kannada, Punjabi (Gurmukhi), or Romanized Sanskrit
+output from input in an english transliterated form.
+
+<P>
+Many examples of ITRANS use are available on the web,
+archives for different purposes are available.
+One such project is a collection of Hindi Film Song Lyrics; another
+project is a collection of Sanskrit documents.
+There are also tools on the Web that make it much easier to use ITRANS -
+you can use ITRANS over e-mail, or use your WWW Browser to type ITRANS
+text, etc.
+Links to many such sites are available through the ITRANS home page at
+and you can also use
+WWW search tools (use the keywords <code>ITRANS</code> and <code>indian</code>) to
+search the Web.
+
+<P>
+<BR> <HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"></A>
+
+<UL>
+<LI><A NAME="tex2html9"
+  HREF="node1.html"><EM>itrans</EM> Mechanism</A>
+<LI><A NAME="tex2html10"
+  HREF="node2.html">Input Format</A>
+<UL>
+<LI><A NAME="tex2html11"
+  HREF="node2.html#SECTION00021000000000000000">The ``&#35;include='' command</A>
+<LI><A NAME="tex2html12"
+  HREF="node2.html#SECTION00022000000000000000">The ``&#35;output='' command</A>
+<LI><A NAME="tex2html13"
+  HREF="node2.html#SECTION00023000000000000000">The ``&#35;endfont='' command</A>
+<LI><A NAME="tex2html14"
+  HREF="node2.html#SECTION00024000000000000000">&#35;<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">lang<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">, &#35;end<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">lang<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">, and &#35;&#35;markers</A>
+<UL>
+<LI><A NAME="tex2html15"
+  HREF="node2.html#SECTION00024100000000000000">``&#35;useshortmakers'' and ```&#35;ignoreshortmarkers''</A>
+</UL>
+<LI><A NAME="tex2html16"
+  HREF="node2.html#SECTION00025000000000000000">``&#35;usecsx''</A>
+<LI><A NAME="tex2html17"
+  HREF="node2.html#SECTION00026000000000000000">``&#35;endwordvowel=''</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html18"
+  HREF="node3.html">T<SMALL>E</SMALL>X Interface</A>
+<UL>
+<LI><A NAME="tex2html19"
+  HREF="node3.html#SECTION00031000000000000000">T<SMALL>E</SMALL>X Requirements</A>
+<LI><A NAME="tex2html20"
+  HREF="node3.html#SECTION00032000000000000000">L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>X Style Files</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html21"
+  HREF="node4.html">Direct PostScript Output</A>
+<UL>
+<LI><A NAME="tex2html22"
+  HREF="node4.html#SECTION00041000000000000000">Direct PostScript Output Requirements</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html23"
+  HREF="node5.html">Direct Text Output - for HTML</A>
+<UL>
+<LI><A NAME="tex2html24"
+  HREF="node5.html#SECTION00051000000000000000">Direct Text (HTML) Output Requirements</A>
+<LI><A NAME="tex2html25"
+  HREF="node5.html#SECTION00052000000000000000">HTML Output - Unicode - UTF-8</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html26"
+  HREF="node6.html">Program Options</A>
+<LI><A NAME="tex2html27"
+  HREF="node7.html">Known Problems</A>
+<LI><A NAME="tex2html28"
+  HREF="node8.html">Output Languages Supported</A>
+<UL>
+<LI><A NAME="tex2html29"
+  HREF="node8.html#SECTION00081000000000000000">Devanagari Output</A>
+<LI><A NAME="tex2html30"
+  HREF="node8.html#SECTION00082000000000000000">Tamil Output</A>
+<LI><A NAME="tex2html31"
+  HREF="node8.html#SECTION00083000000000000000">Telugu Output</A>
+<LI><A NAME="tex2html32"
+  HREF="node8.html#SECTION00084000000000000000">Bengali Output</A>
+<LI><A NAME="tex2html33"
+  HREF="node8.html#SECTION00085000000000000000">Gujarati Output</A>
+<LI><A NAME="tex2html34"
+  HREF="node8.html#SECTION00086000000000000000">Kannada Output</A>
+<LI><A NAME="tex2html35"
+  HREF="node8.html#SECTION00087000000000000000">Punjabi Output</A>
+<LI><A NAME="tex2html36"
+  HREF="node8.html#SECTION00088000000000000000">Romanized Sanskrit Output</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html37"
+  HREF="node9.html">Usage Hints</A>
+<UL>
+<LI><A NAME="tex2html38"
+  HREF="node9.html#SECTION00091000000000000000">Ligature suppression</A>
+<LI><A NAME="tex2html39"
+  HREF="node9.html#SECTION00092000000000000000">Breaking lexical scan</A>
+<UL>
+<LI><A NAME="tex2html40"
+  HREF="node9.html#SECTION00092100000000000000">List of all ITRANS recognized English letters</A>
+</UL>
+<LI><A NAME="tex2html41"
+  HREF="node9.html#SECTION00093000000000000000">Punctuation Issues</A>
+<LI><A NAME="tex2html42"
+  HREF="node9.html#SECTION00094000000000000000">Multi-consonant conjuncts</A>
+<LI><A NAME="tex2html43"
+  HREF="node9.html#SECTION00095000000000000000">Word endings and the &#35;endwordvowel command</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html44"
+  HREF="node10.html">Author</A>
+<LI><A NAME="tex2html45"
+  HREF="node11.html">About this document ...</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<A NAME="tex2html7"
+  HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html5"
+  HREF="../..">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev_g.gif">   <BR>
+<B> Next:</B> <A NAME="tex2html8"
+  HREF="node1.html">itrans Mechanism</A>
+<B>Up:</B> <A NAME="tex2html6"
+  HREF="../..">ITRANS</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

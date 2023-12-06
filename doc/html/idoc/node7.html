@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Known Problems</TITLE>
+<META NAME="description" CONTENT="Known Problems">
+<META NAME="keywords" CONTENT="idoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="idoc.css">
+
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="idoc.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html126"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html124"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html118"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html127"
+  HREF="node8.html">Output Languages Supported</A>
+<B>Up:</B> <A NAME="tex2html125"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html119"
+  HREF="node6.html">Program Options</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00070000000000000000">
+Known Problems</A>
+</H1>
+
+<P>
+
+<OL>
+<LI>Version 4.00+ <EM>itrans</EM> can handle simple comments in the
+transliterated text portion of the input file.
+% character begins a comment, the end-of-line terminates a comment.
+Handling of comments is not fully coded yet, and has some problems in
+that the % always starts a comment, only exception being when % is
+preceded by a backslash (<TT>&#92;</TT>). Of course, there are many other
+instances where % should not begin a comment, those are ignored for now.
+(And may be ignored for ever, recognizing comments correctly
+would require too much effort.)
+
+<P>
+</LI>
+<LI>In the T<SMALL>E</SMALL>X interface, characters with any non-zero Y offset are
+not correctly printed in some cases, when the PostScript font Devnac
+is used.
+One such case is the da-ra ligature, words
+such as <EM>draaviiDa</EM> (<IMG
+ WIDTH="47" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="draaviiDa\,\istrut">).
+(Another case is the ha-u form <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.gif"
+ ALT="hu\,">, see how
+it is handled in the sample input file nehru.itx.)
+Note that it is only in certain cases that the
+word is printed incorrectly, in most cases it is handled correctly.
+Usually, when the word appears near the end of the line, T<SMALL>E</SMALL>X (or
+dvips, but that sounds improbable)
+inserts a kern (a glue factor ?) just before the character with a
+non-zero Y offset, and the word appears squashed up or pulled apart at
+that point.
+Have no remedy for this, only workaround is to force a line break before the
+problem word, it usually sets everything right.
+
+<P>
+I have never encountered this problem when using Frans Velthuis's Devnag
+font with the itrans package, therefore this problem is probably related
+to the use of PostScript fonts in T<SMALL>E</SMALL>X.
+If you do notice this problem with the Devnag font too, please let me
+know.
+
+<P>
+</LI>
+</OL>
+
+<P>
+<HR>
+<A NAME="tex2html126"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html124"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html118"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html127"
+  HREF="node8.html">Output Languages Supported</A>
+<B>Up:</B> <A NAME="tex2html125"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html119"
+  HREF="node6.html">Program Options</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,226 @@
+August 2001
+Using latex2html version:   2K.1beta dated August 2001
+
+This works.
+
+Since ITRANS support is already included in this version of latex2html,
+the instructions are very simple:
+
+	First follow all the instructions in the README file in
+	latex2html.
+
+	Then, to make the Indic-HTML styles available, link these
+	files from Indic-HTML into styles:
+
+	cd ....../latex2html/styles
+	ln -s ../Indic-HTML/itrans.perl .
+
+To run:
+    latex2html <filename>.itx
+
+so, I run latex2html on the .itx file. See ITRANS/contrib/mkl2h for a
+shell script that I used to generate the language specific HTML files at 
+http://www.aczoom.com/itrans/
+
+-------------------------------------------------------------------------
+[This is the set of instructions from Ross M, with some of my comments]
+Avinash Chopde, Mar 1999
+
+Note that making latex2html work is not very easy! It took me along time,
+with a lot of help from Ross Moore...
+
+As of April 1999, the latest release of latex2html - 99.1, will work:
+[ This is LaTeX2HTML Version 99.1 release (March 30, 1999) ]
+correctly, any past release will not work, and any future release
+may also have some problems with ITRANS documents.
+
+Latest versions of latex2html could be obtained from:
+    http://cdc-server.cdc.informatik.tu-darmstadt.de/~latex2html/
+This site is for development only, if it is no longer working, try
+a WWW search for more info, or check the mailing-list at:
+http://www.xray.mpe.mpg.de/mailing-lists/latex2html/info.html
+
+***********               OLDER RELEASE FIXES:
+For latex2html-98.2beta, release of (June 26th, 1998): later versions upto
+latex2html-98.2beta8 (September 9th, 1998) will not work correctly,
+it is expected that a new version 99.1 after that will probably work.
+The latex2html archive contains the latex2html script and the itrans.perl
+program.
+
+Even though 98.2b version works reasonably well, it still has some
+bugs that need fixing before it can be used with the ITRANS docs.
+
+There are two fixes I had to make:
+
+1)  around line 5369, in function "substitute_newcmd", comment out
+the s/(\\\w+)?\#$i/(($1&&$isword)? $1.' ': '').$arg/e ; line, and
+replace with the following:
+#avinash: 3/8/1999, fix from Ross Moore, to make \kRn (\kern-0.4em) work
+#       s/(\\\w+)?\#$i/(($1&&$isword)? $1.' ': '').$arg/e ;
+        s/(\\\w+)?\#$i/$1.(($1&&$isword)? ' ': '').$arg/e ;
+[above fix is for 98.2b8, don't think it is needed for 98.2beta...]
+Also:
+replace line around line 4104 (search for "external=") with:
+    s/(^|,\s*)external/$external=1;''/ie;
+
+2) in latex2html/texinputs/html.sty, around line 352, comment out the
+alternate \excludecomment defn, just use Victor's defn:
+%%% avinash: suppress this, since it does not work to trap the & char
+%%% that I need for ITRANS .itx files... (3/8/99)
+%%\renewcommand{\excludecomment}[1]{\csname newenvironment\endcsname{#1}{\@gobbleenv}{}}
+
+
+***********   end of OLDER RELEASE FIXES:
+
+------ Installation Instructions for latex2html 99.1 ------
+
+Since ITRANS support is already included in this version of latex2html,
+the instructions are very simple:
+	First follow all the instructions in the README file in
+	latex2html.
+
+	Then, to make the Indic-HTML styles available, link these
+	files from Indic-HTML into styles:
+
+	cd .../latex2html/styles
+	ln -s ../Indic-HTML/itrans.perl .
+
+To run:
+    latex2html <filename>.itx
+so, I run latex2html on the .itx file. See ITRANS/contrib/mkl2h for a
+shell script that I used to generate the language specific HTML files at 
+http://www.aczoom.com/itrans/
+
+That's it...
+
+--------------------------------------------------------------------------
+Note that there are some problems with latex2html, which require some
+changes to the input files:
+
+1) Manually break up any longtables into multiple makeimage
+environments.
+
+2) By default, latex2html will create a GIF image of every
+#indian...#endindian section. Since this can create hundreds of images
+for the user docs in ITRANS/doc/*.itx, I made use of 
+\begin{makeimage}
+..
+\end{makeimage}
+to force latex2html to create images of entire tables or subsections of
+tables, which results in far fewer number of GIF files.
+
+3) See all the ITRANS/doc/*.itx files for examples of changes made.
+
+---------------------------------------------------------------------------
+
+Subject: Re: ITRANS and LaTeX2HTML  
+Date: Thu, 16 Apr 98 22:28:39 +1000
+From: "Ross Moore  <ross@zeus.mpce.mq.edu.au>" <ross@zeus.mpce.mq.edu.au>
+
+I've bundled-up the necessary files that allow ITRANS
+to work with  LaTeX2HTML v98.1p1 .
+
+You can get them from:
+
+http://www-texdev.mpce.mq.edu.au/l2h/indic/ITRANS/l2hitrans.tar.gz
+
+It contains 3 files:
+
+  1.  itrans.sty   package for LaTeX-2e
+	(install within the texmf TDS directory structure)
+
+  2.  itrans.perl  package for LaTeX2HTML
+	(install within $LATEX2HTMLDIR/styles )
+
+  3.  latex2html
+	experimental revised version of v98.1p1
+	replaces the script in $LATEX2HTMLDIR
+
+This assumes you already have LaTeX2HTML installed,
+in some directory (referred to as $LATEX2HTMLDIR).
+
+***** You need a full installation,
+the file in this archive is not sufficient by itself.
+
+***** You'll need to run  install-test  again,
+to replace some paths at the beginning of the script.
+[Copy this latex2html to the same directory as install-test, and
+run install-test again.]
+
+
+       How to use LaTeX2HTML with ITRANS
+       ---------------------------------
+
+You need to have LaTeX-2e  (LaTeX 2.09 is not enough)
+
+Make sure ITRANS is installed  and  
+  $ITRANSPATH  is set within the working environment.
+
+Alternatively you can hard-code it into  itrans.perl 
+by looking for where  $ENV{ITRANSPATH} is mentioned.
+
+There are 3 processing modes.
+
+Mode 1:  
+	.tex  file, already preprocessed by ITRANS
+
+ Start your documents with:
+  \documentclass[11pt]{article}    (or whatever)
+  \usepackage{itrans}
+  ...
+
+Loading itrans.sty  will load  idevn.tex  and  itrnstlg.tex
+if they can be found in the LaTeX inputs tree.
+(Do *not* try to input these files separately.)
+
+Images will be made of inline portions and paragraphs of 
+Indic language text (converted to TeX macros).
+
+
+Mode 2:
+	.itx file,  not yet pre-processed
+
+ Start your documents with:
+  \documentclass[11pt]{article}    (or whatever)
+  \usepackage[preprocess]{itrans}
+  ...
+
+Now LaTeX2HTML will locate the  #hindi ... #endhindi
+portions to make an image of inline parts,
+or of each paragraph within larger parts.
+(All the ITRANS languages are supported, not just #hindi .)
+
+The itrans  preprocessor will be called as part of the
+image-generation process.
+
+
+Mode 3:
+	.itx file,  create HTML output using special fonts.
+  (only works for  ItxBeng, ItxGuj, Xdvng, romancsx  
+
+ Start your documents with:
+  \documentclass[11pt]{article}    (or whatever)
+  \usepackage[preprocess,html8]{itrans}
+  ...
+
+The itrans  preprocessor will be called for each portion
+of input text that needs to be translated.
+Other languages will be dealt with, as in Mode 2.
+
+Tell me if you find bugs, or if you extend the capabilities 
+of ITRANS to include other languages or other fonts.
+
+As yet  #useshortmarkers  and  #ignoreshortmarkers
+are *not* implemented.
+
+Enjoy,
+	Ross Moore
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ross Moore                          Internet: ross@mpce.mq.edu.au
+Mathematics Department                  Work:     +61 2 9850-8955
+Macquarie University                    Home:   please do not try
+North Ryde, Sydney                       Fax:     +61 2 9850-8114
+Australia  2109		    http://www-math.mpce.mq.edu.au/~ross/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

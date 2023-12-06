@@ -1,0 +1,54 @@
+# This is a transliteration data file for converting from Itrans sanskrit
+# transliteration codes into ITRANS tamil using adhawin-tamil font
+   1            file version number
+   "    "      # string delimiters
+   [    ]      # list delimites
+   {    }      # regular expression delimiters
+#
+#starting sequence
+""
+#ending sequence
+""
+#
+   2     # number of input SHIFT sequences, only one set of input characters
+   ""      ""    ""    ""    ""        ""             # Normal characters
+   "\0x23\0x23"  "yyy"    ""    ""    "\0x23\0x23"   "zzz"  # delimiters = ##
+#
+   0     # number of output shift sequences
+#
+# conversion table starts from here
+# inp_set     inp_seq           out_set    out_seq
+# Non-transliteration characters
+     1    [\0x21-\0x7F]             0  [\0x21-\0x7F]     #Pass the rest
+# ITRANS SCHEME             --> 5.2 SCHEME
+     2         "ksh"              	0      "kSh"
+     2         "shh"              	0      "Sh"
+     2         "j~n"                0      "GY"
+     2         "dny"                0      "GY"
+	2		"\itxtitle{"	0	"          "  # add a header before
+	2	"..}"				0	".."
+     2		"\hrule"         	0		"yyy<HR>yyy" 
+      2         "\."			0		"##. ##"
+      2         "\-"			0		"##- ##"
+      2         ","			0		"##, ##"
+      2         "!"			0		"##! ##"
+      2         "?"			0		"##? ##"
+      2         "'"			0		"##' ##"
+      2         "("			0		"##( ##"
+      2         ")"			0		"##) ##"
+      2         "`"			0		"##'##"
+      2         "\:"			0		"##: ##"
+      2         "\;"			0		"##; ##"
+      2         "\,"			0		"##,##"
+      2         ";"			0		"##; ##"
+	2		"\oq"			0		"##'##"
+	2		"\cq"			0		"##'##"
+	2		"\ldq{}"			0		"##`##"
+	2		"\ldq "			0		"##`##"
+	2		" \rdq"			0		"##' ## "
+	2		"\ldq"			0		"##`##"
+	2		"\rdq"			0		"##' ## "
+
+
+
+	

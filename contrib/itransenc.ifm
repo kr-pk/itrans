@@ -1,0 +1,219 @@
+Comment *===================================================================
+Comment * Copyright 1991-1996   Avinash Chopde, All Rights Reserved.
+Comment *
+Comment * Permission to use, copy, modify and distribute this software
+Comment * and its documentation for any purpose is hereby granted without
+Comment * fee, provided that the above copyright notice appear in all
+Comment * copies and that both that copyright notice and this permission
+Comment * notice appear in supporting documentation, and that the name of
+Comment * Avinash Chopde not be used in advertising or publicity
+Comment * pertaining to distribution of the software without specific,
+Comment * written prior permission.
+Comment * Avinash Chopde makes no representations about the suitability
+Comment * of this software for any purpose.
+Comment * It is provided "as is" without express or implied warranty.
+Comment *
+Comment * AVINASH CHOPDE DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS
+Comment * SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+Comment * AND FITNESS, IN NO EVENT SHALL AVINASH CHOPDE BE LIABLE FOR
+Comment * ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+Comment * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER
+Comment * IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+Comment * ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
+Comment * OF THIS SOFTWARE.
+Comment *
+Comment * This IFM file produces ITRANS encoded ouput, given  ITRANS
+Comment * encoded input. Some people may need this, since the output is in 7-bit
+Comment * ASCII format while the input may be in CS/CSX form.
+Comment * 
+Comment * File developed by Shree, 1998.
+Comment * 
+Comment * Of course, this has the problem that if the input has
+Comment * "A" in it, the output will be "aa".
+Comment * [Or, the above aa rule can be changed to:
+Comment * itrans: CC aa 1 ; PCC 65 0 0 ; but the basic problem remains: only
+Comment * one kind of ITRANS code can be output.]
+Comment * 
+Comment ===================================================================
+
+itrans: StartINDIAN
+itrans: TEXT_TTY roman
+itrans: HYPHENCHAR -1 ;
+itrans: Comment Created Jan 1998, Shree
+
+itrans: Comment The Vowels
+itrans: CC a 1 ; PCC 97 0 0 ;
+itrans: CC aa 1 ; PCC 65 0 0 ;
+itrans: CC i 1 ; PCC 105 0 0 ;
+itrans: CC ii 1 ; PCC 73 0 0 ;
+itrans: CC u 1 ; PCC 117 0 0 ;
+itrans: CC uu 1 ; PCC 85 0 0 ;
+itrans: Comment Vowels rii, li & lii not used...
+itrans: CC ri 3 ; PCC 82 0 0 ; PCC 94 0 0 ; PCC 105 0 0 ;
+itrans: CC rii 3 ; PCC 82 0 0 ; PCC 94 0 0 ; PCC 73 0 0 ;
+itrans: CC li 3 ; PCC 76 0 0 ; PCC 94 0 0 ; PCC 105 0 0 ;
+itrans: CC lii 3 ; PCC 76 0 0 ; PCC 94 0 0 ; PCC 73 0 0 ;
+itrans: CC ay 1 ; PCC 101 0 0 ;
+itrans: CC ai 2 ; PCC 97 0 0 ; PCC 105 0 0 ;
+itrans: CC o 1 ; PCC 111 0 0 ;
+itrans: CC au 2 ; PCC 97 0 0 ; PCC 117 0 0 ;
+itrans: CC am 1 ; PCC 77 0 0 ; 
+itrans: CC aha 1 ; PCC 72 0 0 ;
+
+itrans: CCADD tmpl ;
+itrans: CC tmpl-half 1 ; PCC implicit 0 0 ; 
+itrans: CC tmpl-conjunct 1 ; PCC implicit 0 0 ; 
+itrans: CC tmpl-a 2 ; PCC implicit 0 0 ; PCC 97 0 0 ;
+itrans: CC tmpl-aa 2 ; PCC implicit 0 0 ; PCC 65 0 0 ;
+itrans: CC tmpl-i 2 ; PCC implicit 0 0 ; PCC 105 0 0 ;
+itrans: CC tmpl-ii 2 ; PCC implicit 0 0 ; PCC 73 0 0 ;
+itrans: CC tmpl-u 2 ; PCC implicit 0 0 ; PCC 117 0 0 ;
+itrans: CC tmpl-uu 2 ; PCC implicit 0 0 ; PCC 85 0 0 ;
+itrans: CC tmpl-ri 4 ; PCC implicit 0 0 ; PCC 82 0 0 ; PCC 94 0 0 ; PCC 105 0 0 ;
+itrans: CC tmpl-rii 4 ; PCC implicit 0 0 ; PCC 82 0 0 ; PCC 94 0 0 ; PCC 73 0 0 ;
+itrans: CC tmpl-li 4 ; PCC implicit 0 0 ; PCC 76 0 0 ; PCC 94 0 0 ; PCC 105 0 0 ;
+itrans: CC tmpl-lii 4 ; PCC implicit 0 0 ; PCC 76 0 0 ; PCC 94 0 0 ; PCC 73 0 0 ;
+itrans: CC tmpl-ay 2 ; PCC implicit 0 0 ; PCC 101 0 0 ; 
+itrans: CC tmpl-ai 3 ; PCC implicit 0 0 ; PCC 97 0 0 ; PCC 105 0 0 ;
+itrans: CC tmpl-o 2 ; PCC implicit 0 0 ; PCC 111 0 0 ;
+itrans: CC tmpl-au 3 ; PCC implicit 0 0 ; PCC 97 0 0 ; PCC 117 0 0 ;
+itrans: CC tmpl-am 2 ; PCC implicit 0 0 ; PCC 77 0 0 ;
+itrans: CC tmpl-aha 2 ; PCC implicit 0 0 ; PCC 72 0 0 ;
+
+itrans: Comment Consonants
+
+itrans: CCS ka tmpl ;
+itrans: CC ka-implicit 1 ; PCC 107 0 0 ;
+
+itrans: CCS kha tmpl ;
+itrans: CC kha-implicit 2 ; PCC 107 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS ga tmpl ;
+itrans: CC ga-implicit 1 ; PCC 103 0 0 ;
+
+itrans: CCS gha tmpl ;
+itrans: CC gha-implicit 2 ; PCC 103 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS nga tmpl ;
+itrans: CC nga-implicit 2 ; PCC 126 0 0 ; PCC 78 0 0 ;
+
+itrans: CCS cha tmpl ;
+itrans: CC cha-implicit 2 ; PCC 99 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS chha tmpl ;
+itrans: CC chha-implicit 3 ; PCC 99 0 0 ; PCC 104 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS ja tmpl ;
+itrans: CC ja-implicit 1 ; PCC 106 0 0 ;
+
+itrans: CCS jha tmpl ;
+itrans: CC jha-implicit 2 ; PCC 106 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS jnh tmpl ;
+itrans: CC jnh-implicit 2 ; PCC 126 0 0 ; PCC 110 0 0 ;
+
+itrans: CCS tta tmpl ;
+itrans: CC tta-implicit 1 ; PCC 84  0 0 ;
+
+itrans: CCS ttha tmpl ;
+itrans: CC ttha-implicit 2 ; PCC 84  0 0 ; PCC 104 0 0 ;
+
+itrans: CCS dda tmpl ;
+itrans: CC dda-implicit 1 ; PCC 68  0 0 ;
+
+itrans: CCS ddadot tmpl ;
+itrans: CC ddadot-implicit 2 ; PCC 46 0 0 ; PCC 68  0 0 ;
+
+itrans: CCS ddha tmpl ;
+itrans: CC ddha-implicit 2 ; PCC 68  0 0 ; PCC 104 0 0 ;
+
+itrans: CCS ddhadot tmpl ;
+itrans: CC ddhadot-implicit 3 ; PCC 46 0 0 ; PCC 68  0 0 ; PCC 104 0 0 ;
+
+itrans: CCS nna tmpl ;
+itrans: CC nna-implicit 1 ; PCC 78 0 0 ;
+
+itrans: CCS ta tmpl ;
+itrans: CC ta-implicit 1 ; PCC 116 0 0 ;
+
+itrans: CCS tha tmpl ;
+itrans: CC tha-implicit 2 ; PCC 116 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS da tmpl ;
+itrans: CC da-implicit 1 ; PCC 100 0 0 ;
+
+itrans: CCS dha tmpl ;
+itrans: CC dha-implicit 2 ; PCC 100 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS na tmpl ;
+itrans: CC na-implicit 1 ; PCC 110 0 0 ;
+
+itrans: CCS pa tmpl ;
+itrans: CC pa-implicit 1 ; PCC 112 0 0 ;
+
+itrans: CCS pha tmpl ;
+itrans: CC pha-implicit 2 ; PCC 112 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS phadot pha ;
+itrans: CC phadot-implicit 1 ; PCC 102 0 0 ;
+
+itrans: CCS ba tmpl ;
+itrans: CC ba-implicit 1 ; PCC 98 0 0 ;
+
+itrans: CCS bha tmpl ;
+itrans: CC bha-implicit 2 ; PCC 98 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS ma tmpl ;
+itrans: CC ma-implicit 1 ; PCC 109 0 0 ;
+
+itrans: CCS ya tmpl ;
+itrans: CC ya-implicit 1 ; PCC 121 0 0 ;
+
+itrans: CCS ra tmpl ;
+itrans: CC ra-implicit 1 ; PCC 114 0 0 ;
+
+itrans: CCS la tmpl ;
+itrans: CC la-implicit 1 ; PCC 108 0 0 ;
+
+itrans: CCS va tmpl ;
+itrans: CC va-implicit 1 ; PCC 118 0 0 ;
+
+itrans: CCS jadot tmpl ;
+itrans: CC jadot-implicit 1 ; PCC 122 0 0 ;
+
+itrans: CCS lda tmpl ;
+itrans: CC lda-implicit 1 ; PCC 76 0 0 ;
+
+itrans: CCS sha tmpl ;
+itrans: CC sha-implicit 2 ; PCC 115 0 0 ; PCC 104 0 0 ;
+
+itrans: CCS shha tmpl ;
+itrans: CC shha-implicit 2 ; PCC 83  0 0 ; PCC 104 0 0 ;
+
+itrans: CCS sa tmpl ;
+itrans: CC sa-implicit 1 ; PCC 115 0 0 ;
+
+itrans: CCS ha tmpl ;
+itrans: CC ha-implicit 1 ; PCC 104 0 0 ;
+
+itrans: CCS lda tmpl ;
+itrans: CC lda-implicit 1 ; PCC 76 0 0 ;
+
+itrans: CCS ksha tmpl ;
+itrans: CC ksha-implicit 3 ; PCC 107 0 0; PCC 83  0 0 ; PCC 104 0 0 ;
+
+itrans: CCS gya ya ;
+itrans: CC gya-implicit 2 ; PCC 71 0 0 ; PCC 89 0 0 ;
+
+itrans: Comment Specials
+itrans: Comment .n / M / .m - using .m as matches CSX closely
+itrans: Comment ITRANS merges all anusvaars into 1 so can't keep distinction
+itrans: Comment CC anusvara-implicit 2 ; PCC 46 0 0 ; PCC 110 0 0 ;
+itrans: Comment CC anusvara-implicit 1 ; PCC 77 0 0 ; 
+itrans: CC anusvara-implicit 2 ; PCC 46 0 0 ; PCC 109 0 0 ;
+itrans: CC chandra-implicit 2 ; PCC 46 0 0 ; PCC 99 0 0 ;
+itrans: CC chandrabindu-implicit 2 ; PCC 46 0 0 ; PCC 78 0 0 ;
+itrans: CC aum-implicit 2 ; PCC 79 0 0 ; PCC 77 0 0 ; 
+itrans: CC avagraha-implicit 2 ; PCC 46 0 0 ; PCC 97 0 0 ;
+
+itrans: EndINDIAN

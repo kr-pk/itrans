@@ -1,0 +1,119 @@
+# Installation Instructions for the itrans package, version 5.3
+# Instructions For DOS/WIN95 Systems (NOT tested!)
+
+# *** Note: installing ITRANS, getting TeX and dvips to work, etc
+# takes a lot of effort. Instead of installing ITRANS yourself,
+# first see if the Online ITRANS at http://www.aczoom.com/itrans/
+# serves your need, in which case you don't need to install all this.
+
+---------------    Installing the Pre-Built Binary Archive ------------
+
+1: The pre-built binary for Win32 (Windows 95/NT or newer)
+   archive is in the main itransNN.zip archive (NN is the release number)
+
+   C:
+   CD \
+   UNZIP itransNN.zip
+
+   All done...
+   Package is in C:\ITRANS-5.3
+   Binary is C:\ITRANS-5.3\SRC\ITRANS.EXE
+
+---------------    Installing from the Source Archive ------------
+
+1: Unpack ITRANS, the main archive is itransNN.zip (NN is the release
+   number):
+
+   unzip itransNN.zip
+
+   It will unpack to a directory named
+
+	itrans-<version-number>
+
+   Unpack any of the other required archives in the same directory you
+   unpacked the main itransNN.zip archive:
+
+   [required]
+   unzip itransfn.zip		[contains the fonts]
+
+   [optional]
+   unzip itransht.zip		[contains the docs in HTML format]
+   unzip itransps.zip		[contains the docs in PostScript format]
+
+2: Install the *.exe
+   itrans.exe 	is a 32-bit executable, for Windows 95 or Windows NT 4.0
+
+   Use whichever is appropriate, copy the executable to some directory
+   in your PATH, or set the PATH environment variable to include
+   the ITRANS\src directory.
+
+   Setting environment variables is a topic that is covered in the
+   Windows documentation. In short, for DOS/Win95, the autoexec.bat
+   file has to be edited, and for WinNT 4.0, a Control Panel has to be
+   used.
+
+3: Set up the environment variables required.
+   See ITRANS/lib/SHENV for examples of all variables that need to be
+   set.
+
+*** If you intend to use itrans for directly producing HTML (Latin1 or
+   Unicode output or for producing PostScript output,  you are all set
+   at this point.
+   Assuming your input file is named ex_lat1.itx, the command to print
+   it would be:
+
+   % cd to the doc directory
+
+   C:\> itrans -v -i ex_lat1.itx -o ex_lat1.html
+   C:\> itrans -v -i ex_utf8.itx -o ex_utf8.html
+
+   To produce direct PostScript output:
+
+   C:\> itrans -v -P -i ex_ps.itx -o ex_ps.ps
+   C:\> cat ..\lib\fonts\devnac.ps ..\lib\itrans.pro ex_ps.ps | lp
+   % above assumes lp sends data to a PostScript printer
+   % Edit src/prips if you will be using the direct PostScript output mode
+   % of ITRANS often.
+
+*** To use the system with the TeX  language, you need to setup the files
+   and fonts so that TeX/LaTeX and dvips can locate them.
+   The following steps are an example of what needs to be done, but 
+   the better instructions will be found in the TeX package itself - the
+   two most popular packages are "emTeX" (for DOS or Windows 3.1), and
+   MikTeX (for Win95 or Win NT 4.0).
+
+4:
+   The files mentioned in this section all reside in the lib directory
+   of this itrans package.
+
+   First, set up dvips so it will pick up the additions to the system
+   psfonts.map file.
+   See ITRANS/lib/DVIPSRC for examples of how to do that.
+   Copy DVIPSRC to ~/.dvipsrc, edit as required.
+
+*** You are all set up now for both TeX/LaTeX and PostScript output
+   generation.
+
+5: Print out the document idoc.itx, it is the user's manual
+   for the "itrans" program.
+
+   NOTE: It takes a lot of work in terms of setting up your system
+   correctly for all the ITRANS fonts to work with LaTeX, dvips, and
+   ghostview. If you are unable to convert idoc.itx to idoc.ps, you may
+   just want to extract the
+   	itransps.zip
+   archive, it contains PostScript format document of all the ITRANS user
+   manuals. Or, you can extract HTML format document, to view with
+   Netscape, etc, from the archive:
+   	itransht.zip
+
+   idoc.itx contains transliterated hindi/tamil text, so it has to be
+   converted to a normal TeX file.
+   Run these commands:
+   C:> itrans -v -i idoc.itx -o idoc.tex
+   C:> latex idoc ; latex idoc
+   C:> dvips idoc | lp
+   # above assumes lp sends data to a PostScript printer
+
+   Do the same for the other reference manuals, as needed.
+

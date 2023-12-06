@@ -1,0 +1,773 @@
+
+
+\batchmode
+
+
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}%
+\providecommand{\SM}{\char35hindi}%
+\providecommand{\EM}{\char35endhindi} 
+\newfont{\devnf}{dnh at 15pt}
+
+\hyphenchar\devnf-1  % disable hyphenation using this font
+
+
+%
+% ---------------------------------------------------------
+% ITRANS 5.30 (29 July 2006) (TeX Interface)
+% Copyright 1991--2001 Avinash Chopde, All Rights Reserved.
+% ---------------------------------------------------------
+%
+\newbox\zErOdEpTh
+\def\kRn#1{{\kern#1em}}
+\def\sBs#1#2{{\setbox\zErOdEpTh=\hbox{\raise#1em\hbox{#2}}%
+\ht\zErOdEpTh=0pt\dp\zErOdEpTh=0pt\box\zErOdEpTh}}
+
+
+
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1724}%
+{\devnf %
+R\,}% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1725}%
+{\devnf %
+R\kRn{0.030}\sBs{-0.070}{{\char143}}\kRn{-0.030}{\char129}v\kRn{-0.070}{\char129}{\char132}d\,\istrut}% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1726}%
+{\devnf %
+R\kRn{-0.060}\sBs{-0.040}{{\char133}}\kRn{0.060}k{\char129}n\kRn{-0.070}{\char129}{\char129}F\kRn{-0.070}{\char129}\/}% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage82}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{{\devnf %
+a\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt a} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}{\char129} }% End of Indic Script text.
+}	& {\tt aa {\it or} A} \\\hline
+{{\devnf %
+i }% End of Indic Script text.
+}	& {\tt i} \\\hline
+{{\devnf %
+i\kRn{-0.040}{\char128}\kRn{0.040} }% End of Indic Script text.
+}	& {\tt ii {\it or} I} \\\hline
+{{\devnf %
+u }% End of Indic Script text.
+}	& {\tt u} \\\hline
+{{\devnf %
+U }% End of Indic Script text.
+}	& {\tt uu {\it or} U} \\\hline
+{{\devnf %
+{\char149} }% End of Indic Script text.
+}	& {\tt RRi {\it or} R\char`^i} \\\hline
+{{\devnf %
+e }% End of Indic Script text.
+}	& {\tt e} \\\hline
+{{\devnf %
+e{\char135} }% End of Indic Script text.
+}	& {\tt ai} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}{\char137} }% End of Indic Script text.
+}	& {\tt o} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}{\char138} }% End of Indic Script text.
+}	& {\tt au} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060} }% End of Indic Script text.
+}	& {\tt {\it a}M} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}{\char140} }% End of Indic Script text.
+}	& {\tt {\it a}H} \\\hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{{\devnf 0 }% End of Indic Script text.
+}	& {\tt0} \\\hline
+{{\devnf 1 }% End of Indic Script text.
+}	& {\tt 1} \\\hline
+{{\devnf 2 }% End of Indic Script text.
+}	& {\tt 2} \\\hline
+{{\devnf 3 }% End of Indic Script text.
+}	& {\tt 3} \\\hline
+{{\devnf 4 }% End of Indic Script text.
+}	& {\tt 4} \\\hline
+{{\devnf 5 }% End of Indic Script text.
+}	& {\tt 5} \\\hline
+{{\devnf 6 }% End of Indic Script text.
+}	& {\tt 6} \\\hline
+{{\devnf 7 }% End of Indic Script text.
+}	& {\tt 7} \\\hline
+{{\devnf 8 }% End of Indic Script text.
+}	& {\tt 8} \\\hline
+{{\devnf 9 }% End of Indic Script text.
+}	& {\tt 9} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage168}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{{\devnf %
+k  }% End of Indic Script text.
+}	& {\tt k{\it a}} \\\hline
+{{\devnf %
+K\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt kh{\it a}} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt g{\it a}} \\\hline
+{{\devnf %
+G\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt gh{\it a}} \\\hline
+{{\devnf %
+d\kRn{0.090}\sBs{-0.350}{{\char139}}\kRn{-0.090}\kRn{-0.030}{\char158}\kRn{-0.030}  }% End of Indic Script text.
+}	& {\tt\char`~N{\it a or} N\char`^{\it a}} \\\hline
+{{\devnf %
+c\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt ch{\it a}} \\\hline
+{{\devnf %
+C  }% End of Indic Script text.
+}	& {\tt chh{\it a}} \\\hline
+{{\devnf %
+j\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt j{\it a}} \\\hline
+{{\devnf %
+J\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt jh{\it a}} \\\hline
+{{\devnf %
+z\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt\char`~n{\it a or} JN{\it a}} \\\hline
+{{\devnf %
+t  }% End of Indic Script text.
+}	& {\tt T{\it a}} \\\hline
+{{\devnf %
+T  }% End of Indic Script text.
+}	& {\tt Th{\it a}} \\\hline
+{{\devnf %
+d  }% End of Indic Script text.
+}	& {\tt D{\it a}} \\\hline
+{{\devnf %
+D  }% End of Indic Script text.
+}	& {\tt Dh{\it a}} \\\hline
+{{\devnf %
+N\kRn{-0.030}{\char129}  }% End of Indic Script text.
+}	& {\tt N{\it a}} \\\hline
+{{\devnf %
+F\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt t{\it a}} \\\hline
+{{\devnf %
+H\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt th{\it a}} \\\hline
+{{\devnf %
+R  }% End of Indic Script text.
+}	& {\tt d{\it a}} \\\hline
+{{\devnf %
+V\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt dh{\it a}} \\\hline
+{{\devnf %
+n\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt n{\it a}} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt p{\it a}} \\\hline
+{{\devnf %
+P  }% End of Indic Script text.
+}	& {\tt ph{\it a}} \\\hline
+{{\devnf %
+b\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt b{\it a}} \\\hline
+{{\devnf %
+B\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt bh{\it a}} \\\hline
+{{\devnf %
+m\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt m{\it a}} \\\hline
+{{\devnf %
+y\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt y{\it a}} \\\hline
+{{\devnf %
+r  }% End of Indic Script text.
+}	& {\tt r{\it a}} \\\hline
+{{\devnf %
+l\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt l{\it a}} \\\hline
+{{\devnf %
+v\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt v{\it a or} w{\it a}} \\\hline
+{{\devnf %
+S\kRn{-0.030}{\char129}  }% End of Indic Script text.
+}	& {\tt sh{\it a}} \\\hline
+{{\devnf %
+X\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt Sh{\it a or} shh{\it a}} \\\hline
+{{\devnf %
+s\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt s{\it a}} \\\hline
+{{\devnf %
+h  }% End of Indic Script text.
+}	& {\tt h{\it a}} \\\hline
+{{\devnf %
+L  }% End of Indic Script text.
+}	& {\tt ld{\it a or} L{\it a}} \\\hline
+{{\devnf %
+x\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt kSh{\it a or} x{\it a}} \\\hline
+{{\devnf %
+Z\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt j\char`~n{\it a or} GY{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage291}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{{\devnf %
+k\kRn{-0.090}{\char171}\kRn{0.090}  }% End of Indic Script text.
+}	& {\tt q{\it a}} \\\hline
+{{\devnf %
+K\kRn{0.200}\sBs{-0.080}{{\char171}}\kRn{-0.200}\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt K{\it a}} \\\hline
+{{\devnf %
+g\kRn{0.320}\sBs{0.060}{{\char171}}\kRn{-0.320}\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt G{\it a}} \\\hline
+{{\devnf %
+j\kRn{0.310}{\char171}\kRn{-0.310}\kRn{-0.070}{\char129}  }% End of Indic Script text.
+}	& {\tt J{\it a or} z{\it a}} \\\hline
+{{\devnf %
+P\kRn{-0.040}\sBs{0.050}{{\char171}}\kRn{0.040}  }% End of Indic Script text.
+}	& {\tt f{\it a}} \\\hline
+{{\devnf %
+d\kRn{0.200}\sBs{-0.090}{{\char171}}\kRn{-0.200}  }% End of Indic Script text.
+}	& {\tt .D{\it a}} \\\hline
+{{\devnf %
+D\kRn{0.200}\sBs{-0.090}{{\char171}}\kRn{-0.200}  }% End of Indic Script text.
+}	& {\tt .Dh{\it a}} \\\hline
+{{\devnf %
+{\char144} }% End of Indic Script text.
+}	& {\tt AUM} or {\tt OM} \\\hline
+{{\devnf %
+{\char150}{\char158}\kRn{-0.040}g\kRn{-0.070}{\char129} }% End of Indic Script text.
+} & {\tt R{\it ga}} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}{\char128} }% End of Indic Script text.
+} & {\tt rga {\it or} {\it ga}\char`^r} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060} }% End of Indic Script text.
+} & {\tt {\it ga}.n} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}{\char129}{\char142} }% End of Indic Script text.
+} & {\tt {\it aa}.c} \\\hline
+{{\devnf %
+d{\char141} }% End of Indic Script text.
+} & {\tt {\it Da}.N} \\\hline
+{{\devnf %
+d{\char161} }% End of Indic Script text.
+} & {\tt {\it D}.h} \\\hline
+{{\devnf %
+R\kRn{-0.060}\sBs{-0.040}{{\char133}}\kRn{0.060}{\char140} }% End of Indic Script text.
+} & {\tt {\it du}H} \\\hline
+{{\devnf %
+{\char175} }% End of Indic Script text.
+} & {\tt .a} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage358}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Sample Letters} \\
+\hline
+{{\devnf %
+k %
+k{\char129} %
+{\char131}k %
+k{\char155} %
+k\kRn{-0.160}{\char133}\kRn{0.160} %
+k\kRn{-0.200}{\char134}\kRn{0.200} }% End of Indic Script text.
+}
+& {\tt ka kaa ki kii ku kuu} \\\hline
+{{\devnf %
+s\kRn{-0.070}{\char129}{\char161} %
+s\kRn{-0.070}{\char129} %
+s\kRn{-0.070}{\char129}{\char129} %
+{\char154}s\kRn{-0.070}{\char129} %
+s\kRn{-0.070}{\char129}{\char132} %
+s\kRn{-0.070}{\char129}{\char133} %
+s\kRn{-0.070}{\char129}{\char134} }% End of Indic Script text.
+}
+& {\tt s.h sa saa si sii su suu} \\\hline
+{{\devnf %
+K\kRn{-0.070}{\char129}\kRn{-0.020}{\char153}\kRn{0.020} %
+K\kRn{-0.070}{\char129}{\char135} %
+K\kRn{-0.070}{\char129}{\char136} %
+K\kRn{-0.070}{\char129}\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060} %
+K\kRn{-0.070}{\char129}{\char140} %
+K\kRn{-0.070}{\char129}{\char142} %
+K\kRn{-0.070}{\char129}{\char141} }% End of Indic Script text.
+}
+& {\tt khRRi khe khai khaM khaH kha.c kha.N} \\\hline
+{{\devnf %
+d\kRn{-0.040}{\char135}\kRn{0.040} %
+d\kRn{-0.040}{\char136}\kRn{0.040} %
+d\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060} %
+d{\char140} %
+d{\char142} %
+d{\char141} }% End of Indic Script text.
+}
+& {\tt De Dai DaM DaH Da.c Da.N} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage384}%
+\begin{tabular}{|c|c|}
+\hline
+{{\devnf %
+B\kRn{-0.070}{\char129}{\char129}g\kRn{-0.070}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+} & {\tt bhaagya} \\\hline
+{{\devnf %
+r{\char129}j\kRn{-0.070}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt raajya} \\\hline
+{{\devnf %
+{\char131}v\kRn{-0.070}{\char129}{\char152}\kRn{-0.070}{\char129}{\char129} }% End of Indic Script text.
+}	& {\tt vidyaa} \\\hline
+{{\devnf %
+{\char154}S\kRn{-0.030}{\char129}X\kRn{-0.070}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt shishhya} \\\hline
+{{\devnf %
+m\kRn{-0.070}{\char129}{\char133}K\kRn{-0.070}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt mukhya} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}{\char129}{\char184}{\char129} }% End of Indic Script text.
+}	& {\tt gaaDyaa} \\\hline
+{{\devnf %
+F\kRn{-0.070}y\kRn{-0.070}{\char129}{\char129}g\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt tyaag} \\\hline
+{{\devnf %
+V\kRn{-0.070}y\kRn{-0.070}{\char129}{\char129}n\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt dhyaan} \\\hline
+{{\devnf %
+n\kRn{-0.070}y\kRn{-0.070}{\char129}{\char129}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt nyaay} \\\hline
+{{\devnf %
+S\kRn{-0.030}y\kRn{-0.070}{\char129}{\char129}m\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt shyaam} \\\hline
+{{\devnf %
+j\kRn{-0.070}y\kRn{-0.070}{\char129}{\char137}F\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt jyot} \\\hline
+{{\devnf %
+m\kRn{-0.070}{\char129}n\kRn{-0.070}{\char129}{\char133}X\kRn{-0.070}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt manushhy} \\\hline
+{{\devnf %
+c\kRn{-0.070}{\char129}{\char129}\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060}RN\kRn{-0.030}y\kRn{-0.070}{\char129}{\char129} }% End of Indic Script text.
+} & {\tt chaa.ndaNyaa} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}B\kRn{-0.070}y\kRn{-0.070}{\char129}{\char129}s\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt abhyaas} \\\hline
+{{\devnf %
+kl\kRn{-0.070}y\kRn{-0.070}{\char129}{\char129}N\kRn{-0.030}{\char129} }% End of Indic Script text.
+}	& {\tt kalyaaN} \\\hline
+{{\devnf %
+G\kRn{-0.070}{\char129}{\char184}{\char129}L }% End of Indic Script text.
+}	& {\tt ghaDyaald} \\\hline
+{{\devnf %
+kc\kRn{-0.070}c\kRn{-0.070}{\char129}{\char129} }% End of Indic Script text.
+}	& {\tt kachchaa} \\\hline
+{{\devnf %
+K\kRn{-0.070}{\char129}d{\char161}d{\char129} }% End of Indic Script text.
+}	& {\tt khaD.hDaa} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}T{\char161}T{\char129} }% End of Indic Script text.
+}	& {\tt gaTh.hThaa} \\\hline
+{{\devnf %
+V\kRn{-0.070}{\char129}{\char160}k{\char129} }% End of Indic Script text.
+}	& {\tt dhakkaa} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}{\char167}\kRn{-0.070}{\char129}{\char129} }% End of Indic Script text.
+}	& {\tt pattaa} \\\hline
+{{\devnf %
+{\char131}F\kRn{-0.070}{\char129}p\kRn{-0.070}p\kRn{-0.070}{\char129}F\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt tippat} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}{\char159}\kRn{-0.070}{\char129}{\char129}s\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt pannaas} \\\hline
+{{\devnf %
+s\kRn{-0.070}{\char129}j\kRn{-0.070}j\kRn{-0.070}{\char129}n\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt sajjan} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}{\char133}s\kRn{-0.070}F\kRn{-0.070}{\char129}k }% End of Indic Script text.
+}	& {\tt pustak} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage464}%
+\begin{tabular}{|c|c|}
+\hline
+{{\devnf %
+ks\kRn{-0.070}F\kRn{-0.070}{\char129}{\char133}r{\char132} }% End of Indic Script text.
+}	& {\tt kasturii} \\\hline
+{{\devnf %
+n\kRn{-0.070}{\char129}{\char129}{\char131}s\kRn{-0.070}F\kRn{-0.070}{\char129}k }% End of Indic Script text.
+}	& {\tt naastik} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}{\char143}{\char129}{\char194} }% End of Indic Script text.
+}	& {\tt praapt} \\\hline
+{{\devnf %
+s\kRn{-0.070}v\kRn{-0.070}{\char129}F\kRn{-0.070}{\char129}\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060}{\char145}\kRn{-0.070}{\char129} }% End of Indic Script text.
+} & {\tt swata.ntr} \\\hline
+{{\devnf %
+s\kRn{-0.070}v\kRn{-0.070}{\char129}{\char129}F\kRn{-0.070}{\char129}\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060}{\char145}\kRn{-0.070}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+} & {\tt svaata.ntrya} \\\hline
+{{\devnf %
+V\kRn{-0.070}v\kRn{-0.070}{\char129}n\kRn{-0.070}{\char129}{\char132} }% End of Indic Script text.
+}	& {\tt dhvanii} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}{\char137}{\char201} }% End of Indic Script text.
+}	& {\tt goshhT} \\\hline
+{{\devnf %
+y\kRn{-0.070}{\char129}{\char133}R{\char161}V\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt yud.hdh} \\\hline
+{{\devnf %
+y\kRn{-0.070}{\char129}{\char133}{\char148} }% End of Indic Script text.
+}	& {\tt yuddh} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}{\char154}{\char208}\kRn{-0.070}{\char129}m\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt pashchim} \\\hline
+{{\devnf %
+P{\char186} }% End of Indic Script text.
+}	& {\tt phakt} \\\hline
+{{\devnf %
+F\kRn{-0.070}{\char129}h{\char129}{\char128} }% End of Indic Script text.
+}	& {\tt tarhaa} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}H\kRn{-0.070}{\char129}{\char128} }% End of Indic Script text.
+}	& {\tt arth} \\\hline
+{{\devnf %
+kF\kRn{-0.070}{\char129}{\char129}{\char128} }% End of Indic Script text.
+}	& {\tt kartaa} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}R{\char132}\kRn{0.050}{\char128}\kRn{-0.050} }% End of Indic Script text.
+}	& {\tt gardii} \\\hline
+{{\devnf %
+{\char154}n\kRn{-0.070}{\char129}N\kRn{-0.030}{\char129}{\char128}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt nirNay} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}{\char145}\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt patr} \\\hline
+{{\devnf %
+{\char131}{\char145}\kRn{-0.070}{\char129}k{\char137}N\kRn{-0.030}{\char129} }% End of Indic Script text.
+}	& {\tt trikoN} \\\hline
+{{\devnf %
+{\char146}\kRn{-0.070}{\char129}{\char129}v\kRn{-0.070}{\char129}N\kRn{-0.030}{\char129} }% End of Indic Script text.
+}	& {\tt shraavaN} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}{\char129}{\char146}\kRn{-0.070}{\char129}m\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt aashram} \\\hline
+{{\devnf %
+S\kRn{-0.030}{\char129}{\char133}{\char146}\kRn{-0.070}{\char129}{\char134}X\kRn{-0.070}{\char129}{\char129} }% End of Indic Script text.
+} & {\tt shushruushhaa} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}{\char176}\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060}H\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt gra.nth} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}{\char143}j\kRn{-0.070}{\char129}{\char129} }% End of Indic Script text.
+}	& {\tt prajaa} \\\hline
+{{\devnf %
+R\kRn{0.030}\sBs{-0.070}{{\char143}}\kRn{-0.030}{\char129}x\kRn{-0.070}{\char129}{\char135} }% End of Indic Script text.
+}	& {\tt draakShe} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}\kRn{-0.020}{\char153}\kRn{0.020}hs\kRn{-0.070}H\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt gRRihasth} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}{\char143}k\kRn{-0.220}{\char153}\kRn{0.220}F\kRn{-0.070}{\char129}{\char132} }% End of Indic Script text.
+}	& {\tt prakR\char`^itii} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage553}%
+\begin{tabular}{|c|c|}
+\hline
+{{\devnf %
+n\kRn{-0.070}{\char129}{\char136}{\char149}\kRn{-0.250}{\char128}\kRn{0.250}F\kRn{-0.070}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+} & {\tt nairR\char`^itya} \\\hline
+{{\devnf %
+S\kRn{-0.030}{\char129}{\char133}B\kRn{-0.070}{\char129}{\char143} }% End of Indic Script text.
+}	& {\tt shubhr} \\\hline
+{{\devnf %
+s\kRn{-0.070}{\char129}hs\kRn{-0.070}{\char145}\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt sahastr} \\\hline
+{{\devnf %
+k\kRn{-0.140}{\char143}\kRn{0.140}{\char155}d{\char129} }% End of Indic Script text.
+}	& {\tt kriiDaa} \\\hline
+{{\devnf %
+s\kRn{-0.070}v\kRn{-0.070}{\char129}c\kRn{-0.070}C }% End of Indic Script text.
+}	& {\tt svachchh} \\\hline
+{{\devnf %
+s\kRn{-0.070}v\kRn{-0.070}{\char129}r{\char157}p\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt svaruup} \\\hline
+{{\devnf %
+t{\char165}k }% End of Indic Script text.
+}	& {\tt Trak} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}{\char129}m\kRn{-0.070}h{\char132} }% End of Indic Script text.
+}	& {\tt aamhii} \\\hline
+{{\devnf %
+c\kRn{-0.070}{\char129}F\kRn{-0.070}{\char129}{\char133}H\kRn{-0.070}{\char129}{\char132}\kRn{0.050}{\char128}\kRn{-0.050} }% End of Indic Script text.
+} & {\tt chaturthii} \\\hline
+{{\devnf %
+{\char149}F\kRn{-0.070}{\char129}{\char134} }% End of Indic Script text.
+}	& {\tt RRituu} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}{\char129}{\char142}{\char186}{\char137}b\kRn{-0.070}{\char129}r }% End of Indic Script text.
+} & {\tt aa.cktobar} \\\hline
+{{\devnf %
+n\kRn{-0.070}{\char129}{\char137}v\kRn{-0.070}h\kRn{-0.040}{\char135}\kRn{0.040}\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060}b\kRn{-0.070}{\char129}r }% End of Indic Script text.
+} & {\tt novhe.nbar} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}{\char176}{\char142}m\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt gra.cm} \\\hline
+{{\devnf %
+U{\char141}c\kRn{-0.070}{\char129}{\char129} }% End of Indic Script text.
+}	& {\tt uu.Nchaa} \\\hline
+{{\devnf %
+b\kRn{-0.070}{\char129}{\char136}l\kRn{-0.070}{\char129}g\kRn{-0.070}{\char129}{\char129}d{\char132} }% End of Indic Script text.
+} & {\tt bailagaaDii} \\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}{\char133}r{\char156}R{\char161}v\kRn{-0.070}{\char129}{\char129}r{\char129} }% End of Indic Script text.
+} & {\tt gurud.hvaaraa}\\\hline
+{{\devnf %
+g\kRn{-0.070}{\char129}{\char133}r{\char156}{\char166}{\char129}r{\char129} }% End of Indic Script text.
+} & {\tt gurudvaaraa}\\\hline
+{{\devnf %
+{\char154}n\kRn{-0.070}{\char129}r{\char129}{\char164}y\kRn{-0.070}{\char129}{\char129} }% End of Indic Script text.
+} & {\tt niraaldyaa} \\\hline
+{{\devnf %
+Z\kRn{-0.070}{\char129}{\char129}n\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt GYaan} \\\hline
+{{\devnf %
+m\kRn{-0.070}{\char129}{\char135}k{\char142}{\char154}n\kRn{-0.070}{\char129}k }% End of Indic Script text.
+} & {\tt meka.cnik} \\\hline
+{{\devnf %
+m\kRn{-0.070}h\kRn{-0.040}{\char136}\kRn{0.040}s\kRn{-0.070}{\char129} }% End of Indic Script text.
+}	& {\tt mhais} \\\hline
+{{\devnf %
+R\kRn{-0.040}{\char135}\kRn{0.040}N\kRn{-0.030}{\char129}{\char129}y\kRn{-0.070}{\char129}{\char129}{\char128} }% End of Indic Script text.
+}	& {\tt deNaaryaa} \\\hline
+{{\devnf %
+p\kRn{-0.070}{\char129}{\char143}{\char131}F\kRn{-0.070}{\char129}{\char202}{\char129} }% End of Indic Script text.
+} & {\tt pratishhThaa} \\\hline
+{{\devnf %
+i{\char131}F\kRn{-0.070}{\char129}h{\char129}s\kRn{-0.070}{\char129} }% End of Indic Script text.
+} & {\tt itihaas} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}{\char129}s\kRn{-0.070}H\kRn{-0.070}{\char129}{\char129}b\kRn{-0.070}{\char129}{\char148} }% End of Indic Script text.
+} & {\tt aasthaabaddh} \\\hline
+{{\devnf %
+a\kRn{-0.070}{\char129}\kRn{0.060}\sBs{-0.060}{{\char139}}\kRn{-0.060}F\kRn{-0.070}{\char129}r{\char129}{\char128}X\kRn{-0.070}t{\char165}{\char132}y\kRn{-0.070}{\char129} }% End of Indic Script text.
+} & {\tt a.ntarraashhTriiy} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+
+\end{document}

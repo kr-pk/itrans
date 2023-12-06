@@ -1,0 +1,1318 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CS/CSX Encoding User Doc for ITRANS (Version 4.00 and above)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latex2html
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\arraystretch}{1.50}	% make table cells taller
+\portraitpage		% from itrans.sty/idevn.tex (also: \landscapepage)
+\parindent=6pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -- devanagari - devnag
+
+#hindiifm=dvng.ifm	% ITRANS command
+#hindifont=\fransdvng	% ITRANS command: argument specifies use of
+			% Frans's font, fransdvng is a command defined
+			% in idevn.tex (itrans.sty loads this)
+
+% -- devanagari - devnac
+
+#marathiifm=dvnc.ifm
+#marathifont=\postdvng
+
+%begin{latexonly}
+\let\usedvng=\largedvng	% use large (not normaldvng), applies to both dvnc/dvng
+%end{latexonly}
+
+% -- telugu
+
+\newfont{\tlg}{tel18}
+\hyphenchar\tlg=-1	% disable hyphenation using this font
+
+#teluguifm=tlgutx.ifm
+#telugufont=\tlg
+
+% -- bengali - bwti
+
+\newfont{\bnr}{bnr10 at 12pt}
+\hyphenchar\bnr=-1 % disable hyphenation using this font
+
+#bengaliifm=bnbeng.ifm
+#bengalifont=\bnr
+
+% -- bengali - itxbeng
+
+\newfont{\itxbengf}{itxbeng at 14pt}
+\hyphenchar\itxbengf=-1 % disable hyphenation using this font
+
+#indianifm=itxbeng.ifm
+#indianfont=\itxbengf
+
+% -- gujarati
+% \newfont{\itxgujf}{itxguj at 17pt}
+\newfont{\itxgujf}{itxgujre at 17pt} % the scaled up (x-axis) version
+\hyphenchar\itxgujf=-1 % disable hyphenation using this font
+
+#gujaratiifm=itxguj.ifm
+#gujaratifont=\itxgujf
+
+% -- kannada
+
+\newfont{\kan}{kan18}
+\hyphenchar\kan=-1 % disable hyphenation using this font
+
+#kannadaifm=kantex.ifm
+#kannadafont=\kan
+
+% -- punjabi
+
+\newfont{\pun}{pun at 14pt}
+
+#gurmukhiifm=pun.ifm
+#gurmukhifont=\pun
+
+% -- romanized sanskrit
+
+\newfont{\csroman}{ncprcsxp at 10pt}
+
+#romanifm=romancsx.ifm
+#romanfont=\csroman
+
+% -- tamil
+
+\newfont{\tmlb}{wntml12 at 14pt}
+\hyphenchar\tmlb=-1 % disable hyphenation using this font
+
+#tamilifm=wntml.ifm
+#tamilfont=\tmlb
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% font for the name of the letter (A, AA, etc)
+\newcommand{\namfont}{\rm\fontsize{6pt}{30pt}\selectfont}
+
+% for for the ITRANS encoding (a, aa, etc)
+\newcommand{\itxfont}{\rm\fontsize{11pt}{30pt}\selectfont}
+
+% undefined letters will be shown as:
+\newcommand{\undeflet}{\rm --}
+
+% put headings in \thd to make each col same width (can't use \kill in tabular)
+\newcommand{\thd}[1]{\makebox[25pt]{\hfill{#1}\hfill}}
+% note: latex2html will not work unless I keep spaces or {} around #1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\footnotetext[0]{Last modification: \today}
+
+\begin{center}
+{\large\bf ITRANS Encoding} \\
+\medskip
+{All languages and all fonts supported by ITRANS} \\
+\medskip
+{\bf itrans} \\
+\smallskip
+{\bf \copyright 1994--1998 Avinash Chopde} \\
+\htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com} \\
+\htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+\end{center}
+
+\section*{ITRANS Encoding Tables}
+
+The tables in this document display all the basic vowels and consonants
+and extensions accepted by ITRANS for various languages and various
+fonts.
+
+\subsection*{Table Legend}
+
+In the following tables, each row represents one Indic character, and
+each column represents one font of a language that ITRANS supports.
+Each column heading is abbreviated, and here's what those abbreviations
+mean:
+
+{\em name} is the generally accepted name of the character.
+
+{\em itrans} is the ITRANS encoding of the character. Note that ITRANS
+accepts multiple encodings for a few characters, refer to the respective
+ITRANS font/language manual to get a complete picture of the ITRANS
+encoding for that language.
+
+{\em dev-1} refers to ITRANS output using Fran Velthuis's Devnag font,
+complete documentation is available in {\tt dvng.itx}. 
+Sandeep Sibal's Xdvng font is based on Devnag, and Xdvng is also documented
+in {\tt dvng.itx}.
+
+{\em dev-2} refers to ITRANS output using Avinash Chopde's Devnac font,
+complete documentation is available in {\tt dvnc.itx}.
+
+{\em ben-1} refers to ITRANS output using Shrikrishna Patil's ItxBeng font,
+complete documentation is available in {\tt beng.itx}.
+
+{\em ben-2} refers to ITRANS output using Abhijit Das's bwti font (ITRANS
+support added by Jaijeet Roychowdhury), 
+complete documentation is available in {\tt beng.itx}.
+
+{\em guj} refers to ITRANS output using Shrikrishna Patil's ItxGuj font
+complete documentation is available in {\tt gujdoc.itx}.
+
+{\em kan} refers to ITRANS output using the Kannada font from the
+KanTeX package (ITRANS support added by Raghunath K. Rao),
+complete documentation is available in {\tt kantex.itx}.
+
+{\em tel} refers to ITRANS output using the Telugu font from the
+TeluguTeX package,
+complete documentation is available in {\tt tlgutx.itx}.
+
+{\em gur} refers to ITRANS output using Hardip Singh Pannu's Punjabi font
+(ITRANS support added by Anshuman Pandey),
+complete documentation is available in {\tt pundoc.itx}.
+
+{\em tam} refers to ITRANS output using The Washington Tamil font,
+complete documentation is available in {\tt tamil.itx}.
+
+{\em rom} refers to ITRANS output using John Smith's NCS\_CSX font,
+complete documentation is available in {\tt romancsx.itx}. ITRANS also
+accepts CS/CSX as input, so this column can be used 
+for both ITRANS output and for ITRANS input. The ITRANS input using
+CS/CSX is explained in {\tt icsx.itx}.
+
+\subsection*{\TeX, PostScript, and HTML Output}
+
+The \TeX{} mode of ITRANS supports all the languages and the fonts shown.
+
+The Direct PostScript mode of ITRANS is supported by {\em dev-2}, {\em
+guj}, {\em ben-2}, {\em guj}, and {\em rom} fonts only.
+
+The Direct HTML
+output mode of ITRANS is supported by {\em dev-1 (Xdvng)}, {\em ben-2},
+{\em guj}, and {\em rom} fonts only.
+
+\subsection*{Undefined characters}
+
+Not all languages (or fonts) have all the possible characters.
+Where a particular character (vowel, consonant, or extension) is not
+present, the en-dash (--) is indicates the absence of the character.
+Some of the undefined characters may actually be easy to construct based
+on other glyphs present in the particular font, in which case, it would
+be trivial to add such a definition to the IFM file and thus provide a
+definition for that character. This is work-to-be-done, and I'm hoping
+interested readers will take the initiative to send me e-mail with
+possible ways of defining the currently undefined spaces in the tables.
+
+% \subsection*{Author}
+% \noindent
+% ITRANS has been developed by Avinash Chopde. \\
+% E-mail:
+% \htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com}. \\
+% Home page:
+% \htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+
+% \vfill
+
+\bigskip
+
+\hrule
+
+% \bigskip
+\vfill
+
+%----------------------------------------------------------------
+\begin{htmlonly}
+\section{The Vowels}
+\end{htmlonly}
+
+\begin{table}[ht]
+\caption {ITRANS Encoding, Vowels.}
+\label{ienc-vowels}
+\begin{center}
+\begin{makeimage}
+\hspace*{0pt}\begin{tabular}{|c|c||c|c|c|c|c|c|c|c|c|c|}
+\hline
+\thd{name} & \thd{itrans} & \thd{dev-1} & \thd{dev-2} & \thd{ben-1} & \thd{ben-2} & \thd{guj} & \thd{kan} & \thd{tel} & \thd{gur} & \thd{tam} & \thd{rom} \\
+\hline
+\hline
+    \namfont A &
+    \itxfont a &
+    #hindi a #endhindi &
+    #marathi a #endmarathi &
+    #bengali a #endbengali &
+    #indian a #endindian &
+    #gujarati a #endgujarati &
+    #kannada a #endkannada &
+    #telugu a #endtelugu &
+    #gurmukhi a #endgurmukhi &
+    #tamil a #endtamil &
+    #roman a #endroman
+\\ \hline
+    \namfont AA &
+    \itxfont aa &
+    #hindi aa #endhindi &
+    #marathi aa #endmarathi &
+    #bengali aa #endbengali &
+    #indian aa #endindian &
+    #gujarati aa #endgujarati &
+    #kannada aa #endkannada &
+    #telugu aa #endtelugu &
+    #gurmukhi aa #endgurmukhi &
+    #tamil aa #endtamil &
+    #roman aa #endroman
+\\ \hline
+    \namfont I &
+    \itxfont i &
+    #hindi i #endhindi &
+    #marathi i #endmarathi &
+    #bengali i #endbengali &
+    #indian i #endindian &
+    #gujarati i #endgujarati &
+    #kannada i #endkannada &
+    #telugu i #endtelugu &
+    #gurmukhi i #endgurmukhi &
+    #tamil i #endtamil &
+    #roman i #endroman
+\\ \hline
+    \namfont II &
+    \itxfont ii &
+    #hindi ii #endhindi &
+    #marathi ii #endmarathi &
+    #bengali ii #endbengali &
+    #indian ii #endindian &
+    #gujarati ii #endgujarati &
+    #kannada ii #endkannada &
+    #telugu ii #endtelugu &
+    #gurmukhi ii #endgurmukhi &
+    #tamil ii #endtamil &
+    #roman ii #endroman
+\\ \hline
+    \namfont U &
+    \itxfont u &
+    #hindi u #endhindi &
+    #marathi u #endmarathi &
+    #bengali u #endbengali &
+    #indian u #endindian &
+    #gujarati u #endgujarati &
+    #kannada u #endkannada &
+    #telugu u #endtelugu &
+    #gurmukhi u #endgurmukhi &
+    #tamil u #endtamil &
+    #roman u #endroman
+\\ \hline
+    \namfont UU &
+    \itxfont uu &
+    #hindi uu #endhindi &
+    #marathi uu #endmarathi &
+    #bengali uu #endbengali &
+    #indian uu #endindian &
+    #gujarati uu #endgujarati &
+    #kannada uu #endkannada &
+    #telugu uu #endtelugu &
+    #gurmukhi uu #endgurmukhi &
+    #tamil uu #endtamil &
+    #roman uu #endroman
+\\ \hline
+    \namfont V. R &
+    \itxfont RRi &
+    #hindi RRi #endhindi &
+    #marathi RRi #endmarathi &
+    #bengali RRi #endbengali &
+    #indian RRi #endindian &
+    #gujarati RRi #endgujarati &
+    #kannada RRi #endkannada &
+    #telugu RRi #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil RRi #endtamil &
+    #roman RRi #endroman
+\\ \hline
+    \namfont V. RR &
+    \itxfont RRI &
+    #hindi RRI #endhindi &
+    #marathi \undeflet #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian RRI #endindian &
+    #gujarati \undeflet #endgujarati &
+    #kannada RRI #endkannada &
+    #telugu RRI #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman RRI #endroman
+\\ \hline
+    \namfont V. L &
+    \itxfont LLi &
+    #hindi LLi #endhindi &
+    #marathi \undeflet #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati \undeflet #endgujarati &
+    #kannada LLi #endkannada &
+    #telugu LLi #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman LLi #endroman
+\\ \hline
+    \namfont V. LL &
+    \itxfont LLI &
+    #hindi LLI #endhindi &
+    #marathi \undeflet #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati \undeflet #endgujarati &
+    #kannada LLI #endkannada &
+    #telugu LLI #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman LLI #endroman
+\\ \hline
+    \namfont E &
+    \itxfont e &
+    #hindi e #endhindi &
+    #marathi e #endmarathi &
+    #bengali e #endbengali &
+    #indian e #endindian &
+    #gujarati e #endgujarati &
+    #kannada e #endkannada &
+    #telugu e #endtelugu &
+    #gurmukhi e #endgurmukhi &
+    #tamil e #endtamil &
+    #roman e #endroman
+\\ \hline
+    \namfont EE &
+    \itxfont E &
+    #hindi \undeflet #endhindi &
+    #marathi \undeflet #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati \undeflet #endgujarati &
+    #kannada E #endkannada &
+    #telugu E #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil E #endtamil &
+    #roman E #endroman
+\\ \hline
+    \namfont AI &
+    \itxfont ai &
+    #hindi ai #endhindi &
+    #marathi ai #endmarathi &
+    #bengali ai #endbengali &
+    #indian ai #endindian &
+    #gujarati ai #endgujarati &
+    #kannada ai #endkannada &
+    #telugu ai #endtelugu &
+    #gurmukhi ai #endgurmukhi &
+    #tamil ai #endtamil &
+    #roman ai #endroman
+\\ \hline
+    \namfont O &
+    \itxfont o &
+    #hindi o #endhindi &
+    #marathi o #endmarathi &
+    #bengali o #endbengali &
+    #indian o #endindian &
+    #gujarati o #endgujarati &
+    #kannada o #endkannada &
+    #telugu o #endtelugu &
+    #gurmukhi o #endgurmukhi &
+    #tamil o #endtamil &
+    #roman o #endroman
+\\ \hline
+    \namfont OO &
+    \itxfont O &
+    #hindi \undeflet #endhindi &
+    #marathi \undeflet #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati \undeflet #endgujarati &
+    #kannada O #endkannada &
+    #telugu O #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil O #endtamil &
+    #roman O #endroman
+\\ \hline
+    \namfont AU &
+    \itxfont au &
+    #hindi au #endhindi &
+    #marathi au #endmarathi &
+    #bengali au #endbengali &
+    #indian au #endindian &
+    #gujarati au #endgujarati &
+    #kannada au #endkannada &
+    #telugu au #endtelugu &
+    #gurmukhi au #endgurmukhi &
+    #tamil au #endtamil &
+    #roman au #endroman
+\\ \hline
+    \namfont VISARGA &
+    \itxfont aH &
+    #hindi H #endhindi &
+    #marathi H #endmarathi &
+    #bengali H #endbengali &
+    #indian H #endindian &
+    #gujarati H #endgujarati &
+    #kannada H #endkannada &
+    #telugu H #endtelugu &
+    #gurmukhi H #endgurmukhi &
+    #tamil H #endtamil &
+    #roman H #endroman
+\\ \hline
+\end{tabular}
+\end{makeimage}
+\end{center}
+\vspace*{-30pt} % vspace works, \enlargethispage{30pt} does not.
+\end{table}
+
+%----------------------------------------------------------------
+\begin{htmlonly}
+\section{Consonants}
+\end{htmlonly}
+
+\begin{table}[ht]
+\caption {ITRANS Encoding, Consonants (part 1).}
+\label{ienc-cons-1}
+\begin{center}
+\begin{makeimage}
+\hspace*{0pt}\begin{tabular}{|c|c||c|c|c|c|c|c|c|c|c|c|}
+\hline
+\thd{name} & \thd{itrans} & \thd{dev-1} & \thd{dev-2} & \thd{ben-1} & \thd{ben-2} & \thd{guj} & \thd{kan} & \thd{tel} & \thd{gur} & \thd{tam} & \thd{rom} \\
+\hline
+\hline
+    \namfont KA &
+    \itxfont k{\em a} &
+    #hindi ka #endhindi &
+    #marathi ka #endmarathi &
+    #bengali ka #endbengali &
+    #indian ka #endindian &
+    #gujarati ka #endgujarati &
+    #kannada ka #endkannada &
+    #telugu ka #endtelugu &
+    #gurmukhi ka #endgurmukhi &
+    #tamil ka #endtamil &
+    #roman ka #endroman
+\\ \hline
+    \namfont KHA &
+    \itxfont kh{\em a} &
+    #hindi kha #endhindi &
+    #marathi kha #endmarathi &
+    #bengali kha #endbengali &
+    #indian kha #endindian &
+    #gujarati kha #endgujarati &
+    #kannada kha #endkannada &
+    #telugu kha #endtelugu &
+    #gurmukhi kha #endgurmukhi &
+    #tamil kha #endtamil &
+    #roman kha #endroman
+\\ \hline
+    \namfont GA &
+    \itxfont g{\em a} &
+    #hindi ga #endhindi &
+    #marathi ga #endmarathi &
+    #bengali ga #endbengali &
+    #indian ga #endindian &
+    #gujarati ga #endgujarati &
+    #kannada ga #endkannada &
+    #telugu ga #endtelugu &
+    #gurmukhi ga #endgurmukhi &
+    #tamil ga #endtamil &
+    #roman ga #endroman
+\\ \hline
+    \namfont GHA &
+    \itxfont gh{\em a} &
+    #hindi gha #endhindi &
+    #marathi gha #endmarathi &
+    #bengali gha #endbengali &
+    #indian gha #endindian &
+    #gujarati gha #endgujarati &
+    #kannada gha #endkannada &
+    #telugu gha #endtelugu &
+    #gurmukhi gha #endgurmukhi &
+    #tamil gha #endtamil &
+    #roman gha #endroman
+\\ \hline
+    \namfont NGA &
+    \itxfont \char`~{}N{\em a} &
+    #hindi ~Na #endhindi &
+    #marathi ~Na #endmarathi &
+    #bengali ~Na #endbengali &
+    #indian ~Na #endindian &
+    #gujarati ~Na #endgujarati &
+    #kannada ~Na #endkannada &
+    #telugu ~Na #endtelugu &
+    #gurmukhi ~Na #endgurmukhi &
+    #tamil ~Na #endtamil &
+    #roman ~Na #endroman
+\\ \hline
+    \namfont CA &
+    \itxfont ch{\em a} &
+    #hindi cha #endhindi &
+    #marathi cha #endmarathi &
+    #bengali cha #endbengali &
+    #indian cha #endindian &
+    #gujarati cha #endgujarati &
+    #kannada cha #endkannada &
+    #telugu cha #endtelugu &
+    #gurmukhi cha #endgurmukhi &
+    #tamil cha #endtamil &
+    #roman cha #endroman
+\\ \hline
+    \namfont CHA &
+    \itxfont chh{\em a} &
+    #hindi chha #endhindi &
+    #marathi chha #endmarathi &
+    #bengali chha #endbengali &
+    #indian chha #endindian &
+    #gujarati chha #endgujarati &
+    #kannada chha #endkannada &
+    #telugu chha #endtelugu &
+    #gurmukhi chha #endgurmukhi &
+    #tamil chha #endtamil &
+    #roman chha #endroman
+\\ \hline
+    \namfont JA &
+    \itxfont j{\em a} &
+    #hindi ja #endhindi &
+    #marathi ja #endmarathi &
+    #bengali ja #endbengali &
+    #indian ja #endindian &
+    #gujarati ja #endgujarati &
+    #kannada ja #endkannada &
+    #telugu ja #endtelugu &
+    #gurmukhi ja #endgurmukhi &
+    #tamil ja #endtamil &
+    #roman ja #endroman
+\\ \hline
+    \namfont JHA &
+    \itxfont jh{\em a} &
+    #hindi jha #endhindi &
+    #marathi jha #endmarathi &
+    #bengali jha #endbengali &
+    #indian jha #endindian &
+    #gujarati jha #endgujarati &
+    #kannada jha #endkannada &
+    #telugu jha #endtelugu &
+    #gurmukhi jha #endgurmukhi &
+    #tamil jha #endtamil &
+    #roman jha #endroman
+\\ \hline
+    \namfont NYA &
+    \itxfont \char`~{}n{\em a} &
+    #hindi ~na #endhindi &
+    #marathi ~na #endmarathi &
+    #bengali ~na #endbengali &
+    #indian ~na #endindian &
+    #gujarati \undeflet #endgujarati &
+    #kannada ~na #endkannada &
+    #telugu ~na #endtelugu &
+    #gurmukhi ~na #endgurmukhi &
+    #tamil ~na #endtamil &
+    #roman ~na #endroman
+\\ \hline
+    \namfont TTA &
+    \itxfont T{\em a} &
+    #hindi Ta #endhindi &
+    #marathi Ta #endmarathi &
+    #bengali Ta #endbengali &
+    #indian Ta #endindian &
+    #gujarati Ta #endgujarati &
+    #kannada Ta #endkannada &
+    #telugu Ta #endtelugu &
+    #gurmukhi Ta #endgurmukhi &
+    #tamil Ta #endtamil &
+    #roman Ta #endroman
+\\ \hline
+    \namfont TTHA &
+    \itxfont Th{\em a} &
+    #hindi Tha #endhindi &
+    #marathi Tha #endmarathi &
+    #bengali Tha #endbengali &
+    #indian Tha #endindian &
+    #gujarati Tha #endgujarati &
+    #kannada Tha #endkannada &
+    #telugu Tha #endtelugu &
+    #gurmukhi Tha #endgurmukhi &
+    #tamil Tha #endtamil &
+    #roman Tha #endroman
+\\ \hline
+    \namfont DDA &
+    \itxfont D{\em a} &
+    #hindi Da #endhindi &
+    #marathi Da #endmarathi &
+    #bengali Da #endbengali &
+    #indian Da #endindian &
+    #gujarati Da #endgujarati &
+    #kannada Da #endkannada &
+    #telugu Da #endtelugu &
+    #gurmukhi Da #endgurmukhi &
+    #tamil Da #endtamil &
+    #roman Da #endroman
+\\ \hline
+    \namfont DDHA &
+    \itxfont Dh{\em a} &
+    #hindi Dha #endhindi &
+    #marathi Dha #endmarathi &
+    #bengali Dha #endbengali &
+    #indian Dha #endindian &
+    #gujarati Dha #endgujarati &
+    #kannada Dha #endkannada &
+    #telugu Dha #endtelugu &
+    #gurmukhi Dha #endgurmukhi &
+    #tamil Dha #endtamil &
+    #roman Dha #endroman
+\\ \hline
+    \namfont NNA &
+    \itxfont N{\em a} &
+    #hindi Na #endhindi &
+    #marathi Na #endmarathi &
+    #bengali Na #endbengali &
+    #indian Na #endindian &
+    #gujarati Na #endgujarati &
+    #kannada Na #endkannada &
+    #telugu Na #endtelugu &
+    #gurmukhi Na #endgurmukhi &
+    #tamil Na #endtamil &
+    #roman Na #endroman
+\\ \hline
+    \namfont TA &
+    \itxfont t{\em a} &
+    #hindi ta #endhindi &
+    #marathi ta #endmarathi &
+    #bengali ta #endbengali &
+    #indian ta #endindian &
+    #gujarati ta #endgujarati &
+    #kannada ta #endkannada &
+    #telugu ta #endtelugu &
+    #gurmukhi ta #endgurmukhi &
+    #tamil ta #endtamil &
+    #roman ta #endroman
+\\ \hline
+    \namfont THA &
+    \itxfont th{\em a} &
+    #hindi tha #endhindi &
+    #marathi tha #endmarathi &
+    #bengali tha #endbengali &
+    #indian tha #endindian &
+    #gujarati tha #endgujarati &
+    #kannada tha #endkannada &
+    #telugu tha #endtelugu &
+    #gurmukhi tha #endgurmukhi &
+    #tamil tha #endtamil &
+    #roman tha #endroman
+\\ \hline
+    \namfont DA &
+    \itxfont d{\em a} &
+    #hindi da #endhindi &
+    #marathi da #endmarathi &
+    #bengali da #endbengali &
+    #indian da #endindian &
+    #gujarati da #endgujarati &
+    #kannada da #endkannada &
+    #telugu da #endtelugu &
+    #gurmukhi da #endgurmukhi &
+    #tamil da #endtamil &
+    #roman da #endroman
+\\ \hline
+    \namfont DHA &
+    \itxfont dh{\em a} &
+    #hindi dha #endhindi &
+    #marathi dha #endmarathi &
+    #bengali dha #endbengali &
+    #indian dha #endindian &
+    #gujarati dha #endgujarati &
+    #kannada dha #endkannada &
+    #telugu dha #endtelugu &
+    #gurmukhi dha #endgurmukhi &
+    #tamil dha #endtamil &
+    #roman dha #endroman
+\\ \hline
+    \namfont NA &
+    \itxfont n{\em a} &
+    #hindi na #endhindi &
+    #marathi na #endmarathi &
+    #bengali na #endbengali &
+    #indian na #endindian &
+    #gujarati na #endgujarati &
+    #kannada na #endkannada &
+    #telugu na #endtelugu &
+    #gurmukhi na #endgurmukhi &
+    #tamil na #endtamil &
+    #roman na #endroman
+\\ \hline
+    \namfont PA &
+    \itxfont p{\em a} &
+    #hindi pa #endhindi &
+    #marathi pa #endmarathi &
+    #bengali pa #endbengali &
+    #indian pa #endindian &
+    #gujarati pa #endgujarati &
+    #kannada pa #endkannada &
+    #telugu pa #endtelugu &
+    #gurmukhi pa #endgurmukhi &
+    #tamil pa #endtamil &
+    #roman pa #endroman
+\\ \hline
+    \namfont PHA &
+    \itxfont ph{\em a} &
+    #hindi pha #endhindi &
+    #marathi pha #endmarathi &
+    #bengali pha #endbengali &
+    #indian pha #endindian &
+    #gujarati pha #endgujarati &
+    #kannada pha #endkannada &
+    #telugu pha #endtelugu &
+    #gurmukhi pha #endgurmukhi &
+    #tamil pha #endtamil &
+    #roman pha #endroman
+\\ \hline
+    \namfont BA &
+    \itxfont b{\em a} &
+    #hindi ba #endhindi &
+    #marathi ba #endmarathi &
+    #bengali ba #endbengali &
+    #indian ba #endindian &
+    #gujarati ba #endgujarati &
+    #kannada ba #endkannada &
+    #telugu ba #endtelugu &
+    #gurmukhi ba #endgurmukhi &
+    #tamil ba #endtamil &
+    #roman ba #endroman
+\\ \hline
+    \namfont BHA &
+    \itxfont bh{\em a} &
+    #hindi bha #endhindi &
+    #marathi bha #endmarathi &
+    #bengali bha #endbengali &
+    #indian bha #endindian &
+    #gujarati bha #endgujarati &
+    #kannada bha #endkannada &
+    #telugu bha #endtelugu &
+    #gurmukhi bha #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman bha #endroman
+\\ \hline
+    \namfont MA &
+    \itxfont m{\em a} &
+    #hindi ma #endhindi &
+    #marathi ma #endmarathi &
+    #bengali ma #endbengali &
+    #indian ma #endindian &
+    #gujarati ma #endgujarati &
+    #kannada ma #endkannada &
+    #telugu ma #endtelugu &
+    #gurmukhi ma #endgurmukhi &
+    #tamil ma #endtamil &
+    #roman ma #endroman
+\\ \hline
+\end{tabular}
+\end{makeimage}
+\end{center}
+\end{table}
+
+%----------------------------------------------------------------
+\begin{htmlonly}
+\section{Consonants, contd.}
+\end{htmlonly}
+
+\begin{table}[ht]
+\caption {ITRANS Encoding, Consonants (part 2).}
+\label{ienc-cons-2}
+\begin{center}
+\begin{makeimage}
+\hspace*{0pt}\begin{tabular}{|c|c||c|c|c|c|c|c|c|c|c|c|}
+\hline
+\thd{name} & \thd{itrans} & \thd{dev-1} & \thd{dev-2} & \thd{ben-1} & \thd{ben-2} & \thd{guj} & \thd{kan} & \thd{tel} & \thd{gur} & \thd{tam} & \thd{rom} \\
+\hline
+\hline
+    \namfont YA &
+    \itxfont y{\em a} &
+    #hindi ya #endhindi &
+    #marathi ya #endmarathi &
+    #bengali ya #endbengali &
+    #indian ya #endindian &
+    #gujarati ya #endgujarati &
+    #kannada ya #endkannada &
+    #telugu ya #endtelugu &
+    #gurmukhi ya #endgurmukhi &
+    #tamil ya #endtamil &
+    #roman ya #endroman
+\\ \hline
+    \namfont RA &
+    \itxfont r{\em a} &
+    #hindi ra #endhindi &
+    #marathi ra #endmarathi &
+    #bengali ra #endbengali &
+    #indian ra #endindian &
+    #gujarati ra #endgujarati &
+    #kannada ra #endkannada &
+    #telugu ra #endtelugu &
+    #gurmukhi ra #endgurmukhi &
+    #tamil ra #endtamil &
+    #roman ra #endroman
+\\ \hline
+    \namfont LA &
+    \itxfont l{\em a} &
+    #hindi la #endhindi &
+    #marathi la #endmarathi &
+    #bengali la #endbengali &
+    #indian la #endindian &
+    #gujarati la #endgujarati &
+    #kannada la #endkannada &
+    #telugu la #endtelugu &
+    #gurmukhi la #endgurmukhi &
+    #tamil la #endtamil &
+    #roman la #endroman
+\\ \hline
+    \namfont LLA &
+    \itxfont L{\em a} &
+    #hindi La #endhindi &
+    #marathi La #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati La #endgujarati &
+    #kannada La #endkannada &
+    #telugu La #endtelugu &
+    #gurmukhi La #endgurmukhi &
+    #tamil La #endtamil &
+    #roman La #endroman
+\\ \hline
+    \namfont VA &
+    \itxfont v{\em a} &
+    #hindi va #endhindi &
+    #marathi va #endmarathi &
+    #bengali va #endbengali &
+    #indian va #endindian &
+    #gujarati va #endgujarati &
+    #kannada va #endkannada &
+    #telugu va #endtelugu &
+    #gurmukhi va #endgurmukhi &
+    #tamil va #endtamil &
+    #roman va #endroman
+\\ \hline
+    \namfont SHA &
+    \itxfont sh{\em a} &
+    #hindi sha #endhindi &
+    #marathi sha #endmarathi &
+    #bengali sha #endbengali &
+    #indian sha #endindian &
+    #gujarati sha #endgujarati &
+    #kannada sha #endkannada &
+    #telugu sha #endtelugu &
+    #gurmukhi sha #endgurmukhi &
+    #tamil sha #endtamil &
+    #roman sha #endroman
+\\ \hline
+    \namfont SSA &
+    \itxfont Sh{\em a} &
+    #hindi Sha #endhindi &
+    #marathi Sha #endmarathi &
+    #bengali Sha #endbengali &
+    #indian Sha #endindian &
+    #gujarati Sha #endgujarati &
+    #kannada Sha #endkannada &
+    #telugu Sha #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil Sha #endtamil &
+    #roman Sha #endroman
+\\ \hline
+    \namfont SA &
+    \itxfont s{\em a} &
+    #hindi sa #endhindi &
+    #marathi sa #endmarathi &
+    #bengali sa #endbengali &
+    #indian sa #endindian &
+    #gujarati sa #endgujarati &
+    #kannada sa #endkannada &
+    #telugu sa #endtelugu &
+    #gurmukhi sa #endgurmukhi &
+    #tamil sa #endtamil &
+    #roman sa #endroman
+\\ \hline
+    \namfont HA &
+    \itxfont h{\em a} &
+    #hindi ha #endhindi &
+    #marathi ha #endmarathi &
+    #bengali ha #endbengali &
+    #indian ha #endindian &
+    #gujarati ha #endgujarati &
+    #kannada ha #endkannada &
+    #telugu ha #endtelugu &
+    #gurmukhi ha #endgurmukhi &
+    #tamil ha #endtamil &
+    #roman ha #endroman
+\\ \hline
+\end{tabular}
+\end{makeimage}
+\end{center}
+\end{table}
+
+%----------------------------------------------------------------
+\begin{htmlonly}
+\section{Extensions}
+\end{htmlonly}
+
+\begin{table}[ht]
+\caption {ITRANS Encoding, Extensions.}
+\label{ienc-ext}
+\begin{center}
+\begin{makeimage}
+\hspace*{0pt}\begin{tabular}{|c|c||c|c|c|c|c|c|c|c|c|c|}
+\hline
+\thd{name} & \thd{itrans} & \thd{dev-1} & \thd{dev-2} & \thd{ben-1} & \thd{ben-2} & \thd{guj} & \thd{kan} & \thd{tel} & \thd{gur} & \thd{tam} & \thd{rom} \\
+\hline
+\hline
+
+    \namfont QA &
+    \itxfont q{\em a} &
+    #hindi qa #endhindi &
+    #marathi qa #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati qa #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil qa #endtamil &
+    #roman qa #endroman
+\\ \hline
+    \namfont KHHA &
+    \itxfont K{\em a} &
+    #hindi Ka #endhindi &
+    #marathi Ka #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian Ka #endindian &
+    #gujarati Ka #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi Ka #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman Ka #endroman
+\\ \hline
+    \namfont GHHA &
+    \itxfont G{\em a} &
+    #hindi Ga #endhindi &
+    #marathi Ga #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati Ga #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi Ga #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman Ga #endroman
+\\ \hline
+    \namfont ZA &
+    \itxfont J{\em a} &
+    #hindi Ja #endhindi &
+    #marathi Ja #endmarathi &
+    #bengali Ja #endbengali &
+    #indian Ja #endindian &
+    #gujarati Ja #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi Ja #endgurmukhi &
+    #tamil Ja #endtamil &
+    #roman Ja #endroman
+\\ \hline
+    \namfont DDDHA &
+    \itxfont .D{\em a} &
+    #hindi .Da #endhindi &
+    #marathi .Da #endmarathi &
+    #bengali .Da #endbengali &
+    #indian .Da #endindian &
+    #gujarati .Da #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi .Da #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman .Da #endroman
+\\ \hline
+    \namfont FA &
+    \itxfont f{\em a} &
+    #hindi fa #endhindi &
+    #marathi fa #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati \undeflet #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi fa #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman fa #endroman
+\\ \hline
+    \namfont YYA &
+    \itxfont Y{\em a} &
+    #hindi \undeflet #endhindi &
+    #marathi Ya #endmarathi &
+    #bengali Ya #endbengali &
+    #indian Ya #endindian &
+    #gujarati \undeflet #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman \undeflet #endroman
+\\ \hline
+    \namfont KA-SHHA &
+    \itxfont x{\em a} &
+    #hindi xa #endhindi &
+    #marathi xa #endmarathi &
+    #bengali xa #endbengali &
+    #indian xa #endindian &
+    #gujarati xa #endgujarati &
+    #kannada xa #endkannada &
+    #telugu xa #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil xa #endtamil &
+    #roman xa #endroman
+\\ \hline
+    \namfont JA-NYA &
+    \itxfont GY{\em a} &
+    #hindi GYa #endhindi &
+    #marathi GYa #endmarathi &
+    #bengali GYa #endbengali &
+    #indian GYa #endindian &
+    #gujarati GYa #endgujarati &
+    #kannada GYa #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil GYa #endtamil &
+    #roman GYa #endroman
+\\ \hline
+    \namfont &
+    \itxfont R{\em a} &
+    #hindi Ra #endhindi &
+    #marathi Ra #endmarathi &
+    #bengali Ra #endbengali &
+    #indian Ra #endindian &
+    #gujarati Ra #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu Ra #endtelugu &
+    #gurmukhi \undeflet #endgurmukhi &
+    #tamil Ra #endtamil &
+    #roman Ra #endroman
+\\ \hline
+    \namfont ANUSVARA &
+    \itxfont {\em k}.n &
+    #hindi k.n #endhindi &
+    #marathi k.n #endmarathi &
+    #bengali k.n #endbengali &
+    #indian k.n #endindian &
+    #gujarati k.n #endgujarati &
+    #kannada k.n #endkannada &
+    #telugu k.n #endtelugu &
+    #gurmukhi k.n #endgurmukhi &
+    #tamil k.n #endtamil &
+    #roman k.n #endroman
+\\ \hline
+                         &
+    \itxfont {\em k}.h &
+    #hindi k.h #endhindi &
+    #marathi k.h #endmarathi &
+    #bengali k.h #endbengali &
+    #indian k.h #endindian &
+    #gujarati k.h #endgujarati &
+    #kannada k.h #endkannada &
+    #telugu k.h #endtelugu &
+    #gurmukhi k.h #endgurmukhi &
+    #tamil k.h #endtamil &
+    #roman k.h #endroman
+\\ \hline
+    \namfont CANDRA E &
+    \itxfont {\em k}.c &
+    #hindi k.c #endhindi &
+    #marathi k.c #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati k.c #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi k.c #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman k.c #endroman
+\\ \hline
+    \namfont C. BINDU &
+    \itxfont {\em k}.N &
+    #hindi k.N #endhindi &
+    #marathi k.N #endmarathi &
+    #bengali k.N #endbengali &
+    #indian k.N #endindian &
+    #gujarati k.N #endgujarati &
+    #kannada \undeflet #endkannada &
+    #telugu \undeflet #endtelugu &
+    #gurmukhi k.N #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman k.N #endroman
+\\ \hline
+    \namfont AVAGRAHA &
+    \itxfont .a &
+    #hindi .a #endhindi &
+    #marathi .a #endmarathi &
+    #bengali \undeflet #endbengali &
+    #indian \undeflet #endindian &
+    #gujarati .a #endgujarati &
+    #kannada .a #endkannada &
+    #telugu .a #endtelugu &
+    #gurmukhi .a #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman .a #endroman
+\\ \hline
+\end{tabular}
+\end{makeimage}
+\end{center}
+\end{table}
+
+%----------------------------------------------------------------
+\begin{htmlonly}
+\section{Digits}
+\end{htmlonly}
+
+\begin{table}[ht]
+\caption {ITRANS Encoding, Digits.}
+\label{ienc-digits}
+\begin{center}
+\begin{makeimage}
+\hspace*{0pt}\begin{tabular}{|c|c||c|c|c|c|c|c|c|c|c|c|}
+\hline
+\thd{name} & \thd{itrans} & \thd{dev-1} & \thd{dev-2} & \thd{ben-1} & \thd{ben-2} & \thd{guj} & \thd{kan} & \thd{tel} & \thd{gur} & \thd{tam} & \thd{rom} \\
+\hline
+\hline
+
+    \namfont 0 &
+    \itxfont 0 &
+    #hindi 0 #endhindi &
+    #marathi 0 #endmarathi &
+    #bengali 0 #endbengali &
+    #indian 0 #endindian &
+    #gujarati 0 #endgujarati &
+    #kannada 0 #endkannada &
+    #telugu 0 #endtelugu &
+    #gurmukhi 0 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 0 #endroman
+\\ \hline
+    \namfont 1 &
+    \itxfont 1 &
+    #hindi 1 #endhindi &
+    #marathi 1 #endmarathi &
+    #bengali 1 #endbengali &
+    #indian 1 #endindian &
+    #gujarati 1 #endgujarati &
+    #kannada 1 #endkannada &
+    #telugu 1 #endtelugu &
+    #gurmukhi 1 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 1 #endroman
+\\ \hline
+    \namfont 2 &
+    \itxfont 2 &
+    #hindi 2 #endhindi &
+    #marathi 2 #endmarathi &
+    #bengali 2 #endbengali &
+    #indian 2 #endindian &
+    #gujarati 2 #endgujarati &
+    #kannada 2 #endkannada &
+    #telugu 2 #endtelugu &
+    #gurmukhi 2 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 2 #endroman
+\\ \hline
+    \namfont 3 &
+    \itxfont 3 &
+    #hindi 3 #endhindi &
+    #marathi 3 #endmarathi &
+    #bengali 3 #endbengali &
+    #indian 3 #endindian &
+    #gujarati 3 #endgujarati &
+    #kannada 3 #endkannada &
+    #telugu 3 #endtelugu &
+    #gurmukhi 3 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 3 #endroman
+\\ \hline
+    \namfont 4 &
+    \itxfont 4 &
+    #hindi 4 #endhindi &
+    #marathi 4 #endmarathi &
+    #bengali 4 #endbengali &
+    #indian 4 #endindian &
+    #gujarati 4 #endgujarati &
+    #kannada 4 #endkannada &
+    #telugu 4 #endtelugu &
+    #gurmukhi 4 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 4 #endroman
+\\ \hline
+    \namfont 5 &
+    \itxfont 5 &
+    #hindi 5 #endhindi &
+    #marathi 5 #endmarathi &
+    #bengali 5 #endbengali &
+    #indian 5 #endindian &
+    #gujarati 5 #endgujarati &
+    #kannada 5 #endkannada &
+    #telugu 5 #endtelugu &
+    #gurmukhi 5 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 5 #endroman
+\\ \hline
+    \namfont 6 &
+    \itxfont 6 &
+    #hindi 6 #endhindi &
+    #marathi 6 #endmarathi &
+    #bengali 6 #endbengali &
+    #indian 6 #endindian &
+    #gujarati 6 #endgujarati &
+    #kannada 6 #endkannada &
+    #telugu 6 #endtelugu &
+    #gurmukhi 6 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 6 #endroman
+\\ \hline
+    \namfont 7 &
+    \itxfont 7 &
+    #hindi 7 #endhindi &
+    #marathi 7 #endmarathi &
+    #bengali 7 #endbengali &
+    #indian 7 #endindian &
+    #gujarati 7 #endgujarati &
+    #kannada 7 #endkannada &
+    #telugu 7 #endtelugu &
+    #gurmukhi 7 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 7 #endroman
+\\ \hline
+    \namfont 8 &
+    \itxfont 8 &
+    #hindi 8 #endhindi &
+    #marathi 8 #endmarathi &
+    #bengali 8 #endbengali &
+    #indian 8 #endindian &
+    #gujarati 8 #endgujarati &
+    #kannada 8 #endkannada &
+    #telugu 8 #endtelugu &
+    #gurmukhi 8 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 8 #endroman
+\\ \hline
+    \namfont 9 &
+    \itxfont 9 &
+    #hindi 9 #endhindi &
+    #marathi 9 #endmarathi &
+    #bengali 9 #endbengali &
+    #indian 9 #endindian &
+    #gujarati 9 #endgujarati &
+    #kannada 9 #endkannada &
+    #telugu 9 #endtelugu &
+    #gurmukhi 9 #endgurmukhi &
+    #tamil \undeflet #endtamil &
+    #roman 9 #endroman
+\\ \hline
+\end{tabular}
+\end{makeimage}
+\end{center}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

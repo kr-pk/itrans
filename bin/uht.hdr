@@ -1,0 +1,22 @@
+<HTML>
+<!--
+% ITRANS 5.30 control statements: (5.30 or later required)
+#output=UTF_8
+% #sanskrit uses usanskrit.ifm - similar to udvng.ifm except default is .h not a
+#indianifm=udvng.ifm
+#indianfont=
+#hindiifm=udvng.ifm
+#hindifont=
+#marathiifm=udvng.ifm
+#marathifont=
+#sanskritifm=usanskrit.ifm 
+#sanskritfont=
+#endfont=
+-->
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<LINK REV="made" HREF="mailto:sanskrit@cheerful.com">
+<style type="text/css">
+    BODY {margin-left: 10% ; margin-right: 10%}
+</style>
+<TITLE>

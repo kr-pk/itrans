@@ -1,0 +1,71 @@
+#!/bin/bash
+# Converts a .itx file (TeX input) to a HTML document
+# Given, say, idoc.itx in any directory, the main HTML doc will be in
+# ./html/idoc/idoc.html
+# Use full path to specify original doc (if not in current dir),
+# ex:   mkl2h   ~cgi/itrans/nextrel/doc/idoc.itx
+# will create idoc/ in current dir.
+# Uses Ross Moore's extensions Late2HTML, which are available in
+# the standard latex2html distribution, version 2K.1 (June 2001) or
+# newer.
+
+# -- now using l2h 2008, and also see ~/.latex2html-init for more
+# customizations.
+
+# -- now using latex2html version 2K.1  [May 2001] [Has bugs, Ross Moore
+# gave me fixes, should probably be  included in 2K.2 release]
+#
+# All Indic Script text is converted to GIFs (input .itx docs
+# use the begin{makeimage} .. end{makeimage} to make tables into GIFs,
+# instead of just converting #indian ... #endindian segments into GIFs).
+# runs latex to obtain the .aux file, needed by latex2html
+#
+# You may also want to edit your ~/.latex2html-init file, which contains
+# more customizations for latex2html
+
+# set -x # debug
+
+# change these variables to point to correct directories at your site:
+ITRANS=itrans # exe
+
+#latex2html needs ITRANSPATH to be defined (see latex2html itrans.perl)
+export ITRANSPATH=/usr/share/itrans53/lib:/usr/share/itrans53/lib/fonts
+export RGBDEF=/usr/local/share/lib/latex2html/styles/rgb.txt
+
+TOPHTML=../..
+TOPTITLE="ITRANS"
+
+MOREARGS=" " # use this for -debug, etc
+ITRANSL2H="latex2html -split 4 -link 4 \
+	-bottom_navigation -up_url $TOPHTML"
+
+# ITRANSL2H="latex2html -split 4 -link 4 -up_url allitx.html -up_title \"$TOPTITLE\""
+# this does not work, -up_tile second word is treated as a input file!
+
+# change the following script if required; most likely it will work
+# without requiring any changes, but no guarantees made!
+
+for i in $*
+do
+    # create the .aux file first, in the same directory as the .itx file
+    # latex2html needs the .aux file when pre-processing the .itx file
+    # output directory is created in ./html/
+    echo "===================== $i"
+    date
+    d=`dirname $i`
+    j=`basename $i .itx`
+    h=./html/$j
+    rm -rf $h
+    (cd $d ;\
+    $ITRANS -v -i $j.itx -o $j.tex ;\
+    latex $j.tex ;\
+    rm -f $j.tex $j.log $j.dvi $j.out)
+    $ITRANSL2H -up_title "$TOPTITLE" -t "$j.itx (ITRANS doc)" \
+        -transparent -white -image_type gif -antialias_text -antialias \
+        -verbosity 1 $MOREARGS -mkdir -dir $h $i
+    rm -f $d/$j.aux
+    # clean up not-needed files left by latex2html
+    (cd $h; rm -f images.{tex,aux,log,pl,pre,out} index.html internals.pl preproc labels.pl IMG_PARAMS.{dir,pag})
+    date
+    echo "====================="
+done

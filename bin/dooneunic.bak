@@ -1,0 +1,73 @@
+#!/bin/csh
+alias rm 'rm'
+if (${2} == "") then
+    set i = 0
+else
+    set i = ${2}
+endif
+#  Check if _sa.html exists and suggest remedies
+     if (-f ${1}_sa.html) then
+         if ($i == 9) then
+           echo ${1}_sa.html file is getting processed using ${1}.txt
+         else
+           echo Warning. ${1}_sa.html exists.  
+           echo doall script handles only .txt file as input.
+           echo You may want to back up _sa.html file.
+           echo If you want to replace _sa.html automatically, add argument 9
+           echo and run          doall ${1} 9
+         endif
+     else
+         echo ${1}_sa.html file is getting processed using ${1}.txt
+         set i = 9
+     endif
+#
+if ($i == 9) then
+#rm del*.*
+/home/sanskrit/software/translit/translit -i ${1}.txt -o del1.txt -t /home/sanskrit/itrans/bin/itx2uht1.tbl
+/home/sanskrit/software/translit/translit -i del1.txt -o del2.txt -t /home/sanskrit/itrans/bin/itx2uht2.tbl
+# remove the \EN portion so it does not obstruct html creation
+sed -f /home/sanskrit/itrans/bin/comment.sed del2.txt > del2-1.txt
+/home/sanskrit/software/translit/translit -i del2-1.txt -o del3.txt -t /home/sanskrit/itrans/bin/itx2uht3.tbl
+sed -f /home/sanskrit/itrans/bin/comment.sed del3.txt > delsave1.txt
+sed 's/\.\. /||/g;s/\.\./||/g;s/|| /||/g;s/ \./ |/g' delsave1.txt > delsave.txt
+echo "</FONT></PRE><PRE><FONT SIZE=3><P><HR>" >>delsave.txt
+
+# Clean .inf
+cat ${1}.inf /home/sanskrit/util/producegif/addcopynote.inf > temp.inf
+sed -i '/   :$/d' temp.inf
+sed -i '/Special Instructions/d' temp.inf
+sed -i '/i1h.hdr,ijag.inc,itrans.sty,multicol.sty,iarticle.sty/d' temp.inf
+sed -i '/Transliteration scheme: ITRANS /d' temp.inf
+sed -i '/@@/d' temp.inf
+sed -i '/Commands upto engtitle are/d' temp.inf
+sed -i '/needed for devanaagarii output and formatting/d' temp.inf
+
+#cat /home/sanskrit/itrans/bin/uht.hdr  delsave.txt ${1}.inf /home/sanskrit/itrans/bin/uht.trl > del.uht
+cat /home/sanskrit/itrans/bin/uht.hdr  delsave.txt temp.inf /home/sanskrit/itrans/bin/uht.trl > del.uht
+rm -f temp.inf
+
+/usr/local/bin/itrans -v -U -i del.uht -o ${1}_sa.html
+#/homt/sanskrit/software/translit/translit -i del.uht -o del.htm -t /home/sanskrit/itrans/bin/uht2htm.tbl
+#mv del.htm ${1}.htm
+# Replace daNDas with unicode equivalent
+sed -i -f /home/sanskrit/util/producegif/danda.sed ${1}_sa.html
+# Add spaces after hyphens
+vi -c ":%s/ -\([A-z]\)/ - \1/g" -c ":wq" ${1}_sa.html
+# make the double ` or ' quotes uniform
+vi -c ":%s/\`\`/\`/g" -c ":%s/\([A-z]\)''/\1'/g" -c ":wq" ${1}_sa.html
+# Add Naresh's sanscript lines
+sed -i '/\/BODY/iaddheresanscript' ${1}_sa.html
+sed -i '/addheresanscript/r /home/sanskrit/playpen/pending/addsanscript' ${1}_sa.html
+sed -i '/addheresanscript/d' ${1}_sa.html
+#sed -i '/॥/s/\. /\./g' ${1}_sa.html
+#
+echo ${1}_sa.html was created
+rm del1.txt del2.txt del2-1.txt del.uht delsave.txt del3.txt delsave1.txt
+#rm del1.txt del2.txt del2-1.txt del.htm delsave.txt del3.txt delsave1.txt
+echo " "
+
+else
+echo Result ----  Files not processed
+endif #This is end of if ($i /home/sanskrit= 9) then
+
+alias rm='rm -i'

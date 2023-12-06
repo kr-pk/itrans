@@ -1,0 +1,814 @@
+#output=TeX
+
+\batchmode
+
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{\rm ---\hspace{-8pt}$>$}}%
+\providecommand{\SM}{\char35hindi}%
+\providecommand{\EM}{\char35endhindi} 
+
+
+#sanskritifm=dvngfull.ifm
+
+#sanskritfont=\fransdvng
+
+#hindiifm=dvng.ifm
+
+#hindifont=\fransdvng
+
+\let\usedvng=\Largedvng
+
+
+\newfont{\devnf}{dvnb10 scaled \magstep1}
+
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_dvn_inline4203}%
+{\usedvng=\Largedvng
+
+\latextohtmlditchpreceding}%11pt%%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+
+%
+\providecommand{\sibalhttp}{http://www.sibal.com/sandeep/jtrans/}%
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage77}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#hindi a #endhindi}	& {\tt a} \\\hline
+{#hindi aa #endhindi}	& {\tt aa {\it or} A} \\\hline
+{#hindi i #endhindi}	& {\tt i} \\\hline
+{#hindi ii #endhindi}	& {\tt ii {\it or} I} \\\hline
+{#hindi u #endhindi}	& {\tt u} \\\hline
+{#hindi uu #endhindi}	& {\tt uu {\it or} U} \\\hline
+{#hindi R^i #endhindi}	& {\tt RRi {\it or} R\char`^i} \\\hline
+{#hindi R^I #endhindi}	& {\tt RRI {\it or} R\char`^I} \\\hline
+{#hindi L^i #endhindi}	& {\tt LLi {\it or} L\char`^i} \\\hline
+{#hindi L^I #endhindi}	& {\tt LLI {\it or} L\char`^I} \\\hline
+{#hindi e #endhindi}	& {\tt e} \\\hline
+{#hindi ai #endhindi}	& {\tt ai} \\\hline
+{#hindi o #endhindi}	& {\tt o} \\\hline
+{#hindi au #endhindi}	& {\tt au} \\\hline
+{#hindi aM #endhindi}	& {\tt {\it a}M} \\\hline
+{#hindi aH #endhindi}	& {\tt {\it a}H} \\\hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{#hindi 0 #endhindi}	& {\tt0} \\\hline
+{#hindi 1 #endhindi}	& {\tt 1} \\\hline
+{#hindi 2 #endhindi}	& {\tt 2} \\\hline
+{#hindi 3 #endhindi}	& {\tt 3} \\\hline
+{#hindi 4 #endhindi}	& {\tt 4} \\\hline
+{#hindi 5 #endhindi}	& {\tt 5} \\\hline
+{#hindi 6 #endhindi}	& {\tt 6} \\\hline
+{#hindi 7 #endhindi}	& {\tt 7} \\\hline
+{#hindi 8 #endhindi}	& {\tt 8} \\\hline
+{#hindi 9 #endhindi}	& {\tt 9} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage172}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#hindi ka  #endhindi}	& {\tt k{\it a}} \\\hline
+{#hindi kha  #endhindi}	& {\tt kh{\it a}} \\\hline
+{#hindi ga  #endhindi}	& {\tt g{\it a}} \\\hline
+{#hindi gha  #endhindi}	& {\tt gh{\it a}} \\\hline
+{#hindi ~Na  #endhindi}	& {\tt\char`~N{\it a or} N\char`^{\it a}} \\\hline
+{#hindi cha  #endhindi}	& {\tt ch{\it a}} \\\hline
+{#hindi Cha  #endhindi}	& {\tt Ch{\it a or} chh{\it a}} \\\hline
+{#hindi ja  #endhindi}	& {\tt j{\it a}} \\\hline
+{#hindi jha  #endhindi}	& {\tt jh{\it a}} \\\hline
+{#hindi ~na  #endhindi}	& {\tt\char`~n{\it a or} JN{\it a}} \\\hline
+{#hindi Ta  #endhindi}	& {\tt T{\it a}} \\\hline
+{#hindi Tha  #endhindi}	& {\tt Th{\it a}} \\\hline
+{#hindi Da  #endhindi}	& {\tt D{\it a}} \\\hline
+{#hindi Dha  #endhindi}	& {\tt Dh{\it a}} \\\hline
+{#hindi Na  #endhindi}	& {\tt N{\it a}} \\\hline
+{#hindi ta  #endhindi}	& {\tt t{\it a}} \\\hline
+{#hindi tha  #endhindi}	& {\tt th{\it a}} \\\hline
+{#hindi da  #endhindi}	& {\tt d{\it a}} \\\hline
+{#hindi dha  #endhindi}	& {\tt dh{\it a}} \\\hline
+{#hindi na  #endhindi}	& {\tt n{\it a}} \\\hline
+{#hindi pa  #endhindi}	& {\tt p{\it a}} \\\hline
+{#hindi pha  #endhindi}	& {\tt ph{\it a}} \\\hline
+{#hindi ba  #endhindi}	& {\tt b{\it a}} \\\hline
+{#hindi bha  #endhindi}	& {\tt bh{\it a}} \\\hline
+{#hindi ma  #endhindi}	& {\tt m{\it a}} \\\hline
+{#hindi ya  #endhindi}	& {\tt y{\it a}} \\\hline
+{#hindi ra  #endhindi}	& {\tt r{\it a}} \\\hline
+{#hindi la  #endhindi}	& {\tt l{\it a}} \\\hline
+{#hindi va  #endhindi}	& {\tt v{\it a or} w{\it a}} \\\hline
+{#hindi sha  #endhindi}	& {\tt sh{\it a}} \\\hline
+{#hindi Sha  #endhindi}	& {\tt Sh{\it a or} shh{\it a}} \\\hline
+{#hindi sa  #endhindi}	& {\tt s{\it a}} \\\hline
+{#hindi ha  #endhindi}	& {\tt h{\it a}} \\\hline
+{#hindi La  #endhindi}	& {\tt ld{\it a or} L{\it a}} \\\hline
+{#hindi kSha  #endhindi}	& {\tt kSh{\it a or} x{\it a}} \\\hline
+{#hindi j~na  #endhindi}	& {\tt j\char`~n{\it a or} GY{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage296}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{#hindi qa  #endhindi}	& {\tt q{\it a}} \\\hline
+{#hindi Ka  #endhindi}	& {\tt K{\it a}} \\\hline
+{#hindi Ga  #endhindi}	& {\tt G{\it a}} \\\hline
+{#hindi za  #endhindi}	& {\tt J{\it a or} z{\it a}} \\\hline
+{#hindi fa  #endhindi}	& {\tt f{\it a}} \\\hline
+{#hindi .Da  #endhindi}	& {\tt .D{\it a}} \\\hline
+{#hindi .Dha  #endhindi}	& {\tt .Dh{\it a}} \\\hline
+{#hindi AUM #endhindi}	& {\tt AUM} or {\tt OM} \\\hline
+{#hindi Rga  #endhindi}	& {\tt R{\it ga}} \\\hline
+{#hindi rga #endhindi} & {\tt rga {\it or} {\it ga}\char`^r} \\\hline
+{#hindi ga.n #endhindi} & {\tt {\it ga}.n} \\\hline
+{#hindi aa.c #endhindi} & {\tt {\it aa}.c} \\\hline
+{#hindi Da.N #endhindi} & {\tt {\it Da}.N} \\\hline
+{#hindi D.h #endhindi} & {\tt {\it D}.h} \\\hline
+{#hindi duH #endhindi} & {\tt {\it du}H} \\\hline
+{#hindi .a #endhindi} & {\tt .a} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage363}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Sample Letters} \\
+\hline
+{#hindi ka kaa ki kii ku kuu #endhindi}
+& {\tt ka kaa ki kii ku kuu} \\\hline
+{#hindi s.h sa saa si sii su suu #endhindi}
+& {\tt s.h sa saa si sii su suu} \\\hline
+{#hindi kh.r khe khai khaM khaH kha.c kha.N #endhindi}
+& {\tt kh.r khe khai khaM khaH kha.c kha.N} \\\hline
+{#hindi De Dai DaM DaH Da.c Da.N #endhindi}
+& {\tt De Dai DaM DaH Da.c Da.N} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage389}%
+\begin{tabular}{|c|c|}
+\hline
+{#hindi bhaagya #endhindi} & {\tt bhaagya} \\\hline
+{#hindi raajya #endhindi}	& {\tt raajya} \\\hline
+{#hindi vidyaa #endhindi}	& {\tt vidyaa} \\\hline
+{#hindi shiShya #endhindi}	& {\tt shiShya} \\\hline
+{#hindi mukhya #endhindi}	& {\tt mukhya} \\\hline
+{#hindi gaaDyaa #endhindi}	& {\tt gaaDyaa} \\\hline
+{#hindi tyaag #endhindi}	& {\tt tyaag} \\\hline
+{#hindi dhyaan #endhindi}	& {\tt dhyaan} \\\hline
+{#hindi nyaay #endhindi}	& {\tt nyaay} \\\hline
+{#hindi shyaam #endhindi}	& {\tt shyaam} \\\hline
+{#hindi jyot #endhindi}	& {\tt jyot} \\\hline
+{#hindi manushhya #endhindi}	& {\tt manushhya} \\\hline
+{#hindi chaa.ndaNyaa #endhindi} & {\tt chaa.ndaNyaa} \\\hline
+{#hindi abhyaas #endhindi}	& {\tt abhyaas} \\\hline
+{#hindi kalyaaN #endhindi}	& {\tt kalyaaN} \\\hline
+{#hindi ghaDyaald #endhindi} & {\tt ghaDyaald} \\\hline
+{#hindi kachchaa #endhindi}	& {\tt kachchaa} \\\hline
+{#hindi khaD.hDaa #endhindi} & {\tt khaD.hDaa} \\\hline
+{#hindi khaDDaa #endhindi}	& {\tt khaDDaa} \\\hline
+{#hindi gaThThaa #endhindi}	& {\tt gaThThaa} \\\hline
+{#hindi dhakkaa #endhindi}	& {\tt dhakkaa} \\\hline
+{#hindi pattaa #endhindi}	& {\tt pattaa} \\\hline
+{#hindi tippat #endhindi}	& {\tt tippat} \\\hline
+{#hindi pannaas #endhindi}	& {\tt pannaas} \\\hline
+{#hindi sajjan #endhindi}	& {\tt sajjan} \\\hline
+{#hindi pustak #endhindi}	& {\tt pustak} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage472}%
+\begin{tabular}{|c|c|}
+\hline
+{#hindi kasturii #endhindi}	& {\tt kasturii} \\\hline
+{#hindi naastik #endhindi}	& {\tt naastik} \\\hline
+{#hindi praapt #endhindi}	& {\tt praapt} \\\hline
+{#hindi swata.ntra #endhindi} & {\tt swata.ntra} \\\hline
+{#hindi svaata.ntrya #endhindi} & {\tt svaata.ntrya} \\\hline
+{#hindi dhvanii #endhindi}	& {\tt dhvanii} \\\hline
+{#hindi goshhT #endhindi}	& {\tt goshhT} \\\hline
+{#hindi yud.hdh #endhindi}	& {\tt yud.hdh} \\\hline
+{#hindi yuddh #endhindi}	& {\tt yuddh} \\\hline
+{#hindi pashchim #endhindi}	& {\tt pashchim} \\\hline
+{#hindi phakt #endhindi}	& {\tt phakt} \\\hline
+{#hindi tarhaa #endhindi}	& {\tt tarhaa} \\\hline
+{#hindi arth #endhindi}	& {\tt arth} \\\hline
+{#hindi kartaa #endhindi}	& {\tt kartaa} \\\hline
+{#hindi gardii #endhindi}	& {\tt gardii} \\\hline
+{#hindi nirNay #endhindi}	& {\tt nirNay} \\\hline
+{#hindi patr #endhindi}	& {\tt patr} \\\hline
+{#hindi trikoN #endhindi}	& {\tt trikoN} \\\hline
+{#hindi shraavaN #endhindi}	& {\tt shraavaN} \\\hline
+{#hindi aashram #endhindi}	& {\tt aashram} \\\hline
+{#hindi shushruushhaa #endhindi} & {\tt shushruushhaa} \\\hline
+{#hindi gra.nth #endhindi}	& {\tt gra.nth} \\\hline
+{#hindi prajaa #endhindi}	& {\tt prajaa} \\\hline
+{#hindi draakShe #endhindi}	& {\tt draakShe} \\\hline
+{#hindi g.rhasth #endhindi}	& {\tt g.rhasth} \\\hline
+{#hindi prakR^itii #endhindi}	& {\tt prakR\char`^itii} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage561}%
+\begin{tabular}{|c|c|}
+\hline
+{#hindi nairR^itya #endhindi} & {\tt nairR\char`^itya} \\\hline
+{#hindi shubhr #endhindi}	& {\tt shubhr} \\\hline
+{#hindi sahastr #endhindi}	& {\tt sahastr} \\\hline
+{#hindi kriiDaa #endhindi}	& {\tt kriiDaa} \\\hline
+{#hindi svachchh #endhindi}	& {\tt svachchh} \\\hline
+{#hindi svaruup #endhindi}	& {\tt svaruup} \\\hline
+{#hindi Trak #endhindi}	& {\tt Trak} \\\hline
+{#hindi aamhii #endhindi}	& {\tt aamhii} \\\hline
+{#hindi chaturthii #endhindi}	& {\tt chaturthii} \\\hline
+{#hindi RRituu #endhindi}	& {\tt RRituu} \\\hline
+{#hindi aa.cktobar #endhindi} & {\tt aa.cktobar} \\\hline
+{#hindi novhe.nbar #endhindi} & {\tt novhe.nbar} \\\hline
+{#hindi gra.cm #endhindi}	& {\tt gra.cm} \\\hline
+{#hindi uu.Nchaa #endhindi}	& {\tt uu.Nchaa} \\\hline
+{#hindi bailagaaDii #endhindi} & {\tt bailagaaDii} \\\hline
+{#hindi gurud.hvaaraa #endhindi} & {\tt gurud.hvaaraa}\\\hline
+{#hindi gurudvaaraa #endhindi} & {\tt gurudvaaraa}\\\hline
+{#hindi niraaldyaa #endhindi} & {\tt niraaldyaa} \\\hline
+{#hindi GYaan #endhindi}	& {\tt GYaan} \\\hline
+{#hindi meka.cnik #endhindi} & {\tt meka.cnik} \\\hline
+{#hindi mhais #endhindi}	& {\tt mhais} \\\hline
+{#hindi deNaaryaa #endhindi}	& {\tt deNaaryaa} \\\hline
+{#hindi pratishhThaa #endhindi} & {\tt pratishhThaa} \\\hline
+{#hindi itihaas #endhindi} & {\tt itihaas} \\\hline
+{#hindi aasthaabaddh #endhindi} & {\tt aasthaabaddh} \\\hline
+{#hindi a.ntarraashhTriiy #endhindi} & {\tt a.ntarraashhTriiy} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline2578}%
+$<$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline2580}%
+$>$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage659}%
+\begin{tabular}{|c|c|c|}
+\hline
+{#hindi ka ka #endhindi} & {\tt kka} & {#hindi kka #endhindi} \\\hline
+{#hindi ka ta #endhindi} & {\tt kta} & {#hindi kta #endhindi} \\\hline
+{#hindi ka na #endhindi} & {\tt kna} & {#hindi kna #endhindi} \\\hline
+{#hindi ka ma #endhindi} & {\tt kma} & {#hindi kma #endhindi} \\\hline
+{#hindi ka ya #endhindi} & {\tt kya} & {#hindi kya #endhindi} \\\hline
+{#hindi ka la #endhindi} & {\tt kla} & {#hindi kla #endhindi} \\\hline
+{#hindi ka va #endhindi} & {\tt kva} & {#hindi kva #endhindi} \\\hline
+{#hindi ka shha #endhindi} & {\tt xa} & {#hindi xa #endhindi} \\\hline
+{#hindi gha na #endhindi} & {\tt ghna} & {#hindi ghna #endhindi} \\\hline
+{#hindi ~Na ka #endhindi} & {\tt\char`~Nka} & {#hindi ~Nka #endhindi} \\\hline
+{#hindi ~Na kha #endhindi} & {\tt\char`~Nkha} & {#hindi ~Nkha #endhindi}\\\hline
+{#hindi ~Na ga #endhindi} & {\tt\char`~Nga} & {#hindi ~Nga #endhindi} \\\hline
+{#hindi ~Na gha #endhindi} & {\tt\char`~Ngha} & {#hindi ~Ngha #endhindi}\\\hline
+{#hindi ~Na ~Na #endhindi} & {\tt\char`~N\char`~Na} & {#hindi ~N~Na #endhindi}\\\hline
+{#hindi ~Na na #endhindi} & {\tt\char`~Nna} & {#hindi ~Nna #endhindi} \\\hline
+{#hindi ~Na ma #endhindi} & {\tt\char`~Nma} & {#hindi ~Nma #endhindi} \\\hline
+{#hindi ~Na ya #endhindi} & {\tt\char`~Nya} & {#hindi ~Nya #endhindi} \\\hline
+{#hindi cha cha #endhindi} & {\tt chcha} & {#hindi chcha #endhindi}\\\hline
+{#hindi cha ~na #endhindi} & {\tt ch~na} & {#hindi ch~na #endhindi}\\\hline
+{#hindi chha ya #endhindi} & {\tt chhya} & {#hindi chhya #endhindi}\\\hline
+{#hindi ja ~na #endhindi} & {\tt j\char`~na} & {#hindi j~na #endhindi}\\\hline
+{#hindi ~na cha #endhindi} & {\tt\char`~ncha} & {#hindi ~ncha #endhindi}\\\hline
+{#hindi ~na ja #endhindi} & {\tt\char`~nja} & {#hindi ~nja #endhindi}\\\hline
+{#hindi Ta ka #endhindi} & {\tt Tka} & {#hindi Tka #endhindi}\\\hline
+{#hindi Ta Ta #endhindi} & {\tt TTa} & {#hindi TTa #endhindi}\\\hline
+{#hindi Ta Tha #endhindi} & {\tt TTha} & {#hindi TTha #endhindi}\\\hline
+{#hindi Ta ya #endhindi} & {\tt Tya} & {#hindi Tya #endhindi}\\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage799}%
+\begin{tabular}{|c|c|c|}
+\hline
+{#hindi Tha ya #endhindi} & {\tt Thya} & {#hindi Thya #endhindi}\\\hline
+{#hindi Da ga #endhindi} & {\tt Dga} & {#hindi Dga #endhindi}\\\hline
+{#hindi Da gha #endhindi} & {\tt Dgha} & {#hindi Dgha #endhindi}\\\hline
+{#hindi Da Da #endhindi} & {\tt DDa} & {#hindi DDa #endhindi}\\\hline
+{#hindi Da ma #endhindi} & {\tt Dma} & {#hindi Dma #endhindi}\\\hline
+{#hindi Da ya #endhindi} & {\tt Dya} & {#hindi Dya #endhindi}\\\hline
+{#hindi Dha ya #endhindi} & {\tt Dhya} & {#hindi Dhya #endhindi}\\\hline
+{#hindi ta ta #endhindi} & {\tt tta} & {#hindi tta #endhindi}\\\hline
+{#hindi ta na #endhindi} & {\tt tna} & {#hindi tna #endhindi}\\\hline
+{#hindi ta ra #endhindi} & {\tt tra} & {#hindi tra #endhindi}\\\hline
+{#hindi da ga #endhindi} & {\tt dga} & {#hindi dga #endhindi}\\\hline
+{#hindi da gha #endhindi} & {\tt dgha} & {#hindi dgha #endhindi}\\\hline
+{#hindi da da #endhindi} & {\tt dda} & {#hindi dda #endhindi}\\\hline
+{#hindi da dha #endhindi} & {\tt ddha} & {#hindi ddha #endhindi}\\\hline
+{#hindi da na #endhindi} & {\tt dna} & {#hindi dna #endhindi}\\\hline
+{#hindi da ba #endhindi} & {\tt dba} & {#hindi dba #endhindi}\\\hline
+{#hindi da bha #endhindi} & {\tt dbha} & {#hindi dbha #endhindi}\\\hline
+{#hindi da ma #endhindi} & {\tt dma} & {#hindi dma #endhindi}\\\hline
+{#hindi da ya #endhindi} & {\tt dya} & {#hindi dya #endhindi}\\\hline
+{#hindi da va #endhindi} & {\tt dva} & {#hindi dva #endhindi}\\\hline
+{#hindi da va ya #endhindi} & {\tt dvya} & {#hindi dvya #endhindi}\\\hline
+{#hindi da va ra #endhindi} & {\tt dvra} & {#hindi dvra #endhindi}\\\hline
+{#hindi dha na #endhindi} & {\tt dhna} & {#hindi dhna #endhindi}\\\hline
+{#hindi na na #endhindi} & {\tt nna} & {#hindi nna #endhindi}\\\hline
+{#hindi pa ta #endhindi} & {\tt pta} & {#hindi pta #endhindi}\\\hline
+{#hindi pa na #endhindi} & {\tt pna} & {#hindi pna #endhindi}\\\hline
+{#hindi pa la #endhindi} & {\tt pla} & {#hindi pla #endhindi}\\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage939}%
+\begin{tabular}{|c|c|c|}
+\hline
+{#hindi ba na #endhindi} & {\tt bna} & {#hindi bna #endhindi}\\\hline
+{#hindi ba ba #endhindi} & {\tt bba} & {#hindi bba #endhindi}\\\hline
+{#hindi ba va #endhindi} & {\tt bva} & {#hindi bva #endhindi}\\\hline
+{#hindi bha na #endhindi} & {\tt bhna} & {#hindi bhna #endhindi}\\\hline
+{#hindi ma na #endhindi} & {\tt mna} & {#hindi mna #endhindi}\\\hline
+{#hindi ma la #endhindi} & {\tt mla} & {#hindi mla #endhindi}\\\hline
+{#hindi la la #endhindi} & {\tt lla} & {#hindi lla #endhindi}\\\hline
+{#hindi va na #endhindi} & {\tt vna} & {#hindi vna #endhindi}\\\hline
+{#hindi sha cha #endhindi} & {\tt shcha} & {#hindi shcha #endhindi}\\\hline
+{#hindi sha na #endhindi} & {\tt shna} & {#hindi shna #endhindi}\\\hline
+{#hindi sha ba #endhindi} & {\tt shba} & {#hindi shba #endhindi}\\\hline
+{#hindi sha ra #endhindi} & {\tt shra} & {#hindi shra #endhindi}\\\hline
+{#hindi sha la #endhindi} & {\tt shla} & {#hindi shla #endhindi}\\\hline
+{#hindi sha va #endhindi} & {\tt shva} & {#hindi shva #endhindi}\\\hline
+{#hindi shha Ta #endhindi} & {\tt shhTa} & {#hindi shhTa #endhindi}\\\hline
+{#hindi shha Tha #endhindi} & {\tt shhTha} & {#hindi shhTha #endhindi}\\\hline
+{#hindi sa na #endhindi} & {\tt sna} & {#hindi sna #endhindi}\\\hline
+{#hindi ha Na #endhindi} & {\tt hNa} & {#hindi hNa #endhindi}\\\hline
+{#hindi ha na #endhindi} & {\tt hna} & {#hindi hna #endhindi}\\\hline
+{#hindi ha ma #endhindi} & {\tt hma} & {#hindi hma #endhindi}\\\hline
+{#hindi ha ya #endhindi} & {\tt hya} & {#hindi hya #endhindi}\\\hline
+{#hindi ha ra #endhindi} & {\tt hra} & {#hindi hra #endhindi}\\\hline
+{#hindi ha la #endhindi} & {\tt hla} & {#hindi hla #endhindi}\\\hline
+{#hindi ha va #endhindi} & {\tt hva} & {#hindi hva #endhindi}\\\hline
+{#hindi za ra #endhindi} & {\tt zra} & {#hindi zra #endhindi}\\\hline
+{#hindi pha ra #endhindi} & {\tt phra} & {#hindi phra #endhindi}\\\hline
+{#hindi fa ra #endhindi} & {\tt fra} & {#hindi fra #endhindi}\\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1086}%
+\begin{tabular}{|c|c|c|}
+\hline
+{#sanskrit ka ka #endsanskrit} & {\tt kka} & {#sanskrit kka #endsanskrit} \\\hline
+{#sanskrit ka ta #endsanskrit} & {\tt kta} & {#sanskrit kta #endsanskrit} \\\hline
+{#sanskrit ka na #endsanskrit} & {\tt kna} & {#sanskrit kna #endsanskrit} \\\hline
+{#sanskrit ka ma #endsanskrit} & {\tt kma} & {#sanskrit kma #endsanskrit} \\\hline
+{#sanskrit ka ya #endsanskrit} & {\tt kya} & {#sanskrit kya #endsanskrit} \\\hline
+{#sanskrit ka la #endsanskrit} & {\tt kla} & {#sanskrit kla #endsanskrit} \\\hline
+{#sanskrit ka va #endsanskrit} & {\tt kva} & {#sanskrit kva #endsanskrit} \\\hline
+{#sanskrit ka shha #endsanskrit} & {\tt xa} & {#sanskrit xa #endsanskrit} \\\hline
+{#sanskrit gha na #endsanskrit} & {\tt ghna} & {#sanskrit ghna #endsanskrit} \\\hline
+{#sanskrit ~Na ka #endsanskrit} & {\tt\char`~Nka} & {#sanskrit ~Nka #endsanskrit} \\\hline
+{#sanskrit ~Na kha #endsanskrit} & {\tt\char`~Nkha} & {#sanskrit ~Nkha #endsanskrit}\\\hline
+{#sanskrit ~Na ga #endsanskrit} & {\tt\char`~Nga} & {#sanskrit ~Nga #endsanskrit} \\\hline
+{#sanskrit ~Na gha #endsanskrit} & {\tt\char`~Ngha} & {#sanskrit ~Ngha #endsanskrit}\\\hline
+{#sanskrit ~Na ~Na #endsanskrit} & {\tt\char`~N\char`~Na} & {#sanskrit ~N~Na #endsanskrit}\\\hline
+{#sanskrit ~Na na #endsanskrit} & {\tt\char`~Nna} & {#sanskrit ~Nna #endsanskrit} \\\hline
+{#sanskrit ~Na ma #endsanskrit} & {\tt\char`~Nma} & {#sanskrit ~Nma #endsanskrit} \\\hline
+{#sanskrit ~Na ya #endsanskrit} & {\tt\char`~Nya} & {#sanskrit ~Nya #endsanskrit} \\\hline
+{#sanskrit cha cha #endsanskrit} & {\tt chcha} & {#sanskrit chcha #endsanskrit}\\\hline
+{#sanskrit cha ~na #endsanskrit} & {\tt ch\char`~na} & {#sanskrit ch~na #endsanskrit}\\\hline
+{#sanskrit chha ya #endsanskrit} & {\tt chhya} & {#sanskrit chhya #endsanskrit}\\\hline
+{#sanskrit ja ~na #endsanskrit} & {\tt j\char`~na} & {#sanskrit j~na #endsanskrit}\\\hline
+{#sanskrit ~na cha #endsanskrit} & {\tt\char`~ncha} & {#sanskrit ~ncha #endsanskrit}\\\hline
+{#sanskrit ~na ja #endsanskrit} & {\tt\char`~nja} & {#sanskrit ~nja #endsanskrit}\\\hline
+{#sanskrit Ta ka #endsanskrit} & {\tt Tka} & {#sanskrit Tka #endsanskrit}\\\hline
+{#sanskrit Ta Ta #endsanskrit} & {\tt TTa} & {#sanskrit TTa #endsanskrit}\\\hline
+{#sanskrit Ta Tha #endsanskrit} & {\tt TTha} & {#sanskrit TTha #endsanskrit}\\\hline
+{#sanskrit Ta ya #endsanskrit} & {\tt Tya} & {#sanskrit Tya #endsanskrit}\\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1226}%
+\begin{tabular}{|c|c|c|}
+\hline
+{#sanskrit Tha ya #endsanskrit} & {\tt Thya} & {#sanskrit Thya #endsanskrit}\\\hline
+{#sanskrit Da ga #endsanskrit} & {\tt Dga} & {#sanskrit Dga #endsanskrit}\\\hline
+{#sanskrit Da gha #endsanskrit} & {\tt Dgha} & {#sanskrit Dgha #endsanskrit}\\\hline
+{#sanskrit Da Da #endsanskrit} & {\tt DDa} & {#sanskrit DDa #endsanskrit}\\\hline
+{#sanskrit Da ma #endsanskrit} & {\tt Dma} & {#sanskrit Dma #endsanskrit}\\\hline
+{#sanskrit Da ya #endsanskrit} & {\tt Dya} & {#sanskrit Dya #endsanskrit}\\\hline
+{#sanskrit Dha ya #endsanskrit} & {\tt Dhya} & {#sanskrit Dhya #endsanskrit}\\\hline
+{#sanskrit ta ta #endsanskrit} & {\tt tta} & {#sanskrit tta #endsanskrit}\\\hline
+{#sanskrit ta na #endsanskrit} & {\tt tna} & {#sanskrit tna #endsanskrit}\\\hline
+{#sanskrit ta ra #endsanskrit} & {\tt tra} & {#sanskrit tra #endsanskrit}\\\hline
+{#sanskrit da ga #endsanskrit} & {\tt dga} & {#sanskrit dga #endsanskrit}\\\hline
+{#sanskrit da gha #endsanskrit} & {\tt dgha} & {#sanskrit dgha #endsanskrit}\\\hline
+{#sanskrit da da #endsanskrit} & {\tt dda} & {#sanskrit dda #endsanskrit}\\\hline
+{#sanskrit da dha #endsanskrit} & {\tt ddha} & {#sanskrit ddha #endsanskrit}\\\hline
+{#sanskrit da na #endsanskrit} & {\tt dna} & {#sanskrit dna #endsanskrit}\\\hline
+{#sanskrit da ba #endsanskrit} & {\tt dba} & {#sanskrit dba #endsanskrit}\\\hline
+{#sanskrit da bha #endsanskrit} & {\tt dbha} & {#sanskrit dbha #endsanskrit}\\\hline
+{#sanskrit da ma #endsanskrit} & {\tt dma} & {#sanskrit dma #endsanskrit}\\\hline
+{#sanskrit da ya #endsanskrit} & {\tt dya} & {#sanskrit dya #endsanskrit}\\\hline
+{#sanskrit da va #endsanskrit} & {\tt dva} & {#sanskrit dva #endsanskrit}\\\hline
+{#sanskrit da va ya #endsanskrit} & {\tt dvya} & {#sanskrit dvya #endsanskrit}\\\hline
+{#sanskrit da va ra #endsanskrit} & {\tt dvra} & {#sanskrit dvra #endsanskrit}\\\hline
+{#sanskrit dha na #endsanskrit} & {\tt dhna} & {#sanskrit dhna #endsanskrit}\\\hline
+{#sanskrit na na #endsanskrit} & {\tt nna} & {#sanskrit nna #endsanskrit}\\\hline
+{#sanskrit pa ta #endsanskrit} & {\tt pta} & {#sanskrit pta #endsanskrit}\\\hline
+{#sanskrit pa na #endsanskrit} & {\tt pna} & {#sanskrit pna #endsanskrit}\\\hline
+{#sanskrit pa la #endsanskrit} & {\tt pla} & {#sanskrit pla #endsanskrit}\\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1366}%
+\begin{tabular}{|c|c|c|}
+\hline
+{#sanskrit ba na #endsanskrit} & {\tt bna} & {#sanskrit bna #endsanskrit}\\\hline
+{#sanskrit ba ba #endsanskrit} & {\tt bba} & {#sanskrit bba #endsanskrit}\\\hline
+{#sanskrit ba va #endsanskrit} & {\tt bva} & {#sanskrit bva #endsanskrit}\\\hline
+{#sanskrit bha na #endsanskrit} & {\tt bhna} & {#sanskrit bhna #endsanskrit}\\\hline
+{#sanskrit ma na #endsanskrit} & {\tt mna} & {#sanskrit mna #endsanskrit}\\\hline
+{#sanskrit ma la #endsanskrit} & {\tt mla} & {#sanskrit mla #endsanskrit}\\\hline
+{#sanskrit la la #endsanskrit} & {\tt lla} & {#sanskrit lla #endsanskrit}\\\hline
+{#sanskrit va na #endsanskrit} & {\tt vna} & {#sanskrit vna #endsanskrit}\\\hline
+{#sanskrit sha cha #endsanskrit} & {\tt shcha} & {#sanskrit shcha #endsanskrit}\\\hline
+{#sanskrit sha na #endsanskrit} & {\tt shna} & {#sanskrit shna #endsanskrit}\\\hline
+{#sanskrit sha ba #endsanskrit} & {\tt shba} & {#sanskrit shba #endsanskrit}\\\hline
+{#sanskrit sha ra #endsanskrit} & {\tt shra} & {#sanskrit shra #endsanskrit}\\\hline
+{#sanskrit sha la #endsanskrit} & {\tt shla} & {#sanskrit shla #endsanskrit}\\\hline
+{#sanskrit sha va #endsanskrit} & {\tt shva} & {#sanskrit shva #endsanskrit}\\\hline
+{#sanskrit shha Ta #endsanskrit} & {\tt shhTa} & {#sanskrit shhTa #endsanskrit}\\\hline
+{#sanskrit shha Tha #endsanskrit} & {\tt shhTha} & {#sanskrit shhTha #endsanskrit}\\\hline
+{#sanskrit sa na #endsanskrit} & {\tt sna} & {#sanskrit sna #endsanskrit}\\\hline
+{#sanskrit ha Na #endsanskrit} & {\tt hNa} & {#sanskrit hNa #endsanskrit}\\\hline
+{#sanskrit ha na #endsanskrit} & {\tt hna} & {#sanskrit hna #endsanskrit}\\\hline
+{#sanskrit ha ma #endsanskrit} & {\tt hma} & {#sanskrit hma #endsanskrit}\\\hline
+{#sanskrit ha ya #endsanskrit} & {\tt hya} & {#sanskrit hya #endsanskrit}\\\hline
+{#sanskrit ha ra #endsanskrit} & {\tt hra} & {#sanskrit hra #endsanskrit}\\\hline
+{#sanskrit ha la #endsanskrit} & {\tt hla} & {#sanskrit hla #endsanskrit}\\\hline
+{#sanskrit ha va #endsanskrit} & {\tt hva} & {#sanskrit hva #endsanskrit}\\\hline
+{#sanskrit za ra #endsanskrit} & {\tt zra} & {#sanskrit zra #endsanskrit}\\\hline
+{#sanskrit pha ra #endsanskrit} & {\tt phra} & {#sanskrit phra #endsanskrit}\\\hline
+{#sanskrit fa ra #endsanskrit} & {\tt fra} & {#sanskrit fra #endsanskrit}\\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1513}%
+\begin{tabular}{|c|c|c|}
+\hline
+Consonants & Ligature & Char Code \\\hline
+{#sanskrit ka ta ya #endsanskrit} & {#sanskrit \char197 #endsanskrit} & {\tt 197} \\\hline
+{#sanskrit ka ta va#endsanskrit} & {#sanskrit \char198 #endsanskrit} & {\tt 198} \\\hline
+{#sanskrit ka na ya#endsanskrit} & {#sanskrit \char230 #endsanskrit} & {\tt 230} \\\hline
+{#sanskrit ka ra ya#endsanskrit} & {#sanskrit \char231 #endsanskrit} & {\tt 231} \\\hline
+{#sanskrit ka va ya#endsanskrit} & {#sanskrit \char204 #endsanskrit} & {\tt 204} \\\hline
+{#sanskrit ka ta ra ya#endsanskrit} & {#sanskrit \char252 #endsanskrit} & {\tt 252} \\\hline
+{#sanskrit ~Na ka ta#endsanskrit} & {#sanskrit \char173 #endsanskrit} & {\tt 173} \\\hline
+{#sanskrit ~Na ka ya#endsanskrit} & {#sanskrit \char175 #endsanskrit} & {\tt 175} \\\hline
+{#sanskrit ~Na ka shha#endsanskrit} & {#sanskrit \char176 #endsanskrit} & {\tt 176} \\\hline
+{#sanskrit ~Na kha ya#endsanskrit} & {#sanskrit \char186 #endsanskrit} & {\tt 186} \\\hline
+{#sanskrit ~Na ga ya#endsanskrit} & {#sanskrit \char190 #endsanskrit} & {\tt 190} \\\hline
+{#sanskrit ~Na gha ya#endsanskrit} & {#sanskrit \char185 #endsanskrit} & {\tt 185} \\\hline
+{#sanskrit ~Na gha ra#endsanskrit} & {#sanskrit \char192 #endsanskrit} & {\tt 192} \\\hline
+{#sanskrit ~Na ka ta ya#endsanskrit} & {#sanskrit \char174 #endsanskrit} & {\tt 174} \\\hline
+{#sanskrit ~Na ka shha va#endsanskrit} & {#sanskrit \char177 #endsanskrit} & {\tt 177} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1593}%
+\begin{tabular}{|c|c|c|}
+\hline
+Consonants & Ligature & Char Code \\\hline
+{#sanskrit Da ga ya#endsanskrit} & {#sanskrit \char184 #endsanskrit} & {\tt 184} \\\hline
+{#sanskrit Da gha ra#endsanskrit} & {#sanskrit \char182 #endsanskrit} & {\tt 182} \\\hline
+{#sanskrit Da ra ya#endsanskrit} & {#sanskrit \char251 #endsanskrit} & {\tt 251} \\\hline
+{#sanskrit da ga ra#endsanskrit} & {#sanskrit \char237 #endsanskrit} & {\tt 237} \\\hline
+{#sanskrit da gha ra#endsanskrit} & {#sanskrit \char238 #endsanskrit} & {\tt 238} \\\hline
+{#sanskrit da da ya#endsanskrit} & {#sanskrit \char144 #endsanskrit} & {\tt 144} \\\hline
+{#sanskrit da da va#endsanskrit} & {#sanskrit \char248 #endsanskrit} & {\tt 248} \\\hline
+{#sanskrit da dha ya#endsanskrit} & {#sanskrit \char143 #endsanskrit} & {\tt 143} \\\hline
+{#sanskrit da dha va#endsanskrit} & {#sanskrit \char249 #endsanskrit} & {\tt 249} \\\hline
+{#sanskrit da bha ya#endsanskrit} & {#sanskrit \char142 #endsanskrit} & {\tt 142} \\\hline
+{#sanskrit da ra ya#endsanskrit} & {#sanskrit \char239 #endsanskrit} & {\tt 239} \\\hline
+{#sanskrit shha Ta ya#endsanskrit} & {#sanskrit \char247 #endsanskrit} & {\tt 247} \\\hline
+{#sanskrit shha Ta va#endsanskrit} & {#sanskrit \char171 #endsanskrit} & {\tt 171} \\\hline
+{#sanskrit shha Ta ra ya#endsanskrit} & {#sanskrit \char170 #endsanskrit} & {\tt 170} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+
+%
+\providecommand{\dn}{\fransdvng\Largedvng}%
+
+
+%
+\providecommand{\dnx}{\devnf}%
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1678}%
+\begin{tabular} {||l|l||l|l||l|l||l|l|l||@{\protect\rule{0cm}{.35cm}}} \hline
+{\tt a} & {\fransdvng\Largedvng a} &
+{\tt k.h} & {\devnf k\kRn{-0.500}{\char94}\kRn{0.500}} &    
+{\tt p} & {\devnf p} &                                      
+{\tt .D} & {\devnf \symbol{'167}} & \\
+{\tt aa} or {\tt A} & {\devnf aA} or {\devnf A} &
+{\tt k} & {\devnf k} &                                      
+{\tt ph} & {\devnf P} &                                     
+{\tt .Dh} & {\devnf \symbol{'170}} & \\
+{\tt i} & {\devnf i} or {\devnf \symbol{'105}} &
+{\tt kh} & {\devnf K} &                                     
+{\tt b} & {\devnf b} &                                      
+{\tt 1} & {\devnf 1} & \\
+{\tt ii} or {\tt I} & {\devnf I} or {\devnf \symbol{'106}} &
+{\tt g} & {\devnf g} &                                      
+{\tt bh} & {\devnf B} &                                     
+{\tt 2} & {\devnf 2} & \\
+{\tt u} & {\devnf u} or {\devnf \symbol{0}} &
+{\tt gh} & {\devnf G} &                                     
+{\tt m} & {\devnf m} &                                      
+{\tt 3} & {\devnf 3} & \\
+{\tt uu} or {\tt U} & {\devnf U} or {\devnf \symbol{'1}} &
+{\tt\symbol{'176}N} & {\devnf R} &                          
+{\tt y} & {\devnf y} &                                      
+{\tt 4} & {\devnf 4} & \\
+{\tt R\symbol{'136}i} & {\devnf \symbol{'33}} or {\devnf \symbol{2}} &
+{\tt ch} & {\devnf c} &                                     
+{\tt r} & {\devnf r} &                                      
+{\tt 5} & {\devnf 5} & \\
+{\tt R\symbol{'136}I} & {\devnf \symbol{'21}} or {\devnf \symbol{'16}} &
+{\tt chh} or {\tt Ch} & {\devnf C} &                        
+{\tt l} & {\devnf l} &                                      
+{\tt 6} & {\devnf 6} & \\
+{\tt L\symbol{'136}i} & {\devnf \symbol{'30}} or {\devnf \symbol{'37}} &          
+{\tt j} & {\devnf j} &
+{\tt v} & {\devnf v} &                                      
+{\tt 7} & {\devnf 7} & \\
+{\tt L\symbol{'136}I} & {\devnf \symbol{'31}} or {\devnf \symbol{'174}} &      
+{\tt jh} & {\devnf J} &
+{\tt sh} & {\devnf \symbol{'146}} &                          
+{\tt 8} & {\devnf 8} & \\
+{\tt e} & {\devnf e} or {\devnf \symbol{3}} &                               
+{\tt JN} or {\tt\symbol{'176}n} & {\devnf \symbol{'32}} &
+{\tt shh} or {\tt Sh} & {\devnf \symbol{'161}} &             
+{\tt 9} & {\devnf 9} & \\
+{\tt ai} & {\devnf {e\kRn{-0.800}{\char3}}} or {\devnf \symbol{'173}} &        
+{\tt T} & {\devnf \symbol{'126}} &
+{\tt s} & {\devnf s} &                                      
+{\tt0} & {\devnf 0} & \\
+{\tt o} & {\devnf ao} or {\devnf o} &                         
+{\tt Th} & {\devnf \symbol{'127}} &
+{\tt h} & {\devnf h} &                                      
+{\tt .n} or {\tt M} & {\devnf \symbol{'25}} & anusv\={a}ra \\
+{\tt au} & {\devnf aO} or {\devnf O} &                          
+{\tt D} & {\devnf \symbol{'130}} &
+{\tt\ ld} or {\tt L} & {\devnf \symbol{'17}} &                                        
+{\tt .N} & {\devnf \symbol{'40}} & chandrabindu \\
+{\tt a.n} or {\tt aM} & {\devnf a\kRn{-0.270}\sBs{-0.060}{{\char92}}\kRn{-0.063}} &
+{\tt Dh} & {\devnf \symbol{'131}} &
+{\tt x} or {\tt kSh} & {\fransdvng\Largedvng "} & 
+{\tt H} & {\devnf \symbol{'54}} & visarga \\
+{\tt aH} & {\devnf a{\char44}} & 
+{\tt N} & {\devnf \symbol{'132}} &
+{\tt j\symbol{'176}n} or {\tt GY} or {\tt dny} &{\fransdvng\Largedvng } &
+{\tt .} & {\devnf \symbol{'56}} & danda \\
+{\tt a.c} & {\devnf a\kRn{-0.600}{\char4}\kRn{-0.030}} &
+{\tt t} & {\devnf t} &
+{\tt q} & {\devnf \symbol{'52}} &
+{\tt R} & {\devnf \symbol{'35}} & Marathi r \\
+{\tt aa.c} or {\tt A.c} & {\devnf aA\kRn{-0.600}{\char4}\kRn{-0.030}} &
+{\tt th} & {\devnf T} &
+{\tt K} & {\devnf \symbol{'14}} &
+{\tt ..} or {\tt ;} & {\devnf \symbol{'73}} & paragraph end \\
+{\tt OM} or {\tt AUM} & {\devnf \symbol{'72}} &
+{\tt d} & {\devnf d} &
+{\tt G} & {\devnf \symbol{'13}} &
+{\tt .a} & {\devnf \symbol{'137}} & avagraha \\
+{\tt .a} & {\devnf \symbol{'137}} &
+{\tt dh} & {\devnf D} &
+{\tt z} & {\devnf \symbol{'51}} &
+{\tt .c} & {\devnf \symbol{'4}} & a like in at \\
+{\tt Ra} & {\devnf r} &
+{\tt n} & {\devnf n} &
+{\tt f} & {\devnf \symbol{'47}} &
+{\tt {\char123}{\char92}rm .{\char125}} & {\devnf \symbol{'24}} & period \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+
+\end{document}

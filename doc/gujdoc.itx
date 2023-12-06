@@ -1,0 +1,417 @@
+% User Documentation for the Itrans Package
+% Gujarati Transliteration Table for ItxGuj Font - PostScript Type 1, TrueType.
+
+\documentclass[11pt]{article}
+
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latex2html
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+\newcommand{\SM}{\char35gujarati}
+\newcommand{\EM}{\char35endgujarati}
+\newfont{\itxgujf}{itxguj at 15pt}
+% \newfont{\itxgujfo}{itxgujo at 15pt} % the oblique version 
+% \newfont{\itxgujfre}{itxgujre at 15pt} % the scaled up (x-axis) version
+% \newfont{\itxgujfrc}{itxgujrc at 15pt} % the scaled down (x-axis) version
+\hyphenchar\itxgujf=-1 % disable hyphenation using this font
+
+#gujaratiifm=itxguj.ifm
+#gujaratifont=\itxgujf
+
+\begin{document}
+
+\footnotetext[0]{Last modification: \today}
+
+\centerline{\bf Transliteration Map}
+\medskip
+\centerline{\LARGE\bf ItxGuj Gujarati font}
+\bigskip
+\centerline{\bf itrans}
+\smallskip
+\centerline{\bf \copyright 1996--1998 Avinash Chopde}
+
+\section{Fonts Available}
+
+\subsection{\TeX\ Interface}
+
+The gujarati font is called {\em ItxGuj}, and its PostScript specification
+is in the file {\em itxguj.pfa} or {\em itxguj.pfb}.
+It is a user-defined Type I PostScript font.
+Four styles, transformations on the basic ItxGuj font,
+are bundled with the  itrans package.
+Their names (in the \TeX\ interface) are itxguj, itxgujo, itxgujrc, and
+itxgujre.
+
+\begin{description}
+\item [itxguj] This is the basic gujarati font. There are some other fonts
+available, derived by transforming this font.
+\item [itxgujo] This is the slanted version of {\em itxguj}.
+\item [itxgujrc] A scaled down, compressed version
+(along the x-axis) of the basic font is available as {\em itxgujrc}.
+\item[itxgujre] This is heavier than {\em itxguj}, to be used as a bold version.
+\end{description}
+
+Since these are PostScript fonts,  you can use them at any font size in
+your document. 
+In this document the following line was used for
+loading the font:
+
+\noindent\verb=\newfont{\itxgujf}{itxguj at 15pt}=.
+
+Even though this document has been typeset using a 11 point size, the
+gujarati font is loaded in at 15 point size.
+This is just to emphasize the gujarati characters.
+Normally, I would suggest loading in the font at 15-20\% greater size than
+the other text in the document.
+So, if your document is being typeset at 11 point, load in the gujarati
+fonts using a 13 point size.
+Of course, this relation of size is important only if you wish to mix
+english and gujarati in the same document.
+In any case, go wild, experiment with various font sizes.
+Since the characters are described as outlines in bezier curve form,
+smaller point sizes do not look too good on a 300dpi output device, the
+larger font size makes the shapes look better in print.
+
+\subsection{Direct Textual Interface: HTML Output}
+
+This mode is provided for generating text that can be displayed
+on any WWW browser such as Netscape (version 3.0 or later).
+See the example file provided (ITRANS/doc/s1html.itx) on examples
+of how to use this mode.
+See the manual idoc.itx for information on the Direct Text Output mode
+of ITRANS.
+
+The same IFM file is used for this mode as for the \TeX\ interface.
+
+\subsection{Direct Textual Interface: PostScript Output}
+
+This interface does not offer any word-processing capabilities other
+than that of checking when a page is complete, and then
+resetting the current point to the top of the next page.
+Thus, all spaces, lines, etc from the input text appear
+in the output too.
+
+The user may also directly invoke
+PostScript commands to create various versions of the font, as required.
+Refer to PostScript language manuals for specific help regarding the
+PostScript font manipulation commands.
+If you decide to go this route, take a look at the file {\em itrans.pro},
+it is the prologue that gets sent to the printer.
+It contains definitions of various commands such as {\em normalfont},
+{\em slantfont}, {\em compressedfont}, etc, which may be used to change
+the font being used.
+These PostScript functions take a single argument:~the font size to use.
+All this and more information can be obtained from the prologue file, {\em
+itrans.pro}, and PostScript users should take a look at it.
+For example usage, look through the sample input files provided.
+Files ending in {\em .ips} are the direct PostScript input files, itrans
+(with the -P option) directly produces PostScript output for these files.
+
+The file {\em itxguj.pfb} contains the PostScript
+language program for this gujarati font.
+
+\section{ITRANS Usage}
+
+The IFM file is called {\em itxguj.ifm}, and the user needs to load this 
+in the input file for ITRANS.
+The user manual for ITRANS, idoc.itx, has more information on how to use
+ITRANS.
+
+\subsection{Font Developer}
+
+This font has been developed by Shrikrishna Patil, who has been
+developing fonts for over a decade now. He has been extremely generous to
+all of us users of ITRANS, and has offered us two freeware fonts:
+one for Gujarati (ItxGuj), and one for Bengali (ItxBeng).
+I am thankful to him for this
+gift! If any one using this ITRANS package finds the need for
+fonts for Microsoft Windows
+or Apple Macintosh platforms, feel free to contact Patil at his e-mail
+address {\em sapatil@aol.com}. His fonts are available at very
+reasonable costs, around US\$50 to US\$100 depending on the font.
+
+\subsection{IFM File Creator}
+
+I would like to thank Prakash Trivedi ({\em prakash@aero.odu.edu}),
+who undertook the complex task of creating the IFM file for ItxGuj!
+This is the first time anyone else (other than me) has ventured to try
+to create a IFM file, and Prakash Trivedi not only attempted it, he also
+managed to substantially complete the task!
+This was a great help to me since last year (1995) I could not
+devote much time to ITRANS development, and with his initial work, it was
+very easy for me to complete the IFM file, and so today, ITRANS supports
+Gujarati.
+
+\subsection{Author}
+
+\noindent
+ITRANS has been developed by Avinash Chopde. \\
+E-mail:
+\htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com}. \\
+Home page:
+\htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+
+\section{Transliteration Map and Examples}
+
+The following pages display the transliteration code for Gujarati, and a
+few examples. (Note that some of the example words used may not be any
+real Gujarati words! I don't know Gujarati very well, so I chose a mix of
+Marathi, Hindi, English, and Gujarati words!).
+
+\bigskip
+\hrule
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Gujarati Table}
+\end{htmlonly}
+
+\begin{table}[hp]
+\begin{center}
+\begin{tabular}{c@{\hspace{1in}}c@{\hspace{1in}}c}
+% --- first col is vowels inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#gujarati a #endgujarati}	& {\tt a} \\ \hline
+{#gujarati aa #endgujarati}	& {\tt aa {\it or} A} \\ \hline
+{#gujarati i #endgujarati}	& {\tt i} \\ \hline
+{#gujarati ii #endgujarati}	& {\tt ii {\it or} I} \\ \hline
+{#gujarati u #endgujarati}	& {\tt u} \\ \hline
+{#gujarati uu #endgujarati}	& {\tt uu {\it or} U} \\ \hline
+{#gujarati R^i #endgujarati}	& {\tt RRi {\it or} R\char`^i} \\ \hline
+{#gujarati e #endgujarati}	& {\tt e} \\ \hline
+{#gujarati ai #endgujarati}	& {\tt ai} \\ \hline
+{#gujarati o #endgujarati}	& {\tt o} \\ \hline
+{#gujarati au #endgujarati}	& {\tt au} \\ \hline
+{#gujarati aM #endgujarati}	& {\tt {\it a}M} \\ \hline
+{#gujarati aH #endgujarati}	& {\tt {\it a}H} \\ \hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+{#gujarati 0 #endgujarati}	& {\tt 0} \\ \hline
+{#gujarati 1 #endgujarati}	& {\tt 1} \\ \hline
+{#gujarati 2 #endgujarati}	& {\tt 2} \\ \hline
+{#gujarati 3 #endgujarati}	& {\tt 3} \\ \hline
+{#gujarati 4 #endgujarati}	& {\tt 4} \\ \hline
+{#gujarati 5 #endgujarati}	& {\tt 5} \\ \hline
+{#gujarati 6 #endgujarati}	& {\tt 6} \\ \hline
+{#gujarati 7 #endgujarati}	& {\tt 7} \\ \hline
+{#gujarati 8 #endgujarati}	& {\tt 8} \\ \hline
+{#gujarati 9 #endgujarati}	& {\tt 9} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end first col 
+&
+% --- second col is consonants 
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#gujarati ka  #endgujarati}	& {\tt k{\it a}} \\ \hline
+{#gujarati kha  #endgujarati}	& {\tt kh{\it a}} \\ \hline
+{#gujarati ga  #endgujarati}	& {\tt g{\it a}} \\ \hline
+{#gujarati gha  #endgujarati}	& {\tt gh{\it a}} \\ \hline
+{#gujarati cha  #endgujarati}	& {\tt ch{\it a}} \\ \hline
+{#gujarati Cha  #endgujarati}	& {\tt Ch{\it a or} chh{\it a}} \\ \hline
+{#gujarati ja  #endgujarati}	& {\tt j{\it a}} \\ \hline
+{#gujarati jha  #endgujarati}	& {\tt jh{\it a}} \\ \hline
+{#gujarati Ta  #endgujarati}	& {\tt T{\it a}} \\ \hline
+{#gujarati Tha  #endgujarati}	& {\tt Th{\it a}} \\ \hline
+{#gujarati Da  #endgujarati}	& {\tt D{\it a}} \\ \hline
+{#gujarati Dha  #endgujarati}	& {\tt Dh{\it a}} \\ \hline
+{#gujarati Na  #endgujarati}	& {\tt N{\it a}} \\ \hline
+{#gujarati ta  #endgujarati}	& {\tt t{\it a}} \\ \hline
+{#gujarati tha  #endgujarati}	& {\tt th{\it a}} \\ \hline
+{#gujarati da  #endgujarati}	& {\tt d{\it a}} \\ \hline
+{#gujarati dha  #endgujarati}	& {\tt dh{\it a}} \\ \hline
+{#gujarati na  #endgujarati}	& {\tt n{\it a}} \\ \hline
+{#gujarati pa  #endgujarati}	& {\tt p{\it a}} \\ \hline
+{#gujarati pha  #endgujarati}	& {\tt ph{\it a}} \\ \hline
+{#gujarati ba  #endgujarati}	& {\tt b{\it a}} \\ \hline
+{#gujarati bha  #endgujarati}	& {\tt bh{\it a}} \\ \hline
+{#gujarati ma  #endgujarati}	& {\tt m{\it a}} \\ \hline
+{#gujarati ya  #endgujarati}	& {\tt y{\it a}} \\ \hline
+{#gujarati ra  #endgujarati}	& {\tt r{\it a}} \\ \hline
+{#gujarati la  #endgujarati}	& {\tt l{\it a}} \\ \hline
+{#gujarati va  #endgujarati}	& {\tt v{\it a or} w{\it a}} \\ \hline
+{#gujarati sha  #endgujarati}	& {\tt sh{\it a}} \\ \hline
+{#gujarati Sha  #endgujarati}	& {\tt Sh{\it a or} shh{\it a}} \\ \hline
+{#gujarati sa  #endgujarati}	& {\tt s{\it a}} \\ \hline
+{#gujarati ha  #endgujarati}	& {\tt h{\it a}} \\ \hline
+{#gujarati lda  #endgujarati}	& {\tt ld{\it a or} L{\it a}} \\ \hline
+{#gujarati kSha  #endgujarati}	& {\tt kSh{\it a or} x{\it a}} \\ \hline
+{#gujarati j~na  #endgujarati}	& {\tt j\char`~n{\it a or} GY{\it a}} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end second col 
+&
+% --- third col of specials/accents inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{#gujarati Rga #endgujarati} & {\tt R{\it ga}} \\ \hline
+{#gujarati rga #endgujarati} & {\tt rga {\it or} {\it ga}\char`^r} \\ \hline
+{#gujarati ga.n #endgujarati} & {\tt {\it ga}.n} \\ \hline
+{#gujarati aa.c #endgujarati} & {\tt {\it aa}.c} \\ \hline
+{#gujarati Da.N #endgujarati} & {\tt {\it Da}.N} \\ \hline
+{#gujarati D.h #endgujarati} & {\tt {\it D}.h} \\ \hline
+{#gujarati duH #endgujarati} & {\tt {\it du}H} \\ \hline
+{#gujarati AUM #endgujarati}	& {\tt AUM} or {\tt OM} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\end{tabular} % end the larger tabular encompassing all four tables
+\hfill
+\\
+\end{center}
+\caption {\bf ITRANS: Gujarati to English Transliteration Table.}
+\label{ienc}
+\end{table}
+
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Gujarati Examples}
+\end{htmlonly}
+
+\begin{table}[hp]
+\vspace*{-1.25in}
+\hspace*{0in}\mbox{\vbox{
+\begin{center}
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\hline
+{#gujarati ka kaa ki kii ku kuu #endgujarati}
+& {\tt ka kaa ki kii ku kuu} \\ \hline
+{#gujarati sa saa si sii su suu #endgujarati}
+& {\tt sa saa si sii su suu} \\ \hline
+{#gujarati khRRi khe khai khaM khaH kha.c kha.N #endgujarati}
+& {\tt khRRi khe khai khaM khaH kha.c kha.N} \\ \hline
+{#gujarati De Dai DaM DaH Da.c Da.N #endgujarati}
+& {\tt De Dai DaM DaH Da.c Da.N} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\vspace{0.1in}
+{Sample Letters}
+\smallskip
+\\
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\hline
+{#gujarati bhaagya #endgujarati} & {\tt bhaagya} \\ \hline
+{#gujarati raajya #endgujarati}	& {\tt raajya} \\ \hline
+{#gujarati vidyaa #endgujarati}	& {\tt vidyaa} \\ \hline
+{#gujarati shishhya #endgujarati}	& {\tt shishhya} \\ \hline
+{#gujarati mukhya #endgujarati}	& {\tt mukhya} \\ \hline
+{#gujarati gaaDyaa #endgujarati}	& {\tt gaaDyaa} \\ \hline
+{#gujarati tyaag #endgujarati}	& {\tt tyaag} \\ \hline
+{#gujarati dhyaan #endgujarati}	& {\tt dhyaan} \\ \hline
+{#gujarati nyaay #endgujarati}	& {\tt nyaay} \\ \hline
+{#gujarati shyaam #endgujarati}	& {\tt shyaam} \\ \hline
+{#gujarati jyot #endgujarati}	& {\tt jyot} \\ \hline
+{#gujarati manushhy #endgujarati}	& {\tt manushhy} \\ \hline
+{#gujarati chaa.ndaNyaa #endgujarati} & {\tt chaa.ndaNyaa} \\ \hline
+{#gujarati abhyaas #endgujarati}	& {\tt abhyaas} \\ \hline
+{#gujarati kalyaaN #endgujarati}	& {\tt kalyaaN} \\ \hline
+{#gujarati ghaDyaald #endgujarati}	& {\tt ghaDyaald} \\ \hline
+{#gujarati kachchaa #endgujarati}	& {\tt kachchaa} \\ \hline
+{#gujarati khaDDaa #endgujarati}	& {\tt khaDDaa} \\ \hline
+{#gujarati khaD.hDaa #endgujarati}	& {\tt khaD.hDaa} \\ \hline
+{#gujarati gaThThaa #endgujarati}	& {\tt gaThThaa} \\ \hline
+{#gujarati dhakkaa #endgujarati}	& {\tt dhakkaa} \\ \hline
+{#gujarati pattaa #endgujarati}	& {\tt pattaa} \\ \hline
+{#gujarati tippat #endgujarati}	& {\tt tippat} \\ \hline
+{#gujarati pannaas #endgujarati}	& {\tt pannaas} \\ \hline
+{#gujarati sajjan #endgujarati}	& {\tt sajjan} \\ \hline
+{#gujarati pustak #endgujarati}	& {\tt pustak} \\ \hline
+\end{tabular}
+\end{makeimage}
+\hspace{0.75in}
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\hline
+{#gujarati kasturii #endgujarati}	& {\tt kasturii} \\ \hline
+{#gujarati naastik #endgujarati}	& {\tt naastik} \\ \hline
+{#gujarati praapt #endgujarati}	& {\tt praapt} \\ \hline
+{#gujarati swata.ntr #endgujarati} & {\tt swata.ntr} \\ \hline
+{#gujarati svaata.ntry #endgujarati} & {\tt svaata.ntry} \\ \hline
+{#gujarati dhvanii #endgujarati}	& {\tt dhvanii} \\ \hline
+{#gujarati goshhT #endgujarati}	& {\tt goshhT} \\ \hline
+{#gujarati yuddh #endgujarati}	& {\tt yuddh} \\ \hline
+{#gujarati yud.hdh #endgujarati}	& {\tt yud.hdh} \\ \hline
+{#gujarati pashchim #endgujarati}	& {\tt pashchim} \\ \hline
+{#gujarati phakt #endgujarati}	& {\tt phakt} \\ \hline
+{#gujarati tarhaa #endgujarati}	& {\tt tarhaa} \\ \hline
+{#gujarati artha #endgujarati}	& {\tt artha} \\ \hline
+{#gujarati kartaa #endgujarati}	& {\tt kartaa} \\ \hline
+{#gujarati gardii #endgujarati}	& {\tt gardii} \\ \hline
+{#gujarati nirNay #endgujarati}	& {\tt nirNay} \\ \hline
+{#gujarati patra #endgujarati}	& {\tt patra} \\ \hline
+{#gujarati trikoN #endgujarati}	& {\tt trikoN} \\ \hline
+{#gujarati shraavaN #endgujarati}	& {\tt shraavaN} \\ \hline
+{#gujarati aashram #endgujarati}	& {\tt aashram} \\ \hline
+{#gujarati shushruushhaa #endgujarati} & {\tt shushruushhaa} \\ \hline
+{#gujarati gra.nth #endgujarati}	& {\tt gra.nth} \\ \hline
+{#gujarati prajaa #endgujarati}	& {\tt prajaa} \\ \hline
+{#gujarati draakShe #endgujarati}	& {\tt draakShe} \\ \hline
+{#gujarati gRRihasth #endgujarati}	& {\tt gRRihasth} \\ \hline
+{#gujarati prakR^itii #endgujarati}	& {\tt prakR\char`^itii} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\medskip
+{Sample Words}
+\\
+\end{center}
+}} % end hbox and vbox
+\caption {\bf Examples}
+\end{table}
+
+\begin{table}
+\vspace*{-1.25in}
+\begin{center}
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\hline
+{#gujarati shubhra #endgujarati}	& {\tt shubhra} \\ \hline
+{#gujarati sahastra #endgujarati}	& {\tt sahastra} \\ \hline
+{#gujarati kriiDaa #endgujarati}	& {\tt kriiDaa} \\ \hline
+{#gujarati svachchh #endgujarati}	& {\tt svachchh} \\ \hline
+{#gujarati svaruup #endgujarati}	& {\tt svaruup} \\ \hline
+{#gujarati Trak #endgujarati}	& {\tt Trak} \\ \hline
+{#gujarati aamhii #endgujarati}	& {\tt aamhii} \\ \hline
+{#gujarati chaturthii #endgujarati} & {\tt chaturthii} \\ \hline
+{#gujarati RRituu #endgujarati}	& {\tt RRituu} \\ \hline
+{#gujarati aa.cktobar #endgujarati} & {\tt aa.cktobar} \\ \hline
+{#gujarati novhe.nbar #endgujarati} & {\tt novhe.nbar} \\ \hline
+{#gujarati gra.cm #endgujarati}	& {\tt gra.cm} \\ \hline
+{#gujarati uu.Nchaa #endgujarati}	& {\tt uu.Nchaa} \\ \hline
+{#gujarati bailagaaDii #endgujarati} & {\tt bailagaaDii} \\ \hline
+{#gujarati gurudvaaraa #endgujarati} & {\tt gurudvaaraa}\\ \hline
+{#gujarati gurud.hvaaraa #endgujarati} & {\tt gurud.hvaaraa}\\ \hline
+{#gujarati niraaldyaa #endgujarati} & {\tt niraaldyaa} \\ \hline
+{#gujarati GYaan #endgujarati}	& {\tt GYaan} \\ \hline
+{#gujarati meka.cnik #endgujarati} & {\tt meka.cnik} \\ \hline
+{#gujarati mhais #endgujarati}	& {\tt mhais} \\ \hline
+{#gujarati deNaaryaa #endgujarati}	& {\tt deNaaryaa} \\ \hline
+{#gujarati pratishhThaa #endgujarati} & {\tt pratishhThaa} \\ \hline
+{#gujarati itihaas #endgujarati} & {\tt itihaas} \\ \hline
+{#gujarati aasthaabaddh #endgujarati} & {\tt aasthaabaddh} \\ \hline
+{#gujarati a.ntarraashhTriiy #endgujarati} & {\tt a.ntarraashhTriiy} \\ \hline
+\end{tabular}
+\end{makeimage}
+\end{center}
+\smallskip
+\caption {\bf Examples}
+\end{table}
+
+\end{document}

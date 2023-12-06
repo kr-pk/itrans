@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>ITRANS Encoding Accepted along with CS/CSX</TITLE>
+<META NAME="description" CONTENT="ITRANS Encoding Accepted along with CS/CSX">
+<META NAME="keywords" CONTENT="icsx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="icsx.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="icsx.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html41"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html39"
+  HREF="icsx.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html33"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html42"
+  HREF="node3.html">Devanagari Table</A>
+<B>Up:</B> <A NAME="tex2html40"
+  HREF="icsx.html">icsx.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html34"
+  HREF="node1.html">CS/CSX Encoding</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html43"
+  HREF="node2.html#SECTION00021000000000000000">Converting CSX Encoding to ITRANS Encoding</A>
+<LI><A NAME="tex2html44"
+  HREF="node2.html#SECTION00022000000000000000">Author</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00020000000000000000">
+ITRANS Encoding Accepted along with CS/CSX</A>
+</H1>
+
+<P>
+Even when <TT>&#35;usecsx</TT> is in effect, the other ITRANS mappings
+are still accepted.
+Actually, even without the usecsx command, ITRANS will still accept all
+the CS/CSX character codes. The only reason the usecsx command is needed
+is to disambiguate the <IMG
+ WIDTH="26" HEIGHT="23" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="ca"> and <IMG
+ WIDTH="29" HEIGHT="23" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.gif"
+ ALT="cha"> characters. ITRANS by default
+uses <TT>cha</TT> and <TT>chha</TT> to denote <IMG
+ WIDTH="26" HEIGHT="23" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="ca"> and <IMG
+ WIDTH="29" HEIGHT="23" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.gif"
+ ALT="cha">, but CS/CSX
+uses <TT>ca</TT> and <TT>cha</TT>. To handle this difference, the
+<TT>&#35;usecsx</TT> command had to be introduced.
+
+<P>
+Though this document shows only the Devanagari script, CS/CSX can be used
+in ITRANS with every Indic Script that ITRANS supports.
+For more details on those languages, consult the documentation for that
+specific language. For Devanagari, consult dnvc.itx or dvng.itx, for Tamil,
+tamil.itx, for Bengali, beng.itx, for Telugu tlgutx.itx, for Punjabi
+pundoc.itx, for Romanized Sanskrit romancsx.itx.
+
+<P>
+
+<H2><A NAME="SECTION00021000000000000000">
+Converting CSX Encoding to ITRANS Encoding</A>
+</H2>
+
+<P>
+Sometimes, it is useful to convert input text from the 8-bit CS/CSX encoding
+to the 7-bit ITRANS Encoding (ASCII text).
+Many computers still do not have good 8-bit editing tools, and even if
+such tools are present, the CS/CSX font may not be available, in which case
+editing CSX texts becomes cumbersome.
+
+<P>
+To convert input text from CS/CSX encoding to ITRANS encoding, the program
+<B>csx2i</B> has been provided. It is present in the <TT>src/</TT> directory
+of the ITRANS distribution. For x86 MS-DOS compatible machines, an executable
+is also provided. Given a file called <TT>input.csx</TT> which contains
+text in CS/CSX encoding, to convert it to ITRANS encoding in a file called
+<TT>output</TT>, run it like this:
+
+<P>
+<TT>csx2i &lt; input.csx &gt; output</TT>
+
+<P>
+C-source code to csx2i is provided, in file csx2i.c, and it should compile
+easily on every platform.
+
+<P>
+Once the file <TT>output</TT> is checked over for manual corrections, you
+can embed that text in between ITRANS commands, and process it like any
+other ITRANS input file.
+
+<P>
+
+<P>
+
+<H2><A NAME="SECTION00022000000000000000">
+Author</A>
+</H2>
+
+<P>
+ITRANS has been developed by Avinash Chopde. 
+<BR>
+E-mail:
+<A NAME="tex2html2"
+  HREF="mailto:avinash@aczoom.com"><TT>avinash@aczoom.com</TT></A>. 
+<BR>
+Home page:
+<A NAME="tex2html3"
+  HREF="http://www.aczoom.com/"><TT>http://www.aczoom.com/</TT></A>
+<P>
+
+<P><P>
+<BR>
+<HR><HR>
+<A NAME="tex2html41"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html39"
+  HREF="icsx.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html33"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html42"
+  HREF="node3.html">Devanagari Table</A>
+<B>Up:</B> <A NAME="tex2html40"
+  HREF="icsx.html">icsx.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html34"
+  HREF="node1.html">CS/CSX Encoding</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

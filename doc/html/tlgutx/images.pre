@@ -1,0 +1,439 @@
+#output=TeX
+
+\batchmode
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+\usepackage{comment}
+
+
+\usepackage[preprocess,telugu]{itrans} 
+	% this also loads idevn.tex and itrnstlg.tex
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}%
+\providecommand{\ST}{\char35telugu}%
+\providecommand{\ET}{\char35endtelugu} 
+\newfont{\cmt}{cmtt12}
+\newfont{\cmts}{cmtt9}
+
+
+\newfont{\tlgsmall}{tel12}
+\newfont{\tlgnx}{tel12nx}
+\newfont{\tlgs}{tel12s}
+\newfont{\tlg}{tel18}
+
+
+
+\hyphenchar\tlgnx-1  % disable hyphenation using this font
+
+\hyphenchar\tlgs-1  % disable hyphenation using this font
+
+\hyphenchar\tlg-1  % disable hyphenation using this font
+
+
+#teluguifm=tlgutx.ifm
+
+#telugufont=\tlg
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline553}%
+$<$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline555}%
+$>$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage71}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#telugu a #endtelugu}	& {\tt a} \\\hline
+{#telugu aa #endtelugu}	& {\tt aa {\it or} A} \\\hline
+{#telugu i #endtelugu}	& {\tt i} \\\hline
+{#telugu ii #endtelugu}	& {\tt ii {\it or} I} \\\hline
+{#telugu u #endtelugu}	& {\tt u} \\\hline
+{#telugu uu #endtelugu}	& {\tt uu {\it or} U} \\\hline
+{#telugu R^i #endtelugu}	& {\tt RRi {\it or} R\char`^i} \\\hline
+{#telugu R^I #endtelugu}	& {\tt RRI {\it or} R\char`^I} \\\hline
+{#telugu L^i #endtelugu}	& {\tt LLi {\it or} L\char`^i} \\\hline
+{#telugu L^I #endtelugu}	& {\tt LLI {\it or} L\char`^I} \\\hline
+{#telugu e #endtelugu}	& {\tt e} \\\hline
+{#telugu E #endtelugu}	& {\tt E} \\\hline
+{#telugu ai #endtelugu}	& {\tt ai} \\\hline
+{#telugu o #endtelugu}	& {\tt o} \\\hline
+{#telugu O #endtelugu}	& {\tt O} \\\hline
+{#telugu au #endtelugu}	& {\tt au} \\\hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{#telugu 0 #endtelugu}	& {\tt0} \\\hline
+{#telugu 1 #endtelugu}	& {\tt 1} \\\hline
+{#telugu 2 #endtelugu}	& {\tt 2} \\\hline
+{#telugu 3 #endtelugu}	& {\tt 3} \\\hline
+{#telugu 4 #endtelugu}	& {\tt 4} \\\hline
+{#telugu 5 #endtelugu}	& {\tt 5} \\\hline
+{#telugu 6 #endtelugu}	& {\tt 6} \\\hline
+{#telugu 7 #endtelugu}	& {\tt 7} \\\hline
+{#telugu 8 #endtelugu}	& {\tt 8} \\\hline
+{#telugu 9 #endtelugu}	& {\tt 9} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage166}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#telugu ka  #endtelugu}	& {\tt k{\it a}} \\\hline
+{#telugu kha  #endtelugu}	& {\tt kh{\it a}} \\\hline
+{#telugu ga  #endtelugu}	& {\tt g{\it a}} \\\hline
+{#telugu gha  #endtelugu}	& {\tt gh{\it a}} \\\hline
+{#telugu ~Na  #endtelugu}	& {\tt\char`~N{\it a or} N\char`^{\it a}} \\\hline
+{#telugu cha  #endtelugu}	& {\tt ch{\it a}} \\\hline
+{#telugu Cha  #endtelugu}	& {\tt Ch{\it a or} chh{\it a}} \\\hline
+{#telugu ja  #endtelugu}	& {\tt j{\it a}} \\\hline
+{#telugu jha  #endtelugu}	& {\tt jh{\it a}} \\\hline
+{#telugu ~na  #endtelugu}	& {\tt\char`~n{\it a or} JN{\it a}} \\\hline
+{#telugu Ta  #endtelugu}	& {\tt T{\it a}} \\\hline
+{#telugu Tha  #endtelugu}	& {\tt Th{\it a}} \\\hline
+{#telugu Da  #endtelugu}	& {\tt D{\it a}} \\\hline
+{#telugu Dha  #endtelugu}	& {\tt Dh{\it a}} \\\hline
+{#telugu Na  #endtelugu}	& {\tt N{\it a}} \\\hline
+{#telugu ta  #endtelugu}	& {\tt t{\it a}} \\\hline
+{#telugu tha  #endtelugu}	& {\tt th{\it a}} \\\hline
+{#telugu da  #endtelugu}	& {\tt d{\it a}} \\\hline
+{#telugu dha  #endtelugu}	& {\tt dh{\it a}} \\\hline
+{#telugu na  #endtelugu}	& {\tt n{\it a}} \\\hline
+{#telugu pa  #endtelugu}	& {\tt p{\it a}} \\\hline
+{#telugu pha  #endtelugu}	& {\tt ph{\it a}} \\\hline
+{#telugu ba  #endtelugu}	& {\tt b{\it a}} \\\hline
+{#telugu bha  #endtelugu}	& {\tt bh{\it a}} \\\hline
+{#telugu ma  #endtelugu}	& {\tt m{\it a}} \\\hline
+{#telugu ya  #endtelugu}	& {\tt y{\it a}} \\\hline
+{#telugu ra  #endtelugu}	& {\tt r{\it a}} \\\hline
+{#telugu Ra  #endtelugu}	& {\tt R{\it a}} \\\hline
+{#telugu la  #endtelugu}	& {\tt l{\it a}} \\\hline
+{#telugu La  #endtelugu}	& {\tt L{\it a}} \\\hline
+{#telugu va  #endtelugu}	& {\tt v{\it a or} w{\it a}} \\\hline
+{#telugu sha  #endtelugu}	& {\tt sh{\it a}} \\\hline
+{#telugu Sha  #endtelugu}	& {\tt Sh{\it a or} shh{\it a}} \\\hline
+{#telugu sa  #endtelugu}	& {\tt s{\it a}} \\\hline
+{#telugu ha  #endtelugu}	& {\tt h{\it a}} \\\hline
+{#telugu kSha  #endtelugu}	& {\tt x{\it a or} kSh{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage288}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{#telugu ga.n #endtelugu} & {\tt {\it ga}.n} \\\hline
+{#telugu aa^r #endtelugu} & {\tt {\it aa}\char`^r} \\\hline
+{#telugu m.h #endtelugu} & {\tt {\it m}\{\}} \\\hline
+{#telugu duH #endtelugu} & {\tt {\it du}H} \\\hline
+{#telugu .a #endtelugu} & {\tt .a} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage323}%
+\begin{tabular}{|c|c|}
+\hline
+{#telugu \TGadh #endtelugu}	& {\tt\char92 TGadh} \\\hline
+{#telugu \TGnp #endtelugu}	& {\tt\char92 TGnp} \\\hline
+{#telugu \TGvp #endtelugu}	& {\tt\char92 TGvp} \\\hline
+{#telugu \TGbar #endtelugu}	& {\tt\char92 TGbar} \\\hline
+{#telugu \TGbarr #endtelugu}	& {\tt\char92 TGbarr} \\\hline
+{#telugu \TGpu #endtelugu}	& {\tt\char92 TGpu} \\\hline
+{#telugu \TGpuu #endtelugu}	& {\tt\char92 TGpuu} \\\hline
+{#telugu \TGphu #endtelugu}	& {\tt\char92 TGphu} \\\hline
+{#telugu \TGphuu #endtelugu}	& {\tt\char92 TGphuu} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1376}%
+#telugu pa.nchata.ntra kadhalu#endtelugu
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+
+#telugufont=\tlgnx
+%
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1377}%
+#telugu       ``parulanu mosagi.nchi hAnichEya talapeTTinavAru tAmE cheDipOtAru''.
+#endtelugu
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1378}%
+\vbox{#telugu
+i.ndrapAlituDu  anE vartakuDu vyApAra.n nimitta.n porugudEshAniki pOvalasi 
+vachchi.ndi. ataDu tanavaddanunna veyyi ba.ngAru nANAlanu, tana mitruDayina 
+dhanaguptuni vadda dAchi dEshA.ntara.n poyADu. ko.ntakAla.n ayina taruvAta 
+i.ndrapAlituDu svagrAma.n tirigi vachchADu. ataDu dhanaguptuni i.nTikipOyi tana 
+ba.ngAru nANAlanu tirigi yimmani aDigADu. dhanaguptuDu vichAra.ngA ``annA! 
+Emi cheppanu, nI ba.ngAru nANAlanni.nTinI mA i.nTilO elukalu tinivEshAyi'' ani 
+cheppADu. dhanaguptuni mOsAnni ardha.nchEsukonna i.ndrapAlituDu ``pOnIlE 
+jariginadAniki chi.nti.nchi Emi phalamu'' ani sardi cheppi, idivaralOlAgAnE 
+mitrunitO snEha.n kanabarastU unnADu. konnALLupOyAka, i.ndrapAlituDu
+dhanaguptuni i.nTivadda kaburlu chebutU unna samaya.nlO prakkavIdhi lO rEgupaLLU
+#endtelugu}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1379}%
+\vbox{#telugu
+ammakAniki vachchAyi. paLLu ammEvAni kEkavini dhanaguptuni pillavADu 
+paLLakOsa.n pOrupeTTADu. ``nEnu koni istAnu rA nAyanA!'' a.nTU pillavAnini 
+ettukoni i.ndrapAlitiDu prakkavIdhiki bayaludErADu. paLLu koni, pillavAniki 
+ichchina i.ndrapAlituDu dhanaguptuni yi.nTiki tirigi rAku.nDA tana yi.nTiki pOyi
+pillavAnini lOpala dAchi u.nchADu.
+#endtelugu}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1380}%
+\vbox{#telugu
+e.ntasEpaTikI pillavADugAnI, i.ndrapAlituDugAnI tirigi rAkapOyEsariki 
+dhanaguptuDu AdurdAgA vArini vetukuchU mitruni i.nTiki chErADu. atanini 
+chUDagAnE i.ndrapAlituDu duHkha.nnaTistU ``annA paLLuko.ndAmani mI pillavAnini 
+cha.nkanu.nchi di.npAnO lEdO, oka pADu DEga vachchi mI vANNi ettuku pOyi.ndi, I 
+vishhAdavArta nIku cheppalEka nEnu i.nTiki vachchi duHkhistunnAnu'' annADu. Adi
+vini dhanaguptuDu ``nIchuDA, pillavAni va.nTipainunna ba.ngAru
+vastuvulakAshapaDi i.nta anyAya.n chEstAvA'' a.nTU dUshhistU
+nyAyAdhipatiki phiryAdu chEsADu.
+#endtelugu}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1381}%
+\vbox{#telugu
+nyAyAdhipati i.ndrapAlituni to ``EmayyA pushhTigA u.nDE pillADini DEga tannuku 
+pOyi.ndannAvuTa. EmiTI viDDUra.n?'' ani prashni.nchADu. dAnipai i.ndrapAlituDu 
+jariginada.ntA vivari.nchi ``ayyA I dhanaguptuni yi.nTa nEnu dAchina veyyi 
+ba.ngAru nANAlu elukalu tinivEsinappuDu, O chinna biDDanu DEga tannuku 
+pOvaDa.nlO AshcharyamEmu.ndi?'' annADu.
+jariginada.ntA graHi.nchina nyAyAdhikAri, 
+i.ndrapAlituni yi.nTanunna pillavAnini rappi.nchi dhanaguptuniki appajeppi, 
+mitrunisommu apaHari.nchi nammaka drOhamonarchina dhanaguptuni Asti 
+svAdhIna.n chEsukoni, a.ndulOnu.nchi
+i.ndrapAlituniki rAvalasina vEyi nANAlu 
+ippi.nchADu.
+#endtelugu}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+
+#telugufont=\tlgs
+%
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1383}%
+\vbox{#telugu
+hariH Om.h\TGbarr\ \TGBan shata.n \TGBud jIva \TGBan shara\TGBan dO
+va\TGBud rdhamAna\TGBan shshata.n
+hE\TGud\TGBan mantA\TGBan ~nChhata\TGBud mu va\TGBan santA\TGnp\TGbar\ 
+\TGBan shata\TGBud mi\TGCan ndhrAgnI \TGBud na\TGBan vitA
+\TGBud bRRi\hbox{\TGBan ha}npati\TGBan shsha
+tA\TGBud yushhA \TGBan havi\TGBan shhEma.n pu\TGBud narduH\TGbarr\ 
+RRiksa.nhitA\TGbarr\ 
+{8-8-20} vaga\TGvp\TGbarr\ 
+asya mantrasya niruktam.h. ---
+#endtelugu}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1384}%
+\vbox{#telugu
+shata.n jIva shadadO vardhamAna ityapi nigamO bhavati\TGbar\ 
+shatamiti shata.n dIgha\TGvp mAyuma\TGvp ruta EnA vadha\TGvp yanti
+shatamonamona shatATmAna.n bhavati shatamananta.n bhavati shatamaishvarya.n
+bhavati shatamiti shata.n dEgha\TGvp mAyuH\TGbar\ hariH Om.h\TGbarr
+#endtelugu}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+
+\end{document}

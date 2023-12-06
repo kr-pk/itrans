@@ -1,0 +1,1447 @@
+
+
+\batchmode
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}%
+\providecommand{\ST}{\char35 tamil}%
+\providecommand{\ET}{\char35 endtamil} 
+\newfont{\cmt}{cmtt12}
+\newfont{\cmts}{cmtt9}
+
+
+\newfont{\tmlb}{wntml12}
+\newfont{\tmls}{wntml10}
+
+\hyphenchar\tmlb-1  % disable hyphenation using this font
+
+\hyphenchar\tmls-1  % disable hyphenation using this font
+
+
+%
+% ---------------------------------------------------------
+% ITRANS 5.30 (29 July 2006) (TeX Interface)
+% Copyright 1991--2001 Avinash Chopde, All Rights Reserved.
+% ---------------------------------------------------------
+%
+\newbox\zErOdEpTh
+\def\kRn#1{{\kern#1em}}
+\def\sBs#1#2{{\setbox\zErOdEpTh=\hbox{\raise#1em\hbox{#2}}%
+\ht\zErOdEpTh=0pt\dp\zErOdEpTh=0pt\box\zErOdEpTh}}
+
+
+
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1666}%
+{\tmlb {\char49} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1667}%
+{\tmlb {\char54} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1668}%
+{\tmlb {\char22\char49} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1669}%
+{\tmlb {\char23\char49} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1670}%
+{\tmlb {\char145} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1671}%
+{\tmlb {\char150} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1672}%
+{\tmlb {\char22\char145} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1673}%
+{\tmlb {\char23\char145} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1674}%
+{\tmlb {\char134} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1675}%
+{\tmlb {\char137} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1676}%
+{\tmlb {\char22\char137} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1677}%
+{\tmlb {\char23\char137} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline995}%
+$\bullet$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1681}%
+\vbox{{\tmlb 
+\noindent %
+{\char64}P{\char60} %
+{\char29}bX %
+P{\char48}\kRn{-0.500}{\char241}\kRn{0.250}{\char40}h{\char56}\kRn{-0.500}{\char241}\kRn{0.250}{\char17}{\char56} %
+r{\char40}\kRn{-0.500}{\char241}\kRn{0.250}{\char44}H\kRn{-0.500}{\char241}\kRn{0.250} %
+HX{\char147}{\char96}\kRn{-0.500}{\char241}\kRn{0.250}{\rm ,} 
+%
+pa{\char23}X{\char192}{\char96}\kRn{-0.500}{\char241}\kRn{0.250}
+%
+r{\char48}\kRn{-0.500}{\char241}\kRn{0.250}{\char8}h{\char16}\kRn{-0.500}{\char241}\kRn{0.250}{\char8}{\char128}\kRn{-0.500}{\char241}\kRn{0.250} %
+{\char22}p{\char130}{\char23}X{\char138}
+%
+r{\char48}\kRn{-0.500}{\char241}\kRn{0.250}S{\char144}\kRn{-0.500}{\char241}\kRn{0.250}{\char8}{\char17}{\char128} %
+{\char23}{\char64}a{\char8}\kRn{-0.500}{\char241}\kRn{0.250}{\char10} %
+r{\char17}{\char96}{\char64}\kRn{-0.500}{\char241}\kRn{0.250}{\char60} %
+{\char22}{\char8}a{\char48}\kRn{-0.500}{\char241}\kRn{0.250}{\char42}d{\char8}\kRn{-0.500}{\char241}\kRn{0.250}{\char10}{\char144}\kRn{-0.500}{\char241}\kRn{0.250}{\char136}{\char144}{\rm .}
+%
+{\char2}{\char56}{\char136}\kRn{-0.500}{\char241}\kRn{0.250}{\char23}{\char8} %
+H{\char56}\kRn{-0.500}{\char241}\kRn{0.250}{\char60}H\kRn{-0.500}{\char241}\kRn{0.250}H{\char58}{\char144}a{\char140} %
+{\char1}{\char48}\kRn{-0.500}{\char241}\kRn{0.250}{\char44}{\char8}{\char128}a{\char10} %
+r{\char40}\kRn{-0.500}{\char241}\kRn{0.250}{\char40}{\char144}{\rm .} \\
+%
+r{\char48}\kRn{-0.500}{\char241}\kRn{0.250}S{\char144}\kRn{-0.500}{\char241}\kRn{0.250}{\char8}{\char132}{\char8}\kRn{-0.500}{\char241}\kRn{0.250}{\char12}{\char24}\kRn{-0.500}{\char241}\kRn{0.250} %
+{\char28}d{\char8}\kRn{-0.500}{\char241}\kRn{0.250}{\char8}a{\char8} %
+HX{\char48}P\kRn{-0.500}{\char241}\kRn{0.250} %
+{\char22}{\char24}h\kRn{-0.500}{\char241}\kRn{0.250}h %
+{\char2}{\char144}\kRn{-0.500}{\char241}\kRn{0.250}{\char17}{\char136}X %
+{\char23}p{\char58}Xh\kRn{-0.500}{\char241}\kRn{0.250} 
+%
+{\char15}u{\char96}\kRn{-0.500}{\char241}\kRn{0.250}{\char58}{\char8}{\char128}\kRn{-0.500}{\char241}\kRn{0.250}
+%
+{\char17}{\char8}{\char22}{\char8}a{\char44}{\char8}\kRn{-0.500}{\char241}\kRn{0.250}{\char8}a{\rm .}
+%
+{\char2}pd{\char144}ah\kRn{-0.500}{\char241}\kRn{0.250} %
+P{\char50}{\char8}\kRn{-0.500}{\char241}\kRn{0.250}{\char12} $ 40 $\  %
+{\char1}Z{\char96}P\kRn{-0.500}{\char241}\kRn{0.250} %
+{\char10}{\char23}ha %
+S{\char40}\kRn{-0.500}{\char241}\kRn{0.250}{\char40}{\char96}\kRn{-0.500}{\char241}\kRn{0.250} %
+{\char23}p{\char8}{\char56}\kRn{-0.500}{\char241}\kRn{0.250}{\char17}{\char56}{\char23}X %
+{\char6}{\char40}\kRn{-0.500}{\char241}\kRn{0.250}{\char40}
+%
+T{\char42}{\char92}P\kRn{-0.500}{\char241}\kRn{0.250}{\rm .}
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage106}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{{\tmlb %
+{\char0} }% End of Indic Script text.
+}	& {\tt a} \\\hline
+{{\tmlb %
+{\char1} }% End of Indic Script text.
+}	& {\tt aa {\it or} A} \\\hline
+{{\tmlb %
+{\char2} }% End of Indic Script text.
+}	& {\tt i} \\\hline
+{{\tmlb %
+{\char3} }% End of Indic Script text.
+}	& {\tt ii {\it or} I} \\\hline
+{{\tmlb %
+{\char4} }% End of Indic Script text.
+}	& {\tt u} \\\hline
+{{\tmlb %
+{\char5} }% End of Indic Script text.
+}	& {\tt uu {\it or} U} \\\hline
+{{\tmlb %
+{\char6} }% End of Indic Script text.
+}	& {\tt e} \\\hline
+{{\tmlb %
+{\char15} }% End of Indic Script text.
+}	& {\tt E} \\\hline
+{{\tmlb %
+{\char7} }% End of Indic Script text.
+}	& {\tt ai} \\\hline
+{{\tmlb %
+{\char9} }% End of Indic Script text.
+}	& {\tt o} \\\hline
+{{\tmlb %
+{\char14} }% End of Indic Script text.
+}	& {\tt O} \\\hline
+{{\tmlb %
+{\char9}\sBs{-0.200}{{\char128}} }% End of Indic Script text.
+}	& {\tt au} \\\hline
+\multicolumn{2}{c}{ }\\
+\multicolumn{2}{c}{ }\\
+\hline
+{{\tmlb %
+{\char240} }% End of Indic Script text.
+}	& {\tt q} \\\hline
+{{\tmlb %
+{\char244} }% End of Indic Script text.
+}	& {\tt SRI} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage162}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{{\tmlb %
+{\char8}  }% End of Indic Script text.
+}	& {\tt k{\it a} {\it or} g{\it a}} \\\hline
+{{\tmlb %
+{\char16}  }% End of Indic Script text.
+}	& {\tt\char`~N{\it a or} N\char`^{\it a}} \\\hline
+{{\tmlb %
+{\char24}  }% End of Indic Script text.
+}	& {\tt ch{\it a}} \\\hline
+{{\tmlb %
+{\char32}  }% End of Indic Script text.
+}	& {\tt {\char`~}n{\it a}} \\\hline
+{{\tmlb %
+{\char40}  }% End of Indic Script text.
+}	& {\tt T{\it a} {\it or} Th{\it a}} \\\hline
+{{\tmlb %
+{\char48}  }% End of Indic Script text.
+}	& {\tt N{\it a}} \\\hline
+{{\tmlb %
+{\char56}  }% End of Indic Script text.
+}	& {\tt t{\it a} {\it or} th{\it a}} \\\hline
+{{\tmlb %
+{\char64}  }% End of Indic Script text.
+}	& {\tt n{\it a}} \\\hline
+{{\tmlb %
+{\char144}  }% End of Indic Script text.
+}	& {\tt\char`^n{\it a}} \\\hline
+{{\tmlb %
+H  }% End of Indic Script text.
+}	& {\tt p{\it a} {\it or} b{\it a}} \\\hline
+{{\tmlb %
+P  }% End of Indic Script text.
+}	& {\tt m{\it a}} \\\hline
+{{\tmlb %
+X  }% End of Indic Script text.
+}	& {\tt y{\it a}} \\\hline
+{{\tmlb %
+{\char96}  }% End of Indic Script text.
+}	& {\tt r{\it a}} \\\hline
+{{\tmlb %
+h  }% End of Indic Script text.
+}	& {\tt l{\it a}} \\\hline
+{{\tmlb %
+p  }% End of Indic Script text.
+}	& {\tt v{\it a or} w{\it a}} \\\hline
+{{\tmlb %
+x  }% End of Indic Script text.
+}	& {\tt J{\it a or} z{\it a}} \\\hline
+{{\tmlb %
+{\char128}  }% End of Indic Script text.
+}	& {\tt L{\it a}} \\\hline
+{{\tmlb %
+{\char136}  }% End of Indic Script text.
+}	& {\tt R{\it a}} \\\hline
+{{\tmlb %
+{\char245}  }% End of Indic Script text.
+}	& {\tt sh{\it a}} \\\hline
+{{\tmlb %
+{\char176}  }% End of Indic Script text.
+}& {\tt Sh{\it a}} \\\hline
+{{\tmlb %
+{\char184}  }% End of Indic Script text.
+}	& {\tt s{\it a}} \\\hline
+{{\tmlb %
+{\char192}  }% End of Indic Script text.
+}	& {\tt j{\it a}} \\\hline
+{{\tmlb %
+{\char200}  }% End of Indic Script text.
+}	& {\tt h{\it a}} \\\hline
+{{\tmlb %
+{\char208}  }% End of Indic Script text.
+}	& {\tt x{\it a} {\it or} ksh{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+
+%
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage269}%
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|} % 14 columns
+\hline
+\tt\char92 &
+\tt &
+\tt a &
+\tt A &
+\tt i &
+\tt I &
+\tt u &
+\tt U &
+\tt e &
+\tt E &
+\tt ai &
+\tt o &
+\tt O &
+\tt au \\\hline\hline
+\tt k			&
+{\tmls %
+{\char8}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char8} }% End of Indic Script text.
+&
+{\tmls %
+{\char8}a }% End of Indic Script text.
+&
+{\tmls %
+{\char10} }% End of Indic Script text.
+&
+{\tmls %
+{\char11} }% End of Indic Script text.
+&
+{\tmls %
+{\char12} }% End of Indic Script text.
+&
+{\tmls %
+{\char13} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char8} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char8} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char8} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char8}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char8}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char8}{\char128} }% End of Indic Script text.
+\\\hline
+\tt {\char`~}N &
+{\tmls %
+{\char16}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char16} }% End of Indic Script text.
+&
+{\tmls %
+{\char16}a }% End of Indic Script text.
+&
+{\tmls %
+{\char18} }% End of Indic Script text.
+&
+{\tmls %
+{\char19} }% End of Indic Script text.
+&
+{\tmls %
+{\char20} }% End of Indic Script text.
+&
+{\tmls %
+{\char21} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char16} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char16} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char16} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char16}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char16}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char16}{\char128} }% End of Indic Script text.
+\\\hline
+\tt ch &
+{\tmls %
+{\char24}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char24} }% End of Indic Script text.
+&
+{\tmls %
+{\char24}a }% End of Indic Script text.
+&
+{\tmls %
+{\char26} }% End of Indic Script text.
+&
+{\tmls %
+{\char27} }% End of Indic Script text.
+&
+{\tmls %
+{\char28} }% End of Indic Script text.
+&
+{\tmls %
+{\char29} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char24} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char24} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char24} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char24}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char24}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char24}{\char128} }% End of Indic Script text.
+\\\hline
+\tt {\char`~}n &
+{\tmls %
+{\char32}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char32} }% End of Indic Script text.
+&
+{\tmls %
+{\char32}a }% End of Indic Script text.
+&
+{\tmls %
+{\char34} }% End of Indic Script text.
+&
+{\tmls %
+{\char35} }% End of Indic Script text.
+&
+{\tmls %
+{\char36} }% End of Indic Script text.
+&
+{\tmls %
+{\char37} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char32} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char32} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char32} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char32}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char32}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char32}{\char128} }% End of Indic Script text.
+\\\hline
+\tt T &
+{\tmls %
+{\char40}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char40} }% End of Indic Script text.
+&
+{\tmls %
+{\char40}a }% End of Indic Script text.
+&
+{\tmls %
+{\char42} }% End of Indic Script text.
+&
+{\tmls %
+{\char43} }% End of Indic Script text.
+&
+{\tmls %
+{\char44} }% End of Indic Script text.
+&
+{\tmls %
+{\char45} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char40} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char40} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char40} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char40}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char40}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char40}{\char128} }% End of Indic Script text.
+\\\hline
+\tt N &
+{\tmls %
+{\char48}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char48} }% End of Indic Script text.
+&
+{\tmls %
+{\char48}a }% End of Indic Script text.
+&
+{\tmls %
+{\char50} }% End of Indic Script text.
+&
+{\tmls %
+{\char51} }% End of Indic Script text.
+&
+{\tmls %
+{\char52} }% End of Indic Script text.
+&
+{\tmls %
+{\char53} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char48} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char48} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char48} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char48}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char48}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char48}{\char128} }% End of Indic Script text.
+\\\hline
+\tt t &
+{\tmls %
+{\char56}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char56} }% End of Indic Script text.
+&
+{\tmls %
+{\char56}a }% End of Indic Script text.
+&
+{\tmls %
+{\char58} }% End of Indic Script text.
+&
+{\tmls %
+{\char59} }% End of Indic Script text.
+&
+{\tmls %
+{\char60} }% End of Indic Script text.
+&
+{\tmls %
+{\char61} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char56} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char56} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char56} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char56}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char56}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char56}{\char128} }% End of Indic Script text.
+\\\hline
+\tt n &
+{\tmls %
+{\char64}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char64} }% End of Indic Script text.
+&
+{\tmls %
+{\char64}a }% End of Indic Script text.
+&
+{\tmls %
+B }% End of Indic Script text.
+&
+{\tmls %
+C }% End of Indic Script text.
+&
+{\tmls %
+D }% End of Indic Script text.
+&
+{\tmls %
+E }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char64} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char64} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char64} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char64}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char64}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char64}{\char128} }% End of Indic Script text.
+\\\hline
+\tt\char`^n &
+{\tmls %
+{\char144}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char144} }% End of Indic Script text.
+&
+{\tmls %
+{\char144}a }% End of Indic Script text.
+&
+{\tmls %
+{\char146} }% End of Indic Script text.
+&
+{\tmls %
+{\char147} }% End of Indic Script text.
+&
+{\tmls %
+{\char148} }% End of Indic Script text.
+&
+{\tmls %
+{\char149} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char144} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char144} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char144} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char144}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char144}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char144}{\char128} }% End of Indic Script text.
+\\\hline
+\tt p &
+{\tmls %
+H\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+H }% End of Indic Script text.
+&
+{\tmls %
+Ha }% End of Indic Script text.
+&
+{\tmls %
+J }% End of Indic Script text.
+&
+{\tmls %
+K }% End of Indic Script text.
+&
+{\tmls %
+L }% End of Indic Script text.
+&
+{\tmls %
+M }% End of Indic Script text.
+&
+{\tmls %
+{\char22}H }% End of Indic Script text.
+&
+{\tmls %
+{\char23}H }% End of Indic Script text.
+&
+{\tmls %
+{\char17}H }% End of Indic Script text.
+&
+{\tmls %
+{\char22}Ha }% End of Indic Script text.
+&
+{\tmls %
+{\char23}Ha }% End of Indic Script text.
+&
+{\tmls %
+{\char22}H{\char128} }% End of Indic Script text.
+\\\hline
+\tt m &
+{\tmls %
+P\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+P }% End of Indic Script text.
+&
+{\tmls %
+Pa }% End of Indic Script text.
+&
+{\tmls %
+R }% End of Indic Script text.
+&
+{\tmls %
+S }% End of Indic Script text.
+&
+{\tmls %
+T }% End of Indic Script text.
+&
+{\tmls %
+U }% End of Indic Script text.
+&
+{\tmls %
+{\char22}P }% End of Indic Script text.
+&
+{\tmls %
+{\char23}P }% End of Indic Script text.
+&
+{\tmls %
+{\char17}P }% End of Indic Script text.
+&
+{\tmls %
+{\char22}Pa }% End of Indic Script text.
+&
+{\tmls %
+{\char23}Pa }% End of Indic Script text.
+&
+{\tmls %
+{\char22}P{\char128} }% End of Indic Script text.
+\\\hline
+\tt y &
+{\tmls %
+X\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+X }% End of Indic Script text.
+&
+{\tmls %
+Xa }% End of Indic Script text.
+&
+{\tmls %
+Z }% End of Indic Script text.
+&
+{\tmls %
+{\char91} }% End of Indic Script text.
+&
+{\tmls %
+{\char92} }% End of Indic Script text.
+&
+{\tmls %
+{\char93} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}X }% End of Indic Script text.
+&
+{\tmls %
+{\char23}X }% End of Indic Script text.
+&
+{\tmls %
+{\char17}X }% End of Indic Script text.
+&
+{\tmls %
+{\char22}Xa }% End of Indic Script text.
+&
+{\tmls %
+{\char23}Xa }% End of Indic Script text.
+&
+{\tmls %
+{\char22}X{\char128} }% End of Indic Script text.
+\\\hline
+\tt r &
+{\tmls %
+{\char96}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char96} }% End of Indic Script text.
+&
+{\tmls %
+{\char96}a }% End of Indic Script text.
+&
+{\tmls %
+b }% End of Indic Script text.
+&
+{\tmls %
+c }% End of Indic Script text.
+&
+{\tmls %
+d }% End of Indic Script text.
+&
+{\tmls %
+e }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char96} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char96} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char96} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char96}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char96}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char96}{\char128} }% End of Indic Script text.
+\\\hline
+\tt l &
+{\tmls %
+h\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+h }% End of Indic Script text.
+&
+{\tmls %
+ha }% End of Indic Script text.
+&
+{\tmls %
+j }% End of Indic Script text.
+&
+{\tmls %
+k }% End of Indic Script text.
+&
+{\tmls %
+l }% End of Indic Script text.
+&
+{\tmls %
+m }% End of Indic Script text.
+&
+{\tmls %
+{\char22}h }% End of Indic Script text.
+&
+{\tmls %
+{\char23}h }% End of Indic Script text.
+&
+{\tmls %
+{\char17}h }% End of Indic Script text.
+&
+{\tmls %
+{\char22}ha }% End of Indic Script text.
+&
+{\tmls %
+{\char23}ha }% End of Indic Script text.
+&
+{\tmls %
+{\char22}h{\char128} }% End of Indic Script text.
+\\\hline
+\tt v &
+{\tmls %
+p\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+p }% End of Indic Script text.
+&
+{\tmls %
+pa }% End of Indic Script text.
+&
+{\tmls %
+r }% End of Indic Script text.
+&
+{\tmls %
+s }% End of Indic Script text.
+&
+{\tmls %
+t }% End of Indic Script text.
+&
+{\tmls %
+u }% End of Indic Script text.
+&
+{\tmls %
+{\char22}p }% End of Indic Script text.
+&
+{\tmls %
+{\char23}p }% End of Indic Script text.
+&
+{\tmls %
+{\char17}p }% End of Indic Script text.
+&
+{\tmls %
+{\char22}pa }% End of Indic Script text.
+&
+{\tmls %
+{\char23}pa }% End of Indic Script text.
+&
+{\tmls %
+{\char22}p{\char128} }% End of Indic Script text.
+\\\hline
+\tt z &
+{\tmls %
+x\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+x }% End of Indic Script text.
+&
+{\tmls %
+xa }% End of Indic Script text.
+&
+{\tmls %
+z }% End of Indic Script text.
+&
+{\tmls %
+{\char123} }% End of Indic Script text.
+&
+{\tmls %
+{\char124} }% End of Indic Script text.
+&
+{\tmls %
+{\char125} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}x }% End of Indic Script text.
+&
+{\tmls %
+{\char23}x }% End of Indic Script text.
+&
+{\tmls %
+{\char17}x }% End of Indic Script text.
+&
+{\tmls %
+{\char22}xa }% End of Indic Script text.
+&
+{\tmls %
+{\char23}xa }% End of Indic Script text.
+&
+{\tmls %
+{\char22}x{\char128} }% End of Indic Script text.
+\\\hline
+\tt L &
+{\tmls %
+{\char128}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char128} }% End of Indic Script text.
+&
+{\tmls %
+{\char128}a }% End of Indic Script text.
+&
+{\tmls %
+{\char130} }% End of Indic Script text.
+&
+{\tmls %
+{\char131} }% End of Indic Script text.
+&
+{\tmls %
+{\char132} }% End of Indic Script text.
+&
+{\tmls %
+{\char133} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char128} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char128} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char128} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char128}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char128}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char128}{\char128} }% End of Indic Script text.
+\\\hline
+\tt R &
+{\tmls %
+{\char136}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char136} }% End of Indic Script text.
+&
+{\tmls %
+{\char136}a }% End of Indic Script text.
+&
+{\tmls %
+{\char138} }% End of Indic Script text.
+&
+{\tmls %
+{\char139} }% End of Indic Script text.
+&
+{\tmls %
+{\char140} }% End of Indic Script text.
+&
+{\tmls %
+{\char141} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char136} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char136} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char136} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char136}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char136}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char136}{\char128} }% End of Indic Script text.
+\\\hline
+\tt sh &
+{\tmls %
+{\char245}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char245} }% End of Indic Script text.
+&
+{\tmls %
+{\char245}a }% End of Indic Script text.
+&
+{\tmls %
+{\char246} }% End of Indic Script text.
+&
+{\tmls %
+{\char247} }% End of Indic Script text.
+&
+{\tmls %
+{\char245}{\char242} }% End of Indic Script text.
+&
+{\tmls %
+{\char245}{\char243} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char245} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char245} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char245} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char245}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char245}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char245}{\char128} }% End of Indic Script text.
+\\\hline
+\tt Sh &
+{\tmls %
+{\char176}\kRn{-0.750}{\char241}\kRn{0.500} }% End of Indic Script text.
+&
+{\tmls %
+{\char176} }% End of Indic Script text.
+&
+{\tmls %
+{\char176}a }% End of Indic Script text.
+&
+{\tmls %
+{\char178} }% End of Indic Script text.
+&
+{\tmls %
+{\char179} }% End of Indic Script text.
+&
+{\tmls %
+{\char176}{\char242} }% End of Indic Script text.
+&
+{\tmls %
+{\char176}{\char243} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char176} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char176} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char176} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char176}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char176}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char176}{\char128} }% End of Indic Script text.
+\\\hline
+\tt s &
+{\tmls %
+{\char184}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char184} }% End of Indic Script text.
+&
+{\tmls %
+{\char184}a }% End of Indic Script text.
+&
+{\tmls %
+{\char186} }% End of Indic Script text.
+&
+{\tmls %
+{\char187} }% End of Indic Script text.
+&
+{\tmls %
+{\char184}{\char242} }% End of Indic Script text.
+&
+{\tmls %
+{\char184}{\char243} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char184} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char184} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char184} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char184}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char184}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char184}{\char128} }% End of Indic Script text.
+\\\hline
+\tt j &
+{\tmls %
+{\char192}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char192} }% End of Indic Script text.
+&
+{\tmls %
+{\char192}a }% End of Indic Script text.
+&
+{\tmls %
+{\char194} }% End of Indic Script text.
+&
+{\tmls %
+{\char195} }% End of Indic Script text.
+&
+{\tmls %
+{\char192}{\char242} }% End of Indic Script text.
+&
+{\tmls %
+{\char192}{\char243} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char192} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char192} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char192} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char192}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char192}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char192}{\char128} }% End of Indic Script text.
+\\\hline
+\tt h &
+{\tmls %
+{\char200}\kRn{-0.500}{\char241}\kRn{0.250} }% End of Indic Script text.
+&
+{\tmls %
+{\char200} }% End of Indic Script text.
+&
+{\tmls %
+{\char200}a }% End of Indic Script text.
+&
+{\tmls %
+{\char202} }% End of Indic Script text.
+&
+{\tmls %
+{\char203} }% End of Indic Script text.
+&
+{\tmls %
+{\char200}{\char242} }% End of Indic Script text.
+&
+{\tmls %
+{\char200}{\char243} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char200} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char200} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char200} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char200}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char200}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char200}{\char128} }% End of Indic Script text.
+\\\hline
+\tt x &
+{\tmls %
+{\char208}\kRn{-0.750}{\char241}\kRn{0.500} }% End of Indic Script text.
+&
+{\tmls %
+{\char208} }% End of Indic Script text.
+&
+{\tmls %
+{\char208}a }% End of Indic Script text.
+&
+{\tmls %
+{\char210} }% End of Indic Script text.
+&
+{\tmls %
+{\char211} }% End of Indic Script text.
+&
+{\tmls %
+{\char208}{\char242} }% End of Indic Script text.
+&
+{\tmls %
+{\char208}{\char243} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char208} }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char208} }% End of Indic Script text.
+&
+{\tmls %
+{\char17}{\char208} }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char208}a }% End of Indic Script text.
+&
+{\tmls %
+{\char23}{\char208}a }% End of Indic Script text.
+&
+{\tmls %
+{\char22}{\char208}{\char128} }% End of Indic Script text.
+\\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

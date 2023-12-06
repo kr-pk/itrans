@@ -1,0 +1,100 @@
+# This is a transliteration data file for converting from Itrans sanskrit
+# transliteration codes into ITRANS tamil using adhawin-tamil font
+# this is a cleanup file to run after itx2tam.tbl conversion
+   1            file version number
+   "    "      # string delimiters
+   [    ]      # list delimites
+   {    }      # regular expression delimiters
+#
+#starting sequence
+""
+#ending sequence
+""
+#
+   1     # number of input SHIFT sequences, only one set of input characters
+   ""      ""    ""    ""    ""        ""             # Normal characters
+#
+   0     # number of output shift sequences
+#
+# conversion table starts from here
+# inp_set     inp_seq           out_set    out_seq
+# Non-transliteration characters
+       1         "yyy\endtitlesyyy"			0 " </H2>####"
+	1		"\engtitle{"		0	""
+	1		"}yyy"		0	"</TITLE></HEAD><body BGCOLOR=FFCC99><PRE><UL><FONT SIZE=5><H2>##"
+     1		"yyy"            		0		"##" 
+     1		"\hrule"          	0		"<HR>" 
+     1		"\centerline"     	0		"" 
+     1		"\center "     	0		"" 
+     1		"\center"     	0		"" 
+     1		"\hugedvng"     		0		"" 
+     1		"\LARGEdvng"  		0		""      
+     1		"\Largedvng"      	0		"" 
+     1		"\largedvng"      	0		"" 
+     1		"\bigskip"        	0		"" 
+     1		"\medskip"        	0		"" 
+     1		"\smallskip"        	0		"" 
+     1		"\LARGE"      	0		"" 
+     1		"\Large"      	0		"" 
+      1         "\obeyspaceslines"		0		"" 
+      1         "\obeylines"			0		"" 
+      1         "\begin{document}"		0		""
+      1         "\begin{multicols}{2}"	0		""
+      1         "\begin{multicols}{3}"	0		""
+      1         "\begin{multicols}{4}"	0		""
+      1         "\end{multicols}"		0		""
+      1         "\end{document}"		0		""
+      1         "\end{center}"		0		""
+      1         "\begin{center}"		0		""
+      1         "\endtitles"			0		"</H2>"
+      1         "####"				0		""
+      1         "\zzz"				0		""
+      1         "\threedots"				0		""
+      1         "\chapter"				0		""
+      1         "\section"				0		""
+      1         "\hfill"				0		""
+
+      1         "\rm"				0		""
+      1         "\tt"				0		""
+      1         "\it"				0		""
+      1         "\newpage"			0		""
+	1		"-\\ "				0		"- "
+      1         "\\"				0		""
+#      1         "|"				0		"."
+      1         "{}"				0		""
+      1         "( "				0		"("
+      1         "\_"				0		"_"
+      1         "\^_"				0		""
+      1         "- "				0		"-"
+#	1		"%"				0		""
+	1		"{"				0		""
+	1		"}"				0		""
+	1		"\m+"				0		".N"
+#following added for mahalist on 12/1/99
+	1		"\begintabular111"		0		"" 
+	1		"\begintabular"		0		"" 
+	1		"\endtabular"		0		""
+	1		"\smallskip"		0		""
+	1		"\\"				0		""
+	1		"&"				0		""
+	1		"\sct"			0		""
+# following added for html processing of old files
+	1		"\SCOUNT"		0		""
+	1		"\ "				0		""
+	1		"\vskip .1in"				0		""
+	1		"\vskip .2in"				0		""
+	1		"\vfill"				0		""
+	1		"\leftline"				0		""
+	1		"\large"				0		""
+	1		"\bf"				0		""
+	1		"\hspace.4in"				0		""
+	1		"\eject"				0		""
+	1		"\setcounterpage1"				0		""
+	1		"{\sc In}"				0		""
+	1		"\sc"				0		"" 
+	1		"\underline"				0		"" 
+	1		"\indent"				0		"" 
+	1		"\hspace{1in}"				0		"" 
+	1		"\newline"				0		"" 
+	1		"\clearpage"				0		"" 
+	1		"%@"				0		"" 

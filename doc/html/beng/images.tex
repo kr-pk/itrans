@@ -1,0 +1,3592 @@
+
+
+\batchmode
+
+
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\usepackage{longtable}
+
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}} 
+
+%
+\providecommand{\SB}{\texttt{\char35bengali}}%
+\providecommand{\EB}{\texttt{\char35endbengali}} 
+
+
+\newfont{\itxbengf}{itxbeng at 15pt}
+
+
+\newfont{\bnr}{bnr10 at 14pt}
+\newfont{\bnsl}{bnsl10 at 14pt}
+
+
+
+\hyphenchar\itxbengf-1  % disable hyphenation using this font
+
+\hyphenchar\bnr-1  % disable hyphenation using this font
+
+\hyphenchar\bnsl-1  % disable hyphenation using this font
+
+
+%
+% ---------------------------------------------------------
+% ITRANS 5.30 (29 July 2006) (TeX Interface)
+% Copyright 1991--2001 Avinash Chopde, All Rights Reserved.
+% ---------------------------------------------------------
+%
+\newbox\zErOdEpTh
+\def\kRn#1{{\kern#1em}}
+\def\sBs#1#2{{\setbox\zErOdEpTh=\hbox{\raise#1em\hbox{#2}}%
+\ht\zErOdEpTh=0pt\dp\zErOdEpTh=0pt\box\zErOdEpTh}}
+
+
+
+% for the ItxBeng font, use the #indian marker
+
+
+
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline3806}%
+{\bnr %
+Yu{\char130}A{\char135}r}% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap3820}%
+\vbox{{\itxbengf 
+\noindent
+%
+\kRn{-0.030}{\char192}{\char64}{\char216} %
+U\kRn{-0.050}q\kRn{-0.030}{\char192}c %
+{\char192}T{\char201}{\char204} %
+{\char64}{\char216}{\char201}s{\char187}, %
+{\char64}{\char216}\kRn{-0.030}{\char192}{\char246} %
+{\char174}{\char94}{\char206}F{\char201} %
+{\char204}Ac \\
+%
+{\char232}AS{\char221}{\char201} %
+Bwl %
+{\char204}\kRn{-0.030}{\char192}{\char246} %
+ASd{\char171}{\char204} %
+aAc | \\
+%
+T{\char201}Av{\char204} %
+{\char222}{\char254}{\char176}f{\char222} %
+AaU, %
+\kRn{-0.030}{\char192}{\char174} %
+{\char64}{\char216}A{\char246}U, %
+m{\char170}{\char201}Tf \\
+%
+{\char126}{\char201}T{\char201}{\char204} %
+\kRn{-0.030}{\char192}sv{\char168}{\char64}{\char216}{\char168} %
+{\char174}{\char201}oF %
+{\char64}{\char216}A{\char204}c %
+{\char169}{\char201} %
+{\char126}{\char201}AT | \\
+--- %
+{\char204}cfx{\char176}{\char254}S{\char201}{\char203} %
+i{\char201}{\char64}{\char216}k{\char204}
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap3821}%
+\vbox{{\bnr 
+\noindent
+%
+ek %
+l{\char2}eb %
+emAr %
+kAY{\char14}, %
+keh %
+s{\char198}{\char13}A %
+rib \\
+%
+{\char30}inyA %
+jgB %
+reh %
+in{\char25}{\char172}r %
+Cib | \\
+%
+mAiTr %
+p{\char15}dIp %
+iCl, %
+es %
+kihl, %
+{\char21}AmI \\
+%
+{\char0}AmAr %
+eYTuku %
+sAx{\char13} %
+kirb %
+tA %
+{\char0}Aim | \\
+--- %
+rbI{\char197}{\char15}nAz %
+ZAkUr
+}% End of Indic Script text.
+}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage127}%
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\\hline \hline
+\par
+{\bnr %
+{\char0} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126} }% End of Indic Script text.
+&
+{\tt a} \\\hline
+	 {\bnr %
+{\char0}A }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201} }% End of Indic Script text.
+&
+{\tt aa} or {\tt A} \\\hline
+	 {\bnr %
+{\char2} }% End of Indic Script text.
+&
+	{\itxbengf %
+\kRn{-0.050}q }% End of Indic Script text.
+&
+{\tt i} \\\hline
+	 {\bnr %
+{\char3} }% End of Indic Script text.
+&
+	{\itxbengf %
+D }% End of Indic Script text.
+&
+{\tt ii} or {\tt I}\\\hline
+	 {\bnr %
+{\char4} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180} }% End of Indic Script text.
+&
+{\tt u} \\\hline
+	 {\bnr %
+{\char5} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char238} }% End of Indic Script text.
+&
+{\tt uu} or {\tt U}\\\hline
+	 {\bnr %
+{\char6} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char199} }% End of Indic Script text.
+&
+{\tt RRi} or {\tt R\char`^i}  \\\hline
+	 {\bnr %
+{\char8} }% End of Indic Script text.
+&
+	{\itxbengf %
+j }% End of Indic Script text.
+&
+{\tt e} \\\hline
+	 {\bnr %
+{\char9} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char217} }% End of Indic Script text.
+&
+{\tt ai} \\\hline
+	 {\bnr %
+{\char10} }% End of Indic Script text.
+&
+	{\itxbengf %
+R }% End of Indic Script text.
+&
+{\tt o}\\\hline
+	 {\bnr %
+{\char11} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char205} }% End of Indic Script text.
+&
+{\tt au}\\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage193}%
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\\hline \hline
+\par
+{\bnr 0 }% End of Indic Script text.
+&
+	{\itxbengf 0 }% End of Indic Script text.
+&
+{\tt0} \\\hline
+	 {\bnr 1 }% End of Indic Script text.
+&
+	{\itxbengf 1 }% End of Indic Script text.
+&
+{\tt 1} \\\hline
+	 {\bnr 2 }% End of Indic Script text.
+&
+	{\itxbengf 2 }% End of Indic Script text.
+&
+{\tt 2} \\\hline
+	 {\bnr 3 }% End of Indic Script text.
+&
+	{\itxbengf 3 }% End of Indic Script text.
+&
+{\tt 3} \\\hline
+	 {\bnr 4 }% End of Indic Script text.
+&
+	{\itxbengf 4 }% End of Indic Script text.
+&
+{\tt 4} \\\hline
+	 {\bnr 5 }% End of Indic Script text.
+&
+	{\itxbengf 5 }% End of Indic Script text.
+&
+{\tt 5} \\\hline
+	 {\bnr 6 }% End of Indic Script text.
+&
+	{\itxbengf 6 }% End of Indic Script text.
+&
+{\tt 6} \\\hline
+	 {\bnr 7 }% End of Indic Script text.
+&
+	{\itxbengf 7 }% End of Indic Script text.
+&
+{\tt 7} \\\hline
+	 {\bnr 8 }% End of Indic Script text.
+&
+	{\itxbengf 8 }% End of Indic Script text.
+&
+{\tt 8} \\\hline
+	 {\bnr 9 }% End of Indic Script text.
+&
+	{\itxbengf 9 }% End of Indic Script text.
+&
+{\tt 9}\\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage250}%
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\\hline \hline
+\par
+{\bnr %
+gM }% End of Indic Script text.
+&
+	{\itxbengf %
+we }% End of Indic Script text.
+&
+{\em ga}{\tt .n} \\\hline
+	 {\bnr %
+gAw }% End of Indic Script text.
+&
+	{\itxbengf %
+w{\char201}\kRn{-0.070}\sBs{0.050}{J} }% End of Indic Script text.
+&
+{\em gaa}{\tt .N} \\\hline
+	 {\bnr %
+{\char0}A{\char14} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201}{\char187} }% End of Indic Script text.
+&
+{\em aa}{\tt\char`^r} \\\hline
+	 {\bnr %
+m{\char12} }% End of Indic Script text.
+&
+	{\itxbengf %
+T{\char252} }% End of Indic Script text.
+&
+{\em m}{\tt .h} \\\hline
+	 {\bnr %
+B }% End of Indic Script text.
+&
+	{\itxbengf %
+l }% End of Indic Script text.
+&
+{\tt t.h} \\\hline
+	 {\bnr %
+duH }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char176}{\char168}{\char58} }% End of Indic Script text.
+&
+{\em du}{\tt H} \\\hline
+	 {\bnr %
+{\char158} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char218} }% End of Indic Script text.
+&
+{\tt GY}{\em a} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap2869}%
+\framebox{\mbox{
+\begin{tabular}{ccc}
+
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\\hline \hline
+\par
+{\bnr %
+k }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char64}{\char216} }% End of Indic Script text.
+&
+{\tt k}{\em a} \\\hline
+	 {\bnr %
+K }% End of Indic Script text.
+&
+	{\itxbengf %
+Z }% End of Indic Script text.
+&
+{\tt kh}{\em a} \\\hline
+	 {\bnr %
+g }% End of Indic Script text.
+&
+	{\itxbengf %
+w }% End of Indic Script text.
+&
+{\tt g}{\em a} \\\hline
+	 {\bnr %
+G }% End of Indic Script text.
+&
+	{\itxbengf %
+W }% End of Indic Script text.
+&
+{\tt gh}{\em a} \\\hline
+	 {\bnr %
+q }% End of Indic Script text.
+&
+	{\itxbengf %
+C }% End of Indic Script text.
+&
+{\tt \char`~N}{\em a} or {\tt N\char`^}a \\\hline 
+\end{tabular}
+
+&
+
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\\hline \hline
+\par
+{\bnr %
+c }% End of Indic Script text.
+&
+	{\itxbengf %
+O }% End of Indic Script text.
+&
+{\tt ch}{\em a} \\\hline
+	 {\bnr %
+C }% End of Indic Script text.
+&
+	{\itxbengf %
+a }% End of Indic Script text.
+&
+{\tt chh}{\em a} \\\hline
+	 {\bnr %
+j }% End of Indic Script text.
+&
+	{\itxbengf %
+B }% End of Indic Script text.
+&
+{\tt j}{\em a} \\\hline
+	 {\bnr %
+J }% End of Indic Script text.
+&
+	{\itxbengf %
+I }% End of Indic Script text.
+&
+{\tt jh}{\em a} \\\hline
+	 {\bnr %
+Q }% End of Indic Script text.
+&
+	{\itxbengf %
+t }% End of Indic Script text.
+&
+{\tt \char`~n}{\em a} or {\tt n\char`^}a \\\hline
+\end{tabular}
+
+&
+
+\begin{tabular}{|c|c|c|}
+\hline {\em bwti} & {\em ItxBeng} & \small ITRANS\\\hline \hline
+\par
+{\bnr %
+T }% End of Indic Script text.
+&
+	{\itxbengf %
+v }% End of Indic Script text.
+&
+{\tt T}{\em a} \\\hline
+	 {\bnr %
+Z }% End of Indic Script text.
+&
+	{\itxbengf %
+i }% End of Indic Script text.
+&
+{\tt Th}{\em a} \\\hline
+	 {\bnr %
+D }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char166} }% End of Indic Script text.
+&
+{\tt D}{\em a} \\\hline
+	 {\bnr %
+X }% End of Indic Script text.
+&
+	{\itxbengf %
+b }% End of Indic Script text.
+&
+{\tt Dh}{\em a} \\\hline
+	 {\bnr %
+N }% End of Indic Script text.
+&
+	{\itxbengf %
+H }% End of Indic Script text.
+&
+{\tt N}{\em a} \\\hline
+\end{tabular}
+
+\\
+\hbox{\lower.7in\hbox{
+
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ {\bnr %
+t }% End of Indic Script text.
+}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in{\itxbengf %
+{\char169} }% End of Indic Script text.
+} &
+\setbox0=\hbox{{\tt \char`~N}{\em a} or {\tt N\char`^}a}\hbox to\wd0{\kern0.3in {\tt t}{\em a}} \\\hline
+	\hbox{ {\bnr %
+z }% End of Indic Script text.
+} &
+	{\itxbengf %
+{\char203} }% End of Indic Script text.
+&
+{\tt th}{\em a} \\\hline
+	 {\bnr %
+d }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char176} }% End of Indic Script text.
+&
+{\tt d}{\em a} \\\hline
+	 {\bnr %
+x }% End of Indic Script text.
+&
+	{\itxbengf %
+o }% End of Indic Script text.
+&
+{\tt dh}{\em a} \\\hline
+	 {\bnr %
+n }% End of Indic Script text.
+&
+	{\itxbengf %
+S }% End of Indic Script text.
+&
+{\tt n}{\em a} \\\hline
+\end{tabular}
+
+}}
+&
+\hbox{\lower.7in\hbox{
+
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ {\bnr %
+p }% End of Indic Script text.
+}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in{\itxbengf %
+{\char222} }% End of Indic Script text.
+} &
+\setbox0=\hbox{{\tt \char`~n}{\em a} or {\tt n\char`^}a}\hbox to\wd0{\kern0.3in {\tt p}{\em a}} \\\hline
+	\hbox{ {\bnr %
+f }% End of Indic Script text.
+} &
+	{\itxbengf %
+{\char172}{\char216} }% End of Indic Script text.
+&
+{\tt ph}{\em a} \\\hline
+	 {\bnr %
+b }% End of Indic Script text.
+&
+	{\itxbengf %
+c }% End of Indic Script text.
+&
+{\tt b}{\em a} \\\hline
+	 {\bnr %
+v }% End of Indic Script text.
+&
+	{\itxbengf %
+g }% End of Indic Script text.
+&
+{\tt bh}{\em a} \\\hline
+	 {\bnr %
+m }% End of Indic Script text.
+&
+	{\itxbengf %
+T }% End of Indic Script text.
+&
+{\tt m}{\em a} \\\hline
+\end{tabular}
+
+}}
+& 
+\hbox{\lower.7in\hbox{
+
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ {\bnr %
+Y }% End of Indic Script text.
+}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in{\itxbengf %
+s }% End of Indic Script text.
+} &
+\setbox0=\hbox{\small ITRANS}\hbox to\wd0{\kern0.0in{\tt J}{\em a} or
+{\tt y}{\em a}} \\\hline
+	\hbox{ {\bnr %
+r }% End of Indic Script text.
+} &
+	{\itxbengf %
+{\char204} }% End of Indic Script text.
+&
+{\tt r}{\em a} \\\hline
+	 {\bnr %
+l }% End of Indic Script text.
+&
+	{\itxbengf %
+U }% End of Indic Script text.
+&
+{\tt l}{\em a} \\\hline
+	 {\bnr %
+b }% End of Indic Script text.
+&
+	{\itxbengf %
+c }% End of Indic Script text.
+&
+{\tt b}{\em a} \\\hline
+	 {\bnr %
+S }% End of Indic Script text.
+&
+	{\itxbengf %
+r }% End of Indic Script text.
+&
+{\tt sh}{\em a} \\\hline
+\end{tabular}
+
+}} \\
+\hbox{\lower.7in\hbox{
+
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ {\bnr %
+F }% End of Indic Script text.
+}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in{\itxbengf %
+K }% End of Indic Script text.
+} &
+\setbox0=\hbox{{\tt \char`~N}{\em a} or {\tt N\char`^}a}\hbox to\wd0{\kern0.3in {\tt Sh}{\em a}} \\\hline
+	\hbox{ {\bnr %
+s }% End of Indic Script text.
+} &
+	{\itxbengf %
+{\char174} }% End of Indic Script text.
+&
+{\tt s}{\em a} \\\hline
+	 {\bnr %
+h }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char246} }% End of Indic Script text.
+&
+{\tt h}{\em a} \\\hline
+	&
+	&
+	\\\hline
+	&
+	&
+	\\\hline
+\end{tabular}
+}}
+&
+\hbox{\lower.7in\hbox{
+
+\begin{tabular}{|c|c|c|}
+	\hline
+	\setbox0=\hbox{\em bwti}\hbox to\wd0{ {\bnr %
+{\char135} }% End of Indic Script text.
+}  &
+	\setbox0=\hbox{\em ItxBeng}\hbox to\wd0{\kern0.2in{\itxbengf %
+{\char229}K }% End of Indic Script text.
+} &
+\setbox0=\hbox{{\tt \char`~n}{\em a} or {\tt n\char`^}a}\hbox to\wd0{\kern0.0in {\tt kSh}{\em a} or {\tt x}{\em a}} \\\hline
+	\hbox{ {\bnr %
+y }% End of Indic Script text.
+} &
+	{\itxbengf %
+{\char221} }% End of Indic Script text.
+&
+{\tt Y}{\em a} \\\hline
+	 {\bnr %
+R }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char166}\kRn{0.060}\sBs{-0.020}{{\char219}} }% End of Indic Script text.
+&
+{\tt .D}{\em a} \\\hline
+	 {\bnr %
+V }% End of Indic Script text.
+&
+	{\itxbengf %
+b\kRn{0.060}\sBs{-0.020}{{\char219}} }% End of Indic Script text.
+&
+{\tt .Dh}{\em a} \\\hline
+	&
+	&
+	\\\hline
+\end{tabular}
+}} 
+\end{tabular}}}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline3837}%
+$	{\ttk\_ShN}$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\setcounter{footnote}{0}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage606}%
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect, Part 1} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+\par
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+\par
+\multicolumn{7}{r}{continued on the next page...} \\\endfoot
+\par
+\hline \endlastfoot
+\par
+\hline
+ {\bnr %
+k + %
+k }% End of Indic Script text.
+&
+	{\ttkk} &
+	 {\bnr %
+{\char128} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char234} }% End of Indic Script text.
+&
+	{\ttdhikkaar}  &
+	 {\bnr %
+ix{\char128}Ar }% End of Indic Script text.
+&
+	{\itxbengf %
+Ao{\char234}{\char201}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+T }% End of Indic Script text.
+&
+	{\ttkT} &
+	 {\bnr %
+{\char129} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char229}v }% End of Indic Script text.
+&
+	{\ttakTopaas} &
+	 {\bnr %
+{\char0}e{\char129}ApAs }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char192}{\char229}v{\char201}{\char222}{\char201}{\char174} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+t }% End of Indic Script text.
+&
+	{\ttkt} &
+	 {\bnr %
+{\char130} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char189} }% End of Indic Script text.
+&
+	{\ttDaaktaar} &
+	 {\bnr %
+DA{\char130}Ar }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char166}{\char201}{\char189}{\char201}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+b }% End of Indic Script text.
+&
+	{\ttkb} &
+	 {\bnr %
+{\char131} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char229}c }% End of Indic Script text.
+&
+	{\ttpakba} &
+	 {\bnr %
+p{\char131} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}{\char229}c }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+m }% End of Indic Script text.
+&
+	{\ttkm} &
+	 {\bnr %
+{\char132} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char229}T }% End of Indic Script text.
+&
+	{\ttrukmiNI} &
+	 {\bnr %
+{\char25}i{\char132}NI }% End of Indic Script text.
+&
+	{\itxbengf %
+dA{\char229}THf }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+r }% End of Indic Script text.
+&
+	{\ttkr} &
+	 {\bnr %
+{\char133} }% End of Indic Script text.
+&
+	{\itxbengf %
+n{\char216} }% End of Indic Script text.
+&
+	{\ttbakra} &
+	 {\bnr %
+b{\char133} }% End of Indic Script text.
+&
+	{\itxbengf %
+cn{\char216} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+l }% End of Indic Script text.
+&
+	{\ttkl} &
+	 {\bnr %
+{\char134} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char229}{\char253} }% End of Indic Script text.
+&
+	{\ttklIba} &
+	 {\bnr %
+{\char134}Ib }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char229}{\char253}fc }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+F }% End of Indic Script text.
+&
+	{\ttkSh} &
+	 {\bnr %
+{\char135} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char229}K }% End of Indic Script text.
+&
+	{\ttrakShaa} &
+	 {\bnr %
+r{\char135}A }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char204}{\char229}K{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+F + %
+N }% End of Indic Script text.
+&
+	{\ttk\_ShN}\footnotemark & 
+	 {\bnr %
+{\char136} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char229}yH }% End of Indic Script text.
+&
+	{\tttIk\_ShNa } &
+	 {\bnr %
+tI{\char136} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char169}f{\char229}yH }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+F + %
+m }% End of Indic Script text.
+&
+	{\ttk\_Shm}& 
+	 {\bnr %
+{\char137} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char229}y{\char235} }% End of Indic Script text.
+&
+	{\ttlak\_ShmI} &
+	 {\bnr %
+l{\char137}I }% End of Indic Script text.
+&
+	{\itxbengf %
+U{\char229}y{\char235}f }% End of Indic Script text.
+\\\hline
+ {\bnr %
+k + %
+s }% End of Indic Script text.
+&
+	{\ttks} & 
+	 {\bnr %
+{\char138} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char229}{\char174} }% End of Indic Script text.
+&
+	{\ttriksaa} &
+	 {\bnr %
+ir{\char138}A }% End of Indic Script text.
+&
+	{\itxbengf %
+A{\char204}{\char229}{\char174}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+g + %
+x }% End of Indic Script text.
+&
+	{\ttgdh} & 
+	 {\bnr %
+{\char139} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char163}o }% End of Indic Script text.
+&
+	{\ttmugdha} &
+	 {\bnr %
+mu{\char139} }% End of Indic Script text.
+&
+	{\itxbengf %
+T{\char168}{\char163}o }% End of Indic Script text.
+\\\hline
+ {\bnr %
+g + %
+n }% End of Indic Script text.
+&
+	{\ttgn} & 
+	 {\bnr %
+{\char140} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char163}{\char240} }% End of Indic Script text.
+&
+	{\ttagni} &
+	 {\bnr %
+{\char0}i{\char140} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}A{\char163}{\char240} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+g + %
+b }% End of Indic Script text.
+&
+	{\ttgb} & 
+	 {\bnr %
+{\char141} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char163}c }% End of Indic Script text.
+&
+	{\ttdigbijaY} &
+	 {\bnr %
+idi{\char141}jy }% End of Indic Script text.
+&
+	{\itxbengf %
+A{\char176}A{\char163}cB{\char221} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+g + %
+m }% End of Indic Script text.
+&
+	{\ttgm} & 
+	 {\bnr %
+{\char142} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char163}{\char235} }% End of Indic Script text.
+&
+	{\ttJugma} &
+	 {\bnr %
+Yu{\char142} }% End of Indic Script text.
+&
+	{\itxbengf %
+s{\char168}{\char163}{\char235} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+g + %
+l }% End of Indic Script text.
+&
+	{\ttlm} & 
+	 {\bnr %
+{\char143} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char163}{\char253} }% End of Indic Script text.
+&
+	{\ttglaani} &
+	 {\bnr %
+{\char143}Ain }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char163}{\char253}{\char201}AS }% End of Indic Script text.
+\\\hline
+ {\bnr %
+G + %
+n }% End of Indic Script text.
+&
+	{\ttghn} & 
+	 {\bnr %
+{\char144} }% End of Indic Script text.
+&
+	{\itxbengf %
+W{\char240} }% End of Indic Script text.
+&
+	{\ttbighna} &
+	 {\bnr %
+ib{\char144} }% End of Indic Script text.
+&
+	{\itxbengf %
+AcW{\char240} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+q + %
+k }% End of Indic Script text.
+&
+	{\tt\char126 N + ka} & 
+	 {\bnr %
+{\char145} }% End of Indic Script text.
+&
+	{\itxbengf %
+C{\char64}{\char216} }% End of Indic Script text.
+&
+	{\ttsha\char126 Nkita} &
+	 {\bnr %
+Si{\char145}t }% End of Indic Script text.
+&
+	{\itxbengf %
+rAC{\char64}{\char216}{\char169} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+q + %
+k + %
+F }% End of Indic Script text.
+&
+	{\tt\char126 Nk\_Sh} &
+	 {\bnr %
+{\char146} }% End of Indic Script text.
+&
+	{\itxbengf %
+C{\char229}K }% End of Indic Script text.
+&
+	{\ttaakaa\char126 Nk\_Shaa } &
+	 {\bnr %
+{\char0}AkA{\char146}A }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201}{\char64}{\char216}{\char201}C{\char229}K{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+q + %
+K }% End of Indic Script text.
+&
+	{\tt\char126 N + kh } & 
+	 {\bnr %
+{\char147} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char224} }% End of Indic Script text.
+&
+	{\ttsha\char126 Nkha} &
+	 {\bnr %
+S{\char147} }% End of Indic Script text.
+&
+	{\itxbengf %
+r{\char224} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+q + %
+g }% End of Indic Script text.
+&
+	{\tt\char126 N + g } & 
+	 {\bnr %
+{\char148} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char202} }% End of Indic Script text.
+&
+	{\ttbyaa\char126 Ng} &
+	 {\bnr %
+b{\char13}A{\char148} }% End of Indic Script text.
+&
+	{\itxbengf %
+cF{\char201}{\char202} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+q + %
+G }% End of Indic Script text.
+&
+	{\tt\char126 N + gh } & 
+	 {\bnr %
+{\char149} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char225} }% End of Indic Script text.
+&
+	{\ttsa\char126 Ngha} &
+	 {\bnr %
+s{\char149} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char174}{\char225} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+q + %
+m }% End of Indic Script text.
+&
+	{\tt\char126 N + m } & 
+	 {\bnr %
+{\char150} }% End of Indic Script text.
+&
+	{\itxbengf %
+CT }% End of Indic Script text.
+&
+	{\ttbaa\char126 NmaY} &
+	 {\bnr %
+bA{\char150}y }% End of Indic Script text.
+&
+	{\itxbengf %
+c{\char201}CT{\char221} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+c + %
+c }% End of Indic Script text.
+&
+	{\ttchch } & 
+	 {\bnr %
+{\char151} }% End of Indic Script text.
+&
+	{\itxbengf %
+hO }% End of Indic Script text.
+&
+	{\ttsaachchaa} &
+	 {\bnr %
+sA{\char151}A }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char174}{\char201}hO{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+c + %
+C }% End of Indic Script text.
+&
+	{\ttchchh } & 
+	 {\bnr %
+{\char152} }% End of Indic Script text.
+&
+	{\itxbengf %
+ha }% End of Indic Script text.
+&
+	{\ttbaachchhaa} &
+	 {\bnr %
+bA{\char152}A }% End of Indic Script text.
+&
+	{\itxbengf %
+c{\char201}ha{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+c + %
+C + %
+b }% End of Indic Script text.
+&
+	{\ttchchhb } & 
+	 {\bnr %
+{\char153} }% End of Indic Script text.
+&
+	{\itxbengf %
+hac }% End of Indic Script text.
+&
+	{\ttuchchhbaas} &
+	 {\bnr %
+{\char4}{\char153}As }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}hac{\char201}{\char174} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+c + %
+Q }% End of Indic Script text.
+&
+	{\ttch\char126 n } & 
+	 {\bnr %
+{\char154} }% End of Indic Script text.
+&
+	{\itxbengf %
+ht }% End of Indic Script text.
+&
+	{\ttJaach\char126 naa } &
+	 {\bnr %
+YA{\char154}A  }% End of Indic Script text.
+&
+	{\itxbengf %
+s{\char201}ht{\char201}  }% End of Indic Script text.
+\\\hline
+ {\bnr %
+j + %
+j }% End of Indic Script text.
+&
+	{\ttjj } & 
+	 {\bnr %
+{\char155} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char191}B }% End of Indic Script text.
+&
+	{\ttlajjaa } &
+	 {\bnr %
+l{\char155}A  }% End of Indic Script text.
+&
+	{\itxbengf %
+U{\char191}B{\char201}  }% End of Indic Script text.
+\\\hline
+ {\bnr %
+j + %
+j + %
+b }% End of Indic Script text.
+&
+	{\ttjjb } & 
+	 {\bnr %
+{\char156} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char191}B{\char194} }% End of Indic Script text.
+&
+	{\ttujjbal } &
+	 {\bnr %
+{\char4}{\char156}l  }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}{\char191}B{\char194}U  }% End of Indic Script text.
+\\\hline
+ {\bnr %
+j + %
+J  }% End of Indic Script text.
+&
+	{\ttjjh } & 
+	 {\bnr %
+{\char157} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char191}I }% End of Indic Script text.
+&
+	{\ttkujjhaTikaa } &
+	 {\bnr %
+ku{\char157}iTkA  }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char64}{\char216}{\char168}{\char191}IAv{\char64}{\char216}{\char201}  }% End of Indic Script text.
+\\\hline
+ {\bnr %
+j + %
+Q  }% End of Indic Script text.
+&
+	{\ttGY}& 
+	 {\bnr %
+{\char158} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char218} }% End of Indic Script text.
+&
+	{\ttbiGYaan } &
+	 {\bnr %
+ib{\char158}An  }% End of Indic Script text.
+&
+	{\itxbengf %
+Ac{\char218}{\char201}S  }% End of Indic Script text.
+\\\hline
+ {\bnr %
+j + %
+b  }% End of Indic Script text.
+&
+	{\ttjb}& 
+	 {\bnr %
+{\char159} }% End of Indic Script text.
+&
+	{\itxbengf %
+B{\char194} }% End of Indic Script text.
+&
+	{\ttjbaalaa } &
+	 {\bnr %
+{\char159}AlA  }% End of Indic Script text.
+&
+	{\itxbengf %
+B{\char194}{\char201}U{\char201}  }% End of Indic Script text.
+\\\hline
+% -----------------
+\end{longtable}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1006}%
+\htmlimage{external}
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect, Part 2} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+\par
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+\par
+\multicolumn{7}{r}{continued on the next page...} \\\endfoot
+\par
+\hline \endlastfoot
+\hline
+% -----------------
+ {\bnr %
+Q + %
+c  }% End of Indic Script text.
+&
+	{\tt\char126 nch }& 
+	 {\bnr %
+{\char160}  }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char161}  }% End of Indic Script text.
+&
+	{\tt ma\char126 ncha } &
+	 {\bnr %
+m{\char160}  }% End of Indic Script text.
+&
+	{\itxbengf %
+T{\char161}  }% End of Indic Script text.
+\\\hline
+ {\bnr %
+Q + %
+C  }% End of Indic Script text.
+&
+	{\tt\char126 nchh }& 
+	 {\bnr %
+{\char161}  }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char248}  }% End of Indic Script text.
+&
+	{\tt laa\char126 nchhnaa } &
+	 {\bnr %
+lA{\char161}{\char12}nA  }% End of Indic Script text.
+&
+	{\itxbengf %
+U{\char201}{\char248}S{\char201}  }% End of Indic Script text.
+\\\hline
+ {\bnr %
+Q + %
+j  }% End of Indic Script text.
+&
+	{\tt\char126 nj }& 
+	 {\bnr %
+{\char162}  }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char181}  }% End of Indic Script text.
+&
+	{\tt ga\char126 nja } &
+	 {\bnr %
+g{\char162}  }% End of Indic Script text.
+&
+	{\itxbengf %
+w{\char181}  }% End of Indic Script text.
+\\\hline
+ {\bnr %
+Q + %
+J  }% End of Indic Script text.
+&
+	{\tt\char126 njh }& 
+	 {\bnr %
+{\char163}  }% End of Indic Script text.
+&
+	{\itxbengf %
+tI  }% End of Indic Script text.
+&
+	{\tt jha\char126 njhaa } &
+	 {\bnr %
+J{\char163}A  }% End of Indic Script text.
+&
+	{\itxbengf %
+ItI{\char201}  }% End of Indic Script text.
+\\\hline
+ {\bnr %
+T + %
+T  }% End of Indic Script text.
+&
+	{\tt TT }& 
+	 {\bnr %
+{\char164}  }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char193}  }% End of Indic Script text.
+&
+	{\tt aTTaalikaa } &
+	 {\bnr %
+{\char0}{\char164}AilkA }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char193}{\char201}AU{\char64}{\char216}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+T + %
+b  }% End of Indic Script text.
+&
+	{\tt Tb }& 
+	 {\bnr %
+{\char165}  }% End of Indic Script text.
+&
+	{\itxbengf %
+vc  }% End of Indic Script text.
+&
+	{\tt khaTbaa } &
+	 {\bnr %
+K{\char165}A }% End of Indic Script text.
+&
+	{\itxbengf %
+Zvc{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+D + %
+D  }% End of Indic Script text.
+&
+	{\tt DD }& 
+	 {\bnr %
+{\char166}  }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char166}{\char166}  }% End of Indic Script text.
+&
+	{\tt uDDIn } &
+	 {\bnr %
+{\char4}{\char166}In }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}{\char166}{\char166}fS }% End of Indic Script text.
+\\\hline
+ {\bnr %
+N + %
+T  }% End of Indic Script text.
+&
+	{\tt NT }& 
+	 {\bnr %
+{\char167}  }% End of Indic Script text.
+&
+	{\itxbengf %
+Hv  }% End of Indic Script text.
+&
+	{\tt kaNTakita } &
+	 {\bnr %
+k{\char167}ikt }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char64}{\char216}HvA{\char64}{\char216}{\char169} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+N + %
+Z  }% End of Indic Script text.
+&
+	{\tt NTh }& 
+	 {\bnr %
+{\char168}  }% End of Indic Script text.
+&
+	{\itxbengf %
+xi  }% End of Indic Script text.
+&
+	{\tt laNThan } &
+	 {\bnr %
+l{\char168}n }% End of Indic Script text.
+&
+	{\itxbengf %
+UxiS }% End of Indic Script text.
+\\\hline
+ {\bnr %
+N + %
+D  }% End of Indic Script text.
+&
+	{\tt ND }& 
+	 {\bnr %
+{\char169}  }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char208}  }% End of Indic Script text.
+&
+	{\tt gaNDaar } &
+	 {\bnr %
+g{\char169}Ar }% End of Indic Script text.
+&
+	{\itxbengf %
+w{\char208}{\char201}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+N + %
+N  }% End of Indic Script text.
+&
+	{\tt NN }& 
+	 {\bnr %
+{\char170}  }% End of Indic Script text.
+&
+	{\itxbengf %
+u  }% End of Indic Script text.
+&
+	{\tt biShaNNa } &
+	 {\bnr %
+ibF{\char170} }% End of Indic Script text.
+&
+	{\itxbengf %
+AcKu }% End of Indic Script text.
+\\\hline
+ {\bnr %
+N + %
+m  }% End of Indic Script text.
+&
+	{\tt Nm }& 
+	 {\bnr %
+{\char171}  }% End of Indic Script text.
+&
+	{\itxbengf %
+HT  }% End of Indic Script text.
+&
+	{\tt hiraNmaY } &
+	 {\bnr %
+ihr{\char171}y }% End of Indic Script text.
+&
+	{\itxbengf %
+A{\char246}{\char204}HT{\char221} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+t + %
+t  }% End of Indic Script text.
+&
+	{\tt tt }& 
+	 {\bnr %
+{\char172}  }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char171}  }% End of Indic Script text.
+&
+	{\tt uttaal } &
+	 {\bnr %
+{\char4}{\char172}Al }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}{\char171}{\char201}U }% End of Indic Script text.
+\\\hline
+ {\bnr %
+t + %
+t + %
+b }% End of Indic Script text.
+&
+	{\tt ttb}  & 
+	 {\bnr %
+{\char173} }% End of Indic Script text.
+&
+	{\itxbengf %
+LL{\char170} }% End of Indic Script text.
+&
+	{\tt tattba } &
+	 {\bnr %
+t{\char173} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char169}LL{\char170} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+t + %
+z }% End of Indic Script text.
+&
+	{\tt tth}  & 
+	 {\bnr %
+{\char174} }% End of Indic Script text.
+&
+	{\itxbengf %
+L{\char203} }% End of Indic Script text.
+&
+	{\tt ashbattha } &
+	 {\bnr %
+{\char0}{\char239}{\char174} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}r{\char194}L{\char203} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+t + %
+n }% End of Indic Script text.
+&
+	{\tt tn}  & 
+	 {\bnr %
+{\char175} }% End of Indic Script text.
+&
+	{\itxbengf %
+L{\char240} }% End of Indic Script text.
+&
+	{\tt ratna } &
+	 {\bnr %
+r{\char175} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char204}L{\char240} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+t + %
+b }% End of Indic Script text.
+&
+	{\tt tb}  & 
+	 {\bnr %
+{\char176} }% End of Indic Script text.
+&
+	{\itxbengf %
+L{\char170} }% End of Indic Script text.
+&
+	{\tt tbaraa } &
+	 {\bnr %
+{\char176}rA }% End of Indic Script text.
+&
+	{\itxbengf %
+L{\char170}{\char204}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+t + %
+m }% End of Indic Script text.
+&
+	{\tt tm}  & 
+	 {\bnr %
+{\char177} }% End of Indic Script text.
+&
+	{\itxbengf %
+L{\char235} }% End of Indic Script text.
+&
+	{\tt aatmaa } &
+	 {\bnr %
+{\char0}A{\char177}A }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201}L{\char235}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+t + %
+r }% End of Indic Script text.
+&
+	{\tt tr}  & 
+	 {\bnr %
+{\char178} }% End of Indic Script text.
+&
+	{\itxbengf %
+n }% End of Indic Script text.
+&
+	{\tt sab.rtra } &
+	 {\bnr %
+sb{\char14}{\char178} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char174}c{\char187}n }% End of Indic Script text.
+\\\hline
+ {\bnr %
+d + %
+g }% End of Indic Script text.
+&
+	{\tt dg}  & 
+	 {\bnr %
+{\char180} }% End of Indic Script text.
+&
+	{\itxbengf %
+X{\char227} }% End of Indic Script text.
+&
+	{\tt udgaataa } &
+	 {\bnr %
+{\char4}{\char180}AtA }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}X{\char227}{\char201}{\char169}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+d + %
+G }% End of Indic Script text.
+&
+	{\tt dgh}  & 
+	 {\bnr %
+{\char181} }% End of Indic Script text.
+&
+	{\itxbengf %
+XW }% End of Indic Script text.
+&
+	{\tt udghaaTan } &
+	 {\bnr %
+{\char4}{\char181}ATn }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}XW{\char201}vS }% End of Indic Script text.
+\\\hline
+ {\bnr %
+d + %
+d }% End of Indic Script text.
+&
+	{\tt dd}  & 
+	 {\bnr %
+{\char182} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char179} }% End of Indic Script text.
+&
+	{\tt baraadda } &
+	 {\bnr %
+brA{\char182} }% End of Indic Script text.
+&
+	{\itxbengf %
+c{\char204}{\char201}{\char179} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+d + %
+x }% End of Indic Script text.
+&
+	{\tt ddh}  & 
+	 {\bnr %
+{\char183} }% End of Indic Script text.
+&
+	{\itxbengf %
+Xo }% End of Indic Script text.
+&
+	{\tt uddhaar } &
+	 {\bnr %
+{\char4}{\char183}Ar }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}Xo{\char201}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+d + %
+b }% End of Indic Script text.
+&
+	{\tt db}  & 
+	 {\bnr %
+{\char184} }% End of Indic Script text.
+&
+	{\itxbengf %
+X{\char170} }% End of Indic Script text.
+&
+	{\tt dbIp } &
+	 {\bnr %
+{\char184}Ip }% End of Indic Script text.
+&
+	{\itxbengf %
+X{\char170}f{\char222} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+d + %
+v }% End of Indic Script text.
+&
+	{\tt dbh}  & 
+	 {\bnr %
+{\char185} }% End of Indic Script text.
+&
+	{\itxbengf %
+Xg }% End of Indic Script text.
+&
+	{\tt sadbhaab } &
+	 {\bnr %
+s{\char185}Ab }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char174}Xg{\char201}c }% End of Indic Script text.
+\\\hline
+ {\bnr %
+d + %
+v + %
+r }% End of Indic Script text.
+&
+	{\tt dbhr}  & 
+	 {\bnr %
+{\char186} }% End of Indic Script text.
+&
+	{\itxbengf %
+Xg{\char254} }% End of Indic Script text.
+&
+	{\tt udbhraanta } &
+	 {\bnr %
+{\char4}{\char186}A{\char192} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}Xg{\char254}{\char201}{\char94}{\char228} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+d + %
+m }% End of Indic Script text.
+&
+	{\tt dm}  & 
+	 {\bnr %
+{\char187} }% End of Indic Script text.
+&
+	{\itxbengf %
+X{\char235} }% End of Indic Script text.
+&
+	{\tt padma } &
+	 {\bnr %
+p{\char187} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}X{\char235} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+x + %
+n }% End of Indic Script text.
+&
+	{\tt dhn}  & 
+	 {\bnr %
+{\char188} }% End of Indic Script text.
+&
+	{\itxbengf %
+oS }% End of Indic Script text.
+&
+	{\tt gRRidhna } &
+	 {\bnr %
+gW{\char188} }% End of Indic Script text.
+&
+	{\itxbengf %
+wpoS }% End of Indic Script text.
+\\\hline
+ {\bnr %
+x + %
+b }% End of Indic Script text.
+&
+	{\tt dhb}  & 
+	 {\bnr %
+{\char189} }% End of Indic Script text.
+&
+	{\itxbengf %
+o{\char194} }% End of Indic Script text.
+&
+	{\tt dhbajaa } &
+	 {\bnr %
+{\char189}jA }% End of Indic Script text.
+&
+	{\itxbengf %
+o{\char194}B{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+T }% End of Indic Script text.
+&
+	{\tt nT}  & 
+	 {\bnr %
+{\char190} }% End of Indic Script text.
+&
+	{\itxbengf %
+xv }% End of Indic Script text.
+&
+	{\tt aanTaak.rTikaa } &
+	 {\bnr %
+{\char0}A{\char190}Ak{\char14}iTkA }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201}xv{\char201}{\char64}{\char216}{\char187}Av{\char64}{\char216}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+D }% End of Indic Script text.
+&
+	{\tt nD}  & 
+	 {\bnr %
+{\char191} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}{\char166} }% End of Indic Script text.
+&
+	{\tt byaanD } &
+	 {\bnr %
+b{\char13}A{\char191} }% End of Indic Script text.
+&
+	{\itxbengf %
+cF{\char201}{\char94}{\char166} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+t }% End of Indic Script text.
+&
+	{\tt nt}  & 
+	 {\bnr %
+{\char192} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}{\char228} }% End of Indic Script text.
+&
+	{\tt antim } &
+	 {\bnr %
+{\char0}i{\char192}m }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}A{\char94}{\char228}T }% End of Indic Script text.
+\\\hline
+% -----------------
+\end{longtable}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1407}%
+\htmlimage{external}
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect, Part 3} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+\par
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+\par
+\multicolumn{7}{r}{continued on the next page...} \\\endfoot
+\par
+\hline \endlastfoot
+\hline
+% -----------------
+ {\bnr %
+n + %
+t + %
+{\char4} }% End of Indic Script text.
+&
+	{\tt ntu}  & 
+	 {\bnr %
+{\char193} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char167} }% End of Indic Script text.
+&
+	{\tt jantu } &
+	 {\bnr %
+j{\char193} }% End of Indic Script text.
+&
+	{\itxbengf %
+B{\char167} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+t + %
+b }% End of Indic Script text.
+&
+	{\tt ntb}  & 
+	 {\bnr %
+{\char194} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}L{\char170} }% End of Indic Script text.
+&
+	{\tt saantbanaa } &
+	 {\bnr %
+sA{\char194}nA }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char174}{\char201}{\char94}L{\char170}S{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+t + %
+r }% End of Indic Script text.
+&
+	{\tt ntr}  & 
+	 {\bnr %
+{\char195} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}n }% End of Indic Script text.
+&
+	{\tt Jantra } &
+	 {\bnr %
+Y{\char195} }% End of Indic Script text.
+&
+	{\itxbengf %
+s{\char94}n }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+z }% End of Indic Script text.
+&
+	{\tt nth}  & 
+	 {\bnr %
+{\char196} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}{\char203} }% End of Indic Script text.
+&
+	{\tt manthar } &
+	 {\bnr %
+m{\char196}r }% End of Indic Script text.
+&
+	{\itxbengf %
+T{\char94}{\char203}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+d }% End of Indic Script text.
+&
+	{\tt nd}  & 
+	 {\bnr %
+{\char197} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}\kRn{-0.150}{\char176} }% End of Indic Script text.
+&
+	{\tt bandI } &
+	 {\bnr %
+b{\char197}I }% End of Indic Script text.
+&
+	{\itxbengf %
+c{\char94}\kRn{-0.150}{\char176}f }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+x }% End of Indic Script text.
+&
+	{\tt ndh}  & 
+	 {\bnr %
+{\char198} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}{\char206} }% End of Indic Script text.
+&
+	{\tt gandha } &
+	 {\bnr %
+g{\char198} }% End of Indic Script text.
+&
+	{\itxbengf %
+w{\char94}{\char206} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+n }% End of Indic Script text.
+&
+	{\tt nn}  & 
+	 {\bnr %
+{\char199} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}{\char240} }% End of Indic Script text.
+&
+	{\tt anna } &
+	 {\bnr %
+{\char0}{\char199} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char94}{\char240} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+b }% End of Indic Script text.
+&
+	{\tt nb}  & 
+	 {\bnr %
+{\char200} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}{\char170} }% End of Indic Script text.
+&
+	{\tt samanbaY } &
+	 {\bnr %
+sm{\char200}y }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char174}T{\char94}{\char170}{\char221} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+m }% End of Indic Script text.
+&
+	{\tt nm}  & 
+	 {\bnr %
+{\char201} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char94}{\char235} }% End of Indic Script text.
+&
+	{\tt janma } &
+	 {\bnr %
+j{\char201} }% End of Indic Script text.
+&
+	{\itxbengf %
+B{\char94}{\char235} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+n + %
+s }% End of Indic Script text.
+&
+	{\tt ns}  & 
+	 {\bnr %
+{\char202} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char242}{\char174} }% End of Indic Script text.
+&
+	{\tt sens } &
+	 {\bnr %
+es{\char202} }% End of Indic Script text.
+&
+	{\itxbengf %
+\kRn{-0.030}{\char192}{\char174}{\char242}{\char174} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+p + %
+T }% End of Indic Script text.
+&
+	{\tt pT}  & 
+	 {\bnr %
+{\char203} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char243}v }% End of Indic Script text.
+&
+	{\tt kipTe } &
+	 {\bnr %
+ike{\char203} }% End of Indic Script text.
+&
+	{\itxbengf %
+A{\char64}{\char216}\kRn{-0.030}{\char192}{\char243}v }% End of Indic Script text.
+\\\hline
+ {\bnr %
+p + %
+t }% End of Indic Script text.
+&
+	{\tt pt}  & 
+	 {\bnr %
+{\char204} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char243}{\char228} }% End of Indic Script text.
+&
+	{\tt saptaaha } &
+	 {\bnr %
+s{\char204}Ah }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char174}{\char243}{\char228}{\char201}{\char246} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+p + %
+n }% End of Indic Script text.
+&
+	{\tt pn}  & 
+	 {\bnr %
+{\char205} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char243}{\char240} }% End of Indic Script text.
+&
+	{\tt sbapna } &
+	 {\bnr %
+{\char21}{\char205} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char170}{\char243}{\char240} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+p + %
+p }% End of Indic Script text.
+&
+	{\tt pp}  & 
+	 {\bnr %
+{\char206} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char243}{\char222} }% End of Indic Script text.
+&
+	{\tt dhaappaa } &
+	 {\bnr %
+xA{\char206}A }% End of Indic Script text.
+&
+	{\itxbengf %
+o{\char201}{\char243}{\char222}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+p + %
+l }% End of Indic Script text.
+&
+	{\tt pl}  & 
+	 {\bnr %
+{\char207} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char243}{\char253} }% End of Indic Script text.
+&
+	{\tt plaaban } &
+	 {\bnr %
+{\char207}Abn }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char243}{\char253}{\char201}cS }% End of Indic Script text.
+\\\hline
+ {\bnr %
+p + %
+s }% End of Indic Script text.
+&
+	{\tt ps}  & 
+	 {\bnr %
+{\char208} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char243}{\char174} }% End of Indic Script text.
+&
+	{\tt abhIpsaa } &
+	 {\bnr %
+{\char0}vI{\char208}A }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}gf{\char243}{\char174}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+f + %
+l }% End of Indic Script text.
+&
+	{\tt phl}  & 
+	 {\bnr %
+{\char209} }% End of Indic Script text.
+&
+	{\itxbengf %
+V{\char253} }% End of Indic Script text.
+&
+	{\tt phlipaar } &
+	 {\bnr %
+i{\char209}pAr }% End of Indic Script text.
+&
+	{\itxbengf %
+AV{\char253}{\char222}{\char201}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+b + %
+j }% End of Indic Script text.
+&
+	{\tt bj}  & 
+	 {\bnr %
+{\char210} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char198} }% End of Indic Script text.
+&
+	{\tt kubja } &
+	 {\bnr %
+ku{\char210} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char64}{\char216}{\char168}{\char198} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+b + %
+d }% End of Indic Script text.
+&
+	{\tt bd}  & 
+	 {\bnr %
+{\char211} }% End of Indic Script text.
+&
+	{\itxbengf %
+N{\char176} }% End of Indic Script text.
+&
+	{\tt shabda } &
+	 {\bnr %
+S{\char211} }% End of Indic Script text.
+&
+	{\itxbengf %
+rN{\char176} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+b + %
+x }% End of Indic Script text.
+&
+	{\tt bdh}  & 
+	 {\bnr %
+{\char212} }% End of Indic Script text.
+&
+	{\itxbengf %
+No }% End of Indic Script text.
+&
+	{\tt aarabdha } &
+	 {\bnr %
+{\char0}Ar{\char212} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201}{\char204}No }% End of Indic Script text.
+\\\hline
+ {\bnr %
+b + %
+b }% End of Indic Script text.
+&
+	{\tt bb}  & 
+	 {\bnr %
+{\char213} }% End of Indic Script text.
+&
+	{\itxbengf %
+Nc }% End of Indic Script text.
+&
+	{\tt maatabbar } &
+	 {\bnr %
+mAt{\char213}r }% End of Indic Script text.
+&
+	{\itxbengf %
+T{\char201}{\char169}Nc{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+b + %
+l }% End of Indic Script text.
+&
+	{\tt bl}  & 
+	 {\bnr %
+{\char214} }% End of Indic Script text.
+&
+	{\itxbengf %
+N{\char253} }% End of Indic Script text.
+&
+	{\tt blaTi.n } &
+	 {\bnr %
+{\char214}iTM }% End of Indic Script text.
+&
+	{\itxbengf %
+N{\char253}Ave }% End of Indic Script text.
+\\\hline
+ {\bnr %
+v + %
+r }% End of Indic Script text.
+&
+	{\tt bhr}  & 
+	 {\bnr %
+{\char215} }% End of Indic Script text.
+&
+	{\itxbengf %
+g{\char254} }% End of Indic Script text.
+&
+	{\tt bhram } &
+	 {\bnr %
+{\char215}m }% End of Indic Script text.
+&
+	{\itxbengf %
+g{\char254}T }% End of Indic Script text.
+\\\hline
+ {\bnr %
+v + %
+l }% End of Indic Script text.
+&
+	{\tt bhl}  & 
+	 {\bnr %
+{\char216} }% End of Indic Script text.
+&
+	{\itxbengf %
+g{\char253} }% End of Indic Script text.
+&
+	{\tt bhlaadimir } &
+	 {\bnr %
+{\char216}Aidimr }% End of Indic Script text.
+&
+	{\itxbengf %
+g{\char253}{\char201}A{\char176}AT{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+m + %
+n }% End of Indic Script text.
+&
+	{\tt mn}  & 
+	 {\bnr %
+{\char217} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char178}{\char240} }% End of Indic Script text.
+&
+	{\tt nimna } &
+	 {\bnr %
+in{\char217} }% End of Indic Script text.
+&
+	{\itxbengf %
+AS{\char178}{\char240} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+m + %
+p }% End of Indic Script text.
+&
+	{\tt mp}  & 
+	 {\bnr %
+{\char218} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char178}{\char222} }% End of Indic Script text.
+&
+	{\tt kampa } &
+	 {\bnr %
+k{\char218} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char64}{\char216}{\char178}{\char222} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+m + %
+f }% End of Indic Script text.
+&
+	{\tt mph}  & 
+	 {\bnr %
+{\char219} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char178}{\char172}{\char216} }% End of Indic Script text.
+&
+	{\tt lampha } &
+	 {\bnr %
+l{\char219} }% End of Indic Script text.
+&
+	{\itxbengf %
+U{\char178}{\char172}{\char216} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+m + %
+b }% End of Indic Script text.
+&
+	{\tt mb}  & 
+	 {\bnr %
+{\char220} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char178}c }% End of Indic Script text.
+&
+	{\tt ambal } &
+	 {\bnr %
+{\char0}{\char220}l }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char178}cU }% End of Indic Script text.
+\\\hline
+ {\bnr %
+m + %
+v }% End of Indic Script text.
+&
+	{\tt mbh}  & 
+	 {\bnr %
+{\char221} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char175}{\char186} }% End of Indic Script text.
+&
+	{\tt dambha } &
+	 {\bnr %
+d{\char221} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char176}{\char175}{\char186} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+m + %
+v + %
+r }% End of Indic Script text.
+&
+	{\tt mbhr}  & 
+	 {\bnr %
+{\char222} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char178}g{\char254} }% End of Indic Script text.
+&
+	{\tt sambhram } &
+	 {\bnr %
+s{\char222}m }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char174}{\char178}g{\char254}T }% End of Indic Script text.
+\\\hline
+ {\bnr %
+m + %
+m }% End of Indic Script text.
+&
+	{\tt mm}  & 
+	 {\bnr %
+{\char223} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char175}{\char235} }% End of Indic Script text.
+&
+	{\tt aahaammak } &
+	 {\bnr %
+{\char0}AhA{\char223}k }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201}{\char246}{\char201}{\char175}{\char235}{\char64}{\char216} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+m + %
+l }% End of Indic Script text.
+&
+	{\tt ml}  & 
+	 {\bnr %
+{\char224} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char178}{\char253} }% End of Indic Script text.
+&
+	{\tt mlaan } &
+	 {\bnr %
+{\char224}An }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char178}{\char253}{\char201}S }% End of Indic Script text.
+\\\hline
+ {\bnr %
+l + %
+k }% End of Indic Script text.
+&
+	{\tt lk}  & 
+	 {\bnr %
+{\char225} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char183}{\char64}{\char216} }% End of Indic Script text.
+&
+	{\tt balkal } &
+	 {\bnr %
+b{\char225}l }% End of Indic Script text.
+&
+	{\itxbengf %
+c{\char183}{\char64}{\char216}U }% End of Indic Script text.
+\\\hline
+% -----------------
+\end{longtable}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage1820}%
+\htmlimage{external}
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect, Part 4} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+\par
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+\par
+\multicolumn{7}{r}{continued on the next page...} \\\endfoot
+\par
+\hline \endlastfoot
+\hline
+% -----------------
+ {\bnr %
+l + %
+g }% End of Indic Script text.
+&
+	{\tt lg}  & 
+	 {\bnr %
+{\char226} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char92}{\char227} }% End of Indic Script text.
+&
+	{\tt balgaa } &
+	 {\bnr %
+b{\char226}A }% End of Indic Script text.
+&
+	{\itxbengf %
+c{\char92}{\char227}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+l + %
+g + %
+{\char4} }% End of Indic Script text.
+&
+	{\tt lgu}  & 
+	 {\bnr %
+{\char227} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char92}{\char227}{\char168} }% End of Indic Script text.
+&
+	{\tt phaalgun } &
+	 {\bnr %
+fA{\char227}n }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char172}{\char216}{\char201}{\char92}{\char227}{\char168}S }% End of Indic Script text.
+\\\hline
+ {\bnr %
+l + %
+T }% End of Indic Script text.
+&
+	{\tt lT}  & 
+	 {\bnr %
+{\char228} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char183}v }% End of Indic Script text.
+&
+	{\tt palTan } &
+	 {\bnr %
+p{\char228}n }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}{\char183}vS }% End of Indic Script text.
+\\\hline
+ {\bnr %
+l + %
+D }% End of Indic Script text.
+&
+	{\tt lD}  & 
+	 {\bnr %
+{\char229} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char183}{\char166} }% End of Indic Script text.
+&
+	{\tt holDaar } &
+	 {\bnr %
+ehA{\char229}Ar }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char192}{\char246}{\char201}{\char183}{\char166}{\char201}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+l + %
+p }% End of Indic Script text.
+&
+	{\tt lp}  & 
+	 {\bnr %
+{\char230} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char183}{\char222} }% End of Indic Script text.
+&
+	{\tt kalpanaa } &
+	 {\bnr %
+k{\char230}nA }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char64}{\char216}{\char183}{\char222}S{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+l + %
+b }% End of Indic Script text.
+&
+	{\tt lb}  & 
+	 {\bnr %
+{\char231} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char92}{\char170} }% End of Indic Script text.
+&
+	{\tt bilba } &
+	 {\bnr %
+ib{\char231} }% End of Indic Script text.
+&
+	{\itxbengf %
+Ac{\char92}{\char170} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+l + %
+m }% End of Indic Script text.
+&
+	{\tt lm}  & 
+	 {\bnr %
+{\char232} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char183}{\char235} }% End of Indic Script text.
+&
+	{\tt gulma } &
+	 {\bnr %
+{\char29}{\char232} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char230}{\char183}{\char235} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+l + %
+l }% End of Indic Script text.
+&
+	{\tt ll}  & 
+	 {\bnr %
+{\char233} }% End of Indic Script text.
+&
+	{\itxbengf %
+U{\char253} }% End of Indic Script text.
+&
+	{\tt praphulla } &
+	 {\bnr %
+p{\char15}fu{\char233} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}{\char254}{\char172}{\char216}{\char168}U{\char253} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+S + %
+c }% End of Indic Script text.
+&
+	{\tt shch}  & 
+	 {\bnr %
+{\char234} }% End of Indic Script text.
+&
+	{\itxbengf %
+EO }% End of Indic Script text.
+&
+	{\tt punashcha } &
+	 {\bnr %
+pun{\char234} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}{\char168}SEO }% End of Indic Script text.
+\\\hline
+ {\bnr %
+S + %
+C }% End of Indic Script text.
+&
+	{\tt shchh}  & 
+	 {\bnr %
+{\char235} }% End of Indic Script text.
+&
+	{\itxbengf %
+Ea }% End of Indic Script text.
+&
+	{\tt shirashchhed } &
+	 {\bnr %
+iSre{\char235}d }% End of Indic Script text.
+&
+	{\itxbengf %
+Ar{\char204}\kRn{-0.030}{\char192}Ea{\char176} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+S + %
+n }% End of Indic Script text.
+&
+	{\tt shn}  & 
+	 {\bnr %
+{\char236} }% End of Indic Script text.
+&
+	{\itxbengf %
+r{\char240} }% End of Indic Script text.
+&
+	{\tt prashna } &
+	 {\bnr %
+p{\char15}{\char236} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}{\char254}r{\char240} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+S + %
+m }% End of Indic Script text.
+&
+	{\tt shm}  & 
+	 {\bnr %
+{\char237} }% End of Indic Script text.
+&
+	{\itxbengf %
+E{\char235} }% End of Indic Script text.
+&
+	{\tt rashmi } &
+	 {\bnr %
+ri{\char237} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char204}AE{\char235} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+S + %
+l }% End of Indic Script text.
+&
+	{\tt shl}  & 
+	 {\bnr %
+{\char238} }% End of Indic Script text.
+&
+	{\itxbengf %
+r{\char253} }% End of Indic Script text.
+&
+	{\tt shlaaghaa } &
+	 {\bnr %
+{\char238}AGA }% End of Indic Script text.
+&
+	{\itxbengf %
+r{\char253}{\char201}W{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+S + %
+b }% End of Indic Script text.
+&
+	{\tt shb}  & 
+	 {\bnr %
+{\char239} }% End of Indic Script text.
+&
+	{\itxbengf %
+r{\char194} }% End of Indic Script text.
+&
+	{\tt shbaapad } &
+	 {\bnr %
+{\char239}Apd }% End of Indic Script text.
+&
+	{\itxbengf %
+r{\char194}{\char201}{\char222}{\char176} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+F + %
+k }% End of Indic Script text.
+&
+	{\tt Shk}  & 
+	 {\bnr %
+{\char240} }% End of Indic Script text.
+&
+	{\itxbengf %
+y{\char226} }% End of Indic Script text.
+&
+	{\tt pariShkaar } &
+	 {\bnr %
+pir{\char240}Ar }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}A{\char204}y{\char226}{\char201}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+F + %
+k + %
+r }% End of Indic Script text.
+&
+	{\tt Shkr}  & 
+	 {\bnr %
+{\char241} }% End of Indic Script text.
+&
+	{\itxbengf %
+yn{\char216} }% End of Indic Script text.
+&
+	{\tt niShkramaN } &
+	 {\bnr %
+in{\char241}mN }% End of Indic Script text.
+&
+	{\itxbengf %
+ASyn{\char216}TH }% End of Indic Script text.
+\\\hline
+ {\bnr %
+F + %
+T }% End of Indic Script text.
+&
+	{\tt ShT}  & 
+	 {\bnr %
+{\char242} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char196} }% End of Indic Script text.
+&
+	{\tt kaShTa } &
+	 {\bnr %
+k{\char242} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char64}{\char216}{\char196} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+F + %
+Z }% End of Indic Script text.
+&
+	{\tt ShTh}  & 
+	 {\bnr %
+{\char243} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char164} }% End of Indic Script text.
+&
+	{\tt niShThur } &
+	 {\bnr %
+in{\char243}ur }% End of Indic Script text.
+&
+	{\itxbengf %
+AS{\char164}{\char168}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+F + %
+N }% End of Indic Script text.
+&
+	{\tt ShN}  & 
+	 {\bnr %
+{\char244} }% End of Indic Script text.
+&
+	{\itxbengf %
+yH }% End of Indic Script text.
+&
+	{\tt uShNa } &
+	 {\bnr %
+{\char4}{\char244} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}yH }% End of Indic Script text.
+\\\hline
+ {\bnr %
+F + %
+p }% End of Indic Script text.
+&
+	{\tt Shp}  & 
+	 {\bnr %
+{\char245} }% End of Indic Script text.
+&
+	{\itxbengf %
+y{\char222} }% End of Indic Script text.
+&
+	{\tt baaShpa } &
+	 {\bnr %
+bA{\char245} }% End of Indic Script text.
+&
+	{\itxbengf %
+c{\char201}y{\char222} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+F + %
+f }% End of Indic Script text.
+&
+	{\tt Shph}  & 
+	 {\bnr %
+{\char246} }% End of Indic Script text.
+&
+	{\itxbengf %
+y{\char172}{\char216} }% End of Indic Script text.
+&
+	{\tt niShphal } &
+	 {\bnr %
+in{\char246}l }% End of Indic Script text.
+&
+	{\itxbengf %
+ASy{\char172}{\char216}U }% End of Indic Script text.
+\\\hline
+ {\bnr %
+F + %
+m }% End of Indic Script text.
+&
+	{\tt Shm}  & 
+	 {\bnr %
+{\char247} }% End of Indic Script text.
+&
+	{\itxbengf %
+y{\char235} }% End of Indic Script text.
+&
+	{\tt bhiiShma } &
+	 {\bnr %
+vI{\char247} }% End of Indic Script text.
+&
+	{\itxbengf %
+gfy{\char235} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+k }% End of Indic Script text.
+&
+	{\tt sk}  & 
+	 {\bnr %
+{\char248} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char226} }% End of Indic Script text.
+&
+	{\tt puraskRRita } &
+	 {\bnr %
+pur{\char248}Wt }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}{\char168}{\char204}m{\char226}p{\char169} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+k + %
+r }% End of Indic Script text.
+&
+	{\tt skr}  & 
+	 {\bnr %
+{\char249} }% End of Indic Script text.
+&
+	{\itxbengf %
+mn{\char216} }% End of Indic Script text.
+&
+	{\tt skriin } &
+	 {\bnr %
+{\char249}In }% End of Indic Script text.
+&
+	{\itxbengf %
+mn{\char216}fS }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+k + %
+l }% End of Indic Script text.
+&
+	{\tt skl}  & 
+	 {\bnr %
+{\char250} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char229}{\char253} }% End of Indic Script text.
+&
+	{\tt skleraa } &
+	 {\bnr %
+e{\char250}rA }% End of Indic Script text.
+&
+	{\itxbengf %
+\kRn{-0.030}{\char192}m{\char229}{\char253}{\char204}{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+K }% End of Indic Script text.
+&
+	{\tt skh}  & 
+	 {\bnr %
+{\char251} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char233} }% End of Indic Script text.
+&
+	{\tt skhalan } &
+	 {\bnr %
+{\char251}ln }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char233}US }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+T }% End of Indic Script text.
+&
+	{\tt sT}  & 
+	 {\bnr %
+{\char252} }% End of Indic Script text.
+&
+	{\itxbengf %
+mv }% End of Indic Script text.
+&
+	{\tt sTapaar } &
+	 {\bnr %
+{\char252}pAr }% End of Indic Script text.
+&
+	{\itxbengf %
+mv{\char222}{\char201}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+t }% End of Indic Script text.
+&
+	{\tt st}  & 
+	 {\bnr %
+{\char253} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char228} }% End of Indic Script text.
+&
+	{\tt asta } &
+	 {\bnr %
+{\char0}{\char253} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}m{\char228} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+t + %
+{\char4}  }% End of Indic Script text.
+&
+	{\tt stu}  & 
+	 {\bnr %
+{\char254} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char228}{\char168} }% End of Indic Script text.
+&
+	{\tt bastu } &
+	 {\bnr %
+b{\char254} }% End of Indic Script text.
+&
+	{\itxbengf %
+cm{\char228}{\char168} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+t + %
+r  }% End of Indic Script text.
+&
+	{\tt str}  & 
+	 {\bnr %
+{\char255} }% End of Indic Script text.
+&
+	{\itxbengf %
+mn }% End of Indic Script text.
+&
+	{\tt strain } &
+	 {\bnr %
+E{\char255}n }% End of Indic Script text.
+&
+	{\itxbengf %
+PmnS }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+z }% End of Indic Script text.
+&
+	{\tt sth}  & 
+	 {\bnr %
+{\char16} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char203} }% End of Indic Script text.
+&
+	{\tt upasthita } &
+	 {\bnr %
+{\char4}pi{\char16}t }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char180}{\char222}Am{\char203}{\char169} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+n }% End of Indic Script text.
+&
+	{\tt sn}  & 
+	 {\bnr %
+{\char17} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char240} }% End of Indic Script text.
+&
+	{\tt snaan } &
+	 {\bnr %
+{\char17}An }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char240}{\char201}S }% End of Indic Script text.
+\\\hline
+% -----------------
+\end{longtable}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage2221}%
+\htmlimage{external}
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\caption{Conjunct Consonants\protect, Part 5} \\
+\hline conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endfirsthead  
+\par
+\caption[]{Conjunct Consonants (contd)} \\
+	\hline
+	conjunct & ITRANS & bn & itxbeng & ITRANS example & bn example & itxbeng example \\\hline
+	\multicolumn{7}{c}{\vadjust{\vskip-10pt}}
+	\endhead  
+\par
+\multicolumn{7}{r}{continued on the next page...} \\\endfoot
+\par
+\hline \endlastfoot
+\hline
+% -----------------
+ {\bnr %
+s + %
+p }% End of Indic Script text.
+&
+	{\tt sp}  & 
+	 {\bnr %
+{\char18} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char222} }% End of Indic Script text.
+&
+	{\tt paraspar } &
+	 {\bnr %
+pr{\char18}r }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}{\char204}m{\char222}{\char204} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+p + %
+l }% End of Indic Script text.
+&
+	{\tt spl}  & 
+	 {\bnr %
+{\char19} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char243}{\char253} }% End of Indic Script text.
+&
+	{\tt spliT } &
+	 {\bnr %
+i{\char19}T }% End of Indic Script text.
+&
+	{\itxbengf %
+Am{\char243}{\char253}v }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+f }% End of Indic Script text.
+&
+	{\tt sph}  & 
+	 {\bnr %
+{\char20} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char172}{\char216} }% End of Indic Script text.
+&
+	{\tt aasphaalan } &
+	 {\bnr %
+{\char0}A{\char20}Aln }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201}m{\char172}{\char216}{\char201}US }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+b }% End of Indic Script text.
+&
+	{\tt sb}  & 
+	 {\bnr %
+{\char21} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char170} }% End of Indic Script text.
+&
+	{\tt sbadesh } &
+	 {\bnr %
+{\char21}edS }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char170}\kRn{-0.030}{\char192}{\char176}r }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+m }% End of Indic Script text.
+&
+	{\tt sm}  & 
+	 {\bnr %
+{\char22} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char235} }% End of Indic Script text.
+&
+	{\tt smaraN } &
+	 {\bnr %
+{\char22}rN }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char235}{\char204}H }% End of Indic Script text.
+\\\hline
+ {\bnr %
+s + %
+l }% End of Indic Script text.
+&
+	{\tt sl}  & 
+	 {\bnr %
+{\char23} }% End of Indic Script text.
+&
+	{\itxbengf %
+m{\char253} }% End of Indic Script text.
+&
+	{\tt slip } &
+	 {\bnr %
+i{\char23}p }% End of Indic Script text.
+&
+	{\itxbengf %
+Am{\char253}{\char222} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+h + %
+N }% End of Indic Script text.
+&
+	{\tt hN}  & 
+	 {\bnr %
+{\char24} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char237} }% End of Indic Script text.
+&
+	{\tt paraahNa } &
+	 {\bnr %
+prA{\char24} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char222}{\char204}{\char201}{\char237} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+h + %
+n }% End of Indic Script text.
+&
+	{\tt hn}  & 
+	 {\bnr %
+{\char31} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char246}S }% End of Indic Script text.
+&
+	{\tt chihnita } &
+	 {\bnr %
+ici{\char31}t }% End of Indic Script text.
+&
+	{\itxbengf %
+AOA{\char246}S{\char169} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+h + %
+m }% End of Indic Script text.
+&
+	{\tt hm}  & 
+	 {\bnr %
+{\char32} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char246}T }% End of Indic Script text.
+&
+	{\tt brahmaa } &
+	 {\bnr %
+b{\char15}{\char32}A }% End of Indic Script text.
+&
+	{\itxbengf %
+c{\char254}{\char246}T{\char201} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+h + %
+b }% End of Indic Script text.
+&
+	{\tt hb}  & 
+	 {\bnr %
+{\char62} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char246}c }% End of Indic Script text.
+&
+	{\tt aahbaan } &
+	 {\bnr %
+{\char0}A{\char62}An }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201}{\char246}c{\char201}S }% End of Indic Script text.
+\\\hline
+ {\bnr %
+h + %
+l }% End of Indic Script text.
+&
+	{\tt hl}  & 
+	 {\bnr %
+{\char125} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char246}{\char253} }% End of Indic Script text.
+&
+	{\tt aahlaad } &
+	 {\bnr %
+{\char0}A{\char125}Ad }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char126}{\char201}{\char246}{\char253}{\char201}{\char176} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+h + %
+{\char6} }% End of Indic Script text.
+&
+	{\tt hRRi}  & 
+	 {\bnr %
+{\char28} }% End of Indic Script text.
+&
+	{\itxbengf %
+Y }% End of Indic Script text.
+&
+	{\tt hRRidaY } &
+	 {\bnr %
+{\char28}dy }% End of Indic Script text.
+&
+	{\itxbengf %
+Y{\char176}{\char221} }% End of Indic Script text.
+\\\hline
+ {\bnr %
+R + %
+g }% End of Indic Script text.
+&
+	{\tt Rg}  & 
+	 {\bnr %
+{\char127} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char166}\kRn{0.060}\sBs{-0.020}{{\char219}}w }% End of Indic Script text.
+&
+	{\tt khaRga } &
+	 {\bnr %
+K{\char127} }% End of Indic Script text.
+&
+	{\itxbengf %
+Z{\char166}\kRn{0.060}\sBs{-0.020}{{\char219}}w }% End of Indic Script text.
+\\\hline
+ {\bnr %
+F + %
+N }% End of Indic Script text.
+&
+	{\tt ShN} &
+	 {\bnr %
+{\char244} }% End of Indic Script text.
+&
+	{\itxbengf %
+yH }% End of Indic Script text.
+&
+	{\tt kRRiShNa} &
+	 {\bnr %
+kW{\char244} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char64}{\char216}pyH }% End of Indic Script text.
+\\\hline
+ {\bnr %
+g + %
+{\char4} }% End of Indic Script text.
+&
+	{\tt gu} & 
+	 {\bnr %
+{\char29} }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char230} }% End of Indic Script text.
+&
+	{\tt phaaguner } &
+	 {\bnr %
+fA{\char29}enr }% End of Indic Script text.
+&
+	{\itxbengf %
+{\char172}{\char216}{\char201}{\char230}\kRn{-0.030}{\char192}S{\char204} }% End of Indic Script text.
+\\\hline
+\end{longtable}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

@@ -1,0 +1,137 @@
+%
+		    Files in the ITRANS/doc directory
+            -----------------------------------------------------
+                    http://www.aczoom.com/itrans/
+            -----------------------------------------------------
+
+Description of the files in the "doc" directory of the ITRANS package.
+
+Fast help (see idoc.itx, ../README, etc for more details):
+
+To print files with .itx extension:
+     $ ../src/itrans -v -i idoc.itx -o x.tex
+(now, to print files with .tex extension):
+     $ latex x.tex
+     $ dvips x.dvi | lp
+
+To print files with .ips extension:
+     $ ../src/itrans -v -P -i flag.ips -o xps
+     $ ../src/prips xps
+
+To print files with .ps extension (send them directly to a PostScript
+printer):
+     $ cat idoc.ps | lp
+
+------------------------------------------------------------------------
+For many sample documents using ITRANS, check out the ITRANS Song Book.
+That is a database of thousands of ITRANS documents, including hindi film
+song lyrics, sanskrit texts such as the bhagvad gita, etc.
+Use WWW search tools to search for the substring "isongs", or visit
+http://www.aczoom.com/itrans/
+------------------------------------------------------------------------
+Note that all the *.ps files may not be present the itrans source
+file archive (itrans*.zip or itrans*.tar) --- they are present in a separate
+archive (usually itransps.zip or itransps.tgz).
+------------------------------------------------------------------------
+Files in the doc directory:
+
+idoc.itx		-- ITRANS general user manual
+			-- LaTeX document
+idoc.ps			-- printer-ready file, if you cannot generate
+			-- a printed copy from idoc.itx!
+
+ex_latex.itx		-- a sample input file, uses LaTeX. Use this as a
+			-- template when you need to begin using ITRANS.
+
+ex_ltn1.itx		-- a sample input file for generating direct text
+			-- output - for direct display on WWW browsers such
+			-- as Netscape. Uses ISO-Latin1 fonts.
+
+ex_ps.itx		-- a sample input file, for direct PostScript 
+			-- output.
+
+ex_utf8.itx		-- a sample input file, produces Unicode UTF-8
+			-- HTML output.
+
+dvnc.itx		-- marathi/hindi transliteration map
+			-- for the Devnac PostScript font
+			-- in latex format
+dvnc.ps			-- printer-ready file for dvnc.itx
+
+dvng.itx		-- marathi/hindi/sanskrit transliteration map
+			-- for the Devnag Metafont font & Xdvng font
+			-- in latex format
+			-- NOTE: This file typesets some large tables,
+			-- most normal latex programs will barf on it.
+			-- It requires a latex will larger than normal
+			-- memory capacities: on the PC I use -- blatex.
+dvng.ps			-- printer-ready file corresponding to dvng.itx
+
+tamil.itx		-- tamil transliteration map
+			-- in latex format
+tamil.ps		-- printer-ready file for tamil.itx
+
+tlgutx.itx		-- telugu transliteration map (for the TeluguTeX font)
+			-- in latex format
+			-- NOTE: This file typesets some large tables,
+			-- most normal latex programs will barf on it.
+			-- It requires a latex will larger than normal
+			-- memory capacities: on the PC I use -- blatex.
+tlgutx.ps		-- printer-ready file for tlgutx.itx
+
+gujdoc.itx		-- Gujarati transliteration map (ItxGuj Type1 font)
+gujdoc.ps		-- printer-ready file for gujdoc.itx
+
+itxbeng.itx		-- manual for Type 1 Bengali font
+itxbeng.ps		-- printer-ready file for itxbeng.itx
+
+kantex.itx		-- manual for the Kannada font (Metafont)
+kantex.ps		-- printer-ready file for kantex.itx
+
+pundoc.itx		-- manual for the Punjabi Gurmukhi font (PostScript)
+pundoc.ps		-- printer-ready file for kantex.itx
+
+romancsx.itx		-- Romanized Sanksrit (CSUtopia Type 1 font)
+			-- transliteration map and documentation
+romancsx.ps		-- printer-ready file for romancsx.itx
+
+icsx.itx		-- documentation for the CS/CSX encoding support
+			-- in ITRANS.
+icsx.ps			-- PostScript printer ready file of icsx.itx
+
+nehru.itx		-- hindi transliterated text, nehru's sayings
+			-- in latex format (uses Devnac font)
+
+flag.ips		-- draws the indian flag, and a hindi song
+			-- in PostScript format
+			-- also contains interesting PostScript code
+			-- to change font size, change the basic font, etc
+			-- a must-see!
+
+tech.tex		-- english LaTeX file, contains technical
+			-- details regarding this software package
+			-- *** is incomplete and way out-of-date!
+
+../src/itrans.1		-- man page, source
+			-- use "man -d itrans.1" to see file.
+
+../src/prips.1		-- man page, source
+			-- use "man -d prips.1" to see file.
+
+../src/itrans.man		-- man page, formatted (file may not be present)
+			-- use "more itrans.man" to see file.
+
+----------------------------------------------------------------------
+2008 LaTeX2HTML - had to do these steps, or use the contrib/mkl2h script:
+- In /usr/local/share/lib/latex2html:
+changed IndicTeX-HTML/itrans.perl to:
+$ITRANSPATH = $ENV{'ITRANSPATH'} = join(':'
+        , '/usr/share/itrans53/lib'
+        , '/usr/share/itrans53/lib/fonts'
+        ) unless $ENV{'ITRANSPATH'};
+
+  cp IndicTeX-HTML/*perl styles/
+  cp IndicTeX-HTML/*.sty texinputs/
+In the environment, do:
+  export RGBDEF=/usr/local/share/lib/latex2html/styles/rgb.txt
+----------------------------------------------------------------------

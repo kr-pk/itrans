@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Known Problems</TITLE>
+<META NAME="description" CONTENT="Known Problems">
+<META NAME="keywords" CONTENT="dvnc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="dvnc.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="dvnc.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html44"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html42"
+  HREF="dvnc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html36"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html45"
+  HREF="node3.html">Devanagari Table</A>
+<B>Up:</B> <A NAME="tex2html43"
+  HREF="dvnc.html">dvnc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html37"
+  HREF="node1.html">Fonts Available</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000">
+Known Problems</A>
+</H1>
+
+<P>
+In the T<SMALL>E</SMALL>X interface, characters with any non-zero Y offset are
+not correctly printed in some cases, when the PostScript font Devnac
+is used.
+I have only seen this happen for the <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="da\,"> consonant,
+in cases such as the da-u consonant-vowel, or the da-ra ligature, words
+such as <EM>draaviiDa</EM> (<IMG
+ WIDTH="47" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="draaviiDa\,\istrut">) or <EM>dukaanaat</EM>
+<IMG
+ WIDTH="57" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="dukaanaat\/">.
+Note that it is only in certain cases that the
+word is printed incorrectly, in most cases it is handled correctly.
+Usually, when the word appears near the end of the line, T<SMALL>E</SMALL>X (or
+dvips, I'm inclined to think it is dvips)
+inserts a negative kern just before the character with a
+non-zero Y offset, and the word appears squashed up at that point.
+Have no remedy for this, only workaround is to force a line break before the
+problem word, it usually sets everything right.
+
+<P>
+I have never encountered this problem when using Frans Velthuis's Devnag
+font with the itrans package, therefore this problem is probably related
+to the use of PostScript fonts in T<SMALL>E</SMALL>X.
+
+<P>
+
+<P><P>
+<BR>
+<HR><HR>
+<A NAME="tex2html44"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html42"
+  HREF="dvnc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html36"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html45"
+  HREF="node3.html">Devanagari Table</A>
+<B>Up:</B> <A NAME="tex2html43"
+  HREF="dvnc.html">dvnc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html37"
+  HREF="node1.html">Fonts Available</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

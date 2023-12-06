@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Direct PostScript Output</TITLE>
+<META NAME="description" CONTENT="Direct PostScript Output">
+<META NAME="keywords" CONTENT="idoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="idoc.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="idoc.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html93"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html91"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html85"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html94"
+  HREF="node5.html">Direct Text Output -</A>
+<B>Up:</B> <A NAME="tex2html92"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html86"
+  HREF="node3.html">TEX Interface</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html95"
+  HREF="node4.html#SECTION00041000000000000000">Direct PostScript Output Requirements</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00040000000000000000">
+Direct PostScript Output</A>
+</H1>
+
+<P>
+<EM>Note: This section is applicable to the PostScript fonts only:
+devanagari font <EM>devnac</EM>, Gujarati <EM>ItxGuj</EM>,
+Bengali <EM>ItxBeng</EM>, Devanagari <EM>Xdvng</EM>, and Romanized Sanskrit
+<EM>NCS_CSX</EM>.
+The tamil font <EM>wntml</EM>, the devanagari font <EM>devnag</EM>,
+the telugu font <EM>tel</EM> and the kannada font <EM>kan</EM>
+cannot be used for this purpose since they are not PostScript fonts.</EM>
+
+<P>
+As mentioned earlier, the Direct PostScript Output
+interface is an extremely primitive interface for
+printing, but will suffice for printing documents containing only
+Indic Script text (no english), and requiring no typesetting features such as
+centering, right flush text, etc.
+In addition to generating the devanagari characters, this method preserves
+the line breaks and spaces in the input text.
+So, unlike in the T<SMALL>E</SMALL>X version, which programatically decides where to
+break a line, here you have to include a end-of-line in the exact spot
+where you desire a new line to start in the output.
+And, if you need indented lines, you have to add spaces to simulate
+horizontal skips.
+
+<P>
+The previous section titled <EM>Input Format</EM> applies to this interface, too.
+Thus, the user needs to specify the IFM file name, the font command name,
+etc before writing text between the Indian language markers such as
+&#35;marathi  and &#35;endmarathi .
+For further examples, see the sample document provided in the ITRANS
+archive, file may be named something like <code>s1.ips</code>.
+The PostScript prologue  for itrans is in the file <EM>itrans.pro</EM>.
+Check the file out, it contains some useful PostScript procedures.
+
+<P>
+
+<H2><A NAME="SECTION00041000000000000000">
+Direct PostScript Output Requirements</A>
+</H2>
+
+<P>
+
+<OL>
+<LI>All that is required is the capability to print PostScript files.
+Note that the <EM>devnac</EM> font used is a user defined PostScript font
+(Type III Font), so the printer (or the RIP used) must be capable of
+rendering Type III fonts if you need to use this font.
+</LI>
+</OL>
+
+<P>
+<HR>
+<A NAME="tex2html93"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html91"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html85"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html94"
+  HREF="node5.html">Direct Text Output -</A>
+<B>Up:</B> <A NAME="tex2html92"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html86"
+  HREF="node3.html">TEX Interface</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

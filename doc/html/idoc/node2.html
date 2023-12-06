@@ -1,0 +1,466 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Input Format</TITLE>
+<META NAME="description" CONTENT="Input Format">
+<META NAME="keywords" CONTENT="idoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="idoc.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="idoc.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html64"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html62"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html56"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html65"
+  HREF="node3.html">TEX Interface</A>
+<B>Up:</B> <A NAME="tex2html63"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html57"
+  HREF="node1.html">itrans Mechanism</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html66"
+  HREF="node2.html#SECTION00021000000000000000">The ``&#35;include='' command</A>
+<LI><A NAME="tex2html67"
+  HREF="node2.html#SECTION00022000000000000000">The ``&#35;output='' command</A>
+<LI><A NAME="tex2html68"
+  HREF="node2.html#SECTION00023000000000000000">The ``&#35;endfont='' command</A>
+<LI><A NAME="tex2html69"
+  HREF="node2.html#SECTION00024000000000000000">&#35;<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">lang<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">, &#35;end<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">lang<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">, and &#35;&#35;markers</A>
+<UL>
+<LI><A NAME="tex2html70"
+  HREF="node2.html#SECTION00024100000000000000">``&#35;useshortmakers'' and ```&#35;ignoreshortmarkers''</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html71"
+  HREF="node2.html#SECTION00025000000000000000">``&#35;usecsx''</A>
+<LI><A NAME="tex2html72"
+  HREF="node2.html#SECTION00026000000000000000">``&#35;endwordvowel=''</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00020000000000000000">
+Input Format</A>
+</H1>
+
+<P>
+<EM>itrans</EM> makes use of an IFM file -- Indian language font metric
+file, which is a ASCII file containing descriptions on how to  generate
+the Indian language characters from the basic characters available in the
+font.
+
+<P>
+<EM>Sidenote</EM>: This IFM file format is an <EM>itrans</EM> specific concept,
+it allows
+all character composition directives to be loaded in at runtime, making
+it easy to support many different Indian languages.
+The IFM file is an ASCII text file, and all IFM files end in the suffix
+<code>.ifm</code>.
+
+<P>
+<EM>itrans</EM> scans through the input text, and copies everything to
+the output unchanged, except for portions between marker words,
+such as &#35;marathi  and &#35;endmarathi .
+Some eight-ten different marker words are available, see the
+section&nbsp;<A HREF="#markers">2.4</A> for more information.
+All english text between these words is mapped into Indian language characters,
+based on the transliteration map in the IFM file.
+
+<P>
+At the beginning of the input file, the user has to specify the IFM file,
+and the name of the T<SMALL>E</SMALL>X or PostScript or HTML command that changes the
+font to the Indian language font.
+For example, if the IFM file is named dvnc.ifm, and the font is
+available through the <TT>&#92;devnf</TT> T<SMALL>E</SMALL>X command, the following two lines
+should be present in the input file:
+
+<P>
+&#35;marathiifm=dvnc
+
+<P>
+&#35;marathifont=&#92;devnf 
+
+<P>
+This also assumes the user will be using the markers &#35;marathi  and &#35;endmarathi ,
+see&nbsp;<A HREF="#markers">2.4</A> for all the other language markers and commands.
+
+<P>
+Once the above initialization is made, the &#35;marathi  marker then specifies the
+beginning of the marathi transliterated text, and makes use of the
+specified IFM file (dvnc.ifm).
+At that point, <EM>itrans</EM> also outputs the command (<TT>&#92;devnf</TT>)
+specified in the <TT>&#35;marathifont</TT> directive.
+This command should change the font to the devanagari font, and may do
+other things such as change the baselineskip length, etc.
+
+<P>
+Note that both the  T<SMALL>E</SMALL>X interface and the Direct Text interface
+(both PostScript and direct Text HTML mode) follow identical input
+text requirements.
+For further examples, see the sample documents provided.
+All transliterated files have been given the file extension
+<EM>.itx</EM>.
+[Older ITRANS version also used .ips extensions for direct PostScript
+output, but since ITRANS version 5.0, the <code>\char35 output</code> command has been
+added which allows specifying the output mode in the input file itself.)
+
+<P>
+
+<H2><A NAME="SECTION00021000000000000000">
+The ``&#35;include='' command</A>
+</H2>
+
+<P>
+Itrans accepts an ``include'' filename command in the input.
+Syntax:
+
+<P>
+
+&#35;include=<code>&lt;filename&gt;</code>
+
+<P>
+This command can appear anywhere in the input document, and Itrans behaves
+as if the contents of that file were actually present at that point in the
+document.
+
+<P>
+This ``include'' comamnd can be nested in multiple files (to a compiled-in
+maximum).
+
+<P>
+
+<H2><A NAME="SECTION00022000000000000000">
+The ``&#35;output='' command</A>
+</H2>
+
+<P>
+This command should be the first ITRANS command in any input file, that is,
+it should appear before any other &#35;<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">command<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">.
+It can be used to direct ITRANS to produce kind of output - TeX, or PostScript,
+or direct Text HTML output. So, instead of using arguments to ITRANS (such as
+-P or -7 or -8 or -U),
+users can include this command in the input file itself, making it clear what
+the input file is to be used for.
+The four valid options for this command are:
+<BR>&#35;output=HTML_7
+<BR>&#35;output=HTML_8
+<BR>&#35;output=UTF_8
+<BR>&#35;output=PostScript
+<BR>&#35;output=TeX
+
+<P>
+
+<H2><A NAME="SECTION00023000000000000000">
+The ``&#35;endfont='' command</A>
+</H2>
+
+<P>
+This command is generally of use in HTML output modes only, though if
+needed, it could be used in any mode.
+
+<P>
+This command allows the user to specify a string that will be echoed to
+the output file whenever any
+&#35;end<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">language<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">
+is seen.
+
+<P>
+For example, it is useful to use this in HTML documents, where every
+end of Indic script needs to print out a <TT>&#60;/FONT&#62;</TT>
+command, and
+this can be done automatically by specifying:
+
+<P>
+<TT>&#35;endfont=&#60;/FONT&#62;</TT>
+
+<P>
+This, in conjunction with something like:
+
+<P>
+<TT>&#35;hindifont=&#60;FONT FACE=name SIZE=size&#62;</TT>
+
+<P>
+makes it easy to use ITRANS in HTML output mode.
+
+<P>
+Note that there is single &#35;endfont command, and it applies to all
+language markers.
+
+<P>
+
+<H2><A NAME="SECTION00024000000000000000"></A> 
+<A NAME="markers"></A>
+<BR>
+&#35;<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">lang<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">, &#35;end<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">lang<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">, and &#35;&#35;markers
+</H2>
+
+<P>
+You can use any of these marker sets to delimit the Indian language text.
+The marker names indian/marathi/hindi/tamil do not actually do
+anything
+by themselves, but make use of the corresponding command names to load in
+the IFM file or output the font changing command string.
+So, use any one of the sets you feel suits your needs best, each can be
+used for every language supported for ITRANS, the marker is just used to
+enter ITRANS mode, the actual language is always correctly recognized
+based on the IFM file.
+Since the marker words are all long, a shorter version of markers is also
+available, and the short markers are enabled by default, though it is
+possible to turn them off.
+
+<P>
+
+<OL>
+<LI><TT>indian</TT> marker.
+
+<P>
+To set the IFM file name: <TT>&#35;indianifm=XXX.ifm</TT>
+
+<P>
+To set the font command name: <TT>&#35;indianfont=YYY</TT>
+
+<P>
+Start Marker: <TT>&#35;indian</TT>
+
+<P>
+End Marker: <TT>&#35;endindian</TT>
+
+<P>
+</LI>
+<LI><TT>hindi</TT> marker.
+
+<P>
+To set the IFM file name: <TT>&#35;hindiifm=XXX.ifm</TT>
+
+<P>
+To set the font command name: <TT>&#35;hindifont=YYY</TT>
+
+<P>
+Start Marker: <TT>&#35;hindi</TT>
+
+<P>
+End Marker: <TT>&#35;endhindi</TT>
+
+<P>
+</LI>
+<LI><TT>sanskrit</TT>, <TT>marathi</TT>, <TT>tamil</TT>, <TT>telugu</TT>, <TT>bengali</TT>,
+<TT>gujarati</TT>, <TT>roman</TT>, <TT>kannada</TT>, <TT>gurmukhi</TT>.
+
+<P>
+Just as for hindi and indian, there are markers for all these languages.
+Follow above examples, replace <TT>indian</TT> with <TT><IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">language<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$"></TT>
+as required.
+
+<P>
+</LI>
+<LI><TT>##</TT> short marker.
+
+<P>
+These markers are activated by default. To turn them off, use the
+<TT>&#35;ignoreshortmarkers</TT> command.
+
+<P>
+
+<P><P>
+<BR>
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<H3><A NAME="SECTION00024100000000000000">
+``&#35;useshortmakers'' and ```&#35;ignoreshortmarkers''</A>
+</H3>
+
+<P>
+The short marker is a toggle marker.
+When scanning text in non-ITRANS mode (non Indic text), if a short marker
+is seen, it implies restoring back
+ITRANS processing, using whatever language marker was last encountered.
+Then, the next seen short marker implies ITRANS should exit processing of
+the indian language text.
+
+<P>
+This, if the input text has the following input:
+
+<P>
+
+<P><P>
+<BR>
+
+<P>
+<TT>&#35;hindi   <IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">some text<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">   &#35;endhindi
+</TT>
+<P>
+<TT><IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">some more text<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$"> 
+</TT>
+<P>
+<TT>&#35;&#35;  <IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">short marker text<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">   &#35;&#35;
+</TT>
+
+<P>
+
+<P><P>
+<BR>
+
+<P>
+then the first short marker seen above will be considered equivalent
+to &#35;hindi, since that was the last ITRANS marker seen in the text at
+that point.
+
+<P>
+If the short marker is the first marker seen in the text, i.e., there was
+no other ITRANS marker seen until that point,
+then the ## shortmarker will be taken to
+be equivalent to &#35;indian.
+
+<P>
+
+<H2><A NAME="SECTION00025000000000000000">
+``&#35;usecsx''</A>
+</H2>
+
+<P>
+The CS/CSX input encoding can be accepted along with the ITRANS encoding
+when this command is used. See the <TT>icsx.itx</TT> document for more
+inforamtion on CS/CSX support in ITRANS.
+
+<P>
+
+<H2><A NAME="SECTION00026000000000000000">
+``&#35;endwordvowel=''</A>
+</H2>
+
+<P>
+See the section&nbsp;<A HREF="node9.html#endwordvowel">9.5</A> for info on this command.
+
+<P>
+<HR>
+<A NAME="tex2html64"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html62"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html56"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html65"
+  HREF="node3.html">TEX Interface</A>
+<B>Up:</B> <A NAME="tex2html63"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html57"
+  HREF="node1.html">itrans Mechanism</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

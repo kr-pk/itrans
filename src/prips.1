@@ -1,0 +1,56 @@
+.\" man page for itrans $Header: /home/cvsroot/itrans/nextrel/src/prips.1,v 1.1.1.1 1996/11/29 01:45:35 avinash Exp $
+.TH PRIPS 1 "" "local"
+.SH NAME
+prips \- prepare incomplete itrans output files (PostScript Interface)
+for printing
+.SH SYNOPSIS
+.B prips
+.I
+<filename>
+.br
+.SH DESCRIPTION
+The command
+.sp
+.ce
+prips hindi.ps
+.sp
+prints out the files devnac.ps, itrans.pro, and then hindi.ps
+onto stdout.
+The usual form of usage for this command is:
+.ce
+prips <filename> | lp
+.sp
+where lp is assumed to be a PostScript capable printer, and <filename> is
+the name of the file output by
+.B itrans
+when run using the PostScript interface (-P option of itrans).
+.sp
+.B prips
+currently is a shell file, and must be edited at your site so as to pick
+up the files devnac.ps and itrans.pro from the correct place.
+The variable LIBDIR in the file prips should be changed to reflect the
+correct path.
+.sp
+.B prips
+can be also modified for use with any other PostScript font, if used by
+ITRANS.
+Instead of the devnac.ps file, the particular font file should be used.
+prips is a text file, check it out if you need to modify it to
+support other languages such as bengali or gujarati.
+.sp
+prips resides in the src directory (or bin, if installed) of the itrans
+package.
+For MS-DOS machines, use the prips.bat file --- it will have to edited
+as mentioned above (though it does not have any LIBDIR variable; just
+edit the COPY statement itself.)
+.sp     
+.SH FILES
+.I prips
+or
+.I prips.bat
+in the bin directory.
+.br
+.SH "SEE ALSO"
+itrans(1)
+.SH AUTHOR
+Avinash Chopde <avinash@aczoom.com>

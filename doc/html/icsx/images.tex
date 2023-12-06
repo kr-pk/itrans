@@ -1,0 +1,639 @@
+
+
+\batchmode
+
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    	% ITRANS command. Allows me to use ##
+			
+
+
+			% ITRANS command. Accept CS/CSX encoded text.
+
+%
+% ---------------------------------------------------------
+% ITRANS 5.30 (29 July 2006) (TeX Interface)
+% Copyright 1991--2001 Avinash Chopde, All Rights Reserved.
+% ---------------------------------------------------------
+%
+\newbox\zErOdEpTh
+\def\kRn#1{{\kern#1em}}
+\def\sBs#1#2{{\setbox\zErOdEpTh=\hbox{\raise#1em\hbox{#2}}%
+\ht\zErOdEpTh=0pt\dp\zErOdEpTh=0pt\box\zErOdEpTh}}
+	
+% ITRANS command
+	
+% ITRANS command: argument specifies use of
+			
+
+\newfont{\tlg}{tel18}
+
+\hyphenchar\tlg-1	 % disable hyphenation using this font
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\portraitpage		% from itrans.sty/idevn.tex (also: \landscapepage)
+
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1470}%
+{\fransdvng %
+l\,}% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1471}%
+{\fransdvng %
+{\char15}\,}% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage62}%
+\begin{tabular}{|c|c|c|}
+\hline
+devanagari & {\sc cs/csx} char & {\sc cs/csx} char code \\\hline
+{{\fransdvng %
+aA }% End of Indic Script text.
+} & {\a=a} & {\tt 224} \\\hline
+{{\fransdvng %
+aA }% End of Indic Script text.
+} & {\a=A} & {\tt 226} \\\hline
+{{\fransdvng %
+U }% End of Indic Script text.
+} & {\a=u} & {\tt 229} \\\hline
+{{\fransdvng %
+U }% End of Indic Script text.
+} & {\a=U} & {\tt 230} \\\hline
+{{\fransdvng %
+{\char27} }% End of Indic Script text.
+} & {\d r} & {\tt 231} \\\hline
+{{\fransdvng %
+{\char27} }% End of Indic Script text.
+} & {\d R} & {\tt 232} \\\hline
+{{\fransdvng %
+{\char17} }% End of Indic Script text.
+} & {\diatop[\a=|\d r]} & {\tt 233} \\\hline
+{{\fransdvng %
+{\char17} }% End of Indic Script text.
+} & {\diatop[\a=|\d R]} & {\tt 234} \\\hline
+{{\fransdvng %
+{\char24} }% End of Indic Script text.
+} & {\d l} & {\tt 235} \\\hline
+{{\fransdvng %
+{\char24} }% End of Indic Script text.
+} & {\d L} & {\tt 236} \\\hline
+{{\fransdvng %
+{\char25} }% End of Indic Script text.
+} & {\diatop[\a=|\d l]} & {\tt 237} \\\hline
+{{\fransdvng %
+{\char25} }% End of Indic Script text.
+} & {\diatop[\a=|\d L]} & {\tt 238} \\\hline
+{{\fransdvng %
+R }% End of Indic Script text.
+} & {\.n} & {\tt 239} \\\hline
+{{\fransdvng %
+R }% End of Indic Script text.
+} & {\.N} & {\tt 240} \\\hline
+{{\fransdvng %
+{\char26} }% End of Indic Script text.
+} & {\~ n} & {\tt 164} \\\hline
+{{\fransdvng %
+V }% End of Indic Script text.
+} & {\d t} & {\tt 241} \\\hline
+{{\fransdvng %
+V }% End of Indic Script text.
+} & {\d T} & {\tt 242} \\\hline
+{{\fransdvng %
+W }% End of Indic Script text.
+} & {\d th} & {\tt 241 + h} \\\hline
+{{\fransdvng %
+W }% End of Indic Script text.
+} & {\d Th} & {\tt 242 + h} \\\hline
+\multicolumn{3}{c}{ }
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage148}%
+\begin{tabular}{|c|c|c|}
+\hline
+devanagari & {\sc cs/csx} char & {\sc cs/csx} char code \\\hline
+{{\fransdvng %
+X }% End of Indic Script text.
+} & {\d d} & {\tt 243} \\\hline
+{{\fransdvng %
+X }% End of Indic Script text.
+} & {\d D} & {\tt 244} \\\hline
+{{\fransdvng %
+Y }% End of Indic Script text.
+} & {\d dh} & {\tt 243 + h} \\\hline
+{{\fransdvng %
+Y }% End of Indic Script text.
+} & {\d Dh} & {\tt 244 + h} \\\hline
+{{\fransdvng %
+Z }% End of Indic Script text.
+} & {\d n} & {\tt 245} \\\hline
+{{\fransdvng %
+Z }% End of Indic Script text.
+} & {\d N} & {\tt 246} \\\hline
+{{\fransdvng %
+f }% End of Indic Script text.
+} & {\a's} & {\tt 247} \\\hline
+{{\fransdvng %
+f }% End of Indic Script text.
+} & {\a'S} & {\tt 248} \\\hline
+{{\fransdvng %
+q }% End of Indic Script text.
+} & {\d s} & {\tt 249} \\\hline
+{{\fransdvng %
+q }% End of Indic Script text.
+} & {\d S} & {\tt 250} \\\hline
+{{\fransdvng %
+{\char15} }% End of Indic Script text.
+} & {\b l} & {\tt 215} \\\hline
+{{\fransdvng %
+\kRn{-0.270}\sBs{-0.060}{{\char92}}\kRn{-0.063} }% End of Indic Script text.
+} & {\d m} & {\tt 252} \\\hline
+{{\fransdvng %
+\kRn{-0.270}\sBs{-0.060}{{\char92}}\kRn{-0.063} }% End of Indic Script text.
+} & {\d M} & {\tt 253} \\\hline
+{{\fransdvng %
+\kRn{-0.270}\sBs{-0.060}{{\char92}}\kRn{-0.063} }% End of Indic Script text.
+} & {\. m} & {\tt 167} \\\hline
+{{\fransdvng %
+{\char44} }% End of Indic Script text.
+} & {\d h} & {\tt 254} \\\hline
+{{\fransdvng %
+{\char44} }% End of Indic Script text.
+} & {\d H} & {\tt 255} \\\hline
+{{\tlg %
+h\kRn{0.100} }% End of Indic Script text.
+(telugu)} & {\b r} & {\tt 159} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1479}%
+\textrm{\~{l\/}}\kern.15em%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1481}%
+{\fransdvng %
+f }% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1482}%
+{\fransdvng %
+{\char45}h }% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1484}%
+{\fransdvng %
+c }% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_ind_inline1485}%
+{\fransdvng %
+C }% End of Indic Script text.
+
+%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage272}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{{\fransdvng %
+a }% End of Indic Script text.
+}	& {\tt a} \\\hline
+{{\fransdvng %
+aA }% End of Indic Script text.
+}	& {\tt aa {\it or} A} \\\hline
+{{\fransdvng %
+i }% End of Indic Script text.
+}	& {\tt i} \\\hline
+{{\fransdvng %
+I }% End of Indic Script text.
+}	& {\tt ii {\it or} I} \\\hline
+{{\fransdvng %
+u }% End of Indic Script text.
+}	& {\tt u} \\\hline
+{{\fransdvng %
+U }% End of Indic Script text.
+}	& {\tt uu {\it or} U} \\\hline
+{{\fransdvng %
+{\char27} }% End of Indic Script text.
+}	& {\tt RRi {\it or} R\char`^i} \\\hline
+{{\fransdvng %
+{\char17} }% End of Indic Script text.
+}	& {\tt RRI {\it or} R\char`^I} \\\hline
+{{\fransdvng %
+{\char24} }% End of Indic Script text.
+}	& {\tt LLi {\it or} L\char`^i} \\\hline
+{{\fransdvng %
+{\char25} }% End of Indic Script text.
+}	& {\tt LLI {\it or} L\char`^I} \\\hline
+{{\fransdvng %
+e }% End of Indic Script text.
+}	& {\tt e} \\\hline
+{{\fransdvng %
+e\kRn{-0.800}{\char3} }% End of Indic Script text.
+}	& {\tt ai} \\\hline
+{{\fransdvng %
+ao }% End of Indic Script text.
+}	& {\tt o} \\\hline
+{{\fransdvng %
+aO }% End of Indic Script text.
+}	& {\tt au} \\\hline
+{{\fransdvng %
+a\kRn{-0.270}\sBs{-0.060}{{\char92}}\kRn{-0.063} }% End of Indic Script text.
+}	& {\tt {\it a}M} \\\hline
+{{\fransdvng %
+a{\char44} }% End of Indic Script text.
+}	& {\tt {\it a}H} \\\hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{{\fransdvng 0 }% End of Indic Script text.
+}	& {\tt0} \\\hline
+{{\fransdvng 1 }% End of Indic Script text.
+}	& {\tt 1} \\\hline
+{{\fransdvng 2 }% End of Indic Script text.
+}	& {\tt 2} \\\hline
+{{\fransdvng 3 }% End of Indic Script text.
+}	& {\tt 3} \\\hline
+{{\fransdvng 4 }% End of Indic Script text.
+}	& {\tt 4} \\\hline
+{{\fransdvng 5 }% End of Indic Script text.
+}	& {\tt 5} \\\hline
+{{\fransdvng 6 }% End of Indic Script text.
+}	& {\tt 6} \\\hline
+{{\fransdvng 7 }% End of Indic Script text.
+}	& {\tt 7} \\\hline
+{{\fransdvng 8 }% End of Indic Script text.
+}	& {\tt 8} \\\hline
+{{\fransdvng 9 }% End of Indic Script text.
+}	& {\tt 9} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage367}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{{\fransdvng %
+k  }% End of Indic Script text.
+}	& {\tt k{\it a}} \\\hline
+{{\fransdvng %
+K  }% End of Indic Script text.
+}	& {\tt kh{\it a}} \\\hline
+{{\fransdvng %
+g  }% End of Indic Script text.
+}	& {\tt g{\it a}} \\\hline
+{{\fransdvng %
+G  }% End of Indic Script text.
+}	& {\tt gh{\it a}} \\\hline
+{{\fransdvng %
+R  }% End of Indic Script text.
+}	& {\tt\char`~N{\it a or} N\char`^{\it a}} \\\hline
+{{\fransdvng %
+c  }% End of Indic Script text.
+}	& {\tt c{\it a}} \\\hline
+{{\fransdvng %
+C  }% End of Indic Script text.
+}	& {\tt ch{\it a or} chh{\it a}} \\\hline
+{{\fransdvng %
+j  }% End of Indic Script text.
+}	& {\tt j{\it a}} \\\hline
+{{\fransdvng %
+J  }% End of Indic Script text.
+}	& {\tt jh{\it a}} \\\hline
+{{\fransdvng %
+{\char26}  }% End of Indic Script text.
+}	& {\tt\char`~n{\it a or} JN{\it a}} \\\hline
+{{\fransdvng %
+V  }% End of Indic Script text.
+}	& {\tt T{\it a}} \\\hline
+{{\fransdvng %
+W  }% End of Indic Script text.
+}	& {\tt Th{\it a}} \\\hline
+{{\fransdvng %
+X  }% End of Indic Script text.
+}	& {\tt D{\it a}} \\\hline
+{{\fransdvng %
+Y  }% End of Indic Script text.
+}	& {\tt Dh{\it a}} \\\hline
+{{\fransdvng %
+Z  }% End of Indic Script text.
+}	& {\tt N{\it a}} \\\hline
+{{\fransdvng %
+t  }% End of Indic Script text.
+}	& {\tt t{\it a}} \\\hline
+{{\fransdvng %
+T  }% End of Indic Script text.
+}	& {\tt th{\it a}} \\\hline
+{{\fransdvng %
+d  }% End of Indic Script text.
+}	& {\tt d{\it a}} \\\hline
+{{\fransdvng %
+D  }% End of Indic Script text.
+}	& {\tt dh{\it a}} \\\hline
+{{\fransdvng %
+n  }% End of Indic Script text.
+}	& {\tt n{\it a}} \\\hline
+{{\fransdvng %
+p  }% End of Indic Script text.
+}	& {\tt p{\it a}} \\\hline
+{{\fransdvng %
+P  }% End of Indic Script text.
+}	& {\tt ph{\it a}} \\\hline
+{{\fransdvng %
+b  }% End of Indic Script text.
+}	& {\tt b{\it a}} \\\hline
+{{\fransdvng %
+B  }% End of Indic Script text.
+}	& {\tt bh{\it a}} \\\hline
+{{\fransdvng %
+m  }% End of Indic Script text.
+}	& {\tt m{\it a}} \\\hline
+{{\fransdvng %
+y  }% End of Indic Script text.
+}	& {\tt y{\it a}} \\\hline
+{{\fransdvng %
+r  }% End of Indic Script text.
+}	& {\tt r{\it a}} \\\hline
+{{\fransdvng %
+l  }% End of Indic Script text.
+}	& {\tt l{\it a}} \\\hline
+{{\fransdvng %
+v  }% End of Indic Script text.
+}	& {\tt v{\it a or} w{\it a}} \\\hline
+{{\fransdvng %
+f  }% End of Indic Script text.
+}	& {\tt sh{\it a}} \\\hline
+{{\fransdvng %
+q  }% End of Indic Script text.
+}	& {\tt Sh{\it a or} shh{\it a}} \\\hline
+{{\fransdvng %
+s  }% End of Indic Script text.
+}	& {\tt s{\it a}} \\\hline
+{{\fransdvng %
+h  }% End of Indic Script text.
+}	& {\tt h{\it a}} \\\hline
+{{\fransdvng %
+{\char15}  }% End of Indic Script text.
+}	& {\tt ld{\it a or} L{\it a}} \\\hline
+{{\fransdvng %
+{\char34}  }% End of Indic Script text.
+}	& {\tt kSh{\it a or} x{\it a}} \\\hline
+{{\fransdvng %
+{\char226}  }% End of Indic Script text.
+}	& {\tt j\char`~n{\it a or} GY{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage491}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{{\fransdvng %
+{\char42}  }% End of Indic Script text.
+}	& {\tt q{\it a}} \\\hline
+{{\fransdvng %
+{\char12}  }% End of Indic Script text.
+}	& {\tt K{\it a}} \\\hline
+{{\fransdvng %
+{\char11}  }% End of Indic Script text.
+}	& {\tt G{\it a}} \\\hline
+{{\fransdvng %
+{\char41}  }% End of Indic Script text.
+}	& {\tt J{\it a or} z{\it a}} \\\hline
+{{\fransdvng %
+{\char39}  }% End of Indic Script text.
+}	& {\tt f{\it a}} \\\hline
+{{\fransdvng %
+w  }% End of Indic Script text.
+}	& {\tt .D{\it a}} \\\hline
+{{\fransdvng %
+x  }% End of Indic Script text.
+}	& {\tt .Dh{\it a}} \\\hline
+{{\fransdvng %
+{\char58} }% End of Indic Script text.
+}	& {\tt AUM} or {\tt OM} \\\hline
+{{\fransdvng %
+{\char29}g  }% End of Indic Script text.
+}	& {\tt R{\it ga}} \\\hline
+{{\fransdvng %
+g\kRn{-0.300}{\char13}\kRn{-0.033} }% End of Indic Script text.
+} & {\tt rga {\it or} {\it ga}\char`^r} \\\hline
+{{\fransdvng %
+g\kRn{-0.270}\sBs{-0.060}{{\char92}}\kRn{-0.063} }% End of Indic Script text.
+} & {\tt {\it ga}.n} \\\hline
+{{\fransdvng %
+aA\kRn{-0.600}{\char4}\kRn{-0.030} }% End of Indic Script text.
+} & {\tt {\it aa}.c} \\\hline
+{{\fransdvng %
+X\kRn{-0.600}{\char32}\kRn{-0.030} }% End of Indic Script text.
+} & {\tt {\it Da}.N} \\\hline
+{{\fransdvng %
+X\kRn{-0.500}{\char94}\kRn{0.500} }% End of Indic Script text.
+} & {\tt {\it D}.h} \\\hline
+{{\fransdvng %
+d\kRn{-0.400}\sBs{-0.148}{{\char0}}\kRn{0.400}{\char44} }% End of Indic Script text.
+} & {\tt {\it du}H} \\\hline
+{{\fransdvng %
+{\char95} }% End of Indic Script text.
+} & {\tt .a} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

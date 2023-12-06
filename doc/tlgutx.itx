@@ -1,0 +1,1131 @@
+\documentclass[11pt]{article}
+\usepackage{comment}
+% User Documentation for the ITRANS Package
+% The Telugu Language Transliteration Table
+% This document supplements the common document: idoc.itx
+
+\usepackage[preprocess,telugu]{itrans} % Ross Moore's extensions to latex2html
+	% this also loads idevn.tex and itrnstlg.tex
+
+% Note: the file itrnstlg.tex should be present in the current directory, or:
+% 1: Add the directory where itrnstlg resides to the env var TEXINPUTS
+% 2: Delete the \input stmt, and copy the itrnstlg.tex file into this file..
+% 3: Copy the file itrnstlg.tex to the current directory.
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}
+\newcommand{\ST}{\char35telugu}
+\newcommand{\ET}{\char35endtelugu}
+\newfont{\cmt}{cmtt12}
+\newfont{\cmts}{cmtt9}
+
+\newfont{\tlgsmall}{tel12}
+\newfont{\tlgnx}{tel12nx}
+\newfont{\tlgs}{tel12s}
+\newfont{\tlg}{tel18}
+
+\hyphenchar\tlgnx=-1 % disable hyphenation using this font
+\hyphenchar\tlgs=-1 % disable hyphenation using this font
+\hyphenchar\tlg=-1 % disable hyphenation using this font
+
+#teluguifm=tlgutx.ifm
+#telugufont=\tlg
+
+\begin{document}
+
+\footnotetext[0]{Last modification: \today}
+
+\centerline{\LARGE\bf Transliteration Map}
+\medskip
+\centerline{\LARGE\bf Telugu Font (tel)}
+\bigskip
+\centerline{\LARGE\bf itrans}
+\smallskip
+\centerline{\bf \copyright 1992--1998 Avinash Chopde}
+
+\section{Fonts Available}
+
+\subsection{\TeX\ Interface}
+
+The telugu font {\em tel} is a Metafont font,
+developed by Lakshmi V.\ S.\ Mukkavilli.
+
+This font is not bundled with the itrans package, but is available at
+many FTP sites. This font may be available in the separate font archive
+containing extra fonts, named \texttt{itransxt.zip}, which may be available
+in the same place you obtained the main ITRANS archive.
+\textsl{
+[The authors use the restrictive GPL to license their
+software, which is really too bad, but because of that, I am unable to
+include their fonts with the main ITRANS archive.]
+}
+
+The telugu font is in a file called {\tt tlgutx.tar.Z}.
+Use WWW search tools to locate this file, search for the
+substring {\tt tlgutx}.
+You can find this at any TeX CTAN archive (ex: 
+{\tt ftp.cdrom.com or ctan.tug.org, directory /tex-archive/language/telugu}).
+
+Note that the TeluguTeX package is also capable of typesetting telugu
+documents---without the need for a pre-processor.
+
+\subsection{Direct Textual Interface}
+
+Since this is a \TeX\ font, this interface cannot be used.
+(The Text interface directly produces PostScript or HTML, and it
+requires a PostScript font or TrueType font.)
+
+\subsection{Direct Textual Interface - HTML output}
+
+HTML output can be produced using the  Tikkana TrueType fonts.
+These fonts are available somewhere on a web, use a search engine
+to locate them.
+
+The IFM file to use is {\em tikkana.ifm}.
+
+The support for the Tikkana fonts was 
+added by: {\bf Shree}, and
+{\bf Devarakonda Venkata Narayana Sarma}
+$<$\emph{narayana@hd1.vsnl.net.in}$>$
+
+\section{Font Developer}
+
+The TeX font has been created by {\tt Lakshmi V.\ S.\ Mukkavilli},
+and is part of a complete telugu typesetting system called
+TeluguTeX.
+TeluguTeX has been developed by  {\tt Lakshmi V.\ S.\ Mukkavilli},
+and she also holds the copyright to that software.
+
+The TeluguTeX package contains extensive documentation regarding this
+font, it was a great help in adapting the telugu font for use with
+ITRANS.
+
+\subsection{Font Variations Available}
+
+The {\tt TeluguTeX} package contains many font sizes and variations---it
+also includes all the source Metafont files, so any Metafont user can 
+create her own font variations.
+
+As packaged in the {\tt tlgutx.tar.Z} package, there are TFM and
+PK files for these font sizes: 10, 11, 12, 15, 18, 20, 25, 30, 35, 40,
+55, 72 and 172. Certain fancy versions (telspa, telspb, and telspc) are
+also available.
+Most font sizes come in bold and slanted versions.
+
+This document has made use of the {\tt tel12}, {\tt tel12s}, {\tt tel12nx},
+and {\tt tel18} fonts.
+
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Telugu Table}
+\end{htmlonly}
+
+\begin{table}[hp]
+\begin{center}
+\begin{tabular}{c@{\hspace{1in}}c@{\hspace{1in}}c}
+% --- first col is vowels inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#telugu a #endtelugu}	& {\tt a} \\ \hline
+{#telugu aa #endtelugu}	& {\tt aa {\it or} A} \\ \hline
+{#telugu i #endtelugu}	& {\tt i} \\ \hline
+{#telugu ii #endtelugu}	& {\tt ii {\it or} I} \\ \hline
+{#telugu u #endtelugu}	& {\tt u} \\ \hline
+{#telugu uu #endtelugu}	& {\tt uu {\it or} U} \\ \hline
+{#telugu R^i #endtelugu}	& {\tt RRi {\it or} R\char`^i} \\ \hline
+{#telugu R^I #endtelugu}	& {\tt RRI {\it or} R\char`^I} \\ \hline
+{#telugu L^i #endtelugu}	& {\tt LLi {\it or} L\char`^i} \\ \hline
+{#telugu L^I #endtelugu}	& {\tt LLI {\it or} L\char`^I} \\ \hline
+{#telugu e #endtelugu}	& {\tt e} \\ \hline
+{#telugu E #endtelugu}	& {\tt E} \\ \hline
+{#telugu ai #endtelugu}	& {\tt ai} \\ \hline
+{#telugu o #endtelugu}	& {\tt o} \\ \hline
+{#telugu O #endtelugu}	& {\tt O} \\ \hline
+{#telugu au #endtelugu}	& {\tt au} \\ \hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{#telugu 0 #endtelugu}	& {\tt 0} \\ \hline
+{#telugu 1 #endtelugu}	& {\tt 1} \\ \hline
+{#telugu 2 #endtelugu}	& {\tt 2} \\ \hline
+{#telugu 3 #endtelugu}	& {\tt 3} \\ \hline
+{#telugu 4 #endtelugu}	& {\tt 4} \\ \hline
+{#telugu 5 #endtelugu}	& {\tt 5} \\ \hline
+{#telugu 6 #endtelugu}	& {\tt 6} \\ \hline
+{#telugu 7 #endtelugu}	& {\tt 7} \\ \hline
+{#telugu 8 #endtelugu}	& {\tt 8} \\ \hline
+{#telugu 9 #endtelugu}	& {\tt 9} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end first col 
+&
+% --- second col is consonants 
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#telugu ka  #endtelugu}	& {\tt k{\it a}} \\ \hline
+{#telugu kha  #endtelugu}	& {\tt kh{\it a}} \\ \hline
+{#telugu ga  #endtelugu}	& {\tt g{\it a}} \\ \hline
+{#telugu gha  #endtelugu}	& {\tt gh{\it a}} \\ \hline
+{#telugu ~Na  #endtelugu}	& {\tt \char`~N{\it a or} N\char`^{\it a}} \\ \hline
+{#telugu cha  #endtelugu}	& {\tt ch{\it a}} \\ \hline
+{#telugu Cha  #endtelugu}	& {\tt Ch{\it a or} chh{\it a}} \\ \hline
+{#telugu ja  #endtelugu}	& {\tt j{\it a}} \\ \hline
+{#telugu jha  #endtelugu}	& {\tt jh{\it a}} \\ \hline
+{#telugu ~na  #endtelugu}	& {\tt \char`~n{\it a or} JN{\it a}} \\ \hline
+{#telugu Ta  #endtelugu}	& {\tt T{\it a}} \\ \hline
+{#telugu Tha  #endtelugu}	& {\tt Th{\it a}} \\ \hline
+{#telugu Da  #endtelugu}	& {\tt D{\it a}} \\ \hline
+{#telugu Dha  #endtelugu}	& {\tt Dh{\it a}} \\ \hline
+{#telugu Na  #endtelugu}	& {\tt N{\it a}} \\ \hline
+{#telugu ta  #endtelugu}	& {\tt t{\it a}} \\ \hline
+{#telugu tha  #endtelugu}	& {\tt th{\it a}} \\ \hline
+{#telugu da  #endtelugu}	& {\tt d{\it a}} \\ \hline
+{#telugu dha  #endtelugu}	& {\tt dh{\it a}} \\ \hline
+{#telugu na  #endtelugu}	& {\tt n{\it a}} \\ \hline
+{#telugu pa  #endtelugu}	& {\tt p{\it a}} \\ \hline
+{#telugu pha  #endtelugu}	& {\tt ph{\it a}} \\ \hline
+{#telugu ba  #endtelugu}	& {\tt b{\it a}} \\ \hline
+{#telugu bha  #endtelugu}	& {\tt bh{\it a}} \\ \hline
+{#telugu ma  #endtelugu}	& {\tt m{\it a}} \\ \hline
+{#telugu ya  #endtelugu}	& {\tt y{\it a}} \\ \hline
+{#telugu ra  #endtelugu}	& {\tt r{\it a}} \\ \hline
+{#telugu Ra  #endtelugu}	& {\tt R{\it a}} \\ \hline
+{#telugu la  #endtelugu}	& {\tt l{\it a}} \\ \hline
+{#telugu La  #endtelugu}	& {\tt L{\it a}} \\ \hline
+{#telugu va  #endtelugu}	& {\tt v{\it a or} w{\it a}} \\ \hline
+{#telugu sha  #endtelugu}	& {\tt sh{\it a}} \\ \hline
+{#telugu Sha  #endtelugu}	& {\tt Sh{\it a or} shh{\it a}} \\ \hline
+{#telugu sa  #endtelugu}	& {\tt s{\it a}} \\ \hline
+{#telugu ha  #endtelugu}	& {\tt h{\it a}} \\ \hline
+{#telugu kSha  #endtelugu}	& {\tt x{\it a or} kSh{\it a}} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end second col 
+&
+% --- third col of specials/accents inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{#telugu ga.n #endtelugu} & {\tt {\it ga}.n} \\ \hline
+{#telugu aa^r #endtelugu} & {\tt {\it aa}\char`^r} \\ \hline
+{#telugu m.h #endtelugu} & {\tt {\it m}\{\}} \\ \hline
+{#telugu duH #endtelugu} & {\tt {\it du}H} \\ \hline
+{#telugu .a #endtelugu} & {\tt .a} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\end{tabular} % end the larger tabular encompassing all four tables
+\hfill
+\\
+\end{center}
+\caption {\bf ITRANS: Telugu to English Transliteration Table.}
+\label{ienc}
+\label{fig1}
+\end{table}
+
+%-------------------------------------------------------------------
+\section{More Special Characters}
+
+Access to the special telugu characters such as
+ardhavisargha, nakarapolla, valapalagilaka, etc, is available through the
+macro input file {\em itrnstlg.tex}.
+The following table displays the characters available, and their macro
+names.
+
+Note that ITRANS does not provide support for the udatta and dantyam
+telugu characters. If you must use these, take a look in {\em
+itrnstlg.tex} --- some examples are given there, but it may require
+extensive hand-tuning. Examples shown in table~\ref{fig2}.
+
+\begin{table}
+\begin{center}
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\hline
+{#telugu \TGadh #endtelugu}	& {\tt \char92 TGadh} \\ \hline
+{#telugu \TGnp #endtelugu}	& {\tt \char92 TGnp} \\ \hline
+{#telugu \TGvp #endtelugu}	& {\tt \char92 TGvp} \\ \hline
+{#telugu \TGbar #endtelugu}	& {\tt \char92 TGbar} \\ \hline
+{#telugu \TGbarr #endtelugu}	& {\tt \char92 TGbarr} \\ \hline
+{#telugu \TGpu #endtelugu}	& {\tt \char92 TGpu} \\ \hline
+{#telugu \TGpuu #endtelugu}	& {\tt \char92 TGpuu} \\ \hline
+{#telugu \TGphu #endtelugu}	& {\tt \char92 TGphu} \\ \hline
+{#telugu \TGphuu #endtelugu}	& {\tt \char92 TGphuu} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\end{center}
+\caption {{\bf Special characters in }{\em itrnstlg.tex}.}
+\label{fig2}
+\end{table}
+
+%----------------------------------------------------------------
+% lines deleted into tlgu.sav (all consonant vowel forms)
+%----------------------------------------------------------------
+
+\section{Examples}
+
+These examples have been taken from the {\em TeluguTeX} package, with
+modifications for use the ITRANS transliteration scheme.
+
+\subsection{Example from the Panchatantra}
+
+% example from panchatantra, taken from TeluguTeX::document.tex, and edited..
+\centerline{#telugu pa.nchata.ntra kadhalu#endtelugu}
+
+\centerline{(Stories from the ``Panchatantra'')}
+
+\medskip
+#telugufont=\tlgnx
+{#telugu
+      ``parulanu mosagi.nchi hAnichEya talapeTTinavAru tAmE cheDipOtAru''.
+#endtelugu}
+\medskip
+{#telugu
+i.ndrapAlituDu  anE vartakuDu vyApAra.n nimitta.n porugudEshAniki pOvalasi 
+vachchi.ndi. ataDu tanavaddanunna veyyi ba.ngAru nANAlanu, tana mitruDayina 
+dhanaguptuni vadda dAchi dEshA.ntara.n poyADu. ko.ntakAla.n ayina taruvAta 
+i.ndrapAlituDu svagrAma.n tirigi vachchADu. ataDu dhanaguptuni i.nTikipOyi tana 
+ba.ngAru nANAlanu tirigi yimmani aDigADu. dhanaguptuDu vichAra.ngA ``annA! 
+Emi cheppanu, nI ba.ngAru nANAlanni.nTinI mA i.nTilO elukalu tinivEshAyi'' ani 
+cheppADu. dhanaguptuni mOsAnni ardha.nchEsukonna i.ndrapAlituDu ``pOnIlE 
+jariginadAniki chi.nti.nchi Emi phalamu'' ani sardi cheppi, idivaralOlAgAnE 
+mitrunitO snEha.n kanabarastU unnADu. konnALLupOyAka, i.ndrapAlituDu
+dhanaguptuni i.nTivadda kaburlu chebutU unna samaya.nlO prakkavIdhi lO rEgupaLLU
+#endtelugu}
+
+{#telugu
+ammakAniki vachchAyi. paLLu ammEvAni kEkavini dhanaguptuni pillavADu 
+paLLakOsa.n pOrupeTTADu. ``nEnu koni istAnu rA nAyanA!'' a.nTU pillavAnini 
+ettukoni i.ndrapAlitiDu prakkavIdhiki bayaludErADu. paLLu koni, pillavAniki 
+ichchina i.ndrapAlituDu dhanaguptuni yi.nTiki tirigi rAku.nDA tana yi.nTiki pOyi
+pillavAnini lOpala dAchi u.nchADu.
+#endtelugu}
+
+{#telugu
+e.ntasEpaTikI pillavADugAnI, i.ndrapAlituDugAnI tirigi rAkapOyEsariki 
+dhanaguptuDu AdurdAgA vArini vetukuchU mitruni i.nTiki chErADu. atanini 
+chUDagAnE i.ndrapAlituDu duHkha.nnaTistU ``annA paLLuko.ndAmani mI pillavAnini 
+cha.nkanu.nchi di.npAnO lEdO, oka pADu DEga vachchi mI vANNi ettuku pOyi.ndi, I 
+vishhAdavArta nIku cheppalEka nEnu i.nTiki vachchi duHkhistunnAnu'' annADu. Adi
+vini dhanaguptuDu ``nIchuDA, pillavAni va.nTipainunna ba.ngAru
+vastuvulakAshapaDi i.nta anyAya.n chEstAvA'' a.nTU dUshhistU
+nyAyAdhipatiki phiryAdu chEsADu.
+#endtelugu}
+
+{#telugu
+nyAyAdhipati i.ndrapAlituni to ``EmayyA pushhTigA u.nDE pillADini DEga tannuku 
+pOyi.ndannAvuTa. EmiTI viDDUra.n?'' ani prashni.nchADu. dAnipai i.ndrapAlituDu 
+jariginada.ntA vivari.nchi ``ayyA I dhanaguptuni yi.nTa nEnu dAchina veyyi 
+ba.ngAru nANAlu elukalu tinivEsinappuDu, O chinna biDDanu DEga tannuku 
+pOvaDa.nlO AshcharyamEmu.ndi?'' annADu.
+jariginada.ntA graHi.nchina nyAyAdhikAri, 
+i.ndrapAlituni yi.nTanunna pillavAnini rappi.nchi dhanaguptuniki appajeppi, 
+mitrunisommu apaHari.nchi nammaka drOhamonarchina dhanaguptuni Asti 
+svAdhIna.n chEsukoni, a.ndulOnu.nchi
+i.ndrapAlituniki rAvalasina vEyi nANAlu 
+ippi.nchADu.
+#endtelugu}
+
+\bigskip
+\noindent This is the input text that produced the above:
+\smallskip
+
+\noindent {\tt \char92 centerline\char123\ST pa.nchata.ntra kadhalu\ET\char125}
+
+\noindent {\tt \char92 centerline\char123 (Stories from the ``Panchatantra'')\char125}
+
+\noindent {\tt \char123 \ST}
+
+\begin{verbatim}
+       ``parulanu mosagi.nchi hAnichEya talapeTTinavAru tAmE
+cheDipOtAru''.
+
+i.ndrapAlituDu  anE vartakuDu vyApAra.n nimitta.n
+porugudEshAniki pOvalasi vachchi.ndi. ataDu tanavaddanunna
+veyyi ba.ngAru nANAlanu, tana mitruDayina dhanaguptuni vadda
+dAchi dEshA.ntara.n poyADu.  ko.ntakAla.n ayina taruvAta
+i.ndrapAlituDu svagrAma.n tirigi vachchADu. ataDu dhanaguptuni
+i.nTikipOyi tana ba.ngAru nANAlanu tirigi yimmani aDigADu.
+dhanaguptuDu vichAra.ngA ``annA! Emi cheppanu, nI ba.ngAru
+nANAlanni.nTinI mA i.nTilO elukalu tinivEshAyi'' ani cheppADu.
+dhanaguptuni mOsAnni ardha.nchEsukonna i.ndrapAlituDu
+``pOnIlE jariginadAniki chi.nti.nchi Emi phalamu'' ani sardi
+cheppi, idivaralOlAgAnE mitrunitO snEha.n kanabarastU unnADu.
+konnALLupOyAka, i.ndrapAlituDu dhanaguptuni i.nTivadda kaburlu
+chebutU unna samaya.nlO prakkavIdhi lO rEgupaLLU ammakAniki
+vachchAyi. paLLu ammEvAni kEkavini dhanaguptuni pillavADu
+paLLakOsa.n pOrupeTTADu. ``nEnu koni istAnu rA nAyanA!'' a.nTU
+pillavAnini ettukoni i.ndrapAlitiDu prakkavIdhiki
+bayaludErADu.  paLLu koni, pillavAniki ichchina i.ndrapAlituDu
+dhanaguptuni yi.nTiki tirigi rAku.nDA tana yi.nTiki pOyi
+pillavAnini lOpala dAchi u.nchADu.
+
+e.ntasEpaTikI pillavADugAnI, i.ndrapAlituDugAnI tirigi
+rAkapOyEsariki dhanaguptuDu AdurdAgA vArini vetukuchU mitruni
+i.nTiki chErADu. atanini chUDagAnE i.ndrapAlituDu
+duHkha.nnaTistU ``annA paLLuko.ndAmani mI pillavAnini
+cha.nkanu.nchi di.npAnO lEdO, oka pADu DEga vachchi mI vANNi
+ettuku pOyi.ndi, I vishhAdavArta nIku cheppalEka nEnu i.nTiki
+vachchi duHkhistunnAnu'' annADu. Adi vini dhanaguptuDu
+``nIchuDA, pillavAni va.nTipainunna ba.ngAru
+vastuvulakAshapaDi i.nta anyAya.n chEstAvA'' a.nTU dUshhistU
+nyAyAdhipatiki phiryAdu chEsADu.
+
+nyAyAdhipati i.ndrapAlituni to ``EmayyA pushhTigA u.nDE
+pillADini DEga tannuku pOyi.ndannAvuTa. EmiTI viDDUra.n?'' ani
+prashni.nchADu. dAnipai i.ndrapAlituDu jariginada.ntA
+vivari.nchi ``ayyA I dhanaguptuni yi.nTa nEnu dAchina veyyi
+ba.ngAru nANAlu elukalu tinivEsinappuDu, O chinna biDDanu
+DEga tannuku pOvaDa.nlO AshcharyamEmu.ndi?'' annADu.
+jariginada.ntA grHi.nchina yAyAdhikAri, i.ndrapAlituni
+yi.nTanunna pillavAnini rappi.nchi dhanaguptuniki appajeppi,
+mitrunisommu apHari.nchi nammaka drOhamonarchina dhanaguptuni
+Asti svAdhIna.n chEsukoni, a.ndulOnu.nchi i.ndrapAlituniki
+rAvalasina vEyi nANAlu ippi.nchADu.
+\end{verbatim}
+{\tt \ET\char125}
+
+\subsection{Using macros from itrnstlg.tex}
+
+This is a example from the Rigveda, and typesetting this text requires
+use of the special telugu forms defined in the file {\em itrnstlg.tex}.
+This example also makes use of the udatta and dantyam macros ({\tt
+\char92 TGud, \char92 TGBud, \char92 TGdt, etc}).
+
+\centerline{Text from {\em rigveda}---in Telugu.}
+
+% example from rigveda, taken from TeluguTeX::document.tex, and edited..
+#telugufont=\tlgs
+{#telugu
+hariH Om.h\TGbarr\ \TGBan shata.n \TGBud jIva \TGBan shara\TGBan dO
+va\TGBud rdhamAna\TGBan shshata.n
+hE\TGud\TGBan mantA\TGBan ~nChhata\TGBud mu va\TGBan santA\TGnp\TGbar\ 
+\TGBan shata\TGBud mi\TGCan ndhrAgnI \TGBud na\TGBan vitA
+\TGBud bRRi\hbox{\TGBan ha}npati\TGBan shsha
+tA\TGBud yushhA \TGBan havi\TGBan shhEma.n pu\TGBud narduH\TGbarr\ 
+RRiksa.nhitA\TGbarr\ 
+{8-8-20} vaga\TGvp\TGbarr\ 
+asya mantrasya niruktam.h. ---
+#endtelugu}
+
+{#telugu
+shata.n jIva shadadO vardhamAna ityapi nigamO bhavati\TGbar\ 
+shatamiti shata.n dIgha\TGvp mAyuma\TGvp ruta EnA vadha\TGvp yanti
+shatamonamona shatATmAna.n bhavati shatamananta.n bhavati shatamaishvarya.n
+bhavati shatamiti shata.n dEgha\TGvp mAyuH\TGbar\ hariH Om.h\TGbarr
+#endtelugu}
+
+\centerline{Text from {\em rigveda}---transliterated form.}
+
+{\tt
+\noindent\char123
+
+\noindent\char92 input itrnstlg
+
+OR
+
+\noindent\char92 usepackage[preprocess,telugu]{itrans}
+
+\noindent\ST}
+
+\begin{verbatim}
+hariH Om.h\TGbarr\ \TGBan shata.n \TGBud jIva \TGBan
+shara\TGBan dO va\TGBud rdhamAna\TGBan shshata.n
+hE\TGud\TGBan mantA\TGBan ~nChhata\TGBud mu va\TGBan
+santA\TGnp\TGbar\ \TGBan shata\TGBud mi\TGCan ndhrAgnI
+\TGBud na\TGBan vitA \TGBud bRRi\TGBan hanpati\TGBan shsha
+tA\TGBud yushhA \TGBan havi\TGBan shhEma.n
+pu\TGBud narduH\TGbarr\ RRiksa.nhitA\TGbarr\ {8-8-20}
+vaga\TGvp\TGbarr\ asya mantrasya niruktam.h. ---
+
+shata.n jIva shadadO vardhamAna ityapi nigamO bhavati\TGbar\ 
+shatamiti shata.n dIgha\TGvp mAyuma\TGvp ruta EnA vadha\TGvp
+yanti shatamonamona shatATmAna.n bhavati shatamananta.n
+bhavati shatamaishvarya.n bhavati shatamiti shata.n
+dEgha\TGvp mAyuH\TGbar\ hariH Om.h\TGbarr
+\end{verbatim}
+{\tt \ET\char125}
+
+\bigskip
+\hrule
+\vfill
+
+\bigskip
+\section{Author}
+
+\noindent
+ITRANS has been developed by Avinash Chopde. \\
+E-mail: {\tt avinash@aczoom.com}. \\
+Home page: {\tt http://www.aczoom.com/}
+
+\bigskip
+\hrule
+\end{document}
+
+
+----------------unused table ----------------------------
+
+\begin{comment} %---------- NO NEED TO INCLUDE THE CONSONANTS-VOWELS TABLE
+#telugufont=\tlgsmall
+% All the consonant-vowel forms
+\begin{table}[p]
+\vspace*{0in}
+\hspace*{0.0in}\vbox{
+\begin{center}
+\begin{makeimage}
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\tt / &
+\tt a &
+\tt A &
+\tt i &
+\tt I &
+\tt u &
+\tt U &
+\tt RRi &
+\tt RRI &
+\tt LLi &
+\tt LLI &
+\tt e &
+\tt E &
+\tt ai &
+\tt o &
+\tt O &
+\tt au \\ \hline \hline
+\tt k &
+#telugu ka #endtelugu &
+#telugu kaa #endtelugu &
+#telugu ki #endtelugu &
+#telugu kii #endtelugu &
+#telugu ku #endtelugu &
+#telugu kuu #endtelugu &
+#telugu kR^i #endtelugu &
+#telugu kR^I #endtelugu &
+#telugu kL^i #endtelugu &
+#telugu kL^I #endtelugu &
+#telugu ke #endtelugu &
+#telugu kE #endtelugu &
+#telugu kai #endtelugu &
+#telugu ko #endtelugu &
+#telugu kO #endtelugu &
+#telugu kau #endtelugu \\ \hline
+\tt kh &
+#telugu kha #endtelugu &
+#telugu khaa #endtelugu &
+#telugu khi #endtelugu &
+#telugu khii #endtelugu &
+#telugu khu #endtelugu &
+#telugu khuu #endtelugu &
+#telugu khR^i #endtelugu &
+#telugu khR^I #endtelugu &
+#telugu khL^i #endtelugu &
+#telugu khL^I #endtelugu &
+#telugu khe #endtelugu &
+#telugu khE #endtelugu &
+#telugu khai #endtelugu &
+#telugu kho #endtelugu &
+#telugu khO #endtelugu &
+#telugu khau #endtelugu \\ \hline
+\tt g &
+#telugu ga #endtelugu &
+#telugu gaa #endtelugu &
+#telugu gi #endtelugu &
+#telugu gii #endtelugu &
+#telugu gu #endtelugu &
+#telugu guu #endtelugu &
+#telugu gR^i #endtelugu &
+#telugu gR^I #endtelugu &
+#telugu gL^i #endtelugu &
+#telugu gL^I #endtelugu &
+#telugu ge #endtelugu &
+#telugu gE #endtelugu &
+#telugu gai #endtelugu &
+#telugu go #endtelugu &
+#telugu gO #endtelugu &
+#telugu gau #endtelugu \\ \hline
+\tt gh &
+#telugu gha #endtelugu &
+#telugu ghaa #endtelugu &
+#telugu ghi #endtelugu &
+#telugu ghii #endtelugu &
+#telugu ghu #endtelugu &
+#telugu ghuu #endtelugu &
+#telugu ghR^i #endtelugu &
+#telugu ghR^I #endtelugu &
+#telugu ghL^i #endtelugu &
+#telugu ghL^I #endtelugu &
+#telugu ghe #endtelugu &
+#telugu ghE #endtelugu &
+#telugu ghai #endtelugu &
+#telugu gho #endtelugu &
+#telugu ghO #endtelugu &
+#telugu ghau #endtelugu \\ \hline
+\tt \char`~N &
+#telugu ~Na #endtelugu &
+#telugu ~Naa #endtelugu &
+#telugu ~Ni #endtelugu &
+#telugu ~Nii #endtelugu &
+#telugu ~Nu #endtelugu &
+#telugu ~Nuu #endtelugu &
+#telugu ~NR^i #endtelugu &
+#telugu ~NR^I #endtelugu &
+#telugu ~NL^i #endtelugu &
+#telugu ~NL^I #endtelugu &
+#telugu ~Ne #endtelugu &
+#telugu ~NE #endtelugu &
+#telugu ~Nai #endtelugu &
+#telugu ~No #endtelugu &
+#telugu ~NO #endtelugu &
+#telugu ~Nau #endtelugu \\ \hline
+\tt ch &
+#telugu cha #endtelugu &
+#telugu chaa #endtelugu &
+#telugu chi #endtelugu &
+#telugu chii #endtelugu &
+#telugu chu #endtelugu &
+#telugu chuu #endtelugu &
+#telugu chR^i #endtelugu &
+#telugu chR^I #endtelugu &
+#telugu chL^i #endtelugu &
+#telugu chL^I #endtelugu &
+#telugu che #endtelugu &
+#telugu chE #endtelugu &
+#telugu chai #endtelugu &
+#telugu cho #endtelugu &
+#telugu chO #endtelugu &
+#telugu chau #endtelugu \\ \hline
+\tt ch &
+#telugu Cha #endtelugu &
+#telugu Chaa #endtelugu &
+#telugu Chi #endtelugu &
+#telugu Chii #endtelugu &
+#telugu Chu #endtelugu &
+#telugu Chuu #endtelugu &
+#telugu ChR^i #endtelugu &
+#telugu ChR^I #endtelugu &
+#telugu ChL^i #endtelugu &
+#telugu ChL^I #endtelugu &
+#telugu Che #endtelugu &
+#telugu ChE #endtelugu &
+#telugu Chai #endtelugu &
+#telugu Cho #endtelugu &
+#telugu ChO #endtelugu &
+#telugu Chau #endtelugu \\ \hline
+\tt j &
+#telugu ja #endtelugu &
+#telugu jaa #endtelugu &
+#telugu ji #endtelugu &
+#telugu jii #endtelugu &
+#telugu ju #endtelugu &
+#telugu juu #endtelugu &
+#telugu jR^i #endtelugu &
+#telugu jR^I #endtelugu &
+#telugu jL^i #endtelugu &
+#telugu jL^I #endtelugu &
+#telugu je #endtelugu &
+#telugu jE #endtelugu &
+#telugu jai #endtelugu &
+#telugu jo #endtelugu &
+#telugu jO #endtelugu &
+#telugu jau #endtelugu \\ \hline
+\tt jh &
+#telugu jha #endtelugu &
+#telugu jhaa #endtelugu &
+#telugu jhi #endtelugu &
+#telugu jhii #endtelugu &
+#telugu jhu #endtelugu &
+#telugu jhuu #endtelugu &
+#telugu jhR^i #endtelugu &
+#telugu jhR^I #endtelugu &
+#telugu jhL^i #endtelugu &
+#telugu jhL^I #endtelugu &
+#telugu jhe #endtelugu &
+#telugu jhE #endtelugu &
+#telugu jhai #endtelugu &
+#telugu jho #endtelugu &
+#telugu jhO #endtelugu &
+#telugu jhau #endtelugu \\ \hline
+\tt \char`~n &
+#telugu ~na #endtelugu &
+#telugu ~naa #endtelugu &
+#telugu ~ni #endtelugu &
+#telugu ~nii #endtelugu &
+#telugu ~nu #endtelugu &
+#telugu ~nuu #endtelugu &
+#telugu ~nR^i #endtelugu &
+#telugu ~nR^I #endtelugu &
+#telugu ~nL^i #endtelugu &
+#telugu ~nL^I #endtelugu &
+#telugu ~ne #endtelugu &
+#telugu ~nE #endtelugu &
+#telugu ~nai #endtelugu &
+#telugu ~no #endtelugu &
+#telugu ~nO #endtelugu &
+#telugu ~nau #endtelugu \\ \hline
+\tt T &
+#telugu Ta #endtelugu &
+#telugu Taa #endtelugu &
+#telugu Ti #endtelugu &
+#telugu Tii #endtelugu &
+#telugu Tu #endtelugu &
+#telugu Tuu #endtelugu &
+#telugu TR^i #endtelugu &
+#telugu TR^I #endtelugu &
+#telugu TL^i #endtelugu &
+#telugu TL^I #endtelugu &
+#telugu Te #endtelugu &
+#telugu TE #endtelugu &
+#telugu Tai #endtelugu &
+#telugu To #endtelugu &
+#telugu TO #endtelugu &
+#telugu Tau #endtelugu \\ \hline
+\tt Th &
+#telugu Tha #endtelugu &
+#telugu Thaa #endtelugu &
+#telugu Thi #endtelugu &
+#telugu Thii #endtelugu &
+#telugu Thu #endtelugu &
+#telugu Thuu #endtelugu &
+#telugu ThR^i #endtelugu &
+#telugu ThR^I #endtelugu &
+#telugu ThL^i #endtelugu &
+#telugu ThL^I #endtelugu &
+#telugu The #endtelugu &
+#telugu ThE #endtelugu &
+#telugu Thai #endtelugu &
+#telugu Tho #endtelugu &
+#telugu ThO #endtelugu &
+#telugu Thau #endtelugu \\ \hline
+\tt D &
+#telugu Da #endtelugu &
+#telugu Daa #endtelugu &
+#telugu Di #endtelugu &
+#telugu Dii #endtelugu &
+#telugu Du #endtelugu &
+#telugu Duu #endtelugu &
+#telugu DR^i #endtelugu &
+#telugu DR^I #endtelugu &
+#telugu DL^i #endtelugu &
+#telugu DL^I #endtelugu &
+#telugu De #endtelugu &
+#telugu DE #endtelugu &
+#telugu Dai #endtelugu &
+#telugu Do #endtelugu &
+#telugu DO #endtelugu &
+#telugu Dau #endtelugu \\ \hline
+\tt Dh &
+#telugu Dha #endtelugu &
+#telugu Dhaa #endtelugu &
+#telugu Dhi #endtelugu &
+#telugu Dhii #endtelugu &
+#telugu Dhu #endtelugu &
+#telugu Dhuu #endtelugu &
+#telugu DhR^i #endtelugu &
+#telugu DhR^I #endtelugu &
+#telugu DhL^i #endtelugu &
+#telugu DhL^I #endtelugu &
+#telugu Dhe #endtelugu &
+#telugu DhE #endtelugu &
+#telugu Dhai #endtelugu &
+#telugu Dho #endtelugu &
+#telugu DhO #endtelugu &
+#telugu Dhau #endtelugu \\ \hline
+\tt N &
+#telugu Na #endtelugu &
+#telugu Naa #endtelugu &
+#telugu Ni #endtelugu &
+#telugu Nii #endtelugu &
+#telugu Nu #endtelugu &
+#telugu Nuu #endtelugu &
+#telugu NR^i #endtelugu &
+#telugu NR^I #endtelugu &
+#telugu NL^i #endtelugu &
+#telugu NL^I #endtelugu &
+#telugu Ne #endtelugu &
+#telugu NE #endtelugu &
+#telugu Nai #endtelugu &
+#telugu No #endtelugu &
+#telugu NO #endtelugu &
+#telugu Nau #endtelugu \\ \hline
+\tt t &
+#telugu ta #endtelugu &
+#telugu taa #endtelugu &
+#telugu ti #endtelugu &
+#telugu tii #endtelugu &
+#telugu tu #endtelugu &
+#telugu tuu #endtelugu &
+#telugu tR^i #endtelugu &
+#telugu tR^I #endtelugu &
+#telugu tL^i #endtelugu &
+#telugu tL^I #endtelugu &
+#telugu te #endtelugu &
+#telugu tE #endtelugu &
+#telugu tai #endtelugu &
+#telugu to #endtelugu &
+#telugu tO #endtelugu &
+#telugu tau #endtelugu \\ \hline
+\tt th &
+#telugu tha #endtelugu &
+#telugu thaa #endtelugu &
+#telugu thi #endtelugu &
+#telugu thii #endtelugu &
+#telugu thu #endtelugu &
+#telugu thuu #endtelugu &
+#telugu thR^i #endtelugu &
+#telugu thR^I #endtelugu &
+#telugu thL^i #endtelugu &
+#telugu thL^I #endtelugu &
+#telugu the #endtelugu &
+#telugu thE #endtelugu &
+#telugu thai #endtelugu &
+#telugu tho #endtelugu &
+#telugu thO #endtelugu &
+#telugu thau #endtelugu \\ \hline
+\tt d &
+#telugu da #endtelugu &
+#telugu daa #endtelugu &
+#telugu di #endtelugu &
+#telugu dii #endtelugu &
+#telugu du #endtelugu &
+#telugu duu #endtelugu &
+#telugu dR^i #endtelugu &
+#telugu dR^I #endtelugu &
+#telugu dL^i #endtelugu &
+#telugu dL^I #endtelugu &
+#telugu de #endtelugu &
+#telugu dE #endtelugu &
+#telugu dai #endtelugu &
+#telugu do #endtelugu &
+#telugu dO #endtelugu &
+#telugu dau #endtelugu \\ \hline
+\tt dh &
+#telugu dha #endtelugu &
+#telugu dhaa #endtelugu &
+#telugu dhi #endtelugu &
+#telugu dhii #endtelugu &
+#telugu dhu #endtelugu &
+#telugu dhuu #endtelugu &
+#telugu dhR^i #endtelugu &
+#telugu dhR^I #endtelugu &
+#telugu dhL^i #endtelugu &
+#telugu dhL^I #endtelugu &
+#telugu dhe #endtelugu &
+#telugu dhE #endtelugu &
+#telugu dhai #endtelugu &
+#telugu dho #endtelugu &
+#telugu dhO #endtelugu &
+#telugu dhau #endtelugu \\ \hline
+\tt n &
+#telugu na #endtelugu &
+#telugu naa #endtelugu &
+#telugu ni #endtelugu &
+#telugu nii #endtelugu &
+#telugu nu #endtelugu &
+#telugu nuu #endtelugu &
+#telugu nR^i #endtelugu &
+#telugu nR^I #endtelugu &
+#telugu nL^i #endtelugu &
+#telugu nL^I #endtelugu &
+#telugu ne #endtelugu &
+#telugu nE #endtelugu &
+#telugu nai #endtelugu &
+#telugu no #endtelugu &
+#telugu nO #endtelugu &
+#telugu nau #endtelugu \\ \hline
+\tt p &
+#telugu pa #endtelugu &
+#telugu paa #endtelugu &
+#telugu pi #endtelugu &
+#telugu pii #endtelugu &
+#telugu pu #endtelugu &
+#telugu puu #endtelugu &
+#telugu pR^i #endtelugu &
+#telugu pR^I #endtelugu &
+#telugu pL^i #endtelugu &
+#telugu pL^I #endtelugu &
+#telugu pe #endtelugu &
+#telugu pE #endtelugu &
+#telugu pai #endtelugu &
+#telugu po #endtelugu &
+#telugu pO #endtelugu &
+#telugu pau #endtelugu \\ \hline
+\tt ph &
+#telugu pha #endtelugu &
+#telugu phaa #endtelugu &
+#telugu phi #endtelugu &
+#telugu phii #endtelugu &
+#telugu phu #endtelugu &
+#telugu phuu #endtelugu &
+#telugu phR^i #endtelugu &
+#telugu phR^I #endtelugu &
+#telugu phL^i #endtelugu &
+#telugu phL^I #endtelugu &
+#telugu phe #endtelugu &
+#telugu phE #endtelugu &
+#telugu phai #endtelugu &
+#telugu pho #endtelugu &
+#telugu phO #endtelugu &
+#telugu phau #endtelugu \\ \hline
+\tt b &
+#telugu ba #endtelugu &
+#telugu baa #endtelugu &
+#telugu bi #endtelugu &
+#telugu bii #endtelugu &
+#telugu bu #endtelugu &
+#telugu buu #endtelugu &
+#telugu bR^i #endtelugu &
+#telugu bR^I #endtelugu &
+#telugu bL^i #endtelugu &
+#telugu bL^I #endtelugu &
+#telugu be #endtelugu &
+#telugu bE #endtelugu &
+#telugu bai #endtelugu &
+#telugu bo #endtelugu &
+#telugu bO #endtelugu &
+#telugu bau #endtelugu \\ \hline
+\tt bh &
+#telugu bha #endtelugu &
+#telugu bhaa #endtelugu &
+#telugu bhi #endtelugu &
+#telugu bhii #endtelugu &
+#telugu bhu #endtelugu &
+#telugu bhuu #endtelugu &
+#telugu bhR^i #endtelugu &
+#telugu bhR^I #endtelugu &
+#telugu bhL^i #endtelugu &
+#telugu bhL^I #endtelugu &
+#telugu bhe #endtelugu &
+#telugu bhE #endtelugu &
+#telugu bhai #endtelugu &
+#telugu bho #endtelugu &
+#telugu bhO #endtelugu &
+#telugu bhau #endtelugu \\ \hline
+\tt m &
+#telugu ma #endtelugu &
+#telugu maa #endtelugu &
+#telugu mi #endtelugu &
+#telugu mii #endtelugu &
+#telugu mu #endtelugu &
+#telugu muu #endtelugu &
+#telugu mR^i #endtelugu &
+#telugu mR^I #endtelugu &
+#telugu mL^i #endtelugu &
+#telugu mL^I #endtelugu &
+#telugu me #endtelugu &
+#telugu mE #endtelugu &
+#telugu mai #endtelugu &
+#telugu mo #endtelugu &
+#telugu mO #endtelugu &
+#telugu mau #endtelugu \\ \hline
+\tt y &
+#telugu ya #endtelugu &
+#telugu yaa #endtelugu &
+#telugu yi #endtelugu &
+#telugu yii #endtelugu &
+#telugu yu #endtelugu &
+#telugu yuu #endtelugu &
+#telugu yR^i #endtelugu &
+#telugu yR^I #endtelugu &
+#telugu yL^i #endtelugu &
+#telugu yL^I #endtelugu &
+#telugu ye #endtelugu &
+#telugu yE #endtelugu &
+#telugu yai #endtelugu &
+#telugu yo #endtelugu &
+#telugu yO #endtelugu &
+#telugu yau #endtelugu \\ \hline
+\tt r &
+#telugu ra #endtelugu &
+#telugu raa #endtelugu &
+#telugu ri #endtelugu &
+#telugu rii #endtelugu &
+#telugu ru #endtelugu &
+#telugu ruu #endtelugu &
+#telugu rR^i #endtelugu &
+#telugu rR^I #endtelugu &
+#telugu rL^i #endtelugu &
+#telugu rL^I #endtelugu &
+#telugu re #endtelugu &
+#telugu rE #endtelugu &
+#telugu rai #endtelugu &
+#telugu ro #endtelugu &
+#telugu rO #endtelugu &
+#telugu rau #endtelugu \\ \hline
+\tt R &
+#telugu Ra #endtelugu &
+#telugu Raa #endtelugu &
+#telugu Ri #endtelugu &
+#telugu Rii #endtelugu &
+#telugu Ru #endtelugu &
+#telugu Ruu #endtelugu &
+#telugu RR^i #endtelugu &
+#telugu RR^I #endtelugu &
+#telugu RL^i #endtelugu &
+#telugu RL^I #endtelugu &
+#telugu Re #endtelugu &
+#telugu RE #endtelugu &
+#telugu Rai #endtelugu &
+#telugu Ro #endtelugu &
+#telugu RO #endtelugu &
+#telugu Rau #endtelugu \\ \hline
+\tt l &
+#telugu la #endtelugu &
+#telugu laa #endtelugu &
+#telugu li #endtelugu &
+#telugu lii #endtelugu &
+#telugu lu #endtelugu &
+#telugu luu #endtelugu &
+#telugu lR^i #endtelugu &
+#telugu lR^I #endtelugu &
+#telugu lL^i #endtelugu &
+#telugu lL^I #endtelugu &
+#telugu le #endtelugu &
+#telugu lE #endtelugu &
+#telugu lai #endtelugu &
+#telugu lo #endtelugu &
+#telugu lO #endtelugu &
+#telugu lau #endtelugu \\ \hline
+\tt v &
+#telugu va #endtelugu &
+#telugu vaa #endtelugu &
+#telugu vi #endtelugu &
+#telugu vii #endtelugu &
+#telugu vu #endtelugu &
+#telugu vuu #endtelugu &
+#telugu vR^i #endtelugu &
+#telugu vR^I #endtelugu &
+#telugu vL^i #endtelugu &
+#telugu vL^I #endtelugu &
+#telugu ve #endtelugu &
+#telugu vE #endtelugu &
+#telugu vai #endtelugu &
+#telugu vo #endtelugu &
+#telugu vO #endtelugu &
+#telugu vau #endtelugu \\ \hline
+\tt sh &
+#telugu sha #endtelugu &
+#telugu shaa #endtelugu &
+#telugu shi #endtelugu &
+#telugu shii #endtelugu &
+#telugu shu #endtelugu &
+#telugu shuu #endtelugu &
+#telugu shR^i #endtelugu &
+#telugu shR^I #endtelugu &
+#telugu shL^i #endtelugu &
+#telugu shL^I #endtelugu &
+#telugu she #endtelugu &
+#telugu shE #endtelugu &
+#telugu shai #endtelugu &
+#telugu sho #endtelugu &
+#telugu shO #endtelugu &
+#telugu shau #endtelugu \\ \hline
+\tt Sh &
+#telugu Sha #endtelugu &
+#telugu Shaa #endtelugu &
+#telugu Shi #endtelugu &
+#telugu Shii #endtelugu &
+#telugu Shu #endtelugu &
+#telugu Shuu #endtelugu &
+#telugu ShR^i #endtelugu &
+#telugu ShR^I #endtelugu &
+#telugu ShL^i #endtelugu &
+#telugu ShL^I #endtelugu &
+#telugu She #endtelugu &
+#telugu ShE #endtelugu &
+#telugu Shai #endtelugu &
+#telugu Sho #endtelugu &
+#telugu ShO #endtelugu &
+#telugu Shau #endtelugu \\ \hline
+\tt s &
+#telugu sa #endtelugu &
+#telugu saa #endtelugu &
+#telugu si #endtelugu &
+#telugu sii #endtelugu &
+#telugu su #endtelugu &
+#telugu suu #endtelugu &
+#telugu sR^i #endtelugu &
+#telugu sR^I #endtelugu &
+#telugu sL^i #endtelugu &
+#telugu sL^I #endtelugu &
+#telugu se #endtelugu &
+#telugu sE #endtelugu &
+#telugu sai #endtelugu &
+#telugu so #endtelugu &
+#telugu sO #endtelugu &
+#telugu sau #endtelugu \\ \hline
+\tt h &
+#telugu ha #endtelugu &
+#telugu haa #endtelugu &
+#telugu hi #endtelugu &
+#telugu hii #endtelugu &
+#telugu hu #endtelugu &
+#telugu huu #endtelugu &
+#telugu hR^i #endtelugu &
+#telugu hR^I #endtelugu &
+#telugu hL^i #endtelugu &
+#telugu hL^I #endtelugu &
+#telugu he #endtelugu &
+#telugu hE #endtelugu &
+#telugu hai #endtelugu &
+#telugu ho #endtelugu &
+#telugu hO #endtelugu &
+#telugu hau #endtelugu \\ \hline
+\tt ld &
+#telugu lda #endtelugu &
+#telugu ldaa #endtelugu &
+#telugu ldi #endtelugu &
+#telugu ldii #endtelugu &
+#telugu ldu #endtelugu &
+#telugu lduu #endtelugu &
+#telugu ldR^i #endtelugu &
+#telugu ldR^I #endtelugu &
+#telugu ldL^i #endtelugu &
+#telugu ldL^I #endtelugu &
+#telugu lde #endtelugu &
+#telugu ldE #endtelugu &
+#telugu ldai #endtelugu &
+#telugu ldo #endtelugu &
+#telugu ldO #endtelugu &
+#telugu ldau #endtelugu \\ \hline
+\tt kSh &
+#telugu kSha #endtelugu &
+#telugu kShaa #endtelugu &
+#telugu kShi #endtelugu &
+#telugu kShii #endtelugu &
+#telugu kShu #endtelugu &
+#telugu kShuu #endtelugu &
+#telugu kShR^i #endtelugu &
+#telugu kShR^I #endtelugu &
+#telugu kShL^i #endtelugu &
+#telugu kShL^I #endtelugu &
+#telugu kShe #endtelugu &
+#telugu kShE #endtelugu &
+#telugu kShai #endtelugu &
+#telugu kSho #endtelugu &
+#telugu kShO #endtelugu &
+#telugu kShau #endtelugu \\ \hline
+\end{tabular}
+\end{makeimage}
+\vspace{0.10in}
+\end{center}
+} % end vbox
+\caption {\bf Telugu Consonants with their Vowel Forms.}
+\label{fig3}
+\end{table}
+
+\end{comment} %---------- NO NEED TO INCLUDE THE CONSONANTS-VOWELS TABLE
+%-------------------------------------------------------------------------

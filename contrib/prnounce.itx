@@ -1,0 +1,247 @@
+\documentstyle{article}
+\input idevn.tex	% TeX macros that ease ITRANS devanagari font usage
+%-----
+% ITRANS song book....prepend this header to print out songs,
+% using TeX (either Devnac or Devnag font)
+% >>>>>>>> Need ITRANS 4.0 or 5.x <<<<<<<<<
+%-----
+
+% User Configuration Option -- One column or Two column output.
+%\def\maketwocolumn{YES}	% Uncomment this for 2-column printing
+%\def\makelandscape{YES}	% Uncomment this for landscape format
+\pagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit this if needed, default should be ok for most users.
+
+\ifx\undefined\maketwocolumn
+% --- One column output
+     \let\usedvng=\Largedvng	% 17pt devanagari font
+%     \let\usedvng=\normaldvng   % 10pt devanagari font
+
+    \let\smallcmr=\eightrm
+    \let\titlefont=\tenrm
+\else
+% --- Two column output
+    \let\usedvng=\normaldvng	% 10pt devanagri font 
+
+    \let\smallcmr=\sixrm
+    \let\titlefont=\eightrm
+\fi
+
+% font options (normaldvng, largedvng, etc):
+% sizes: normal < large < Large < LARGE < huge < Huge
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% if needed, redefine "space" to allow each input line to be broken into
+% multiple output lines (\let =~ is the default, which enforces line rule)
+% That has to done in the idevn.tex file, or add this command after
+% \startsong in your input file:
+% {\global\let =\ }% Comment this out for: 1 input line --> 1 output line
+% (you cannot uncomment the command here, it has to appear after \startsong)
+%-----
+% Uncomment one of the following paragraphs:
+%    First one is for Frans Velthuis's font.
+%    Second one uses the font that is bundled with the ITRANS package.
+% ONLY one of these should be uncommented at any one time.............
+
+% ** Frans's font....(Metafont) (Uncomment the following TWO lines.)
+#indianifm=dvng.ifm  % ITRANS command
+#indianfont=\fransdvng
+
+%-----OR--------
+
+% ** Devnac font (PostScript) (Uncomment the following TWO lines.)
+% #indianifm=dvnc.ifm  % ITRANS command
+% #indianfont=\postdvng
+
+#useshortmarkers % this allows use of ## (beginindian) and  ## (endindian)
+% -----------------------------------------------------------------
+% Page Settings
+\ifx\undefined\makelandscape
+    % Use Portrait Size Page
+    \portraitpage 
+    % use a slightly wider page
+    \addtolength{\textwidth}{0.25in}
+\else
+    % Use Landscape Size Page
+    \landscapepage 
+\fi
+
+% -----------------------------------------------------------------
+% The idevn.tex file is now included with ITRANS 4.0, but it has
+% a new method of specifying the songtitle (using printtitle).
+% For backward compatibility, need to define songtitle.
+\def\songtitle#1#2#3#4{%
+    \film{#1}\singer{#2}\lyrics{#3}\music{#4}\printtitle}
+
+% -----------------------------------------------------------------
+\font\titled=dvng10 scaled\magstep1
+\raggedright    % since the words are long, this reduces the long
+                % gaps that appear when TeX justifies the lines.
+%\parskip 3 pt   % to slightly increase the space between the shlokas.
+
+\parindent 0pt
+\begin{document}
+% from startsong command:
+\def\-{{\englfont -}}%
+\def\.{{\englfont .}}%
+\usedvng % use whatever font the user wants...default normaldvng
+\englfont % usedvng makes default font indian, restore english font
+% end from startsong command
+%
+\ifx\undefined\maketwocolumn
+    \relax
+\else
+    \twocolumn[\centerline{Pronunciation\ ##\titled uchchaara##}\bigskip]
+\fi
+%\hrule height0.4pt
+% ----------------------- End of ishdr.itx ------------------------
+% Corrections: Shashikant Joshi rava0002@gold.tc.umn.edu
+% Updates : May 20, 1997 shree@usa.net
+%\obeyspaceslines
+#indian
+
+##
+%\begin{table}[t]
+\begin{table}
+%\caption{## devanaagarii uchchaara paddhata ## Pronunciation of devanagari characters}
+##\Hugedvng devanaagarii uchchaara paddhati ##\\
+\bigskip
+\Large{Pronunciation of devanagari characters - ITRANS}\\
+\bigskip
+\large{Vowels}
+\bigskip
+
+\begin{tabular}{|l|l|l|l|}
+\multicolumn{1}{c}{## axara##}&
+\multicolumn{1}{c}{4.0}&
+\multicolumn{1}{c}{ITRANS 5.1}&
+\multicolumn{1}{c}{Pronunciation key} \\ \hline
+
+## a## & a & a & but \\
+## aa## & aa (A) & aa (A) & father \\
+## i## & i &  i & bit \\
+## ii## & ii (I) & ii (I) & meet \\
+## u## & u & u & put \\
+## uu## & uu & uu (U) & boot \\
+## R^i## & R\^{}i & R\^{}i & ri (Avoid pronouncing it as ru)\\
+## R^I## & R\^{}I & R\^{}I & extended ri \\
+## L^i## & L\^{}i & L\^{}i & lri \\
+## L^I## & L\^{}I & L\^{}I & extended lri \\
+## e## & e & e & a in fate\\
+## ai## & ai & ai & bait \\
+## o## & o & o & boat \\
+## au## & au & au & now \\
+## aM## & aM & aM & Umm! \\
+&&& a.n is also for anusvaar more like un \\
+&&& in bounce or in pronounce :-)\\
+&&& as sa.nskRit (avoid pronouncing \\
+&&& it as samskRit with m.)\\
+## aH## & aH & aH & Uh! \\
+## a.c## & a.c & a.c & bat \\
+## aa.c## & aa.c & aa.c & corn \\
+\hline
+
+\end{tabular}
+\end{table}
+##
+##
+%\begin{table}[t]
+\begin{table}
+##\Hugedvng devanaagarii uchchaara paddhati ##\\
+\bigskip
+\Large{Pronunciation of devanagari characters - ITRANS}\\
+\bigskip
+\large{Consonants, Semi-vowels, etc.}\\
+\bigskip
+\begin{tabular}{|l|l|l|l|}
+\multicolumn{1}{c}{## axara##}&
+\multicolumn{1}{c}{4.0}&
+\multicolumn{1}{c}{ITRANS 5.1}&
+\multicolumn{1}{c}{Pronunciation key} \\ 
+\hline
+
+## ka## & ka & ka & skin \\
+## kha## & kha & kha & kh in brick-head\\
+## ga## & ga & ga & get \\
+## gha## & gha & gha & gh in dog-house\\
+## N^## & N\^ & \~{}N & bang \\
+\hline
+
+## cha## & cha & cha & chin \\
+## chha## & chha & Cha & chh in church-hat or march-hare\\
+## ja## & ja & ja & major\\
+## jha## & jha & jha & as in sledge-hammer or page-her\\
+## JN## & JN & \~{}n & bench, change\\
+\hline
+
+## Ta## & Ta & Ta & stick \\
+## Tha## & Tha & Tha & th in fat-head, boat-house\\
+## Da## & Da & Da & dig \\
+## Dha## & Dha & Dha & dh in head-hair, adhere\\
+## Na## & Na & Na & band \\
+\hline
+
+## ta## & ta & ta & restaurant, travaille (French)\\
+## tha## & tha & tha & bath, faith, thank\\
+## da## & da & da & then \\
+## dha## & dha & dha & th in with-hold\\
+## na## & na & na & net \\
+\hline
+
+## pa## & pa & pa & spin \\
+## pha## & pha & pha & ph in sharp-hit\\
+## ba## & ba & ba & big \\
+## bha## & bha & bha & bH in Bob-Harry\\
+## ma## & ma & ma & met \\
+\hline
+
+## ya## & ya & ya & yet \\
+## ra## & ra & ra & rat \\
+## la## & la & la & let \\
+## va## & va & va (wa) & wet \\
+## sha## & sha & sha & shin \\
+## shha## & shha & Sha & shin with tongue moved in \\
+## sa## & sa & sa & sin \\
+## ha## & ha & ha & hat \\
+## xa## & ksha (xa)& xa (kSha) & back-shot compound ksh \\
+## GYa## & GYa & GYa  (j\~{}na) (dnya) & combination of g and y (for hindi)\\
+&&& OR d n y (for marathi) or j\~{}n \\ 
+
+\hline
+
+\end{tabular}
+\end{table}
+##
+##
+%\begin{table}[t]
+\begin{table}
+##\Hugedvng devanaagarii uchchaara paddhati ##\\
+\bigskip
+\Large{Pronunciation of devanagari characters - ITRANS}\\
+\bigskip
+\large{Urdu Letters}\\
+\bigskip
+\begin{tabular}{|l|l|l|l|}
+\multicolumn{1}{c}{## axara##}&
+\multicolumn{1}{c}{4.0}&
+\multicolumn{1}{c}{ITRANS 5.1}&
+\multicolumn{1}{c}{Pronunciation key} \\ 
+\hline
+
+## q## & q & q & qayaamat(Urdu)\\
+## K## & K & K & KHayaal(Urdu)\\
+## G## & G & G & Gaalib(Urdu)\\
+## z## & z & z & nazar(Urdu)\\
+## f## & f & f & fasal(Urdu)\\
+## .D## & .D & .D & (Urdu)\\
+## .Dh## & .Dh & .Dh & (Urdu)\\ 
+\hline
+\end{tabular}
+\end{table}
+##
+#endindian
+
+\end{document}
+% ----
+

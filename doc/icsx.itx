@@ -1,0 +1,396 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CS/CSX Encoding User Doc for ITRANS (Version 4.00 and above)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[preprocess]{itrans} % Ross Moore's extensions to latex2html
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    % if you do not have html.sty in your machine, uses
+    % htmlstub (htmlstub.sty is included in the ITRANS/lib directory)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#useshortmarkers	% ITRANS command. Allows me to use ##
+			% instead of #indian and #endindian
+			% June '98: changed all ## to #indian, to allow
+			% the use of Ross Moore's latex2html ITRANS
+			% extensions.
+
+#usecsx			% ITRANS command. Accept CS/CSX encoded text.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -- devanagari
+#hindiifm=dvng.ifm	% ITRANS command
+#hindifont=\fransdvng	% ITRANS command: argument specifies use of
+			% Frans's font, fransdvng is a command defined
+			% in idevn.tex (itrans.sty loads this)
+
+%begin{latexonly}
+\let\usedvng=\largedvng	% override the default size (normaldvng)
+%end{latexonly}
+
+% -- telugu
+\newfont{\tlg}{tel18}
+\hyphenchar\tlg=-1	% disable hyphenation using this font
+
+#teluguifm=tlgutx.ifm
+#telugufont=\tlg
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\portraitpage		% from itrans.sty/idevn.tex (also: \landscapepage)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\diatop[#1|#2]{{\setbox1=\hbox{{#1{}}}\setbox2=\hbox{{#2{}}}%
+	\dimen0=\ifdim\wd1>\wd2\wd1\else\wd2\fi%
+	\dimen1=\ht2\advance\dimen1by-1ex%
+	\setbox1=\hbox to1\dimen0{\hss#1\hss}%
+	\rlap{\raise1\dimen1\box1}%
+	\hbox to1\dimen0{\hss#2\hss}}}%
+%e.g. of use: \diatop[\'|{\=o}] gives u macron acute
+
+\begin{document}
+
+\footnotetext[0]{Last modification: \today}
+
+\centerline{\bf Transliteration Map}
+\medskip
+\centerline{\LARGE\bf CS/CSX Encoding}
+\medskip
+\centerline{\bf itrans}
+\smallskip
+\centerline{\bf \copyright 1994--1998 Avinash Chopde}
+
+\section{CS/CSX Encoding}
+
+During the 8th World Sanskrit Conference, Vienna 1990, a panel
+was held to discuss the standardization of Sanskrit for
+electronic data transfer.
+Dominik Wujastyk presented a paper, titled ``Standardization of Sanskrit for
+Electronic Data Transfer and Screen Representation,'' which outlines the
+Classical Sanskrit and Classical Sanskrit Extended Encoding.
+The original paper is available in a .zip archive, named ``iass.zip''.
+Use archie to locate FTP sites that store iass.zip, if you need the original
+paper, as of this writing, it was available at:
+{\verb= ftp.bcc.ac.uk:/pub/users/ucgadkw/indology=}.
+
+{\sc itrans} now supports CS/CSX, in a limited form.
+
+To turn on recognition of CS/CSX encoded text, use this command before
+the CS encoded text:
+
+{\tt \char35 usecsx}
+
+If necessary, you can turn off recognition of CS/CSX encoded text (and revert
+to ITRANS only encoding), by using this command:
+
+{\tt \char35 ignorecsx}
+
+Both 
+{\tt \char35 usecsx}
+and
+{\tt \char35 ignorecsx}
+apply to the text that follows in the file.
+
+\subsection{Avoid Capitals or Uppercase Characters}
+
+CS/CSX is a case-insensitive encoding, both uppercase and lowercase
+characters have the same meaning, but ITRANS is case-sensitive.
+Thus, an uppercase character in ITRANS is encoded to a different devanagari
+character from its lowercase counterpart.
+
+This means that when you create input text in CSX, do not use uppercase
+characters. ITRANS differentiates between lower case and uppercase characters.
+For example, entering {\tt la} results in #hindi  la#endhindi, but entering
+{\tt La} results in a different character: #hindi  La#endhindi.
+
+(If you already have input text that is in CS/CSX encoding and it also uses
+uppercase characters, use some text editor or word processor to convert
+all the uppercase characters to lowercase. This can be done easily using
+the text editors such as emacs, or programs such as {\tt tr} (available
+on UNIX machines, and also available for MS-DOS systems).)
+
+Table~\ref{ienc} provides the complete input encoding
+accepted by ITRANS.
+Note that technically, this uppercase character limitation
+applies only to the ASCII character codes (those
+less than 128). CS/CSX character codes over 128 are handled correctly
+in ITRANS (by correct, I mean handling them with CS/CSX meanings).
+But, it is simpler to just avoid using any uppercase characters at all.
+The tables in this document should clarify all this.
+
+Table~\ref{csx} lists the non-ASCII character codes (128 to 255)
+accepted by ITRANS.
+
+%------------------------------------------------------------------------
+\begin{htmlonly}
+\subsection{CS/CSX Table of non-ASCII codes (128 to 255)}
+\end{htmlonly}
+
+% Table 1
+\begin{table}[ht]
+\begin{center}
+\hspace*{-20pt}\begin{tabular}{cc}
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+\hline
+devanagari & {\sc cs/csx} char & {\sc cs/csx} char code \\ \hline
+{#hindi aa #endhindi} & {\a=a} & {\tt 224} \\ \hline
+{#hindi aa #endhindi} & {\a=A} & {\tt 226} \\ \hline
+{#hindi uu #endhindi} & {\a=u} & {\tt 229} \\ \hline
+{#hindi uu #endhindi} & {\a=U} & {\tt 230} \\ \hline
+{#hindi R^i #endhindi} & {\d r} & {\tt 231} \\ \hline
+{#hindi R^i #endhindi} & {\d R} & {\tt 232} \\ \hline
+{#hindi R^I #endhindi} & {\diatop[\a=|\d r]} & {\tt 233} \\ \hline
+{#hindi R^I #endhindi} & {\diatop[\a=|\d R]} & {\tt 234} \\ \hline
+{#hindi L^i #endhindi} & {\d l} & {\tt 235} \\ \hline
+{#hindi L^i #endhindi} & {\d L} & {\tt 236} \\ \hline
+{#hindi L^I #endhindi} & {\diatop[\a=|\d l]} & {\tt 237} \\ \hline
+{#hindi L^I #endhindi} & {\diatop[\a=|\d L]} & {\tt 238} \\ \hline
+{#hindi ~Na #endhindi} & {\.n} & {\tt 239} \\ \hline
+{#hindi ~Na #endhindi} & {\.N} & {\tt 240} \\ \hline
+{#hindi ~na #endhindi} & {\~ n} & {\tt 164} \\ \hline
+{#hindi Ta #endhindi} & {\d t} & {\tt 241} \\ \hline
+{#hindi Ta #endhindi} & {\d T} & {\tt 242} \\ \hline
+{#hindi Tha #endhindi} & {\d th} & {\tt 241 + h} \\ \hline
+{#hindi Tha #endhindi} & {\d Th} & {\tt 242 + h} \\ \hline
+\multicolumn{3}{c}{ }
+\end{tabular}
+\end{makeimage}
+&
+\begin{makeimage}
+\begin{tabular}{|c|c|c|}
+\hline
+devanagari & {\sc cs/csx} char & {\sc cs/csx} char code \\ \hline
+{#hindi Da #endhindi} & {\d d} & {\tt 243} \\ \hline
+{#hindi Da #endhindi} & {\d D} & {\tt 244} \\ \hline
+{#hindi Dha #endhindi} & {\d dh} & {\tt 243 + h} \\ \hline
+{#hindi Dha #endhindi} & {\d Dh} & {\tt 244 + h} \\ \hline
+{#hindi Na #endhindi} & {\d n} & {\tt 245} \\ \hline
+{#hindi Na #endhindi} & {\d N} & {\tt 246} \\ \hline
+{#hindi sha #endhindi} & {\a's} & {\tt 247} \\ \hline
+{#hindi sha #endhindi} & {\a'S} & {\tt 248} \\ \hline
+{#hindi shha #endhindi} & {\d s} & {\tt 249} \\ \hline
+{#hindi shha #endhindi} & {\d S} & {\tt 250} \\ \hline
+{#hindi La #endhindi} & {\b l} & {\tt 215} \\ \hline
+{#hindi .n #endhindi} & {\d m} & {\tt 252} \\ \hline
+{#hindi .n #endhindi} & {\d M} & {\tt 253} \\ \hline
+{#hindi .n #endhindi} & {\. m} & {\tt 167} \\ \hline
+{#hindi H #endhindi} & {\d h} & {\tt 254} \\ \hline
+{#hindi H #endhindi} & {\d H} & {\tt 255} \\ \hline
+{#telugu Ra #endtelugu (telugu)} & {\b r} & {\tt 159} \\ \hline
+\end{tabular}
+\end{makeimage}
+\end{tabular}
+\end{center}
+\caption {{\bf CS/CSX Mapping} (shows non-ASCII char codes only).}
+\label{csx}
+\end{table}
+
+\subsection{Incomplete CS/CSX Support}
+
+There are many characters in CS/CSX that are currently not mapped by ITRANS,
+simply because I do not know what devanagari characters (if any) they
+stand for.
+
+For example, \~ l is present in the CS table, but I don't know what
+it represents, so, it is currently unrecognized by ITRANS.
+If you find such gaps and know what devanagari or tamil or telugu character
+it stands for, please send me e-mail, so that I can include it in the
+next release of ITRANS. My e-mail address is available elsewhere in this
+document.
+Feel free to send me mail on any other issues regarding CS/CSX support
+in ITRANS, too.
+
+\subsection{Breaking the lexical scan in ITRANS}
+
+ITRANS always matches the largest possible input sequence when scanning
+the input. Thus, in devanagari, {\tt sha} will produce #hindi  sha #endhindi even when
+usecsx is in effect.
+If instead you need ITRANS to recognize it as two different consonants,
+you should use the lexical scan break character, the underscore.
+Thus, typing {\tt s\_ha} will result in #hindi  s_ha #endhindi.
+
+This is a thing to watch out for in all cases where some character has
+a multiple letter mapping, and each letter by itself also represents some
+other character.
+In the above example, {\tt sh} is the two letter map, and both
+{\tt s} and {\tt h} represent other characters.
+
+\section{ITRANS Encoding Accepted along with CS/CSX}
+
+Even when {\tt \char35usecsx} is in effect, the other ITRANS mappings
+are still accepted.
+Actually, even without the usecsx command, ITRANS will still accept all
+the CS/CSX character codes. The only reason the usecsx command is needed
+is to disambiguate the #hindi ca #endhindi and #hindi cha #endhindi characters. ITRANS by default
+uses {\tt cha} and {\tt chha} to denote #hindi ca #endhindi and #hindi cha #endhindi, but CS/CSX
+uses {\tt ca} and {\tt cha}. To handle this difference, the
+{\tt \char35usecsx} command had to be introduced.
+
+Though this document shows only the Devanagari script, CS/CSX can be used
+in ITRANS with every Indic Script that ITRANS supports.
+For more details on those languages, consult the documentation for that
+specific language. For Devanagari, consult dnvc.itx or dvng.itx, for Tamil,
+tamil.itx, for Bengali, beng.itx, for Telugu tlgutx.itx, for Punjabi
+pundoc.itx, for Romanized Sanskrit romancsx.itx.
+
+\subsection{Converting CSX Encoding to ITRANS Encoding}
+
+Sometimes, it is useful to convert input text from the 8-bit CS/CSX encoding
+to the 7-bit ITRANS Encoding (ASCII text).
+Many computers still do not have good 8-bit editing tools, and even if
+such tools are present, the CS/CSX font may not be available, in which case
+editing CSX texts becomes cumbersome.
+
+To convert input text from CS/CSX encoding to ITRANS encoding, the program
+{\bf csx2i} has been provided. It is present in the {\tt src/} directory
+of the ITRANS distribution. For x86 MS-DOS compatible machines, an executable
+is also provided. Given a file called {\tt input.csx} which contains
+text in CS/CSX encoding, to convert it to ITRANS encoding in a file called
+{\tt output}, run it like this:
+
+{\tt csx2i < input.csx > output}
+
+C-source code to csx2i is provided, in file csx2i.c, and it should compile
+easily on every platform.
+
+Once the file {\tt output} is checked over for manual corrections, you
+can embed that text in between ITRANS commands, and process it like any
+other ITRANS input file.
+
+\vfill
+
+\subsection{Author}
+
+\noindent
+ITRANS has been developed by Avinash Chopde. \\
+E-mail:
+\htmladdnormallink{\texttt{avinash@aczoom.com}}{mailto:avinash@aczoom.com}. \\
+Home page:
+\htmladdnormallink{\texttt{http://www.aczoom.com/}}{http://www.aczoom.com/}
+
+\bigskip
+\hrule
+%-------------------------------------------------------------------
+\begin{htmlonly}
+\section{Devanagari Table}
+\end{htmlonly}
+
+\begin{table}[hp]
+\begin{center}
+\begin{tabular}{c@{\hspace{1in}}c@{\hspace{1in}}c}
+% --- first col is vowels inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#hindi a #endhindi}	& {\tt a} \\ \hline
+{#hindi aa #endhindi}	& {\tt aa {\it or} A} \\ \hline
+{#hindi i #endhindi}	& {\tt i} \\ \hline
+{#hindi ii #endhindi}	& {\tt ii {\it or} I} \\ \hline
+{#hindi u #endhindi}	& {\tt u} \\ \hline
+{#hindi uu #endhindi}	& {\tt uu {\it or} U} \\ \hline
+{#hindi R^i #endhindi}	& {\tt RRi {\it or} R\char`^i} \\ \hline
+{#hindi R^I #endhindi}	& {\tt RRI {\it or} R\char`^I} \\ \hline
+{#hindi L^i #endhindi}	& {\tt LLi {\it or} L\char`^i} \\ \hline
+{#hindi L^I #endhindi}	& {\tt LLI {\it or} L\char`^I} \\ \hline
+{#hindi e #endhindi}	& {\tt e} \\ \hline
+{#hindi ai #endhindi}	& {\tt ai} \\ \hline
+{#hindi o #endhindi}	& {\tt o} \\ \hline
+{#hindi au #endhindi}	& {\tt au} \\ \hline
+{#hindi aM #endhindi}	& {\tt {\it a}M} \\ \hline
+{#hindi aH #endhindi}	& {\tt {\it a}H} \\ \hline
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{} \\
+\multicolumn{2}{c}{Digits} \\
+\hline
+{#hindi 0 #endhindi}	& {\tt 0} \\ \hline
+{#hindi 1 #endhindi}	& {\tt 1} \\ \hline
+{#hindi 2 #endhindi}	& {\tt 2} \\ \hline
+{#hindi 3 #endhindi}	& {\tt 3} \\ \hline
+{#hindi 4 #endhindi}	& {\tt 4} \\ \hline
+{#hindi 5 #endhindi}	& {\tt 5} \\ \hline
+{#hindi 6 #endhindi}	& {\tt 6} \\ \hline
+{#hindi 7 #endhindi}	& {\tt 7} \\ \hline
+{#hindi 8 #endhindi}	& {\tt 8} \\ \hline
+{#hindi 9 #endhindi}	& {\tt 9} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end first col 
+&
+% --- second col is consonants 
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#hindi ka  #endhindi}	& {\tt k{\it a}} \\ \hline
+{#hindi kha  #endhindi}	& {\tt kh{\it a}} \\ \hline
+{#hindi ga  #endhindi}	& {\tt g{\it a}} \\ \hline
+{#hindi gha  #endhindi}	& {\tt gh{\it a}} \\ \hline
+{#hindi ~Na  #endhindi}	& {\tt \char`~N{\it a or} N\char`^{\it a}} \\ \hline
+{#hindi ca  #endhindi}	& {\tt c{\it a}} \\ \hline
+{#hindi cha  #endhindi}	& {\tt ch{\it a or} chh{\it a}} \\ \hline
+{#hindi ja  #endhindi}	& {\tt j{\it a}} \\ \hline
+{#hindi jha  #endhindi}	& {\tt jh{\it a}} \\ \hline
+{#hindi ~na  #endhindi}	& {\tt \char`~n{\it a or} JN{\it a}} \\ \hline
+{#hindi Ta  #endhindi}	& {\tt T{\it a}} \\ \hline
+{#hindi Tha  #endhindi}	& {\tt Th{\it a}} \\ \hline
+{#hindi Da  #endhindi}	& {\tt D{\it a}} \\ \hline
+{#hindi Dha  #endhindi}	& {\tt Dh{\it a}} \\ \hline
+{#hindi Na  #endhindi}	& {\tt N{\it a}} \\ \hline
+{#hindi ta  #endhindi}	& {\tt t{\it a}} \\ \hline
+{#hindi tha  #endhindi}	& {\tt th{\it a}} \\ \hline
+{#hindi da  #endhindi}	& {\tt d{\it a}} \\ \hline
+{#hindi dha  #endhindi}	& {\tt dh{\it a}} \\ \hline
+{#hindi na  #endhindi}	& {\tt n{\it a}} \\ \hline
+{#hindi pa  #endhindi}	& {\tt p{\it a}} \\ \hline
+{#hindi pha  #endhindi}	& {\tt ph{\it a}} \\ \hline
+{#hindi ba  #endhindi}	& {\tt b{\it a}} \\ \hline
+{#hindi bha  #endhindi}	& {\tt bh{\it a}} \\ \hline
+{#hindi ma  #endhindi}	& {\tt m{\it a}} \\ \hline
+{#hindi ya  #endhindi}	& {\tt y{\it a}} \\ \hline
+{#hindi ra  #endhindi}	& {\tt r{\it a}} \\ \hline
+{#hindi la  #endhindi}	& {\tt l{\it a}} \\ \hline
+{#hindi va  #endhindi}	& {\tt v{\it a or} w{\it a}} \\ \hline
+{#hindi sha  #endhindi}	& {\tt sh{\it a}} \\ \hline
+{#hindi Sha  #endhindi}	& {\tt Sh{\it a or} shh{\it a}} \\ \hline
+{#hindi sa  #endhindi}	& {\tt s{\it a}} \\ \hline
+{#hindi ha  #endhindi}	& {\tt h{\it a}} \\ \hline
+{#hindi La  #endhindi}	& {\tt ld{\it a or} L{\it a}} \\ \hline
+{#hindi kSha  #endhindi}	& {\tt kSh{\it a or} x{\it a}} \\ \hline
+{#hindi j~na  #endhindi}	& {\tt j\char`~n{\it a or} GY{\it a}} \\ \hline
+\end{tabular}
+\end{makeimage}
+% --- end second col 
+&
+% --- third col of specials/accents inside a tabular
+\begin{makeimage}
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Specials/Accents} \\
+\hline
+{#hindi qa  #endhindi}	& {\tt q{\it a}} \\ \hline
+{#hindi Ka  #endhindi}	& {\tt K{\it a}} \\ \hline
+{#hindi Ga  #endhindi}	& {\tt G{\it a}} \\ \hline
+{#hindi za  #endhindi}	& {\tt J{\it a or} z{\it a}} \\ \hline
+{#hindi fa  #endhindi}	& {\tt f{\it a}} \\ \hline
+{#hindi .Da  #endhindi}	& {\tt .D{\it a}} \\ \hline
+{#hindi .Dha  #endhindi}	& {\tt .Dh{\it a}} \\ \hline
+{#hindi AUM #endhindi}	& {\tt AUM} or {\tt OM} \\ \hline
+{#hindi Rga  #endhindi}	& {\tt R{\it ga}} \\ \hline
+{#hindi rga #endhindi} & {\tt rga {\it or} {\it ga}\char`^r} \\ \hline
+{#hindi ga.n #endhindi} & {\tt {\it ga}.n} \\ \hline
+{#hindi aa.c #endhindi} & {\tt {\it aa}.c} \\ \hline
+{#hindi Da.N #endhindi} & {\tt {\it Da}.N} \\ \hline
+{#hindi D.h #endhindi} & {\tt {\it D}.h} \\ \hline
+{#hindi duH #endhindi} & {\tt {\it du}H} \\ \hline
+{#hindi .a #endhindi} & {\tt .a} \\ \hline
+\end{tabular}
+\end{makeimage}
+\\
+\end{tabular} % end the larger tabular encompassing all four tables
+\hfill
+\\
+\end{center}
+\caption {{\bf ITRANS: Devanagari to English with \char35usecsx} (in addition to Table 1).}
+\label{ienc}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

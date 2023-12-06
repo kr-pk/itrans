@@ -1,0 +1,704 @@
+#output=TeX
+
+\batchmode
+\documentclass[11pt]{article}
+\RequirePackage{ifthen}
+
+
+
+
+\usepackage[preprocess]{itrans} 
+
+
+\IfFileExists{html.sty}{\usepackage{html}}{\usepackage{htmlstub}}
+    % html.sty is from standard latex2html package
+    
+
+\portraitpage	% defined in itrans.sty (idevn.tex), get a larger page size
+
+
+%
+\renewcommand{\arraystretch}{1.25}%
+\providecommand{\rarrow}{\mbox{---\hspace{-8pt}$>$}}%
+\providecommand{\ST}{\char35 tamil}%
+\providecommand{\ET}{\char35 endtamil} 
+\newfont{\cmt}{cmtt12}
+\newfont{\cmts}{cmtt9}
+
+
+\newfont{\tmlb}{wntml12}
+\newfont{\tmls}{wntml10}
+
+\hyphenchar\tmlb-1  % disable hyphenation using this font
+
+\hyphenchar\tmls-1  % disable hyphenation using this font
+
+
+#tamilifm=wntml.ifm
+
+#tamilfont=\tmlb
+
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{451pt}
+\setlength{\textheight}{554pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
+  \ifdim\dimen0>.95\vsize
+   \lthtmltypeout{%
+*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
+   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
+  \lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+
+ \def\dvgstrut{\vrule height6ex width0pt}
+
+ \def\istrut{\vrule height1.1ex width0pt}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1666}%
+{\tmlb {\char49} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1667}%
+{\tmlb {\char54} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1668}%
+{\tmlb {\char22\char49} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1669}%
+{\tmlb {\char23\char49} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1670}%
+{\tmlb {\char145} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1671}%
+{\tmlb {\char150} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1672}%
+{\tmlb {\char22\char145} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1673}%
+{\tmlb {\char23\char145} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1674}%
+{\tmlb {\char134} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1675}%
+{\tmlb {\char137} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1676}%
+{\tmlb {\char22\char137} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlineA{tex2html_accent_inline1677}%
+{\tmlb {\char23\char137} }%
+\lthtmlinlineZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline995}%
+$\bullet$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap1681}%
+\vbox{#tamil
+\noindent namadhu chUriya maNTalaththai viTTup paya^nIr{\rm ,} 
+vAyEjar
+viNkala~NkaL veLiyERi
+viNmI^nkaLai nOkki viraindhu koNTirukki^nRa^na{\rm .}
+idhaRkE padhdhuppadhi^nARu ANTukaLAki viTTa^na{\rm .} \\
+viNmI^nkaLukkuch churukkAka payaNam chella i^nRaiya vEdhiyal 
+EvUrdhikaL
+kaikoTukkA{\rm .}
+ivaRRi^nAl maNikku $ 40 $\  Ayiram kilO mITTar vEkadhdhaiyE eTTa
+muTiyum{\rm .}
+#endtamil}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage106}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Vowels} \\
+\hline
+{#tamil a #endtamil}	& {\tt a} \\\hline
+{#tamil aa #endtamil}	& {\tt aa {\it or} A} \\\hline
+{#tamil i #endtamil}	& {\tt i} \\\hline
+{#tamil ii #endtamil}	& {\tt ii {\it or} I} \\\hline
+{#tamil u #endtamil}	& {\tt u} \\\hline
+{#tamil uu #endtamil}	& {\tt uu {\it or} U} \\\hline
+{#tamil e #endtamil}	& {\tt e} \\\hline
+{#tamil E #endtamil}	& {\tt E} \\\hline
+{#tamil ai #endtamil}	& {\tt ai} \\\hline
+{#tamil o #endtamil}	& {\tt o} \\\hline
+{#tamil O #endtamil}	& {\tt O} \\\hline
+{#tamil au #endtamil}	& {\tt au} \\\hline
+\multicolumn{2}{c}{ }\\
+\multicolumn{2}{c}{ }\\
+\hline
+{#tamil q #endtamil}	& {\tt q} \\\hline
+{#tamil SRI #endtamil}	& {\tt SRI} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{makeimage162}%
+\begin{tabular}{|c|c|}
+\multicolumn{2}{c}{Consonants} \\
+\hline
+{#tamil ka  #endtamil}	& {\tt k{\it a} {\it or} g{\it a}} \\\hline
+{#tamil ~Na  #endtamil}	& {\tt\char`~N{\it a or} N\char`^{\it a}} \\\hline
+{#tamil cha  #endtamil}	& {\tt ch{\it a}} \\\hline
+{#tamil ~na  #endtamil}	& {\tt {\char`~}n{\it a}} \\\hline
+{#tamil Ta  #endtamil}	& {\tt T{\it a} {\it or} Th{\it a}} \\\hline
+{#tamil Na  #endtamil}	& {\tt N{\it a}} \\\hline
+{#tamil ta  #endtamil}	& {\tt t{\it a} {\it or} th{\it a}} \\\hline
+{#tamil na  #endtamil}	& {\tt n{\it a}} \\\hline
+{#tamil ^na  #endtamil}	& {\tt\char`^n{\it a}} \\\hline
+{#tamil pa  #endtamil}	& {\tt p{\it a} {\it or} b{\it a}} \\\hline
+{#tamil ma  #endtamil}	& {\tt m{\it a}} \\\hline
+{#tamil ya  #endtamil}	& {\tt y{\it a}} \\\hline
+{#tamil ra  #endtamil}	& {\tt r{\it a}} \\\hline
+{#tamil la  #endtamil}	& {\tt l{\it a}} \\\hline
+{#tamil va  #endtamil}	& {\tt v{\it a or} w{\it a}} \\\hline
+{#tamil za  #endtamil}	& {\tt J{\it a or} z{\it a}} \\\hline
+{#tamil La  #endtamil}	& {\tt L{\it a}} \\\hline
+{#tamil Ra  #endtamil}	& {\tt R{\it a}} \\\hline
+{#tamil sha  #endtamil}	& {\tt sh{\it a}} \\\hline
+{#tamil Sha  #endtamil}& {\tt Sh{\it a}} \\\hline
+{#tamil sa  #endtamil}	& {\tt s{\it a}} \\\hline
+{#tamil ja  #endtamil}	& {\tt j{\it a}} \\\hline
+{#tamil ha  #endtamil}	& {\tt h{\it a}} \\\hline
+{#tamil xa  #endtamil}	& {\tt x{\it a} {\it or} ksh{\it a}} \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+#tamilfont=\tmls
+%
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{makeimage269}%
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|} % 14 columns
+\hline
+\tt\char92 &
+\tt &
+\tt a &
+\tt A &
+\tt i &
+\tt I &
+\tt u &
+\tt U &
+\tt e &
+\tt E &
+\tt ai &
+\tt o &
+\tt O &
+\tt au \\\hline\hline
+\tt k			&
+#tamil k #endtamil	&
+#tamil ka #endtamil	&
+#tamil kA #endtamil	&
+#tamil ki #endtamil	&
+#tamil kI #endtamil	&
+#tamil ku #endtamil	&
+#tamil kU #endtamil	&
+#tamil ke #endtamil	&
+#tamil kE #endtamil	&
+#tamil kai #endtamil	&
+#tamil ko #endtamil	&
+#tamil kO #endtamil	&
+#tamil kau #endtamil	\\\hline
+\tt {\char`~}N &
+#tamil ~N #endtamil &
+#tamil ~Na #endtamil &
+#tamil ~NA #endtamil &
+#tamil ~Ni #endtamil &
+#tamil ~NI #endtamil &
+#tamil ~Nu #endtamil &
+#tamil ~NU #endtamil &
+#tamil ~Ne #endtamil &
+#tamil ~NE #endtamil &
+#tamil ~Nai #endtamil &
+#tamil ~No #endtamil &
+#tamil ~NO #endtamil &
+#tamil ~Nau #endtamil \\\hline
+\tt ch &
+#tamil ch #endtamil &
+#tamil cha #endtamil &
+#tamil chA #endtamil &
+#tamil chi #endtamil &
+#tamil chI #endtamil &
+#tamil chu #endtamil &
+#tamil chU #endtamil &
+#tamil che #endtamil &
+#tamil chE #endtamil &
+#tamil chai #endtamil &
+#tamil cho #endtamil &
+#tamil chO #endtamil &
+#tamil chau #endtamil \\\hline
+\tt {\char`~}n &
+#tamil ~n #endtamil &
+#tamil ~na #endtamil &
+#tamil ~nA #endtamil &
+#tamil ~ni #endtamil &
+#tamil ~nI #endtamil &
+#tamil ~nu #endtamil &
+#tamil ~nU #endtamil &
+#tamil ~ne #endtamil &
+#tamil ~nE #endtamil &
+#tamil ~nai #endtamil &
+#tamil ~no #endtamil &
+#tamil ~nO #endtamil &
+#tamil ~nau #endtamil \\\hline
+\tt T &
+#tamil T #endtamil &
+#tamil Ta #endtamil &
+#tamil TA #endtamil &
+#tamil Ti #endtamil &
+#tamil TI #endtamil &
+#tamil Tu #endtamil &
+#tamil TU #endtamil &
+#tamil Te #endtamil &
+#tamil TE #endtamil &
+#tamil Tai #endtamil &
+#tamil To #endtamil &
+#tamil TO #endtamil &
+#tamil Tau #endtamil \\\hline
+\tt N &
+#tamil N #endtamil &
+#tamil Na #endtamil &
+#tamil NA #endtamil &
+#tamil Ni #endtamil &
+#tamil NI #endtamil &
+#tamil Nu #endtamil &
+#tamil NU #endtamil &
+#tamil Ne #endtamil &
+#tamil NE #endtamil &
+#tamil Nai #endtamil &
+#tamil No #endtamil &
+#tamil NO #endtamil &
+#tamil Nau #endtamil \\\hline
+\tt t &
+#tamil t #endtamil &
+#tamil ta #endtamil &
+#tamil tA #endtamil &
+#tamil ti #endtamil &
+#tamil tI #endtamil &
+#tamil tu #endtamil &
+#tamil tU #endtamil &
+#tamil te #endtamil &
+#tamil tE #endtamil &
+#tamil tai #endtamil &
+#tamil to #endtamil &
+#tamil tO #endtamil &
+#tamil tau #endtamil \\\hline
+\tt n &
+#tamil n #endtamil &
+#tamil na #endtamil &
+#tamil nA #endtamil &
+#tamil ni #endtamil &
+#tamil nI #endtamil &
+#tamil nu #endtamil &
+#tamil nU #endtamil &
+#tamil ne #endtamil &
+#tamil nE #endtamil &
+#tamil nai #endtamil &
+#tamil no #endtamil &
+#tamil nO #endtamil &
+#tamil nau #endtamil \\\hline
+\tt\char`^n &
+#tamil ^n #endtamil &
+#tamil ^na #endtamil &
+#tamil ^nA #endtamil &
+#tamil ^ni #endtamil &
+#tamil ^nI #endtamil &
+#tamil ^nu #endtamil &
+#tamil ^nU #endtamil &
+#tamil ^ne #endtamil &
+#tamil ^nE #endtamil &
+#tamil ^nai #endtamil &
+#tamil ^no #endtamil &
+#tamil ^nO #endtamil &
+#tamil ^nau #endtamil \\\hline
+\tt p &
+#tamil p #endtamil &
+#tamil pa #endtamil &
+#tamil pA #endtamil &
+#tamil pi #endtamil &
+#tamil pI #endtamil &
+#tamil pu #endtamil &
+#tamil pU #endtamil &
+#tamil pe #endtamil &
+#tamil pE #endtamil &
+#tamil pai #endtamil &
+#tamil po #endtamil &
+#tamil pO #endtamil &
+#tamil pau #endtamil \\\hline
+\tt m &
+#tamil m #endtamil &
+#tamil ma #endtamil &
+#tamil mA #endtamil &
+#tamil mi #endtamil &
+#tamil mI #endtamil &
+#tamil mu #endtamil &
+#tamil mU #endtamil &
+#tamil me #endtamil &
+#tamil mE #endtamil &
+#tamil mai #endtamil &
+#tamil mo #endtamil &
+#tamil mO #endtamil &
+#tamil mau #endtamil \\\hline
+\tt y &
+#tamil y #endtamil &
+#tamil ya #endtamil &
+#tamil yA #endtamil &
+#tamil yi #endtamil &
+#tamil yI #endtamil &
+#tamil yu #endtamil &
+#tamil yU #endtamil &
+#tamil ye #endtamil &
+#tamil yE #endtamil &
+#tamil yai #endtamil &
+#tamil yo #endtamil &
+#tamil yO #endtamil &
+#tamil yau #endtamil \\\hline
+\tt r &
+#tamil r #endtamil &
+#tamil ra #endtamil &
+#tamil rA #endtamil &
+#tamil ri #endtamil &
+#tamil rI #endtamil &
+#tamil ru #endtamil &
+#tamil rU #endtamil &
+#tamil re #endtamil &
+#tamil rE #endtamil &
+#tamil rai #endtamil &
+#tamil ro #endtamil &
+#tamil rO #endtamil &
+#tamil rau #endtamil \\\hline
+\tt l &
+#tamil l #endtamil &
+#tamil la #endtamil &
+#tamil lA #endtamil &
+#tamil li #endtamil &
+#tamil lI #endtamil &
+#tamil lu #endtamil &
+#tamil lU #endtamil &
+#tamil le #endtamil &
+#tamil lE #endtamil &
+#tamil lai #endtamil &
+#tamil lo #endtamil &
+#tamil lO #endtamil &
+#tamil lau #endtamil \\\hline
+\tt v &
+#tamil v #endtamil &
+#tamil va #endtamil &
+#tamil vA #endtamil &
+#tamil vi #endtamil &
+#tamil vI #endtamil &
+#tamil vu #endtamil &
+#tamil vU #endtamil &
+#tamil ve #endtamil &
+#tamil vE #endtamil &
+#tamil vai #endtamil &
+#tamil vo #endtamil &
+#tamil vO #endtamil &
+#tamil vau #endtamil \\\hline
+\tt z &
+#tamil z #endtamil &
+#tamil za #endtamil &
+#tamil zA #endtamil &
+#tamil zi #endtamil &
+#tamil zI #endtamil &
+#tamil zu #endtamil &
+#tamil zU #endtamil &
+#tamil ze #endtamil &
+#tamil zE #endtamil &
+#tamil zai #endtamil &
+#tamil zo #endtamil &
+#tamil zO #endtamil &
+#tamil zau #endtamil \\\hline
+\tt L &
+#tamil L #endtamil &
+#tamil La #endtamil &
+#tamil LA #endtamil &
+#tamil Li #endtamil &
+#tamil LI #endtamil &
+#tamil Lu #endtamil &
+#tamil LU #endtamil &
+#tamil Le #endtamil &
+#tamil LE #endtamil &
+#tamil Lai #endtamil &
+#tamil Lo #endtamil &
+#tamil LO #endtamil &
+#tamil Lau #endtamil \\\hline
+\tt R &
+#tamil R #endtamil &
+#tamil Ra #endtamil &
+#tamil RA #endtamil &
+#tamil Ri #endtamil &
+#tamil RI #endtamil &
+#tamil Ru #endtamil &
+#tamil RU #endtamil &
+#tamil Re #endtamil &
+#tamil RE #endtamil &
+#tamil Rai #endtamil &
+#tamil Ro #endtamil &
+#tamil RO #endtamil &
+#tamil Rau #endtamil \\\hline
+\tt sh &
+#tamil sh #endtamil &
+#tamil sha #endtamil &
+#tamil shA #endtamil &
+#tamil shi #endtamil &
+#tamil shI #endtamil &
+#tamil shu #endtamil &
+#tamil shU #endtamil &
+#tamil she #endtamil &
+#tamil shE #endtamil &
+#tamil shai #endtamil &
+#tamil sho #endtamil &
+#tamil shO #endtamil &
+#tamil shau #endtamil \\\hline
+\tt Sh &
+#tamil Sh #endtamil &
+#tamil Sha #endtamil &
+#tamil ShA #endtamil &
+#tamil Shi #endtamil &
+#tamil ShI #endtamil &
+#tamil Shu #endtamil &
+#tamil ShU #endtamil &
+#tamil She #endtamil &
+#tamil ShE #endtamil &
+#tamil Shai #endtamil &
+#tamil Sho #endtamil &
+#tamil ShO #endtamil &
+#tamil Shau #endtamil \\\hline
+\tt s &
+#tamil s #endtamil &
+#tamil sa #endtamil &
+#tamil sA #endtamil &
+#tamil si #endtamil &
+#tamil sI #endtamil &
+#tamil su #endtamil &
+#tamil sU #endtamil &
+#tamil se #endtamil &
+#tamil sE #endtamil &
+#tamil sai #endtamil &
+#tamil so #endtamil &
+#tamil sO #endtamil &
+#tamil sau #endtamil \\\hline
+\tt j &
+#tamil j #endtamil &
+#tamil ja #endtamil &
+#tamil jA #endtamil &
+#tamil ji #endtamil &
+#tamil jI #endtamil &
+#tamil ju #endtamil &
+#tamil jU #endtamil &
+#tamil je #endtamil &
+#tamil jE #endtamil &
+#tamil jai #endtamil &
+#tamil jo #endtamil &
+#tamil jO #endtamil &
+#tamil jau #endtamil \\\hline
+\tt h &
+#tamil h #endtamil &
+#tamil ha #endtamil &
+#tamil hA #endtamil &
+#tamil hi #endtamil &
+#tamil hI #endtamil &
+#tamil hu #endtamil &
+#tamil hU #endtamil &
+#tamil he #endtamil &
+#tamil hE #endtamil &
+#tamil hai #endtamil &
+#tamil ho #endtamil &
+#tamil hO #endtamil &
+#tamil hau #endtamil \\\hline
+\tt x &
+#tamil x #endtamil &
+#tamil xa #endtamil &
+#tamil xA #endtamil &
+#tamil xi #endtamil &
+#tamil xI #endtamil &
+#tamil xu #endtamil &
+#tamil xU #endtamil &
+#tamil xe #endtamil &
+#tamil xE #endtamil &
+#tamil xai #endtamil &
+#tamil xo #endtamil &
+#tamil xO #endtamil &
+#tamil xau #endtamil \\\hline
+\end{tabular}
+%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

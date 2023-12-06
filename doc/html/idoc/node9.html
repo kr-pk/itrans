@@ -1,0 +1,463 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Usage Hints</TITLE>
+<META NAME="description" CONTENT="Usage Hints">
+<META NAME="keywords" CONTENT="idoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="idoc.css">
+
+<LINK REL="next" HREF="node10.html">
+<LINK REL="previous" HREF="node8.html">
+<LINK REL="up" HREF="idoc.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html154"
+  HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html152"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html146"
+  HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html155"
+  HREF="node10.html">Author</A>
+<B>Up:</B> <A NAME="tex2html153"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html147"
+  HREF="node8.html">Output Languages Supported</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html156"
+  HREF="node9.html#SECTION00091000000000000000">Ligature suppression</A>
+<LI><A NAME="tex2html157"
+  HREF="node9.html#SECTION00092000000000000000">Breaking lexical scan</A>
+<UL>
+<LI><A NAME="tex2html158"
+  HREF="node9.html#SECTION00092100000000000000">List of all ITRANS recognized English letters</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html159"
+  HREF="node9.html#SECTION00093000000000000000">Punctuation Issues</A>
+<LI><A NAME="tex2html160"
+  HREF="node9.html#SECTION00094000000000000000">Multi-consonant conjuncts</A>
+<LI><A NAME="tex2html161"
+  HREF="node9.html#SECTION00095000000000000000">Word endings and the &#35;endwordvowel command</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00090000000000000000">
+Usage Hints</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00091000000000000000">
+Ligature suppression</A>
+</H2>
+As mentioned earlier, the system automatically uses
+ligatures whenever possible.
+For example,  since the <code>ta-ta</code> ligature exists,
+input text of the form <code>tti</code> is printed as
+<IMG
+ WIDTH="18" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.gif"
+ ALT="tti\/">.
+If instead you need it to be printed as <IMG
+ WIDTH="31" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="t{}ti"> you have
+two choices.
+One, if you never want the <code>ta-ta</code> ligature to be used, you
+can edit the IFM file and comment out all the lines that refer to the
+<code>ta-ta</code> ligature. 
+(The IFM file is a text file, for more information, see the
+technical documentation in tech.tex.)
+
+<P>
+On the other hand, if you do want to keep the ligature, except in a few
+locations in the input text (say for small point type), or if you do
+not want to edit the IFM file, you can use the ligature inhibitors
+<code>{}</code> to prevent a ligature from being used.
+Whenever the <code>{}</code> characters are inserted between two consonants,
+<EM>itrans</EM> refrains from using the ligature (if it exists, if it does
+not, then these characters have basically no effect).
+Instead, the half-forms of the consonants (as appropriate) are used.
+Thus, even if the IFM file contains the <code>ta-ta</code> ligature,
+the input text <code>t{}ti</code> always appears as 
+<IMG
+ WIDTH="22" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.gif"
+ ALT="t{}ti\/">.
+
+<P>
+
+<H2><A NAME="SECTION00092000000000000000">
+Breaking lexical scan</A>
+</H2>
+Use the character _ after a consonant letter to break the lexical
+scan.
+This becomes necessary because of the default behavior of the scanner,
+which tries to match the largest possible input pattern.
+Thus, when you write <TT>ai</TT> in the transliterated text, it comes out
+as <IMG
+ WIDTH="19" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.gif"
+ ALT="ai"> in marathi or <IMG
+ WIDTH="25" HEIGHT="21" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="ai"> in tamil.
+Now, that is just what you want for the <TT>ai</TT> vowel, but what if
+you wanted it to be scanned as two vowels: <TT>a</TT>, followed by
+<TT>i</TT> ?
+In such cases, you need to break the lexical scan, by following the
+first vowel, the <TT>a</TT> character, with the _
+character to stop the scanner from associating <TT>i</TT> with the
+<TT>a</TT> preceding it.
+So, <TT>a_i</TT> in the input text results in:
+<IMG
+ WIDTH="32" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="a_i"> for marathi and <IMG
+ WIDTH="44" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.gif"
+ ALT="a_i"> for tamil.
+
+<P>
+This is a thing to watch out for in all cases where some character has
+a multiple letter mapping, and each letter by itself also represents some
+other character.
+In the above example, <TT>ai</TT> is the two letter map, and both
+<TT>a</TT> and <TT>i</TT> represent other vowels.
+
+<P>
+Note that if you wish to suppress any ligature, you should use the
+{} letters consecutively, as explained in the previous paragraph.
+Using _ to follow some consonant allows a ligature, if it
+exists for the consonant pair, to be used. (Of course, tamil does
+not have any ligatures.)
+
+<P>
+To get a printable underscore in the Indian language text, follow
+normal T<SMALL>E</SMALL>X usage--use backslash underscore--<TT>&#92;_</TT>.
+
+<P>
+Since ITRANS supports many Indian languages, it has a large list of input
+tokens that are mapped to consonants.
+For example even if <TT>ai</TT> is not a vowel in one of the languages
+supported by ITRANS, it still is always recognized as  the <TT>ai</TT> vowel,
+and thus if you need it to be recognized as the <TT>a</TT> and <TT>i</TT>
+vowels, use the _ character as mentioned above.
+
+<P>
+
+<H3><A NAME="SECTION00092100000000000000">
+List of all ITRANS recognized English letters</A>
+</H3>
+Here's the list of ASCII input characters that are special to ITRANS:
+
+<P>
+<P>
+<TT>0 1 2 3 4 5 6 7 8 9 
+<BR>.a .c .N .n &#94;r .D .Dh A AUM 
+<BR>
+a aa ai au b bh ch chh D Dh d dh dny E e f G g gh GY 
+<BR>
+H h I i ii J j jh JN K k kh kSh L L&#94;i L&#94;I LLi LLI l ld 
+<BR>
+M m N &#34;n ~n n &#94;n N&#94; ny O o OM p ph q 
+<BR>.r &#94;r .R R R&#94;i R&#94;I RRi RRI r S SRI s sh shh 
+<BR>
+T Th t th U u uu v x Y y z
+</TT>
+<P>
+<TT>&#35;</TT><IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">language<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">
+<P>
+<TT>&#35;end</TT><IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">language<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$">
+<P>
+<TT>&#35;</TT><IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">language<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$"><TT>ifm </TT>
+<P>
+<TT>&#35;</TT><IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$&lt;$">language<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$&gt;$"><TT>font </TT>
+<P>
+<TT>&#35;output=HTML_7 </TT>
+<P>
+<TT>&#35;output=HTML_8 </TT>
+<P>
+<TT>&#35;output=UTF_8 </TT>
+<P>
+<TT>&#35;output=TeX </TT>
+<P>
+<TT>&#35;output=PostScript </TT>
+<P>
+<TT>&#35;ignoreshortmarkers </TT>
+<P>
+<TT>&#35;useshortmarkers </TT>
+<P>
+<TT>&#35;usecsx </TT>
+<P>
+<TT>&#35;ignorecsx </TT>
+<P>
+<TT>&#35;include= </TT>
+<P>
+<TT>&#35;endwordvowel=a </TT>
+<P>
+<TT>&#35;endwordvowel=.h </TT>
+<P>
+<TT>##    {}    _    &#96;   </TT>
+<P>
+
+<P>
+Version 4.0 and onwards added support for the Classical Sanskrit and Classical
+Sanskrit Extended encoding, which adds one ASCII character to the above
+list (<TT>c</TT>) and many non-ASCII characters, see the document <TT>icsx.itx</TT>
+for more details. 
+
+<P>
+
+<H2><A NAME="SECTION00093000000000000000">
+Punctuation Issues</A>
+</H2>
+The fonts provided may be missing some or all punctuation
+characters, some may also be missing numbers.
+For example, the tamil font used, wntml,
+does not have any numerals or any punctuation
+characters.
+The devanagari font does have numbers and some punctuation marks (the
+double-quote is missing, for example).
+
+<P>
+For devanagari, when using T<SMALL>E</SMALL>X, use the <TT>idevn.tex</TT> (automatically
+loaded by <TT>itrans.sty</TT>, use the <code>\usepackage{itrans.sty}</code>
+command in L<SUP><SMALL>A</SMALL></SUP>T<SMALL>E</SMALL>X) which provides
+modes for setting a devanagari font, and offers many commands that ease
+devanagari input.
+See the ITRANS Song Book documents for examples of idevn.tex usage, or,
+check out the sample document file <TT>sample.itx</TT>.
+
+<P>
+In all punctuation problems, you can always get the required punctuation or digit
+character by ending the Indian language transliteration scope (using one
+of the endmarkers), then
+printing the required punctuation mark, and the restarting the 
+transliteration by using the start marker.
+
+<P>
+An easier method, in T<SMALL>E</SMALL>X is to make use of the math mode for numbers.
+It is usually sufficient to use the $ enclosing scope to
+make numbers print correctly, since a $ enters mathmode and uses the math
+fonts.
+For punctuation marks, the user needs to explicitly change fonts:
+example:
+
+<P>
+<TT>&#35;marathi ......{&#92;rm ;}.......&#35;endmarathi </TT>.
+
+<P>
+But that is preferable over this form:
+
+<P>
+<TT>&#35;marathi ......&#35;endmarathi ; &#35;marathi .......&#35;endmarathi </TT>.
+
+<P>
+
+<H2><A NAME="SECTION00094000000000000000">
+Multi-consonant conjuncts</A>
+</H2>
+How does itrans handle ligatures with more than two consonants ?
+For example, <code>shhTmii</code> contains three consonants.
+This ligature produces
+<IMG
+ WIDTH="32" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.gif"
+ ALT="shhTmii\,\istrut">, the way itrans works is as follows:
+Beginning with the first consonant in the list,
+itrans checks if a double-consonant ligature has
+been defined for  that consonant and  the next one in the list.
+If such a character exists, then it is used and both consonants are consumed,
+and itrans repeats the procedure for the next consonant.
+
+<P>
+There is one exception to the above rule: if at all possible, the last two
+consonants are handled together, that is if a ligature of the last two
+consonants
+exists, that is used over the pairing that would result from the above method.
+Example: <code>shhTrii</code> produces
+<IMG
+ WIDTH="25" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.gif"
+ ALT="shhTrii\,\istrut">, both <code>shha-Ta</code> and <code>Ta-ra</code> ligatures
+exist, but since the consonants <code>Ta</code> and <code>ra</code> are the last two
+consonants, that ligature is used over <code>shha-Ta</code>.
+
+<P>
+Of course, this default behavior can be changed by appropriately placing
+the ligature inhibitor sequence, <code>{}</code>.
+Example: <code>shhTr{}ii</code> produces <IMG
+ WIDTH="29" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.gif"
+ ALT="shhT{}rii\,\istrut">.
+
+<P>
+Also, in ITRANS version 5.10, ITRANS now supports direct specification of
+3 or more consonant conjuncts in the .IFM file. So, if the above given
+description leads to incorrect output, we can now fix it by providing
+explicit rules for 3 or more multi-consonant conjuncts in the IFM file.
+
+<P>
+
+<H2><A NAME="SECTION00095000000000000000"></A>
+<A NAME="endwordvowel"></A>
+<BR>
+Word endings and the &#35;endwordvowel command
+</H2>
+To increase readability of the Indian text (in english), each word
+for the devanagari and bengali language is assumed to end in a vowel.
+Each Indian language letter can be generally
+written as C + [C + [C + [...] + C]] + V, where C is a consonant, and V is a
+vowel.
+When a consonant appears at the end of the word, and the vowel is ``a'', then
+it is not necessary to include the final ``a''--if a word ends in a consonant,
+ITRANS will automatically add the vowel ``a'' to the final consonant--for 
+devanagari and bengali only.
+Thus, in hindi, instead of writing ``hama'', you can write ``ham'', which
+is how the word <IMG
+ WIDTH="31" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="ham"> is pronounced anyway.
+To add a halant to any consonant, use ``.h'', thus ``ham.h'' produces
+<IMG
+ WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif"
+ ALT="ham.h\,">.
+
+<P>
+Use this default mechanism only when it increases the readability, for
+example in hindi it is better to write ``ek'', ``is'', ``tab'', instead
+of ``eka'', ``isa'', ``taba'' for <IMG
+ WIDTH="94" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif"
+ ALT="ek, is, tab\/">.
+But, it is better to include the ``a'' in words such as ``manushhya''--<IMG
+ WIDTH="44" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="manushhya\,">.
+
+<P>
+This default mechanism is activated only for the devanagari and bengali
+input.
+(The keyword DEFAULTVOWEL in the IFM file directs whether the last
+consonant in a word should be considered as paired the half-form, or the a-form,
+if the form is left unspecified.)
+
+<P>
+The above default working can be avoided by specifying the vowel to end words
+in the input document.
+
+<P>
+&#35;endwordvowel=a 
+<P>
+&#35;endwordvowel=.h 
+<P>
+The first command makes the default vowel be ``a'', which the second command
+will make the default vowel a ``half-form''--viraam.
+The endwordvowel command will override the DEFAULTVOWEL specification
+in the IFM file.
+So, for sanskrit, it is useful to include this command in the input file:
+
+<P>
+&#35;endwordvowel=.h 
+<P>
+which puts a viraam at the end of any word that does not end in a vowel.
+
+<P>
+
+<P><P>
+<BR>
+<HR>
+
+<P>
+
+<P><P>
+<BR>
+<HR>
+<A NAME="tex2html154"
+  HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../images/next.gif"></A> 
+<A NAME="tex2html152"
+  HREF="idoc.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../images/up.gif"></A> 
+<A NAME="tex2html146"
+  HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../images/prev.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html155"
+  HREF="node10.html">Author</A>
+<B>Up:</B> <A NAME="tex2html153"
+  HREF="idoc.html">idoc.itx (ITRANS doc)</A>
+<B> Previous:</B> <A NAME="tex2html147"
+  HREF="node8.html">Output Languages Supported</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<P>
+
+<P>
+
+<I>2009-12-04</I>
+
+<BR>
+
+ITRANS Home Page: <A HREF="http://www.aczoom.com/itrans/">http://www.aczoom.com/itrans/</A>
+</ADDRESS>
+</BODY>
+</HTML>

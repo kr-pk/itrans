@@ -1,0 +1,26 @@
+# This is a transliteration data file for converting from Itrans sanskrit
+   1            file version number
+   "    "      # string delimiters
+   [    ]      # list delimites
+   {    }      # regular expression delimiters
+#
+#starting sequence
+""
+#ending sequence
+""
+#
+   1     # number of input SHIFT sequences, only one set of input characters
+   ""      ""    ""    ""    ""        ""             # Normal characters
+#   "\0x23\0x23"  ""    ""    ""    "\0x23\0x23"   ""  # delimiters = ##
+#
+   0     # number of output shift sequences
+#
+# conversion table starts from here
+# inp_set     inp_seq           out_set    out_seq
+# Non-transliteration characters
+
+#   1    "<PRE><UL>"             0  "<PRE><UL><FONT FACE=Arial size=4>"
+
+
+
+	

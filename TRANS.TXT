@@ -1,0 +1,83 @@
+Avinash Chopde, Nov 1996		<avinash@aczoom.com>
+-----------------------------------------------------------------------
+This is the transliteration scheme used by ITRANS version 5.00 (and
+higher). If you encounter any text that uses this scheme, that text
+can be printed in the Devanagari script using the ITRANS package.
+-----------------------------------------------------------------------
+
+Example text:
+
+% From: cesaa129@utacnvx.uta.edu (C. S. Sudarshana Bhat)
+
+    siine me.n jalan aa.Nkho.n me.n tuufaan saa kyuu.N hai
+    is shahar me.n har shaKs pareshaan saa kyuu.N hai
+
+    dil hai to dha.Dakane kaa bahaanaa koI Dhuu.nDhe
+    patthar kii tarah behis\-o\-bejaan saa kyuu.N hai
+
+    tanahaaI kii ye kaun sii ma.nzil hai rafiiqo.n
+    taa\-hadd\-e\-nazar ek bayaabaan saa kyuu.N hai
+
+    kyaa koI naI baat nazar aatii hai ham me.n
+    aaInaa hame.n dekh ke hairaan saa kyuu.N hai
+
+
+Vowels (dependent and independent):
+-------
+a       aa / A        i          ii / I        u       uu / U 
+RRi / R^i    RRI / R^I     LLi / L^i    LLI / L^I
+e      ai        o      au         aM      aH
+
+Consonants:
+----------- 
+k     kh     g     gh     ~N
+ch    Ch     j     jh     ~n
+T     Th     D     Dh     N
+t     th     d     dh     n
+p     ph     b     bh     m
+y     r      l     v
+sh    Sh     s     h      L
+x / kSh     GY / j~n / dny     shr
+R (marathi RA)
+L / ld (marathi LLA)
+Y (bengali)
+
+Consonants with a nukta (dot) under them (mainly for Urdu devanagari):
+-----------------------------------------
+k  with a dot:      q
+kh with a dot:      K
+g  with a dot:      G
+j  with a dot:      z / J
+p  with a dot:      f
+D  with a dot:      .D
+Dh with a dot:      .Dh
+
+Specials/Accents:
+-----------------
+Anusvara:       .n / M / .m  (dot on top of previous consonant/vowel)
+Avagraha:       .a    (`S' like symbol basically to replace a after o)
+Ardhachandra:   .c    (for vowel sound as in english words `cat' or `talk')
+Chandra-Bindu:  .N    (chandra-bindu on top of previous letter)
+Halant:		.h    (to get half-form of the consonant - no vowel - virama)
+Visarga:        H     (visarga - looks like a colon character)
+Om:		OM, AUM (Om symbol)
+
+-----------------
+ Consonants have been shown without any vowel, add suffix "a" to produce
+ a normal consonant, example, "jaya" or "jay" for (JA)-(YA), etc.
+ Watch out for ambiguous input: use _ to break lexical scans, example:
+ use "ga_ii" instead of "gaii" when you need (GA)-(VOWEL ii), because "gaii"
+ will be parsed as (GA with dependent VOWEL ai)-(VOWEL i)!
+ But in most cases the _ is not needed...
+-------------------------------------------------------------------------
+Each devanagari letter is constructed as C + C + C + .. + V
+(one or more consonants, followed by a vowel).
+If the vowel is omitted at the end of a word, the "a" vowel will be
+assumed (use halant - .h to get the short form of the consonant - which
+is a consonant without any vowel, ex: k.h).
+-------------------------------------------------------------------------
+Punctuation available:
+,    ;    :    /    ?    !    (    )
+Note that hyphen (-) is not available --- use \- in the indian text to get
+a hyphen. Also, use \. to get period (.), for Danda, use |.
+
