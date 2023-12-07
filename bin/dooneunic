@@ -23,17 +23,17 @@ endif
 #
 if ($i == 9) then
 #rm del*.*
-/home/sanskrit/software/translit/translit -i ${1}.txt -o del1.txt -t /home/sanskrit/itrans/bin/itx2uht1.tbl
-/home/sanskrit/software/translit/translit -i del1.txt -o del2.txt -t /home/sanskrit/itrans/bin/itx2uht2.tbl
+translit -i ${1}.txt -o del1.txt -t /home/kr/.local/src/itrans/bin/itx2uht1.tbl
+translit -i del1.txt -o del2.txt -t /home/kr/.local/src/itrans/bin/itx2uht2.tbl
 # remove the \EN portion so it does not obstruct html creation
-sed -f /home/sanskrit/itrans/bin/comment.sed del2.txt > del2-1.txt
-/home/sanskrit/software/translit/translit -i del2-1.txt -o del3.txt -t /home/sanskrit/itrans/bin/itx2uht3.tbl
-sed -f /home/sanskrit/itrans/bin/comment.sed del3.txt > delsave1.txt
+sed -f /home/kr/.local/src/itrans/bin/comment.sed del2.txt > del2-1.txt
+translit -i del2-1.txt -o del3.txt -t /home/kr/.local/src/itrans/bin/itx2uht3.tbl
+sed -f /home/kr/.local/src/itrans/bin/comment.sed del3.txt > delsave1.txt
 sed 's/\.\. /||/g;s/\.\./||/g;s/|| /||/g;s/ \./ |/g' delsave1.txt > delsave.txt
 echo "</FONT></PRE><PRE><FONT SIZE=3><P><HR>" >>delsave.txt
 
 # Clean .inf
-cat ${1}.inf /home/sanskrit/util/producegif/addcopynote.inf > temp.inf
+cat ${1}.inf /home/kr/.local/src/itrans/bin/addcopynote.inf > temp.inf
 sed -i '/   :$/d' temp.inf
 sed -i '/Special Instructions/d' temp.inf
 sed -i '/i1h.hdr,ijag.inc,itrans.sty,multicol.sty,iarticle.sty/d' temp.inf
@@ -43,14 +43,14 @@ sed -i '/Commands upto engtitle are/d' temp.inf
 sed -i '/needed for devanaagarii output and formatting/d' temp.inf
 
 #cat /home/sanskrit/itrans/bin/uht.hdr  delsave.txt ${1}.inf /home/sanskrit/itrans/bin/uht.trl > del.uht
-cat /home/sanskrit/itrans/bin/uht.hdr  delsave.txt temp.inf /home/sanskrit/itrans/bin/uht.trl > del.uht
+cat /home/kr/.local/src/itrans/bin/uht.hdr  delsave.txt temp.inf /home/kr/.local/src/itrans/bin/uht.trl > del.uht
 rm -f temp.inf
 
-/usr/local/bin/itrans -v -U -i del.uht -o ${1}_sa.html
+sudo itrans -v -U -i del.uht -o ${1}_sa.html
 #/homt/sanskrit/software/translit/translit -i del.uht -o del.htm -t /home/sanskrit/itrans/bin/uht2htm.tbl
 #mv del.htm ${1}.htm
 # Replace daNDas with unicode equivalent
-sed -i -f /home/sanskrit/util/producegif/danda.sed ${1}_sa.html
+sed -i -f /home/kr/.local/src/itrans/bin/danda.sed ${1}_sa.html
 # Add spaces after hyphens
 vi -c ":%s/ -\([A-z]\)/ - \1/g" -c ":wq" ${1}_sa.html
 # make the double ` or ' quotes uniform
